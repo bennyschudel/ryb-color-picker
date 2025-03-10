@@ -1,0 +1,3861 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "RybColorPicker",
+          "declaration": {
+            "name": "RybColorPicker",
+            "module": "./src/RybColorPicker.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "RybColorSwatch",
+          "declaration": {
+            "name": "RybColorSwatch",
+            "module": "./src/RybColorSwatch.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "ryb-color-picker.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-settings",
+          "declaration": {
+            "name": "ColorPickerSettings",
+            "module": "/src/ColorPickerSettings.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-button",
+          "declaration": {
+            "name": "ColorPickerUiButton",
+            "module": "/src/ColorPickerUiButton.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-field",
+          "declaration": {
+            "name": "ColorPickerUiField",
+            "module": "/src/ColorPickerUiField.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-gamut",
+          "declaration": {
+            "name": "ColorPickerUiGamut",
+            "module": "/src/ColorPickerUiGamut.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-gamut-cube",
+          "declaration": {
+            "name": "ColorPickerUiGamutCube",
+            "module": "/src/ColorPickerUiGamutCube.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-icon",
+          "declaration": {
+            "name": "ColorPickerUiIcon",
+            "module": "/src/ColorPickerUiIcon.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-icon-button",
+          "declaration": {
+            "name": "ColorPickerUiIconButton",
+            "module": "/src/ColorPickerUiIconButton.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-input",
+          "declaration": {
+            "name": "ColorPickerUiInput",
+            "module": "/src/ColorPickerUiInput.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-selector",
+          "declaration": {
+            "name": "ColorPickerUiSelector",
+            "module": "/src/ColorPickerUiSelector.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-stepper-input",
+          "declaration": {
+            "name": "ColorPickerUiStepperInput",
+            "module": "/src/ColorPickerUiStepperInput.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-tool-tip",
+          "declaration": {
+            "name": "ColorPickerUiToolTip",
+            "module": "/src/ColorPickerUiToolTip.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-value",
+          "declaration": {
+            "name": "ColorPickerValue",
+            "module": "/src/ColorPickerValue.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ryb-color-swatch",
+          "declaration": {
+            "name": "RybColorSwatch",
+            "module": "/src/RybColorSwatch.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ryb-color-picker",
+          "declaration": {
+            "name": "RybColorPicker",
+            "module": "/src/RybColorPicker.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ryb-color-picker.min.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Be",
+          "members": [],
+          "superclass": {
+            "name": "tt",
+            "module": "/dist/vendors.min.js"
+          },
+          "tagName": "color-picker-settings",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ze",
+          "members": [],
+          "superclass": {
+            "name": "tt",
+            "module": "/dist/vendors.min.js"
+          },
+          "tagName": "color-picker-ui-button",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Oe",
+          "members": [],
+          "superclass": {
+            "name": "tt",
+            "module": "/dist/vendors.min.js"
+          },
+          "tagName": "color-picker-ui-field",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "qe",
+          "members": [
+            {
+              "kind": "field",
+              "name": "presetsOptions",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "preset",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "cube",
+              "type": {
+                "text": "array"
+              },
+              "default": "[ [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1] ]"
+            }
+          ],
+          "superclass": {
+            "name": "tt",
+            "module": "/dist/vendors.min.js"
+          },
+          "tagName": "color-picker-ui-gamut",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Ye",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getCubeValue",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleColorInput",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "cube",
+              "type": {
+                "text": "array"
+              },
+              "default": "[ [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1] ]"
+            }
+          ],
+          "superclass": {
+            "name": "tt",
+            "module": "/dist/vendors.min.js"
+          },
+          "tagName": "color-picker-ui-gamut-cube",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Xe",
+          "members": [],
+          "superclass": {
+            "name": "tt",
+            "module": "/dist/vendors.min.js"
+          },
+          "tagName": "color-picker-ui-icon",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Ke",
+          "members": [],
+          "superclass": {
+            "name": "tt",
+            "module": "/dist/vendors.min.js"
+          },
+          "tagName": "color-picker-ui-icon-button",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "We",
+          "members": [
+            {
+              "kind": "method",
+              "name": "setValue",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "tt",
+            "module": "/dist/vendors.min.js"
+          },
+          "tagName": "color-picker-ui-input",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Ze",
+          "members": [
+            {
+              "kind": "field",
+              "name": "count",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "canCycle",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setValue",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "nextValue"
+            },
+            {
+              "kind": "method",
+              "name": "previousValue"
+            },
+            {
+              "kind": "field",
+              "name": "noControls",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            }
+          ],
+          "superclass": {
+            "name": "tt",
+            "module": "/dist/vendors.min.js"
+          },
+          "tagName": "color-picker-ui-selector",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Je",
+          "members": [
+            {
+              "kind": "field",
+              "name": "canMinus",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "canPlus",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setValue",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "plus"
+            },
+            {
+              "kind": "method",
+              "name": "minus"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            }
+          ],
+          "superclass": {
+            "name": "tt",
+            "module": "/dist/vendors.min.js"
+          },
+          "tagName": "color-picker-ui-stepper-input",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "hn",
+          "members": [],
+          "superclass": {
+            "name": "tt",
+            "module": "/dist/vendors.min.js"
+          },
+          "tagName": "color-picker-value",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "fn",
+          "members": [],
+          "superclass": {
+            "name": "tt",
+            "module": "/dist/vendors.min.js"
+          },
+          "tagName": "ryb-color-swatch",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "dn",
+          "members": [
+            {
+              "kind": "field",
+              "name": "radius",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "innerRadius",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "swatchRadius",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "colorCss",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "isBusy",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "displayFormatOptions",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "viewBox",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "presetsOptions",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setValue",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "saveGamutPresetsToLocalStorage",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadGamutPresetsFromLocalStorage"
+            },
+            {
+              "kind": "method",
+              "name": "loadGamutPresets",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "cycleGamutPreset",
+              "parameters": [
+                {
+                  "name": "n",
+                  "default": "!1"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadPresetsFromLocalStorage"
+            },
+            {
+              "kind": "method",
+              "name": "savePresetsToLocalStorage",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "refresh",
+              "parameters": [
+                {
+                  "name": "n",
+                  "default": "this.animationDuration"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "parameters": [
+                {
+                  "name": "n"
+                },
+                {
+                  "name": "i",
+                  "default": "this.animationDuration"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "blur",
+              "parameters": [
+                {
+                  "name": "n",
+                  "default": "this.animationDuration"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "showSettings",
+              "parameters": [
+                {
+                  "name": "n",
+                  "default": "!0"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "saveSettings",
+              "parameters": [
+                {
+                  "name": "n"
+                },
+                {
+                  "name": "i"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadSettings",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "deleteSettings",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_init",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "_hslColor",
+              "type": {
+                "text": "array"
+              },
+              "default": "[97.5, 1, 0.5]"
+            },
+            {
+              "kind": "field",
+              "name": "presets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "gamutPresets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "show",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!0"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"#f8c120\""
+            },
+            {
+              "kind": "field",
+              "name": "animationDuration",
+              "type": {
+                "text": "number"
+              },
+              "default": "150"
+            },
+            {
+              "kind": "field",
+              "name": "backgroundColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"transparent\""
+            },
+            {
+              "kind": "field",
+              "name": "distortion",
+              "type": {
+                "text": "number"
+              },
+              "default": "3"
+            },
+            {
+              "kind": "field",
+              "name": "gap",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "swatchGap",
+              "type": {
+                "text": "number"
+              },
+              "default": "8"
+            },
+            {
+              "kind": "field",
+              "name": "diameter",
+              "type": {
+                "text": "number"
+              },
+              "default": "320"
+            },
+            {
+              "kind": "field",
+              "name": "padding",
+              "type": {
+                "text": "number"
+              },
+              "default": "30"
+            },
+            {
+              "kind": "field",
+              "name": "thicknessLightness",
+              "type": {
+                "text": "number"
+              },
+              "default": "20"
+            },
+            {
+              "kind": "field",
+              "name": "thicknessHue",
+              "type": {
+                "text": "number"
+              },
+              "default": "24"
+            },
+            {
+              "kind": "field",
+              "name": "thicknessSaturation",
+              "type": {
+                "text": "number"
+              },
+              "default": "20"
+            },
+            {
+              "kind": "field",
+              "name": "segmentsLightness",
+              "type": {
+                "text": "number"
+              },
+              "default": "24"
+            },
+            {
+              "kind": "field",
+              "name": "segmentsHue",
+              "type": {
+                "text": "number"
+              },
+              "default": "48"
+            },
+            {
+              "kind": "field",
+              "name": "segmentsSaturation",
+              "type": {
+                "text": "number"
+              },
+              "default": "24"
+            },
+            {
+              "kind": "field",
+              "name": "displayFormat",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"hex\""
+            },
+            {
+              "kind": "field",
+              "name": "preset",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "gamutPreset",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"itten\""
+            },
+            {
+              "kind": "field",
+              "name": "localStoragePresetsKey",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"radial-color-picker--presets\""
+            },
+            {
+              "kind": "field",
+              "name": "localStorageGamutPresetsKey",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"radial-color-picker--gamut-presets\""
+            }
+          ],
+          "superclass": {
+            "name": "tt",
+            "module": "/dist/vendors.min.js"
+          },
+          "tagName": "ryb-color-picker",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-settings",
+          "declaration": {
+            "name": "Be",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-button",
+          "declaration": {
+            "name": "ze",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-field",
+          "declaration": {
+            "name": "Oe",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-gamut",
+          "declaration": {
+            "name": "qe",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-gamut-cube",
+          "declaration": {
+            "name": "Ye",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-icon",
+          "declaration": {
+            "name": "Xe",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-icon-button",
+          "declaration": {
+            "name": "Ke",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-input",
+          "declaration": {
+            "name": "We",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-selector",
+          "declaration": {
+            "name": "Ze",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-stepper-input",
+          "declaration": {
+            "name": "Je",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-value",
+          "declaration": {
+            "name": "hn",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ryb-color-swatch",
+          "declaration": {
+            "name": "fn",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ryb-color-picker",
+          "declaration": {
+            "name": "dn",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/vendors.min.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "h5"
+        },
+        {
+          "kind": "variable",
+          "name": "r"
+        },
+        {
+          "kind": "variable",
+          "name": "Z",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ attribute: !0, type: String, converter: J, reflect: !1, hasChanged: oe }"
+        },
+        {
+          "kind": "variable",
+          "name": "x"
+        },
+        {
+          "kind": "variable",
+          "name": "B",
+          "default": "`[ \\f\\r]`"
+        },
+        {
+          "kind": "variable",
+          "name": "E",
+          "default": "/<(?:(!--|\\/[^a-zA-Z])|(\\/?[a-zA-Z][^>\\s]*)|(\\/?$))/g"
+        },
+        {
+          "kind": "variable",
+          "name": "c5"
+        },
+        {
+          "kind": "variable",
+          "name": "v"
+        },
+        {
+          "kind": "variable",
+          "name": "d"
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "M",
+          "members": [
+            {
+              "kind": "method",
+              "name": "createElement",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "name": "t"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "parts",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            }
+          ]
+        },
+        {
+          "kind": "variable",
+          "name": "T"
+        },
+        {
+          "kind": "variable",
+          "name": "d5",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ I: N }"
+        },
+        {
+          "kind": "function",
+          "name": "He",
+          "parameters": [
+            {
+              "name": "i"
+            },
+            {
+              "name": "e"
+            },
+            {
+              "name": "t"
+            }
+          ]
+        },
+        {
+          "kind": "variable",
+          "name": "U",
+          "default": "class extends b { constructor() { super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0; } createRenderRoot() { var t; const e = super.createRenderRoot(); return (t = this.renderOptions).renderBefore ?? (t.renderBefore = e.firstChild), e; } update(e) { const t = this.render(); this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(e), this._$Do = He(t, this.renderRoot, this.renderOptions); } connectedCallback() { var e; super.connectedCallback(), (e = this._$Do) == null || e.setConnected(!0); } disconnectedCallback() { var e; super.disconnectedCallback(), (e = this._$Do) == null || e.setConnected(!1); } render() { return v; } }"
+        },
+        {
+          "kind": "function",
+          "name": "f5",
+          "parameters": [
+            {
+              "name": "i"
+            },
+            {
+              "name": "{\n  cube: e = F,\n  easingFn: t = pe,\n  invertLightness: s = !0\n}",
+              "default": "{}"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "B",
+          "declaration": {
+            "name": "He",
+            "module": "dist/vendors.min.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "E",
+          "declaration": {
+            "name": "d",
+            "module": "dist/vendors.min.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "M",
+          "declaration": {
+            "name": "f5",
+            "module": "dist/vendors.min.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "T",
+          "declaration": {
+            "name": "v",
+            "module": "dist/vendors.min.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Z",
+          "declaration": {
+            "name": "d5",
+            "module": "dist/vendors.min.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "i",
+          "declaration": {
+            "name": "h5",
+            "module": "dist/vendors.min.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "r",
+          "declaration": {
+            "name": "U",
+            "module": "dist/vendors.min.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "x",
+          "declaration": {
+            "name": "c5",
+            "module": "dist/vendors.min.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/ColorPickerSettings.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ColorPickerSettings",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-settings",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerSettings",
+          "declaration": {
+            "name": "ColorPickerSettings",
+            "module": "src/ColorPickerSettings.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/ColorPickerUiButton.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ColorPickerUiButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "field",
+              "name": "feedBackEl"
+            },
+            {
+              "kind": "method",
+              "name": "showFeedBack",
+              "parameters": [
+                {
+                  "name": "text"
+                },
+                {
+                  "name": "duration",
+                  "default": "1_000"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "feedback",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "feedback"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "disabled"
+            },
+            {
+              "name": "feedback",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "feedback"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiButton",
+          "declaration": {
+            "name": "ColorPickerUiButton",
+            "module": "src/ColorPickerUiButton.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/ColorPickerUiField.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ColorPickerUiField",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "label"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-field",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiField",
+          "declaration": {
+            "name": "ColorPickerUiField",
+            "module": "src/ColorPickerUiField.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/ColorPickerUiGamut.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ColorPickerUiGamut",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "field",
+              "name": "cubeEl"
+            },
+            {
+              "kind": "field",
+              "name": "savePresetEl"
+            },
+            {
+              "kind": "field",
+              "name": "resetPresetEl"
+            },
+            {
+              "kind": "field",
+              "name": "deletePresetEl"
+            },
+            {
+              "kind": "field",
+              "name": "presetsOptions",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "#handlePresetChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleCubeChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleUpdatePreset",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#handleSavePreset",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#handleResetPreset",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#handleDeletePreset",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#emitPresetUpdate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#emitCubeUpdate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#emitPresetsUpdate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#assignPreset",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "preset",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "preset"
+            },
+            {
+              "kind": "field",
+              "name": "cube",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[ [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], ]",
+              "attribute": "cube"
+            },
+            {
+              "kind": "field",
+              "name": "presets",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "attribute": "presets"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "presets",
+              "type": {
+                "text": "array"
+              },
+              "fieldName": "presets"
+            },
+            {
+              "name": "preset",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "preset"
+            },
+            {
+              "name": "cube",
+              "type": {
+                "text": "array"
+              },
+              "default": "[ [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], ]",
+              "fieldName": "cube"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-gamut",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiGamut",
+          "declaration": {
+            "name": "ColorPickerUiGamut",
+            "module": "src/ColorPickerUiGamut.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/ColorPickerUiGamutCube.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ColorPickerUiGamutCube",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "field",
+              "name": "formEl"
+            },
+            {
+              "kind": "method",
+              "name": "#emitCubeUpdate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getCubeValue",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleColorInput",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "cube",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[ [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], ]",
+              "attribute": "cube"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "cube",
+              "type": {
+                "text": "array"
+              },
+              "default": "[ [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], ]",
+              "fieldName": "cube"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-gamut-cube",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiGamutCube",
+          "declaration": {
+            "name": "ColorPickerUiGamutCube",
+            "module": "src/ColorPickerUiGamutCube.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/ColorPickerUiIcon.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ColorPickerUiIcon",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-icon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiIcon",
+          "declaration": {
+            "name": "ColorPickerUiIcon",
+            "module": "src/ColorPickerUiIcon.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/ColorPickerUiIconButton.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ColorPickerUiIconButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "field",
+              "name": "feedBackEl"
+            },
+            {
+              "kind": "method",
+              "name": "showFeedBack",
+              "parameters": [
+                {
+                  "name": "text"
+                },
+                {
+                  "name": "duration",
+                  "default": "1_000"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "feedback",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "feedback"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "disabled"
+            },
+            {
+              "name": "feedback",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "feedback"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-icon-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiIconButton",
+          "declaration": {
+            "name": "ColorPickerUiIconButton",
+            "module": "src/ColorPickerUiIconButton.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/ColorPickerUiInput.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ColorPickerUiInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "field",
+              "name": "inputEl"
+            },
+            {
+              "kind": "method",
+              "name": "#emitValueUpdate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleInputChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setValue",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "readonly",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "readonly"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "value"
+            },
+            {
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "readonly"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-input",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiInput",
+          "declaration": {
+            "name": "ColorPickerUiInput",
+            "module": "src/ColorPickerUiInput.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/ColorPickerUiSelector.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ColorPickerUiSelector",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "field",
+              "name": "selectEl"
+            },
+            {
+              "kind": "field",
+              "name": "#currentIndex",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "count",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "canCycle",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "#emitValueUpdate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setValue",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "nextValue"
+            },
+            {
+              "kind": "method",
+              "name": "previousValue"
+            },
+            {
+              "kind": "method",
+              "name": "#handleKeyup",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "noControls",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "noControls",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "attribute": "options"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "value"
+            },
+            {
+              "name": "options",
+              "type": {
+                "text": "array"
+              },
+              "fieldName": "options"
+            },
+            {
+              "name": "noControls",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "noControls"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-selector",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiSelector",
+          "declaration": {
+            "name": "ColorPickerUiSelector",
+            "module": "src/ColorPickerUiSelector.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/ColorPickerUiStepperInput.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ColorPickerUiStepperInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "field",
+              "name": "inputEl"
+            },
+            {
+              "kind": "field",
+              "name": "canMinus",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "canPlus",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "#handleInputChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#emitValueUpdate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "_value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setValue",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "plus"
+            },
+            {
+              "kind": "method",
+              "name": "minus"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "min",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "min",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "max",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "value"
+            },
+            {
+              "name": "min",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "min"
+            },
+            {
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "max"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-stepper-input",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiStepperInput",
+          "declaration": {
+            "name": "ColorPickerUiStepperInput",
+            "module": "src/ColorPickerUiStepperInput.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/ColorPickerUiToolTip.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ColorPickerUiToolTip",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "field",
+              "name": "duration",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "1_000",
+              "attribute": "duration",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "show",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "show",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "show",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "show"
+            },
+            {
+              "name": "duration",
+              "type": {
+                "text": "number"
+              },
+              "default": "1_000",
+              "fieldName": "duration"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-tool-tip",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiToolTip",
+          "declaration": {
+            "name": "ColorPickerUiToolTip",
+            "module": "src/ColorPickerUiToolTip.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/ColorPickerValue.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ColorPickerValue",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "field",
+              "name": "inputEl"
+            },
+            {
+              "kind": "field",
+              "name": "copyEl"
+            },
+            {
+              "kind": "method",
+              "name": "copyToClipboard"
+            },
+            {
+              "kind": "method",
+              "name": "#emitShowSettingsAction",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#handleValueUpdate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#emitValueChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "value",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "value"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-value",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerValue",
+          "declaration": {
+            "name": "ColorPickerValue",
+            "module": "src/ColorPickerValue.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/RybColorPicker.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "RybColorPicker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "field",
+              "name": "svgEl"
+            },
+            {
+              "kind": "field",
+              "name": "rangesBodyEl"
+            },
+            {
+              "kind": "field",
+              "name": "valueEl"
+            },
+            {
+              "kind": "field",
+              "name": "savePresetEl"
+            },
+            {
+              "kind": "field",
+              "name": "deletePresetEl"
+            },
+            {
+              "kind": "field",
+              "name": "scaleHue"
+            },
+            {
+              "kind": "field",
+              "name": "scaleLightness"
+            },
+            {
+              "kind": "field",
+              "name": "scaleSaturation"
+            },
+            {
+              "kind": "field",
+              "name": "rangeHue"
+            },
+            {
+              "kind": "field",
+              "name": "rangeLightness"
+            },
+            {
+              "kind": "field",
+              "name": "rangeSaturation"
+            },
+            {
+              "kind": "field",
+              "name": "_busyTimerId",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "#localStorageConfigKey",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "radius",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "innerRadius",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "swatchRadius",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "colorCss",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "isBusy",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "displayFormatOptions",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "viewBox",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "presetsOptions",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "#markBusy",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "duration"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#getAngleFromPosition",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#getAngleFromEvent",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#loadConfigFromLocalStorage",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#saveConfigToLocalStorage",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#emitEvent",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#emitValueUpdate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#emitPresetUpdate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handlePointerMove",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handlePointerEnter",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handlePointerLeave",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleDisplayFormatChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleColorInputChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleBackgroundColorChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleSegmentsHueChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleSegmentsLightnessChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleSegmentsSaturationChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleThicknessHueChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleThicknessLightnessChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleThicknessSaturationChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleGapChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleSwatchGapChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleGamutCubeChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleGamutPresetChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleGamutPresetsChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleDiameterChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleDistortionChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleUpdatePreset",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleSavePreset",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleDeletePreset",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#handleCloseSettings",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#handlePresetChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#withRanges",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "fn"
+                },
+                {
+                  "name": "args"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#drawRangesBody",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "setValue",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "saveToLocalStorage"
+            },
+            {
+              "kind": "method",
+              "name": "loadFromLocalStorage"
+            },
+            {
+              "kind": "method",
+              "name": "loadGamutPresetsFromLocalStorage"
+            },
+            {
+              "kind": "method",
+              "name": "saveGamutPresetsToLocalStorage",
+              "parameters": [
+                {
+                  "name": "presets"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadGamutPresets",
+              "parameters": [
+                {
+                  "name": "presets"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "cycleGamutPreset",
+              "parameters": [
+                {
+                  "name": "previous",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadPresetsFromLocalStorage"
+            },
+            {
+              "kind": "method",
+              "name": "savePresetsToLocalStorage",
+              "parameters": [
+                {
+                  "name": "presets"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "cyclePreset",
+              "parameters": [
+                {
+                  "name": "previous",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "refresh",
+              "parameters": [
+                {
+                  "name": "duration",
+                  "default": "this.animationDuration"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "parameters": [
+                {
+                  "name": "angle"
+                },
+                {
+                  "name": "duration",
+                  "default": "this.animationDuration"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "blur",
+              "parameters": [
+                {
+                  "name": "duration",
+                  "default": "this.animationDuration"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "savePreset",
+              "parameters": [
+                {
+                  "name": "id"
+                },
+                {
+                  "name": "title"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadPreset",
+              "parameters": [
+                {
+                  "name": "id"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "deletePreset",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_init",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_hslColor",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[97.5, 1.0, 0.5]",
+              "attribute": "_hslColor"
+            },
+            {
+              "kind": "field",
+              "name": "presets",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "presets"
+            },
+            {
+              "kind": "field",
+              "name": "gamutPresets",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "gamutPresets"
+            },
+            {
+              "kind": "field",
+              "name": "show",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "show",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "'#f8c120'",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "animationDuration",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "150",
+              "attribute": "animationDuration",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "backgroundColor",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "'transparent'",
+              "attribute": "backgroundColor",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "distortion",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "attribute": "distortion",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "gap",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "gap",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "swatchGap",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "8",
+              "attribute": "swatchGap",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "diameter",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "320",
+              "attribute": "diameter",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "padding",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "30",
+              "attribute": "padding",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "thicknessLightness",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "20",
+              "attribute": "thicknessLightness",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "thicknessHue",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "24",
+              "attribute": "thicknessHue",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "thicknessSaturation",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "20",
+              "attribute": "thicknessSaturation",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "segmentsLightness",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "24",
+              "attribute": "segmentsLightness",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "segmentsHue",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "48",
+              "attribute": "segmentsHue",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "segmentsSaturation",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "24",
+              "attribute": "segmentsSaturation",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "displayFormat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "'hex'",
+              "attribute": "displayFormat",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "preset",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "preset",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "gamutPreset",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "gamutPreset",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "localStorageKey",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "'radial-color-picker--{id}'",
+              "attribute": "localStorageKey"
+            },
+            {
+              "kind": "field",
+              "name": "localStoragePresetsKey",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "'radial-color-picker--presets'",
+              "attribute": "localStoragePresetsKey"
+            },
+            {
+              "kind": "field",
+              "name": "localStorageGamutPresetsKey",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "'radial-color-picker--gamut-presets'",
+              "attribute": "localStorageGamutPresetsKey"
+            },
+            {
+              "kind": "field",
+              "name": "showSettings",
+              "privacy": "public",
+              "attribute": "showSettings"
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "id"
+            },
+            {
+              "kind": "field",
+              "name": "cube",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "attribute": "cube"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "_hslColor",
+              "type": {
+                "text": "array"
+              },
+              "default": "[97.5, 1.0, 0.5]",
+              "fieldName": "_hslColor"
+            },
+            {
+              "name": "showSettings",
+              "fieldName": "showSettings"
+            },
+            {
+              "name": "gamutPresets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "gamutPresets"
+            },
+            {
+              "name": "presets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "presets"
+            },
+            {
+              "name": "animationDuration",
+              "type": {
+                "text": "number"
+              },
+              "default": "150",
+              "fieldName": "animationDuration"
+            },
+            {
+              "name": "backgroundColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "'transparent'",
+              "fieldName": "backgroundColor"
+            },
+            {
+              "name": "diameter",
+              "type": {
+                "text": "number"
+              },
+              "default": "320",
+              "fieldName": "diameter"
+            },
+            {
+              "name": "displayFormat",
+              "type": {
+                "text": "string"
+              },
+              "default": "'hex'",
+              "fieldName": "displayFormat"
+            },
+            {
+              "name": "distortion",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "fieldName": "distortion"
+            },
+            {
+              "name": "gamutPreset",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "gamutPreset"
+            },
+            {
+              "name": "gap",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "gap"
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "id"
+            },
+            {
+              "name": "padding",
+              "type": {
+                "text": "number"
+              },
+              "default": "30",
+              "fieldName": "padding"
+            },
+            {
+              "name": "preset",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "preset"
+            },
+            {
+              "name": "segmentsHue",
+              "type": {
+                "text": "number"
+              },
+              "default": "48",
+              "fieldName": "segmentsHue"
+            },
+            {
+              "name": "segmentsLightness",
+              "type": {
+                "text": "number"
+              },
+              "default": "24",
+              "fieldName": "segmentsLightness"
+            },
+            {
+              "name": "segmentsSaturation",
+              "type": {
+                "text": "number"
+              },
+              "default": "24",
+              "fieldName": "segmentsSaturation"
+            },
+            {
+              "name": "show",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "show"
+            },
+            {
+              "name": "swatchGap",
+              "type": {
+                "text": "number"
+              },
+              "default": "8",
+              "fieldName": "swatchGap"
+            },
+            {
+              "name": "thicknessHue",
+              "type": {
+                "text": "number"
+              },
+              "default": "24",
+              "fieldName": "thicknessHue"
+            },
+            {
+              "name": "thicknessLightness",
+              "type": {
+                "text": "number"
+              },
+              "default": "20",
+              "fieldName": "thicknessLightness"
+            },
+            {
+              "name": "thicknessSaturation",
+              "type": {
+                "text": "number"
+              },
+              "default": "20",
+              "fieldName": "thicknessSaturation"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "'#f8c120'",
+              "fieldName": "value"
+            },
+            {
+              "name": "cube",
+              "type": {
+                "text": "array"
+              },
+              "fieldName": "cube"
+            },
+            {
+              "name": "localStorageKey",
+              "type": {
+                "text": "string"
+              },
+              "default": "'radial-color-picker--{id}'",
+              "fieldName": "localStorageKey"
+            },
+            {
+              "name": "localStoragePresetsKey",
+              "type": {
+                "text": "string"
+              },
+              "default": "'radial-color-picker--presets'",
+              "fieldName": "localStoragePresetsKey"
+            },
+            {
+              "name": "localStorageGamutPresetsKey",
+              "type": {
+                "text": "string"
+              },
+              "default": "'radial-color-picker--gamut-presets'",
+              "fieldName": "localStorageGamutPresetsKey"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ryb-color-picker",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "RybColorPicker",
+          "declaration": {
+            "name": "RybColorPicker",
+            "module": "src/RybColorPicker.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/RybColorSwatch.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "RybColorSwatch",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "method",
+              "name": "#emitUpdateValue",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "pill",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "pill",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "value",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "disabled"
+            },
+            {
+              "name": "pill",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "pill"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "value"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ryb-color-swatch",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "RybColorSwatch",
+          "declaration": {
+            "name": "RybColorSwatch",
+            "module": "src/RybColorSwatch.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/d3.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "arc",
+          "declaration": {
+            "name": "arc",
+            "package": "d3-shape"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "pie",
+          "declaration": {
+            "name": "pie",
+            "package": "d3-shape"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "color",
+          "declaration": {
+            "name": "color",
+            "package": "d3-color"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "easeCubicOut",
+          "declaration": {
+            "name": "easeCubicOut",
+            "package": "d3-ease"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "interpolate",
+          "declaration": {
+            "name": "interpolate",
+            "package": "d3-interpolate"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "pointer",
+          "declaration": {
+            "name": "pointer",
+            "package": "d3-selection"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "select",
+          "declaration": {
+            "name": "select",
+            "package": "d3-selection"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "scaleLinear",
+          "declaration": {
+            "name": "scaleLinear",
+            "package": "d3-scale"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "transition",
+          "declaration": {
+            "name": "transition",
+            "package": "d3-transition"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/helpers.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "createCustomEvent",
+          "parameters": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "detail"
+            },
+            {
+              "name": "options",
+              "default": "{\n  bubbles: true,\n  composed: true,\n  cancelable: true,\n}"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "createCustomEvent",
+          "declaration": {
+            "name": "createCustomEvent",
+            "module": "src/helpers.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/utils.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "PI"
+        },
+        {
+          "kind": "variable",
+          "name": "TAU"
+        },
+        {
+          "kind": "function",
+          "name": "normalizeAngle",
+          "parameters": [
+            {
+              "name": "angle"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "getRotationFromCoords",
+          "parameters": [
+            {
+              "name": "{ x, y }"
+            },
+            {
+              "name": "rect"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "noop"
+        },
+        {
+          "kind": "function",
+          "name": "clamp",
+          "parameters": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "min"
+            },
+            {
+              "name": "max"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "deg",
+          "parameters": [
+            {
+              "name": "rad"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "rad",
+          "parameters": [
+            {
+              "name": "deg"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "pick",
+          "parameters": [
+            {
+              "name": "obj"
+            },
+            {
+              "name": "keys"
+            }
+          ]
+        },
+        {
+          "kind": "variable",
+          "name": "assign"
+        },
+        {
+          "kind": "function",
+          "name": "rgbToCss",
+          "parameters": [
+            {
+              "name": "rgb"
+            },
+            {
+              "name": "format",
+              "default": "'rgb'"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "normalizeRgb",
+          "parameters": [
+            {
+              "name": "rgb"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "parseHexToRgb",
+          "parameters": [
+            {
+              "name": "hex"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "parseCssColor",
+          "parameters": [
+            {
+              "name": "colorString"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "rgbToHsl",
+          "parameters": [
+            {
+              "name": "[r, g, b]"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "slugify",
+          "parameters": [
+            {
+              "name": "text"
+            },
+            {
+              "name": "{ separator = '-', trim = true }",
+              "default": "{}"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PI",
+          "declaration": {
+            "name": "PI",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TAU",
+          "declaration": {
+            "name": "TAU",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "normalizeAngle",
+          "declaration": {
+            "name": "normalizeAngle",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getRotationFromCoords",
+          "declaration": {
+            "name": "getRotationFromCoords",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "noop",
+          "declaration": {
+            "name": "noop",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "clamp",
+          "declaration": {
+            "name": "clamp",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "deg",
+          "declaration": {
+            "name": "deg",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "rad",
+          "declaration": {
+            "name": "rad",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "pick",
+          "declaration": {
+            "name": "pick",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "assign",
+          "declaration": {
+            "name": "assign",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "rgbToCss",
+          "declaration": {
+            "name": "rgbToCss",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "normalizeRgb",
+          "declaration": {
+            "name": "normalizeRgb",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "parseHexToRgb",
+          "declaration": {
+            "name": "parseHexToRgb",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "parseCssColor",
+          "declaration": {
+            "name": "parseCssColor",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "rgbToHsl",
+          "declaration": {
+            "name": "rgbToHsl",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "slugify",
+          "declaration": {
+            "name": "slugify",
+            "module": "src/utils.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/plugins/FisheyeScale.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "FisheyeScale"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FisheyeScale",
+          "declaration": {
+            "name": "FisheyeScale",
+            "module": "src/plugins/FisheyeScale.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/plugins/RadialRange.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "RadialRange",
+          "parameters": [
+            {
+              "name": "{\n  angle = 360,\n  animationDuration = 200,\n  colorizeFn = (d, i) => ({ fill: 'transparent' }),\n  context = null,\n  distortion: _distortion = 3,\n  gap: _gap = 0,\n  introDuration = 600,\n  name = 'radial-range',\n  onClick = (i) => undefined,\n  radius: _radius = 100,\n  segments: _segments = 24,\n  startAngle = 0,\n  thickness: _thickness = 20,\n}",
+              "default": "{}"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "RadialRange",
+            "module": "src/plugins/RadialRange.js"
+          }
+        }
+      ]
+    }
+  ]
+}

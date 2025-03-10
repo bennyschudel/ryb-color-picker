@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>Two Weels</title>
+    <style>
+      body {
+        background: #fafafa;
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        gap: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module" src="../ryb-color-picker.js"></script>
+
+    <ryb-color-picker id="picker1" initialvalue="hotpink" noinit showsettings></ryb-color-picker>
+    <ryb-color-picker id="picker2" initialvalue="hotpink" noinit showsettings></ryb-color-picker>
+
+    <script type="module">
+      import { cubes } from 'rybitten/cubes';
+
+      const picker1El = document.getElementById('picker1');
+      const picker2El = document.getElementById('picker2');
+
+      if (!picker1El.gamutPresets.length) {
+        const presets = Array.from(cubes, ([id, d]) => [
+          id,
+          d.title,
+          d.cube,
+        ]).filter((d, i) => i % 2 === 0);
+
+        picker1El.loadGamutPresets(presets, 'itten');
+      }
+
+      if (!picker2El.gamutPresets.length) {
+        const presets = Array.from(cubes, ([id, d]) => [
+          id,
+          d.title,
+          d.cube,
+        ]).filter((d, i) => i % 2 === 1);
+
+        picker2El.loadGamutPresets(presets, 'munsell');
+      }
+
+      picker1El.init();
+      picker2El.init();
+    </script>
+  </body>
+</html>

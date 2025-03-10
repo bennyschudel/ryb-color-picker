@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>Load Settings</title>
+    <style>
+      body {
+        background: #fafafa;
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module" src="../ryb-color-picker.js"></script>
+
+    <ryb-color-swatch id="swatch"></ryb-color-swatch>
+    <ryb-color-picker
+      id="picker"
+      initialvalue="hotpink"
+      nostore
+      noinit
+    ></ryb-color-picker>
+
+    <script type="module">
+      import { cubes } from 'rybitten/cubes';
+
+      const swatchEl = document.getElementById('swatch');
+      const pickerEl = document.getElementById('picker');
+
+      swatchEl.value = pickerEl.value;
+
+      swatchEl.addEventListener('click', (event) => {
+        pickerEl.show = !pickerEl.show;
+      });
+
+      pickerEl.addEventListener('update:value', (event) => {
+        swatchEl.value = event.detail.value;
+      });
+
+      pickerEl.loadSettings({
+        backgroundColor: 'black',
+        diameter: 420,
+        displayFormat: 'rgb',
+        distortion: 4,
+        gamutPreset: '',
+        gap: 1,
+        padding: 30,
+        segmentsHue: 64,
+        segmentsLightness: 24,
+        segmentsSaturation: 24,
+        swatchGap: 0,
+        thicknessHue: 40,
+        thicknessLightness: 28,
+        thicknessSaturation: 28,
+      });
+
+      pickerEl.init();
+    </script>
+  </body>
+</html>

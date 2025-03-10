@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>Load Settings</title>
+    <style>
+      body {
+        background: #fafafa;
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module" src="../ryb-color-picker.js"></script>
+
+    <ryb-color-swatch id="swatch"></ryb-color-swatch>
+    <ryb-color-picker
+      id="picker"
+      initialvalue="hotpink"
+      nostore
+      noinit
+    ></ryb-color-picker>
+
+    <script type="module">
+      import { cubes } from 'rybitten/cubes';
+
+      const swatchEl = document.getElementById('swatch');
+      const pickerEl = document.getElementById('picker');
+
+      swatchEl.value = pickerEl.value;
+
+      swatchEl.addEventListener('click', (event) => {
+        pickerEl.show = !pickerEl.show;
+      });
+
+      pickerEl.addEventListener('update:value', (event) => {
+        swatchEl.value = event.detail.value;
+      });
+
+      const presets = Array.from(cubes, ([id, d]) => [
+        id,
+        d.title,
+        d.cube,
+      ]);
+
+      pickerEl.loadGamutPresets(presets, 'munsell');
+
+      pickerEl.loadPresets([
+        [
+          'my-preset',
+          'My Preset',
+          {
+            backgroundColor: 'transparent',
+            diameter: 320,
+            displayFormat: 'hex',
+            distortion: 3,
+            gamutPreset: 'itten-normalized',
+            gap: 0,
+            padding: 30,
+            segmentsHue: 48,
+            segmentsLightness: 24,
+            segmentsSaturation: 24,
+            swatchGap: 8,
+            thicknessHue: 24,
+            thicknessLightness: 20,
+            thicknessSaturation: 20,
+          },
+        ],
+        [
+          'my-preset-2',
+          'My Preset 2',
+          {
+            backgroundColor: 'transparent',
+            diameter: 420,
+            displayFormat: 'rgb',
+            distortion: 3,
+            gamutPreset: 'munsell',
+            gap: 0,
+            padding: 30,
+            segmentsHue: 48,
+            segmentsLightness: 24,
+            segmentsSaturation: 24,
+            swatchGap: 8,
+            thicknessHue: 40,
+            thicknessLightness: 28,
+            thicknessSaturation: 28,
+          },
+        ],
+      ], 'my-preset-2');
+
+      pickerEl.init();
+    </script>
+  </body>
+</html>

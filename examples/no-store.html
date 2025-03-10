@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>No store</title>
+    <style>
+      body {
+        background: #fafafa;
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module" src="../ryb-color-picker.js"></script>
+
+    <ryb-color-swatch id="swatch"></ryb-color-swatch>
+    <ryb-color-picker id="picker" initialvalue="hotpink" noinit nostore></ryb-color-picker>
+
+    <script type="module">
+      import { cubes } from 'rybitten/cubes';
+
+      const swatchEl = document.getElementById('swatch');
+      const pickerEl = document.getElementById('picker');
+
+      swatchEl.value = pickerEl.value;
+
+      swatchEl.addEventListener('click', (event) => {
+        pickerEl.show = !pickerEl.show;
+      });
+
+      pickerEl.addEventListener('update:value', (event) => {
+        swatchEl.value = event.detail.value;
+      });
+
+      if (!pickerEl.gamutPresets.length) {
+        const presets = Array.from(cubes, ([id, d]) => [
+          id,
+          d.title,
+          d.cube,
+        ]).filter(([id]) => {
+          return !['rgb'].includes(id);
+        });
+
+        pickerEl.loadGamutPresets(presets, 'itten');
+      }
+
+      pickerEl.init();
+    </script>
+  </body>
+</html>
