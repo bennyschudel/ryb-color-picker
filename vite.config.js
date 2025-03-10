@@ -21,18 +21,11 @@ export default defineConfig(({ command, mode }) => {
           entryFileNames(chunkInfo) {
             return '[name].min.js';
           },
-          chunkFileNames(chunkInfo) {
-            return '[name].min.js';
-          },
-          manualChunks: {
-            'vendors': [
-              'lit',
-              'rybitten',
-            ]
-          }
         },
         external: [
-          'vendors'
+          'lit',
+          /^lit-html\/.*/,
+          'rybitten',
         ],
       },
     },

@@ -81,3 +81,7 @@ export async function copyToClipboard(value) {
   const clipboardItem = new ClipboardItem(clipboardItemData);
   await navigator.clipboard.write([clipboardItem]);
 }
+
+export function arrayEquals(a, b) {
+  return JSON.stringify(a) === JSON.stringify(b);
+}

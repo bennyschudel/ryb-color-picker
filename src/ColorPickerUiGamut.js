@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-import { slugify } from './utils';
+import { arrayEquals, slugify } from './utils';
 import { createCustomEvent, getDefaultCube } from './helpers';
 
 export class ColorPickerUiGamut extends LitElement {
@@ -26,7 +26,15 @@ export class ColorPickerUiGamut extends LitElement {
   }
 
   get presetsOptions() {
-    return [['', '(New Gamut)']].concat(this.presets.map((d) => [d[0], d[1]]));
+    return [['', '[ New Gamut ]']].concat(this.presets.map((d) => [d[0], d[1]]));
+  }
+
+  get isModified() {
+    const preset = this.presets.find((d) => d[0] === this.preset);
+
+    if (!preset) return true;
+
+    return !arrayEquals(this.cube, preset[2]);
   }
 
   #handlePresetChange(event) {
@@ -158,6 +166,7 @@ export class ColorPickerUiGamut extends LitElement {
           <color-picker-ui-button
             ${ref(this.savePresetEl)}
             feedback
+            ?disabled=${!this.isModified}
             @click=${this.preset
               ? this.#handleUpdatePreset
               : this.#handleSavePreset}
@@ -166,7 +175,7 @@ export class ColorPickerUiGamut extends LitElement {
           <color-picker-ui-button
             ${ref(this.resetPresetEl)}
             feedback
-            ?disabled=${!this.preset}
+            ?disabled=${!this.preset || !this.isModified}
             @click=${this.#handleResetPreset}
             >Reset Preset</color-picker-ui-button
           >

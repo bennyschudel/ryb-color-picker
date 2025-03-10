@@ -15,6 +15,7 @@ import { createCustomEvent, getDefaultCube } from './helpers';
 export class RybColorPicker extends LitElement {
   rootEl = createRef();
   svgEl = createRef();
+  rangesEl = createRef();
   rangesBodyEl = createRef();
   valueEl = createRef();
   savePresetEl = createRef();
@@ -195,7 +196,7 @@ export class RybColorPicker extends LitElement {
   }
 
   get presetsOptions() {
-    return [['', '(New Preset)']].concat(this.presets.map((d) => [d[0], d[1]]));
+    return [['', '[ New Preset ]']].concat(this.presets.map((d) => [d[0], d[1]]));
   }
 
   // --- private methods ---
@@ -523,7 +524,9 @@ export class RybColorPicker extends LitElement {
   }
 
   init() {
-    this.#firstUpdated();
+    setTimeout(() => {
+      this.#firstUpdated();
+    }, 0);
   }
 
   async copyToClipboard() {
@@ -806,7 +809,7 @@ export class RybColorPicker extends LitElement {
     } = this;
 
     const svg = this.svgEl.value;
-    const context = svg.querySelector('.ranges');
+    const context = this.rangesEl.value;
 
     // ---
 
@@ -1097,6 +1100,7 @@ export class RybColorPicker extends LitElement {
             })}
           />
           <g
+            ${ref(this.rangesEl)}
             class="ranges"
             @pointerenter=${this.#handlePointerEnter}
             @pointerleave=${this.#handlePointerLeave}

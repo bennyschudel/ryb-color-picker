@@ -46,11 +46,11 @@ export class RybColorSwatch extends LitElement {
     :host {
       --size: 3rem;
 
+      align-items: stretch;
       display: inline-flex;
+      justify-content: stretch;
       min-height: var(--size);
       min-width: var(--size);
-      justify-content: stretch;
-      align-items: stretch;
     }
 
     :host([pill]) .body {
@@ -59,9 +59,10 @@ export class RybColorSwatch extends LitElement {
 
     .body {
       border-radius: calc(var(--size) / 8);
+      border: none;
       display: flex;
       flex: 1 1 auto;
-      border: none;
+      transition: background-color 0.2s ease-out;
     }
   `;
 }
