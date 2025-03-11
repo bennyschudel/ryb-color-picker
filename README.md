@@ -1,23 +1,32 @@
 # \<ryb-color-picker>
 
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
+This is a RYB Color Picker webcomponent built using lit. It supports multiple gamut presets using the wonderful
+[RYBItten](https://github.com/meodai/RYBitten) library.
 
 ## Installation
 
+1. Install lit package
+
 ```bash
-npm i ryb-color-picker
+npm install lit
+```
+
+2. Install the RYB Color Picker package
+
+```bash
+npm install ryb-color-picker
 ```
 
 ## Usage
 
-```html
-  <script type="module">
-    import 'ryb-color-picker';
-  </script>
+### Minimal example
 
+```html
   <ryb-color-picker id="picker" initialvalue="hotpink"></ryb-color-picker>
 
-  <script>
+  <script type="module">
+    import 'ryb-color-picker';
+
     const pickerEl = document.getElementById('picker');
 
     pickerEl.addEventListener('update:value', (event) => {
@@ -26,20 +35,17 @@ npm i ryb-color-picker
   </script>
 ```
 
-## Usage with a swatch
-```html
-  <script type="module">
-    import 'ryb-color-picker';
-  </script>
+### Sync with a swatch
 
+```html
   <ryb-color-swatch id="swatch"></ryb-color-swatch>
   <ryb-color-picker id="picker" initialvalue="hotpink"></ryb-color-picker>
 
-  <script>
+  <script type="module">
+    import 'ryb-color-picker';
+
     const swatchEl = document.getElementById('swatch');
     const pickerEl = document.getElementById('picker');
-
-    swatchEl.value = pickerEl.value;
 
     swatchEl.addEventListener('click', (event) => {
       pickerEl.show = !pickerEl.show;
@@ -51,7 +57,7 @@ npm i ryb-color-picker
   </script>
 ```
 
-## Load gamuts from RYBItten package
+### Preload gamut presets
 
 The loadGamutPresets method can load predefined Gamut-Presets in the format of `[[id, title, cube], ...]`.
 
@@ -59,7 +65,7 @@ Gamut-Presets are persisted in localStorage. Therefore we only load the initial 
 
 ```html
   <script type="module">
-    import { cubes } from 'rybitten/cubes';
+    import { cubes } from '../ryb-color-picker.js';
 
     const pickerEl = document.getElementById('picker');
 
@@ -128,3 +134,11 @@ attribute-name         | type    | default value                   | description
 `thicknesslightness`   | Number  | 20                              | Lightness ring thickness
 `thicknesssaturation`  | Number  | 20                              | Saturation ring thickness
 `value`                | String  |                                 | The current RYB value (readonly)
+
+## Examples
+
+There are examples provided in the `examples/` folder.
+
+## License
+
+`<ryb-color-picker>` is distributed under the [MIT License](./LICENSE).

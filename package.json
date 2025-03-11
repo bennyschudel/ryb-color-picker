@@ -3,10 +3,8 @@
   "description": "A RYB Color Picker Wheel implemented as a web component",
   "license": "MIT",
   "author": "ryb-color-picker",
-  "version": "0.5.0",
+  "version": "0.5.0-alpha2",
   "type": "module",
-  "main": "index.js",
-  "module": "index.js",
   "exports": {
     ".": {
       "import": "./dist/ryb-color-picker.min.js"
@@ -14,7 +12,9 @@
     "./dist/ryb-color-picker": "./dist/ryb-color-picker.min.js"
   },
   "files": [
-    "./dist/"
+    "README.md",
+    "LICENSE",
+    "dist/"
   ],
   "scripts": {
     "dev": "vite",
@@ -28,11 +28,11 @@
     "d3-scale": "^4.0.2",
     "d3-selection": "^3.0.0",
     "d3-shape": "^3.2.0",
-    "d3-transition": "^3.0.1"
+    "d3-transition": "^3.0.1",
+    "rybitten": "^0.22.0"
   },
   "peerDependencies": {
-    "lit": "^3.2.1",
-    "rybitten": "^0.22.0"
+    "lit": "^3.2.1"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",

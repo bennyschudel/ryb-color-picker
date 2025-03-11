@@ -25,7 +25,6 @@ export default defineConfig(({ command, mode }) => {
         external: [
           'lit',
           /^lit-html\/.*/,
-          'rybitten',
         ],
       },
     },
