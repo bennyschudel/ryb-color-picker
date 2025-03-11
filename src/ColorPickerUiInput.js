@@ -10,6 +10,7 @@ export class ColorPickerUiInput extends LitElement {
   inputEl = createRef();
 
   static properties = {
+    autofocus: { type: Boolean },
     value: { type: String },
     disabled: { type: Boolean },
     readonly: { type: Boolean },
@@ -35,8 +36,20 @@ export class ColorPickerUiInput extends LitElement {
     this.#emitValueUpdate(value);
   }
 
+  clear() {
+    this.setValue('');
+  }
+
+  firstUpdated(props) {
+    if (props.has('autofocus')) {
+      if (this.autofocus) {
+        this.inputEl.value.focus();
+      }
+    }
+  }
+
   updated(props) {
-    if (props.has('value')) {
+    if (props.has('value') && this.inputEl.value) {
       this.inputEl.value.value = this.value;
     }
   }

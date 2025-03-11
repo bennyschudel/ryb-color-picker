@@ -21,3 +21,49 @@ export function getDefaultCube() {
     [0, 0, 0],
   ];
 }
+
+export function createPrompt(text) {
+  return new Promise((resolve, reject) => {
+    const { _prompts } = this;
+    const nextIndex = _prompts.length;
+
+    const remove = () => {
+      this._prompts = _prompts.filter((d, i) => i !== nextIndex);
+    };
+
+    const item = {
+      text,
+      onCancel() {
+        remove();
+        reject();
+      },
+      onContinue(event) {
+        remove();
+        resolve(event.detail.value);
+      }
+    };
+
+    this._prompts = [..._prompts, item];
+  });
+}
+
+export function createAlert(text) {
+  return new Promise((resolve, reject) => {
+    const { _alerts } = this;
+    const nextIndex = _alerts.length;
+
+    const remove = () => {
+      this._alerts = _alerts.filter((d, i) => i !== nextIndex);
+    };
+
+    const item = {
+      text,
+      onOk(event) {
+        remove();
+        resolve();
+      }
+    };
+
+    this._alerts = [..._alerts, item];
+  });
+}

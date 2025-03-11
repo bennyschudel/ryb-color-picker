@@ -10,7 +10,9 @@ import * as d3 from './d3';
 import RadialRange from './plugins/RadialRange';
 
 import { PI, TAU, copyToClipboard, deg, rgbToCss, slugify } from './utils';
-import { createCustomEvent, getDefaultCube } from './helpers';
+import { createCustomEvent, createAlert, createPrompt, getDefaultCube } from './helpers';
+
+// ---
 
 export class RybColorPicker extends LitElement {
   rootEl = createRef();
@@ -23,6 +25,8 @@ export class RybColorPicker extends LitElement {
 
   static properties = {
     _hslColor: { state: true },
+    _prompts: { state: true },
+    _alerts: { state: true },
 
     // ---
     cube: { type: Array, attribute: false },
@@ -78,7 +82,8 @@ export class RybColorPicker extends LitElement {
     super();
 
     this._hslColor = [0, 0, 0];
-    this._init = false;
+    this._prompts = [];
+    this._alerts = [];
 
     this.ready = false;
     this.noInit = false;
@@ -196,10 +201,16 @@ export class RybColorPicker extends LitElement {
   }
 
   get presetsOptions() {
-    return [['', '[ New Preset ]']].concat(this.presets.map((d) => [d[0], d[1]]));
+    return [['', '[ New Preset ]']].concat(
+      this.presets.map((d) => [d[0], d[1]]),
+    );
   }
 
   // --- private methods ---
+
+  alert = createAlert.bind(this)
+
+  prompt = createPrompt.bind(this)
 
   #makeStoreKey(key) {
     const { id } = this;
@@ -365,17 +376,20 @@ export class RybColorPicker extends LitElement {
     this.savePresetEl.value.showFeedBack('Updated');
   }
 
-  #handleSavePreset(event) {
-    const title = prompt('Please enter a settings title:');
+  async #handleSavePreset(event) {
+    let title = '';
 
-    if (!title) {
-      throw new Error('Missing title');
+    try {
+      title = await this.prompt('Please enter a title for the new preset:');
+    }
+    catch (error) {
+      return;
     }
 
     const id = slugify(title);
 
     if (this.presets.find((d) => d[0] === id)) {
-      alert('A preset with this title does exist. Please choose another name.');
+      await this.alert('A preset with this title does exist. Please choose another name.');
 
       this.#handleSavePreset();
 
@@ -455,9 +469,7 @@ export class RybColorPicker extends LitElement {
   #updateCubeFromGamutPreset() {
     const { gamutPreset, gamutPresets } = this;
 
-    const index = gamutPresets.findIndex(
-      (d) => d[0] === gamutPreset,
-    );
+    const index = gamutPresets.findIndex((d) => d[0] === gamutPreset);
 
     let { cube } = this;
 
@@ -636,6 +648,13 @@ export class RybColorPicker extends LitElement {
   // --- settings
 
   loadSettings(settings) {
+    if ('gamutPreset' in settings) {
+      const keys = this.gamutPresets.map((d) => d[0]);
+      if (!keys.includes(settings.gamutPreset)) {
+        settings.gamutPreset = '';
+      }
+    }
+
     Object.assign(this, settings);
   }
 
@@ -739,14 +758,6 @@ export class RybColorPicker extends LitElement {
     }
 
     this.presets = this.#loadPresetsFromLocalStorage() ?? [];
-
-    const { preset, presets } = this;
-
-    const presetToLoad = preset || (presets.length > 0 && presets[0][0]);
-
-    if (presetToLoad) {
-      this.loadPreset(presetToLoad);
-    }
 
     // --- load gamut presets
 
@@ -1142,9 +1153,11 @@ export class RybColorPicker extends LitElement {
 
                 <color-picker-ui-field label="Gamut" slot="gamut">
                   <color-picker-ui-gamut
+                    .alert=${this.alert}
                     .cube=${this.cube}
                     .preset=${this.gamutPreset}
                     .presets=${this.gamutPresets}
+                    .prompt=${this.prompt}
                     @update:preset=${this.#handleGamutPresetChange}
                     @update:cube=${this.#handleGamutCubeChange}
                     @update:presets=${this.#handleGamutPresetsChange}
@@ -1301,6 +1314,23 @@ export class RybColorPicker extends LitElement {
                 </div>
               </color-picker-settings>`
             : html``,
+        )}
+
+        ${this._prompts.map(
+          (item) =>
+            html`<color-picker-ui-prompt
+              text=${item.text}
+              @continue=${item.onContinue}
+              @cancel=${item.onCancel}
+            ></color-picker-ui-prompt>`,
+        )}
+
+        ${this._alerts.map(
+          (item) =>
+            html`<color-picker-ui-alert
+              text=${item.text}
+              @ok=${item.onOk}
+            ></color-picker-ui-alert>`,
         )}
       </div>
     `;

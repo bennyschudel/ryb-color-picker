@@ -4,6 +4,8 @@ import { ref, createRef } from 'lit/directives/ref.js';
 import { arrayEquals, slugify } from './utils';
 import { createCustomEvent, getDefaultCube } from './helpers';
 
+// ---
+
 export class ColorPickerUiGamut extends LitElement {
   rootEl = createRef();
   cubeEl = createRef();
@@ -12,6 +14,10 @@ export class ColorPickerUiGamut extends LitElement {
   deletePresetEl = createRef();
 
   static properties = {
+    alert: { type: Function },
+    prompt: { type: Function },
+
+    // ---
     presets: { type: Array },
     preset: { type: String },
     cube: { type: Array },
@@ -25,8 +31,12 @@ export class ColorPickerUiGamut extends LitElement {
     this.cube = getDefaultCube();
   }
 
+  // --- getters ---
+
   get presetsOptions() {
-    return [['', '[ New Gamut ]']].concat(this.presets.map((d) => [d[0], d[1]]));
+    return [['', '[ New Gamut ]']].concat(
+      this.presets.map((d) => [d[0], d[1]]),
+    );
   }
 
   get isModified() {
@@ -36,6 +46,8 @@ export class ColorPickerUiGamut extends LitElement {
 
     return !arrayEquals(this.cube, preset[2]);
   }
+
+  // --- private methods ---
 
   #handlePresetChange(event) {
     this.#emitPresetUpdate(event.detail.value);
@@ -64,17 +76,24 @@ export class ColorPickerUiGamut extends LitElement {
     this.savePresetEl.value.showFeedBack('Updated');
   }
 
-  #handleSavePreset() {
-    const title = prompt('Please enter a preset title:');
+  async #handleSavePreset() {
+    let title = '';
 
-    if (!title) {
-      throw Error('Missing title');
+    try {
+      title = await this.prompt('Please enter a title for the new gamut-preset:');
+
+      if (!title) {
+        throw Error('Missing title');
+      }
+    }
+    catch (error) {
+      return;
     }
 
     const id = slugify(title);
 
     if (this.presets.find((d) => d[0] === id)) {
-      alert('A preset with this title does exist. Please choose another name.');
+      await this.alert('A gamut-preset with this title does exist. Please choose another name.');
 
       this.#handleSavePreset();
 
@@ -139,6 +158,8 @@ export class ColorPickerUiGamut extends LitElement {
     this.cube = cube;
     this.#emitCubeUpdate(cube);
   }
+
+  // --- lifecycle ---
 
   willUpdate(props) {
     if (props.has('preset')) {
