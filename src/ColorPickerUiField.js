@@ -14,11 +14,10 @@ export class ColorPickerUiField extends LitElement {
 
   render() {
     return html`
-      <div
-        ${ref(this.rootEl)}
-        class="body"
-      >
-        <span class="label" part="label">${this.label}</span>
+      <div ${ref(this.rootEl)} class="body">
+        ${this.label
+          ? html` <span class="label" part="label">${this.label}</span>`
+          : html``}
         <div class="content" part="content">
           <slot></slot>
         </div>
@@ -37,7 +36,6 @@ export class ColorPickerUiField extends LitElement {
       align-items: stretch;
       display: flex;
       flex-direction: column;
-      text-transform: uppercase;
       gap: 0.25rem;
       font-size: 0.625rem;
       background-color: var(--label-background-color);
@@ -48,6 +46,7 @@ export class ColorPickerUiField extends LitElement {
 
     .label {
       letter-spacing: 0.25pt;
+      text-transform: uppercase;
     }
 
     .content {
