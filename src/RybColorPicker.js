@@ -459,7 +459,7 @@ export class RybColorPicker extends LitElement {
       (d) => d[0] === gamutPreset,
     );
 
-    let cube = getDefaultCube();
+    let { cube } = this;
 
     if (index !== -1) {
       cube = gamutPresets[index][2];

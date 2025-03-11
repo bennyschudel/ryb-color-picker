@@ -15,23 +15,18 @@
     </style>
   </head>
   <body>
-    <script type="module" src="../ryb-color-picker.js"></script>
-
     <ryb-color-swatch id="swatch"></ryb-color-swatch>
     <ryb-color-picker
       id="picker"
       initialvalue="hotpink"
       nostore
-      noinit
     ></ryb-color-picker>
 
     <script type="module">
-      import { cubes } from 'rybitten/cubes';
+      import { cubes } from '../ryb-color-picker.js';
 
       const swatchEl = document.getElementById('swatch');
       const pickerEl = document.getElementById('picker');
-
-      swatchEl.value = pickerEl.value;
 
       swatchEl.addEventListener('click', (event) => {
         pickerEl.show = !pickerEl.show;
@@ -91,8 +86,6 @@
           },
         ],
       ], 'my-preset-2');
-
-      pickerEl.init();
     </script>
   </body>
 </html>

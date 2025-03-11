@@ -1,3 +1,5 @@
+export { cubes } from 'rybitten/cubes';
+
 import { ColorPickerSettings } from './src/ColorPickerSettings.js';
 import { ColorPickerUiButton } from './src/ColorPickerUiButton.js';
 import { ColorPickerUiField } from './src/ColorPickerUiField.js';
