@@ -10,7 +10,12 @@ import * as d3 from './d3';
 import RadialRange from './plugins/RadialRange';
 
 import { PI, TAU, copyToClipboard, deg, rgbToCss, slugify } from './utils';
-import { createCustomEvent, createAlert, createPrompt, getDefaultCube } from './helpers';
+import {
+  createCustomEvent,
+  createAlert,
+  createPrompt,
+  getDefaultCube,
+} from './helpers';
 
 // ---
 
@@ -208,9 +213,9 @@ export class RybColorPicker extends LitElement {
 
   // --- private methods ---
 
-  alert = createAlert.bind(this)
+  alert = createAlert.bind(this);
 
-  prompt = createPrompt.bind(this)
+  prompt = createPrompt.bind(this);
 
   #makeStoreKey(key) {
     const { id } = this;
@@ -381,15 +386,16 @@ export class RybColorPicker extends LitElement {
 
     try {
       title = await this.prompt('Please enter a title for the new preset:');
-    }
-    catch (error) {
+    } catch (error) {
       return;
     }
 
     const id = slugify(title);
 
     if (this.presets.find((d) => d[0] === id)) {
-      await this.alert('A preset with this title does exist. Please choose another name.');
+      await this.alert(
+        'A preset with this title does exist. Please choose another name.',
+      );
 
       this.#handleSavePreset();
 
@@ -779,10 +785,6 @@ export class RybColorPicker extends LitElement {
       this.setValue(this.initialValue);
     }
 
-    if (props.has('_hslColor') || props.has('cube')) {
-      this.value = this.colorCss;
-    }
-
     if (props.has('gamutPreset')) {
       this.#updateCubeFromGamutPreset();
     }
@@ -793,6 +795,14 @@ export class RybColorPicker extends LitElement {
 
     if (props.has('gamutPreset') || props.has('preset')) {
       this.#saveConfigToLocalStorage();
+    }
+
+    if (
+      props.has('_hslColor') ||
+      props.has('cube') ||
+      props.has('gamutPreset')
+    ) {
+      this.value = this.colorCss;
     }
 
     // ---
@@ -1319,7 +1329,6 @@ export class RybColorPicker extends LitElement {
               </color-picker-settings>`
             : html``,
         )}
-
         ${this._prompts.map(
           (item) =>
             html`<color-picker-ui-prompt
@@ -1328,7 +1337,6 @@ export class RybColorPicker extends LitElement {
               @cancel=${item.onCancel}
             ></color-picker-ui-prompt>`,
         )}
-
         ${this._alerts.map(
           (item) =>
             html`<color-picker-ui-alert
