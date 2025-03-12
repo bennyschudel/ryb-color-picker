@@ -14,8 +14,7 @@ export class ColorPickerUiGamut extends LitElement {
   deletePresetEl = createRef();
 
   static properties = {
-    alert: { type: Function },
-    prompt: { type: Function },
+    dialog: { type: Function },
 
     // ---
     presets: { type: Array },
@@ -80,20 +79,25 @@ export class ColorPickerUiGamut extends LitElement {
     let title = '';
 
     try {
-      title = await this.prompt('Please enter a title for the new gamut-preset:');
+      title = await this.dialog(
+        'prompt',
+        'Please enter a title for the new gamut-preset:',
+      );
 
       if (!title) {
         throw Error('Missing title');
       }
-    }
-    catch (error) {
+    } catch (error) {
       return;
     }
 
     const id = slugify(title);
 
     if (this.presets.find((d) => d[0] === id)) {
-      await this.alert('A gamut-preset with this title does exist. Please choose another name.');
+      await this.dialog(
+        'alert',
+        'A gamut-preset with this title does exist. Please choose another name.',
+      );
 
       this.#handleSavePreset();
 
@@ -117,7 +121,13 @@ export class ColorPickerUiGamut extends LitElement {
     this.resetPresetEl.value.showFeedBack('Resetted');
   }
 
-  #handleDeletePreset() {
+  async #handleDeletePreset() {
+    try {
+      await this.dialog('confirm', 'Are you sure to delete this gamut-preset?');
+    } catch (error) {
+      return;
+    }
+
     const id = this.preset;
 
     const presets = window.structuredClone(this.presets);

@@ -3,6 +3,8 @@ import { ref, createRef } from 'lit/directives/ref.js';
 
 import { createCustomEvent } from './helpers';
 
+// ---
+
 export class ColorPickerUiPrompt extends LitElement {
   rootEl = createRef();
   inputEl = createRef();
@@ -15,7 +17,6 @@ export class ColorPickerUiPrompt extends LitElement {
   constructor() {
     super();
 
-    this.label = '';
     this.text = '';
     this.value = '';
 

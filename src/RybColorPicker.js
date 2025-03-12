@@ -10,28 +10,25 @@ import * as d3 from './d3';
 import RadialRange from './plugins/RadialRange';
 
 import { PI, TAU, copyToClipboard, deg, rgbToCss, slugify } from './utils';
-import {
-  createCustomEvent,
-  createAlert,
-  createPrompt,
-  getDefaultCube,
-} from './helpers';
+import { createCustomEvent, createDialog, getDefaultCube } from './helpers';
 
 // ---
 
 export class RybColorPicker extends LitElement {
-  rootEl = createRef();
-  svgEl = createRef();
-  rangesEl = createRef();
-  rangesBodyEl = createRef();
-  valueEl = createRef();
-  savePresetEl = createRef();
   deletePresetEl = createRef();
+  rangesBodyEl = createRef();
+  rangesEl = createRef();
+  resetStoreEl = createRef();
+  clearStoreEl = createRef();
+  rootEl = createRef();
+  savePresetEl = createRef();
+  svgEl = createRef();
+  valueEl = createRef();
 
   static properties = {
     _hslColor: { state: true },
-    _prompts: { state: true },
-    _alerts: { state: true },
+    _dialogs: { state: true },
+    _initialSettings: { state: true },
 
     // ---
     cube: { type: Array, attribute: false },
@@ -87,8 +84,7 @@ export class RybColorPicker extends LitElement {
     super();
 
     this._hslColor = [0, 0, 0];
-    this._prompts = [];
-    this._alerts = [];
+    this._dialogs = [];
 
     this.ready = false;
     this.noInit = false;
@@ -212,10 +208,6 @@ export class RybColorPicker extends LitElement {
   }
 
   // --- private methods ---
-
-  alert = createAlert.bind(this);
-
-  prompt = createPrompt.bind(this);
 
   #makeStoreKey(key) {
     const { id } = this;
@@ -385,7 +377,10 @@ export class RybColorPicker extends LitElement {
     let title = '';
 
     try {
-      title = await this.prompt('Please enter a title for the new preset:');
+      title = await this.dialog(
+        'prompt',
+        'Please enter a title for the new preset:',
+      );
     } catch (error) {
       return;
     }
@@ -393,7 +388,8 @@ export class RybColorPicker extends LitElement {
     const id = slugify(title);
 
     if (this.presets.find((d) => d[0] === id)) {
-      await this.alert(
+      await this.dialog(
+        'alert',
         'A preset with this title does exist. Please choose another name.',
       );
 
@@ -407,10 +403,46 @@ export class RybColorPicker extends LitElement {
     this.savePresetEl.value.showFeedBack('Saved');
   }
 
-  #handleDeletePreset() {
+  async #handleDeletePreset() {
+    try {
+      await this.dialog('confirm', 'Are you sure to delete this preset?');
+    } catch (error) {
+      return;
+    }
+
     this.deletePreset(this.preset);
 
     this.deletePresetEl.value.showFeedBack('Deleted');
+  }
+
+  async #handleClearStore() {
+    try {
+      await this.dialog(
+        'confirm',
+        'Are you sure to clear the local store? All changes will be lost on reload.',
+      );
+    } catch (error) {
+      return;
+    }
+
+    this.clearStore();
+
+    this.clearStoreEl.value.showFeedBack('Cleared');
+  }
+
+  async #handleResetStore() {
+    try {
+      await this.dialog(
+        'confirm',
+        'Are you sure to reset all settings? All changes will be lost.',
+      );
+    } catch (error) {
+      return;
+    }
+
+    this.reset();
+
+    this.resetStoreEl.value.showFeedBack('Resetted');
   }
 
   #handleCloseSettings() {
@@ -518,6 +550,8 @@ export class RybColorPicker extends LitElement {
 
   // --- public ---
 
+  dialog = createDialog.bind(this);
+
   setValue(value) {
     const rgb = d3.color(value);
 
@@ -559,7 +593,6 @@ export class RybColorPicker extends LitElement {
     if (!presetId) return;
 
     this.gamutPreset = presetId;
-    this.#updateCubeFromGamutPreset();
   }
 
   cycleGamutPreset(previous = false) {
@@ -666,7 +699,7 @@ export class RybColorPicker extends LitElement {
     Object.assign(this, settings);
   }
 
-  savePreset(id, title) {
+  getSettings() {
     const {
       backgroundColor,
       diameter,
@@ -675,7 +708,6 @@ export class RybColorPicker extends LitElement {
       gamutPreset,
       gap,
       padding,
-      presets,
       segmentsHue,
       segmentsLightness,
       segmentsSaturation,
@@ -701,6 +733,14 @@ export class RybColorPicker extends LitElement {
       thicknessLightness,
       thicknessSaturation,
     };
+
+    return settings;
+  }
+
+  savePreset(id, title) {
+    const { presets } = this;
+
+    const settings = this.getSettings();
 
     const index = presets.findIndex((d) => d[0] === id);
 
@@ -743,10 +783,31 @@ export class RybColorPicker extends LitElement {
     this.preset = '';
   }
 
+  clearStore() {
+    window.localStorage.removeItem(this.#storeConfigKey);
+    window.localStorage.removeItem(this.#storeGamutPresetsKey);
+    window.localStorage.removeItem(this.#storePresetsKey);
+
+    this.#saveConfigToLocalStorage();
+    this.#saveGamutPresetsToLocalStorage([]);
+    this.#savePresetsToLocalStorage([]);
+  }
+
+  reset() {
+    this.preset = '';
+    this.cube = getDefaultCube();
+
+    this.loadSettings(this._initialSettings);
+  }
+
   // --- lifecycle ---
 
   connectedCallback() {
     super.connectedCallback();
+
+    // -- initial settings
+
+    this._initialSettings = this.getSettings();
 
     // --- load config
 
@@ -776,8 +837,6 @@ export class RybColorPicker extends LitElement {
     }
 
     this.gamutPresets = this.#loadGamutPresetsFromLocalStorage() ?? [];
-
-    this.#updateCubeFromGamutPreset();
   }
 
   willUpdate(props) {
@@ -785,23 +844,19 @@ export class RybColorPicker extends LitElement {
       this.setValue(this.initialValue);
     }
 
-    if (props.has('gamutPreset')) {
-      this.#updateCubeFromGamutPreset();
-    }
-
     if (props.has('preset')) {
       this.loadPreset(this.preset);
+    }
+
+    if (props.has('gamutPreset')) {
+      this.#updateCubeFromGamutPreset();
     }
 
     if (props.has('gamutPreset') || props.has('preset')) {
       this.#saveConfigToLocalStorage();
     }
 
-    if (
-      props.has('_hslColor') ||
-      props.has('cube') ||
-      props.has('gamutPreset')
-    ) {
+    if (props.has('_hslColor') || props.has('cube')) {
       this.value = this.colorCss;
     }
 
@@ -1167,11 +1222,10 @@ export class RybColorPicker extends LitElement {
 
                 <color-picker-ui-field label="Gamut" slot="gamut">
                   <color-picker-ui-gamut
-                    .alert=${this.alert}
+                    .dialog=${this.dialog}
                     .cube=${this.cube}
                     .preset=${this.gamutPreset}
                     .presets=${this.gamutPresets}
-                    .prompt=${this.prompt}
                     @update:preset=${this.#handleGamutPresetChange}
                     @update:cube=${this.#handleGamutCubeChange}
                     @update:presets=${this.#handleGamutPresetsChange}
@@ -1320,6 +1374,48 @@ export class RybColorPicker extends LitElement {
                     @click=${this.#handleDeletePreset}
                     >Delete Preset</color-picker-ui-button
                   >
+                  ${!this.noStore
+                    ? html` <color-picker-ui-icon-button
+                        ${ref(this.clearStoreEl)}
+                        feedback
+                        @click=${this.#handleClearStore}
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path
+                            d="M3 3m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"
+                          />
+                          <path
+                            d="M12 12m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0"
+                          />
+                          <path d="M12 12h.01" />
+                        </svg>
+                      </color-picker-ui-icon-button>`
+                    : html``}
+                  <color-picker-ui-icon-button
+                    ${ref(this.resetStoreEl)}
+                    feedback
+                    @click=${this.#handleResetStore}
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M3.06 13a9 9 0 1 0 .49 -4.087" />
+                      <path d="M3 4.001v5h5" />
+                      <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                    </svg>
+                  </color-picker-ui-icon-button>
                   <color-picker-ui-button
                     class="close-button"
                     @click=${this.#handleCloseSettings}
@@ -1329,21 +1425,30 @@ export class RybColorPicker extends LitElement {
               </color-picker-settings>`
             : html``,
         )}
-        ${this._prompts.map(
-          (item) =>
-            html`<color-picker-ui-prompt
-              text=${item.text}
-              @continue=${item.onContinue}
-              @cancel=${item.onCancel}
-            ></color-picker-ui-prompt>`,
-        )}
-        ${this._alerts.map(
-          (item) =>
-            html`<color-picker-ui-alert
-              text=${item.text}
-              @ok=${item.onOk}
-            ></color-picker-ui-alert>`,
-        )}
+        ${this._dialogs.length > 0
+          ? html` <div class="dialogs">
+              ${this._dialogs.map((item) =>
+                item.type === 'prompt'
+                  ? html`<color-picker-ui-prompt
+                      text=${item.text}
+                      @continue=${item.onContinue}
+                      @cancel=${item.onCancel}
+                    ></color-picker-ui-prompt>`
+                  : item.type === 'confirm'
+                  ? html`<color-picker-ui-confirm
+                      text=${item.text}
+                      @continue=${item.onContinue}
+                      @cancel=${item.onCancel}
+                    ></color-picker-ui-confirm>`
+                  : item.type === 'alert'
+                  ? html`<color-picker-ui-alert
+                      text=${item.text}
+                      @ok=${item.onOk}
+                    ></color-picker-ui-alert>`
+                  : html``,
+              )}
+            </div>`
+          : html``}
       </div>
     `;
   }
@@ -1413,6 +1518,12 @@ export class RybColorPicker extends LitElement {
 
     .close-button {
       margin-left: auto;
+    }
+
+    .dialogs {
+      position: absolute;
+      inset: 0;
+      z-index: 1000;
     }
   `;
 }
