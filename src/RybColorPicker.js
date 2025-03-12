@@ -580,17 +580,19 @@ export class RybColorPicker extends LitElement {
   loadPresets(presets, presetId) {
     this.#savePresetsToLocalStorage(presets);
 
-    this.presets = presets;
+    this.presets = window.structuredClone(presets);
 
     if (!presetId) return;
 
     const preset = this.presets.find((d) => d[0] === presetId);
 
     if (!preset) {
-      throw new Error('Could not find preset');
+      this.preset = '';
+
+      return;
     }
 
-    const [id, title, settings] = preset;
+    const [id, _title, settings] = preset;
 
     this.preset = id;
 
@@ -710,13 +712,15 @@ export class RybColorPicker extends LitElement {
   loadPreset(id) {
     if (!id) return;
 
-    const index = this.presets.findIndex((d) => d[0] === id);
+    const preset = this.presets.find((d) => d[0] === id);
 
-    if (index === -1) {
-      throw new Error('Could not find preset.');
+    if (!preset) {
+      this.preset = '';
+
+      return;
     }
 
-    const [_id, _title, settings] = this.presets[index];
+    const [_id, _title, settings] = preset;
 
     this.loadSettings(settings);
 
