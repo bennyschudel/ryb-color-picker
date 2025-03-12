@@ -582,8 +582,6 @@ export class RybColorPicker extends LitElement {
   }
 
   loadGamutPresets(presets, presetId) {
-    this.#saveGamutPresetsToLocalStorage(presets);
-
     this.gamutPresets = presets;
 
     if (!presetId) return;
