@@ -419,7 +419,7 @@ export class RybColorPicker extends LitElement {
     try {
       await this.dialog(
         'confirm',
-        'Are you sure to clear the local store? All changes will be lost on reload.',
+        'Are you sure to clear the local store?',
       );
     } catch (error) {
       return;
@@ -434,7 +434,7 @@ export class RybColorPicker extends LitElement {
     try {
       await this.dialog(
         'confirm',
-        'Are you sure to reset all settings? All changes will be lost.',
+        'Are you sure to reset all settings?',
       );
     } catch (error) {
       return;
@@ -787,10 +787,6 @@ export class RybColorPicker extends LitElement {
     window.localStorage.removeItem(this.#storeConfigKey);
     window.localStorage.removeItem(this.#storeGamutPresetsKey);
     window.localStorage.removeItem(this.#storePresetsKey);
-
-    this.#saveConfigToLocalStorage();
-    this.#saveGamutPresetsToLocalStorage([]);
-    this.#savePresetsToLocalStorage([]);
   }
 
   reset() {
