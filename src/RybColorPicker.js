@@ -592,7 +592,7 @@ export class RybColorPicker extends LitElement {
       return;
     }
 
-    const [id, title, settings] = preset;
+    const [id, _title, settings] = preset;
 
     this.preset = id;
 
