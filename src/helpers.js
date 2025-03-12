@@ -1,8 +1,12 @@
-export function createCustomEvent(name, detail, options = {
-  bubbles: true,
-  composed: true,
-  cancelable: true,
-}) {
+export function createCustomEvent(
+  name,
+  detail,
+  options = {
+    bubbles: true,
+    composed: true,
+    cancelable: true,
+  },
+) {
   return new CustomEvent(name, {
     detail: window.structuredClone(detail),
     ...options,
@@ -22,16 +26,65 @@ export function getDefaultCube() {
   ];
 }
 
-export function createPrompt(text) {
+export function createAlert(text) {
   return new Promise((resolve, reject) => {
-    const { _prompts } = this;
-    const nextIndex = _prompts.length;
+    const { _dialogs } = this;
+    const nextIndex = _dialogs.length;
 
     const remove = () => {
-      this._prompts = _prompts.filter((d, i) => i !== nextIndex);
+      this._dialogs = _dialogs.filter((d, i) => i !== nextIndex);
     };
 
     const item = {
+      type: 'alert',
+      text,
+      onOk() {
+        remove();
+        resolve();
+      },
+    };
+
+    this._dialogs = [..._dialogs, item];
+  });
+}
+
+export function createConfirm(text) {
+  return new Promise((resolve, reject) => {
+    const { _dialogs } = this;
+    const nextIndex = _dialogs.length;
+
+    const remove = () => {
+      this._dialogs = _dialogs.filter((d, i) => i !== nextIndex);
+    };
+
+    const item = {
+      type: 'confirm',
+      text,
+      onCancel() {
+        remove();
+        reject();
+      },
+      onContinue() {
+        remove();
+        resolve();
+      },
+    };
+
+    this._dialogs = [..._dialogs, item];
+  });
+}
+
+export function createPrompt(text) {
+  return new Promise((resolve, reject) => {
+    const { _dialogs } = this;
+    const nextIndex = _dialogs.length;
+
+    const remove = () => {
+      this._dialogs = _dialogs.filter((d, i) => i !== nextIndex);
+    };
+
+    const item = {
+      type: 'prompt',
       text,
       onCancel() {
         remove();
@@ -40,30 +93,20 @@ export function createPrompt(text) {
       onContinue(event) {
         remove();
         resolve(event.detail.value);
-      }
+      },
     };
 
-    this._prompts = [..._prompts, item];
+    this._dialogs = [..._dialogs, item];
   });
 }
 
-export function createAlert(text) {
-  return new Promise((resolve, reject) => {
-    const { _alerts } = this;
-    const nextIndex = _alerts.length;
-
-    const remove = () => {
-      this._alerts = _alerts.filter((d, i) => i !== nextIndex);
-    };
-
-    const item = {
-      text,
-      onOk(event) {
-        remove();
-        resolve();
-      }
-    };
-
-    this._alerts = [..._alerts, item];
-  });
+export function createDialog(type, text) {
+  switch (type) {
+    case 'alert':
+      return createAlert.call(this, text);
+    case 'confirm':
+      return createConfirm.call(this, text);
+    case 'prompt':
+      return createPrompt.call(this, text);
+  }
 }

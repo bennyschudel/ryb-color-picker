@@ -5,9 +5,8 @@ import { createCustomEvent } from './helpers';
 
 // ---
 
-export class ColorPickerUiAlert extends LitElement {
+export class ColorPickerUiConfirm extends LitElement {
   rootEl = createRef();
-  inputEl = createRef();
 
   static properties = {
     text: { type: String },
@@ -24,18 +23,30 @@ export class ColorPickerUiAlert extends LitElement {
   #handleKeyUp(event) {
     switch (event.key) {
       case 'Escape':
+        this.#onCancel();
+        break;
       case 'Enter':
-        this.#onOk();
+        this.#onContinue();
         break;
     }
   }
 
-  #handleOkClick(event) {
-    this.#onOk();
+  #handleCancelClick(event) {
+    this.#onCancel();
   }
 
-  #onOk() {
-    const event = createCustomEvent('ok', undefined, { bubbles: false });
+  #handleContinueClick(event) {
+    this.#onContinue();
+  }
+
+  #onContinue() {
+    const event = createCustomEvent('continue', undefined, { bubbles: false });
+
+    this.dispatchEvent(event);
+  }
+
+  #onCancel() {
+    const event = createCustomEvent('cancel', undefined, { bubbles: false });
 
     this.dispatchEvent(event);
   }
@@ -59,8 +70,10 @@ export class ColorPickerUiAlert extends LitElement {
         class="body"
       >
         <h2 class="text">${this.text}</h2>
+        </color-picker-ui-field>
         <div class="actions">
-          <color-picker-ui-button @click=${this.#handleOkClick}>Ok</color-picker-ui-button>
+          <color-picker-ui-button @click=${this.#handleCancelClick}>Cancel</color-picker-ui-button>
+          <color-picker-ui-button @click=${this.#handleContinueClick}>Continue</color-picker-ui-button>
         </div>
       </div>
     `;
@@ -108,8 +121,8 @@ export class ColorPickerUiAlert extends LitElement {
 
     .actions {
       display: flex;
-      justify-content: flex-end;
       gap: 0.25rem;
+      justify-content: flex-end;
     }
   `;
 }
