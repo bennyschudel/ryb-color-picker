@@ -712,15 +712,15 @@ export class RybColorPicker extends LitElement {
   loadPreset(id) {
     if (!id) return;
 
-    const index = this.presets.findIndex((d) => d[0] === id);
+    const preset = this.presets.find((d) => d[0] === id);
 
-    if (index === -1) {
+    if (!preset) {
       this.preset = '';
 
       return;
     }
 
-    const [_id, _title, settings] = this.presets[index];
+    const [_id, _title, settings] = preset;
 
     this.loadSettings(settings);
 
