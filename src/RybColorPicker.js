@@ -346,11 +346,7 @@ export class RybColorPicker extends LitElement {
   }
 
   #handleGamutPresetsChange(event) {
-    const presets = event.detail.value;
-
-    this.#saveGamutPresetsToLocalStorage(presets);
-
-    this.gamutPresets = presets;
+    this.gamutPresets = event.detail.value;
   }
 
   #handleDiameterChange(event) {
@@ -481,12 +477,12 @@ export class RybColorPicker extends LitElement {
     return JSON.parse(window.localStorage.getItem(this.#storeGamutPresetsKey));
   }
 
-  #saveGamutPresetsToLocalStorage(presets) {
+  #saveGamutPresetsToLocalStorage() {
     if (this.noStore) return;
 
     window.localStorage.setItem(
       this.#storeGamutPresetsKey,
-      JSON.stringify(presets),
+      JSON.stringify(this.gamutPresets),
     );
   }
 
@@ -496,10 +492,10 @@ export class RybColorPicker extends LitElement {
     return JSON.parse(window.localStorage.getItem(this.#storePresetsKey));
   }
 
-  #savePresetsToLocalStorage(presets) {
+  #savePresetsToLocalStorage() {
     if (this.noStore) return;
 
-    window.localStorage.setItem(this.#storePresetsKey, JSON.stringify(presets));
+    window.localStorage.setItem(this.#storePresetsKey, JSON.stringify(this.presets));
   }
 
   // --- others ---
@@ -617,8 +613,6 @@ export class RybColorPicker extends LitElement {
   }
 
   loadPresets(presets, presetId) {
-    this.#savePresetsToLocalStorage(presets);
-
     this.presets = window.structuredClone(presets);
 
     if (!presetId) return;
@@ -826,7 +820,7 @@ export class RybColorPicker extends LitElement {
     // --- load presets
 
     if (!localStorage.getItem(this.#storePresetsKey)) {
-      this.#savePresetsToLocalStorage([]);
+      this.#savePresetsToLocalStorage();
     }
 
     this.presets = this.#loadPresetsFromLocalStorage() ?? [];
@@ -834,7 +828,7 @@ export class RybColorPicker extends LitElement {
     // --- load gamut presets
 
     if (!localStorage.getItem(this.#storeGamutPresetsKey)) {
-      this.#saveGamutPresetsToLocalStorage([]);
+      this.#saveGamutPresetsToLocalStorage();
     }
 
     this.gamutPresets = this.#loadGamutPresetsFromLocalStorage() ?? [];
@@ -855,6 +849,14 @@ export class RybColorPicker extends LitElement {
 
     if (props.has('gamutPreset') || props.has('preset')) {
       this.#saveConfigToLocalStorage();
+    }
+
+    if (props.has('gamutPresets')) {
+      this.#saveGamutPresetsToLocalStorage();
+    }
+
+    if (props.has('presets')) {
+      this.#savePresetsToLocalStorage();
     }
 
     if (props.has('_hslColor') || props.has('cube')) {
