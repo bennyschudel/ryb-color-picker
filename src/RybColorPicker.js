@@ -795,9 +795,14 @@ export class RybColorPicker extends LitElement {
 
   reset() {
     this.preset = '';
+
     this.cube = getDefaultCube();
 
-    this.loadSettings(this._initialSettings);
+    const { _initialSettings: settings } = this;
+
+    settings.gamutPreset = '';
+
+    this.loadSettings(settings);
   }
 
   // --- lifecycle ---
