@@ -9,7 +9,7 @@ import * as d3 from './d3';
 
 import RadialRange from './plugins/RadialRange';
 
-import { PI, TAU, copyToClipboard, deg, rgbToCss, slugify } from './utils';
+import { PI, TAU, copyToClipboard, deg, rgbToCss, pick, slugify } from './utils';
 import { createCustomEvent, createDialog, getDefaultCube } from './helpers';
 
 // ---
@@ -44,6 +44,7 @@ export class RybColorPicker extends LitElement {
     distortion: { type: Number, reflect: true },
     gamutPreset: { type: String, reflect: true },
     gap: { type: Number, reflect: true },
+    hasPresets: { type: Boolean },
     id: { type: String },
     initialValue: { type: String, reflect: true },
     noInit: { type: Boolean },
@@ -85,10 +86,15 @@ export class RybColorPicker extends LitElement {
 
     this._hslColor = [0, 0, 0];
     this._dialogs = [];
+    this._initialSettings = null;
 
     this.ready = false;
+
+    this.hasPresets = false;
+
     this.noInit = false;
     this.noSettings = false;
+    this.noStore = false;
     this.noValue = false;
 
     this.cube = getDefaultCube();
@@ -97,18 +103,20 @@ export class RybColorPicker extends LitElement {
     this.gamutPresets = [];
 
     this.show = true;
+    this.showSettings = false;
     this.showValue = true;
 
-    this.initialValue = '#ff69b4';
+    this.initialValue = 'hotpink';
     this.value = '';
 
     this.animationDuration = 150;
     this.backgroundColor = 'transparent';
+    this.diameter = 320;
+    this.displayFormat = 'hex';
     this.distortion = 3;
     this.gap = 0;
-    this.swatchGap = 8;
-    this.diameter = 320;
     this.padding = 30;
+    this.swatchGap = 8;
 
     this.thicknessLightness = 20;
     this.thicknessHue = 24;
@@ -118,14 +126,12 @@ export class RybColorPicker extends LitElement {
     this.segmentsHue = 48;
     this.segmentsSaturation = 24;
 
-    this.displayFormat = 'hex';
-
     this.preset = '';
     this.gamutPreset = '';
 
-    this.storeConfigKey = 'ryb-color-picker--{id}';
-    this.storePresetsKey = 'ryb-color-picker--{id}-presets';
-    this.storeGamutPresetsKey = 'ryb-color-picker--{id}-gamut-presets';
+    this.storeConfigKey = 'ryb-color-picker/{id}/config';
+    this.storePresetsKey = 'ryb-color-picker/{id}/presets';
+    this.storeGamutPresetsKey = 'ryb-color-picker/{id}/gamut-presets';
   }
 
   // --- private getters ---
@@ -202,9 +208,9 @@ export class RybColorPicker extends LitElement {
   }
 
   get presetsOptions() {
-    return [['', '[ New Preset ]']].concat(
-      this.presets.map((d) => [d[0], d[1]]),
-    );
+    const options = [['', '[ New Preset ]']];
+
+    return options.concat(this.presets.map((d) => [d[0], d[1]]));
   }
 
   // --- private methods ---
@@ -212,7 +218,7 @@ export class RybColorPicker extends LitElement {
   #makeStoreKey(key) {
     const { id } = this;
 
-    return key.replaceAll('{id}', id);
+    return key.replaceAll('{id}', id ?? 'default');
   }
 
   #markBusy(duration) {
@@ -358,6 +364,8 @@ export class RybColorPicker extends LitElement {
   }
 
   #handleUpdatePreset(event) {
+    if (!this.hasPresets) return;
+
     const id = this.preset;
 
     const item = this.presets.find((d) => d[0] === id);
@@ -370,6 +378,8 @@ export class RybColorPicker extends LitElement {
   }
 
   async #handleSavePreset(event) {
+    if (!this.hasPresets) return;
+
     let title = '';
 
     try {
@@ -400,6 +410,8 @@ export class RybColorPicker extends LitElement {
   }
 
   async #handleDeletePreset() {
+    if (!this.hasPresets) return;
+
     try {
       await this.dialog('confirm', 'Are you sure to delete this preset?');
     } catch (error) {
@@ -413,10 +425,7 @@ export class RybColorPicker extends LitElement {
 
   async #handleClearStore() {
     try {
-      await this.dialog(
-        'confirm',
-        'Are you sure to clear the local store?',
-      );
+      await this.dialog('confirm', 'Are you sure to clear the local store?');
     } catch (error) {
       return;
     }
@@ -428,10 +437,7 @@ export class RybColorPicker extends LitElement {
 
   async #handleResetStore() {
     try {
-      await this.dialog(
-        'confirm',
-        'Are you sure to reset all settings?',
-      );
+      await this.dialog('confirm', 'Are you sure to reset all settings?');
     } catch (error) {
       return;
     }
@@ -446,6 +452,8 @@ export class RybColorPicker extends LitElement {
   }
 
   #handlePresetChange(event) {
+    if (!this.hasPresets) return;
+
     const id = event.detail.value;
 
     this.preset = id;
@@ -458,17 +466,25 @@ export class RybColorPicker extends LitElement {
   #saveConfigToLocalStorage() {
     if (this.noStore) return;
 
-    const { gamutPreset, preset } = this;
+    const { gamutPreset } = this;
 
-    const config = { gamutPreset, preset };
+    const preset = !this.hasPresets ? '' : this.preset;
 
-    window.localStorage.setItem(this.#storeConfigKey, JSON.stringify(config));
+    const data = { gamutPreset, preset };
+
+    window.localStorage.setItem(this.#storeConfigKey, JSON.stringify(data));
   }
 
   #loadConfigFromLocalStorage() {
     if (this.noStore) return;
 
-    return JSON.parse(window.localStorage.getItem(this.#storeConfigKey));
+    const data = JSON.parse(window.localStorage.getItem(this.#storeConfigKey));
+
+    if (!this.hasPresets) {
+      data.preset = '';
+    }
+
+    return data;
   }
 
   #loadGamutPresetsFromLocalStorage() {
@@ -488,14 +504,19 @@ export class RybColorPicker extends LitElement {
 
   #loadPresetsFromLocalStorage() {
     if (this.noStore) return;
+    if (!this.hasPresets) return;
 
     return JSON.parse(window.localStorage.getItem(this.#storePresetsKey));
   }
 
   #savePresetsToLocalStorage() {
     if (this.noStore) return;
+    if (!this.hasPresets) return;
 
-    window.localStorage.setItem(this.#storePresetsKey, JSON.stringify(this.presets));
+    window.localStorage.setItem(
+      this.#storePresetsKey,
+      JSON.stringify(this.presets),
+    );
   }
 
   // --- others ---
@@ -611,6 +632,12 @@ export class RybColorPicker extends LitElement {
   }
 
   loadPresets(presets, presetId) {
+    if (!this.hasPresets) {
+      throw new Error(
+        'Could not load presets. Please add the "haspresets" attribute.',
+      );
+    }
+
     this.presets = window.structuredClone(presets);
 
     if (!presetId) return;
@@ -631,6 +658,8 @@ export class RybColorPicker extends LitElement {
   }
 
   cyclePreset(previous = false) {
+    if (!this.hasPresets) return;
+
     const { presets } = this;
     const { length: count } = presets;
 
@@ -692,41 +721,24 @@ export class RybColorPicker extends LitElement {
   }
 
   getSettings() {
-    const {
-      backgroundColor,
-      diameter,
-      displayFormat,
-      distortion,
-      gamutPreset,
-      gap,
-      padding,
-      segmentsHue,
-      segmentsLightness,
-      segmentsSaturation,
-      swatchGap,
-      thicknessHue,
-      thicknessLightness,
-      thicknessSaturation,
-    } = this;
+    const settings = pick(this, [
+      'backgroundColor',
+      'diameter',
+      'displayFormat',
+      'distortion',
+      'gamutPreset',
+      'gap',
+      'padding',
+      'segmentsHue',
+      'segmentsLightness',
+      'segmentsSaturation',
+      'swatchGap',
+      'thicknessHue',
+      'thicknessLightness',
+      'thicknessSaturation',
+    ]);
 
-    const settings = {
-      backgroundColor,
-      diameter,
-      displayFormat,
-      distortion,
-      gamutPreset,
-      gap,
-      padding,
-      segmentsHue,
-      segmentsLightness,
-      segmentsSaturation,
-      swatchGap,
-      thicknessHue,
-      thicknessLightness,
-      thicknessSaturation,
-    };
-
-    return settings;
+    return window.structuredClone(settings);
   }
 
   savePreset(id, title) {
@@ -845,10 +857,6 @@ export class RybColorPicker extends LitElement {
       this.#updateCubeFromGamutPreset();
     }
 
-    if (props.has('gamutPreset') || props.has('preset')) {
-      this.#saveConfigToLocalStorage();
-    }
-
     if (props.has('gamutPresets')) {
       this.#saveGamutPresetsToLocalStorage();
     }
@@ -859,6 +867,12 @@ export class RybColorPicker extends LitElement {
 
     if (props.has('_hslColor') || props.has('cube')) {
       this.value = this.colorCss;
+    }
+
+    // ---
+
+    if (props.has('gamutPreset') || props.has('preset')) {
+      this.#saveConfigToLocalStorage();
     }
 
     // ---
@@ -1212,19 +1226,25 @@ export class RybColorPicker extends LitElement {
         )}
         ${cache(
           !this.noSettings && this.showSettings
-            ? html`<color-picker-settings>
-                <color-picker-ui-field label="Presets" slot="presets">
-                  <color-picker-ui-selector
-                    value=${this.preset}
-                    .options=${this.presetsOptions}
-                    @update:value=${this.#handlePresetChange}
-                  ></color-picker-ui-selector>
-                </color-picker-ui-field>
+            ? html`<color-picker-settings
+                >${this.hasPresets
+                  ? html`
+                      <color-picker-ui-field label="Presets">
+                        <color-picker-ui-selector
+                          value=${this.preset}
+                          .options=${this.presetsOptions}
+                          @update:value=${this.#handlePresetChange}
+                        ></color-picker-ui-selector>
+                      </color-picker-ui-field>
 
-                <color-picker-ui-field label="Gamut" slot="gamut">
+                      <color-picker-ui-separator></color-picker-ui-separator
+                    ></color-picker-settings>`
+                  : html``}
+
+                <color-picker-ui-field label="Gamut">
                   <color-picker-ui-gamut
-                    .dialog=${this.dialog}
                     .cube=${this.cube}
+                    .dialog=${this.dialog}
                     .preset=${this.gamutPreset}
                     .presets=${this.gamutPresets}
                     @update:preset=${this.#handleGamutPresetChange}
@@ -1233,67 +1253,67 @@ export class RybColorPicker extends LitElement {
                   ></color-picker-ui-gamut>
                 </color-picker-ui-field>
 
-                <color-picker-ui-field label="BG color" slot="bg-color">
-                  <color-picker-ui-input
-                    value=${this.backgroundColor}
-                    @update:value=${this.#handleBackgroundColorChange}
-                  ></color-picker-ui-input>
-                </color-picker-ui-field>
+                <div class="settings-group columns-3">
+                  <color-picker-ui-field label="BG color">
+                    <color-picker-ui-input
+                      value=${this.backgroundColor}
+                      @update:value=${this.#handleBackgroundColorChange}
+                    ></color-picker-ui-input>
+                  </color-picker-ui-field>
 
-                <color-picker-ui-field label="Distortion" slot="distortion">
-                  <color-picker-ui-stepper-input
-                    value=${this.distortion}
-                    label="Distortion"
-                    min="0"
-                    max="8"
-                    @update:value=${this.#handleDistortionChange}
-                  ></color-picker-ui-stepper-input>
-                </color-picker-ui-field>
+                  <color-picker-ui-field label="Distortion">
+                    <color-picker-ui-stepper-input
+                      value=${this.distortion}
+                      label="Distortion"
+                      min="0"
+                      max="8"
+                      @update:value=${this.#handleDistortionChange}
+                    ></color-picker-ui-stepper-input>
+                  </color-picker-ui-field>
 
-                <color-picker-ui-field label="Format" slot="color-format">
-                  <color-picker-ui-selector
-                    value=${this.displayFormat}
-                    .options=${this.displayFormatOptions}
-                    nocontrols
-                    @update:value=${this.#handleDisplayFormatChange}
-                  ></color-picker-ui-selector>
-                </color-picker-ui-field>
+                  <color-picker-ui-field label="Format">
+                    <color-picker-ui-selector
+                      value=${this.displayFormat}
+                      .options=${this.displayFormatOptions}
+                      nocontrols
+                      @update:value=${this.#handleDisplayFormatChange}
+                    ></color-picker-ui-selector>
+                  </color-picker-ui-field>
+                </div>
 
-                <color-picker-ui-field label="Diameter" slot="diameter">
-                  <color-picker-ui-stepper-input
-                    value=${this.diameter}
-                    label="Diameter"
-                    min="128"
-                    max="512"
-                    @update:value=${this.#handleDiameterChange}
-                  ></color-picker-ui-stepper-input>
-                </color-picker-ui-field>
+                <div class="settings-group columns-3">
+                  <color-picker-ui-field label="Diameter">
+                    <color-picker-ui-stepper-input
+                      value=${this.diameter}
+                      label="Diameter"
+                      min="128"
+                      max="512"
+                      @update:value=${this.#handleDiameterChange}
+                    ></color-picker-ui-stepper-input>
+                  </color-picker-ui-field>
 
-                <color-picker-ui-field label="Gap" slot="gap">
-                  <color-picker-ui-stepper-input
-                    value=${this.gap}
-                    label="Gap"
-                    min="0"
-                    max="4"
-                    @update:value=${this.#handleGapChange}
-                  ></color-picker-ui-stepper-input>
-                </color-picker-ui-field>
+                  <color-picker-ui-field label="Gap">
+                    <color-picker-ui-stepper-input
+                      value=${this.gap}
+                      label="Gap"
+                      min="0"
+                      max="4"
+                      @update:value=${this.#handleGapChange}
+                    ></color-picker-ui-stepper-input>
+                  </color-picker-ui-field>
 
-                <color-picker-ui-field label="Swatch gap" slot="swatch-gap">
-                  <color-picker-ui-stepper-input
-                    value=${this.swatchGap}
-                    label="Swatch gap"
-                    min="0"
-                    max="24"
-                    @update:value=${this.#handleSwatchGapChange}
-                  ></color-picker-ui-stepper-input>
-                </color-picker-ui-field>
+                  <color-picker-ui-field label="Swatch gap">
+                    <color-picker-ui-stepper-input
+                      value=${this.swatchGap}
+                      label="Swatch gap"
+                      min="0"
+                      max="24"
+                      @update:value=${this.#handleSwatchGapChange}
+                    ></color-picker-ui-stepper-input>
+                  </color-picker-ui-field>
+                </div>
 
-                <color-picker-ui-field
-                  slot="segments"
-                  class="segments"
-                  label="Segments"
-                >
+                <color-picker-ui-field class="segments" label="Segments">
                   <color-picker-ui-field label="Hue">
                     <color-picker-ui-stepper-input
                       value=${this.segmentsHue}
@@ -1323,11 +1343,7 @@ export class RybColorPicker extends LitElement {
                   </color-picker-ui-field>
                 </color-picker-ui-field>
 
-                <color-picker-ui-field
-                  slot="thickness"
-                  class="thickness"
-                  label="Thickness"
-                >
+                <color-picker-ui-field class="thickness" label="Thickness">
                   <color-picker-ui-field label="Hue">
                     <color-picker-ui-stepper-input
                       value=${this.thicknessHue}
@@ -1357,26 +1373,30 @@ export class RybColorPicker extends LitElement {
                   </color-picker-ui-field>
                 </color-picker-ui-field>
 
-                <div class="actions" slot="actions">
-                  <color-picker-ui-button
-                    ${ref(this.savePresetEl)}
-                    feedback
-                    @click=${this.preset
-                      ? this.#handleUpdatePreset
-                      : this.#handleSavePreset}
-                    >${this.preset
-                      ? 'Update Preset'
-                      : 'Save Preset'}</color-picker-ui-button
-                  >
-                  <color-picker-ui-button
-                    ${ref(this.deletePresetEl)}
-                    feedback
-                    ?disabled=${!this.preset}
-                    @click=${this.#handleDeletePreset}
-                    >Delete Preset</color-picker-ui-button
-                  >
+                <color-picker-ui-separator></color-picker-ui-separator>
+
+                <div class="actions">
+                  ${this.hasPresets
+                    ? html`<color-picker-ui-button
+                          ${ref(this.savePresetEl)}
+                          feedback
+                          @click=${this.preset
+                            ? this.#handleUpdatePreset
+                            : this.#handleSavePreset}
+                          >${this.preset
+                            ? 'Update Preset'
+                            : 'Save Preset'}</color-picker-ui-button
+                        >
+                        <color-picker-ui-button
+                          ${ref(this.deletePresetEl)}
+                          feedback
+                          ?disabled=${!this.preset}
+                          @click=${this.#handleDeletePreset}
+                          >Delete Preset</color-picker-ui-button
+                        >`
+                    : html``}
                   ${!this.noStore
-                    ? html` <color-picker-ui-icon-button
+                    ? html`<color-picker-ui-icon-button
                         ${ref(this.clearStoreEl)}
                         feedback
                         @click=${this.#handleClearStore}
@@ -1457,6 +1477,13 @@ export class RybColorPicker extends LitElement {
   static styles = css`
     :host {
       display: inline-flex;
+      box-sizing: border-box;
+
+      *,
+      *::after,
+      *::before {
+        box-sizing: inherit;
+      }
     }
 
     .body {
@@ -1487,24 +1514,33 @@ export class RybColorPicker extends LitElement {
       fill: black;
     }
 
+    .settings-group {
+      align-items: center;
+      display: flex;
+      gap: 0.25rem;
+      justify-content: stretch;
+
+      &.columns-3 {
+        > * {
+          flex: 1 1 calc(100% / 3);
+        }
+      }
+    }
+
     .segments {
       --direction: row;
 
-      justify-content: stretch;
-    }
-
-    .segments > * {
-      flex: 1 0 auto;
+      > * {
+        flex: 1 1 calc(100% / 3);
+      }
     }
 
     .thickness {
       --direction: row;
 
-      justify-content: stretch;
-    }
-
-    .thickness > * {
-      flex: 1 0 auto;
+      > * {
+        flex: 1 1 calc(100% / 3);
+      }
     }
 
     color-picker-settings {

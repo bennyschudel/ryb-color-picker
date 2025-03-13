@@ -12,6 +12,7 @@ export class ColorPickerUiGamutCube extends LitElement {
 
   static properties = {
     cube: { type: Array },
+    noModify: { type: Boolean },
   };
 
   constructor() {
@@ -60,6 +61,7 @@ export class ColorPickerUiGamutCube extends LitElement {
                 .value=${this.getCubeValue(0)}
                 data-index="0"
                 data-value=${this.getCubeValue(0)}
+                ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
               />
             </color-picker-ui-field>
@@ -68,6 +70,7 @@ export class ColorPickerUiGamutCube extends LitElement {
                 type="color"
                 .value=${this.getCubeValue(1)}
                 data-index="1"
+                ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
             /></color-picker-ui-field>
             <color-picker-ui-field label="Yellow">
@@ -75,6 +78,7 @@ export class ColorPickerUiGamutCube extends LitElement {
                 type="color"
                 .value=${this.getCubeValue(2)}
                 data-index="2"
+                ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
             /></color-picker-ui-field>
             <color-picker-ui-field label="Orange">
@@ -82,6 +86,7 @@ export class ColorPickerUiGamutCube extends LitElement {
                 type="color"
                 .value=${this.getCubeValue(3)}
                 data-index="3"
+                ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
               />
             </color-picker-ui-field>
@@ -92,6 +97,7 @@ export class ColorPickerUiGamutCube extends LitElement {
                 type="color"
                 .value=${this.getCubeValue(4)}
                 data-index="4"
+                ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
               />
             </color-picker-ui-field>
@@ -100,6 +106,7 @@ export class ColorPickerUiGamutCube extends LitElement {
                 type="color"
                 .value=${this.getCubeValue(5)}
                 data-index="5"
+                ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
               />
             </color-picker-ui-field>
@@ -108,6 +115,7 @@ export class ColorPickerUiGamutCube extends LitElement {
                 type="color"
                 .value=${this.getCubeValue(6)}
                 data-index="6"
+                ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
             /></color-picker-ui-field>
             <color-picker-ui-field label="Black">
@@ -115,6 +123,7 @@ export class ColorPickerUiGamutCube extends LitElement {
                 type="color"
                 .value=${this.getCubeValue(7)}
                 data-index="7"
+                ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
               />
             </color-picker-ui-field>

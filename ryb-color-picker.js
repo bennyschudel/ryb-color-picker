@@ -11,6 +11,7 @@ import { ColorPickerUiIconButton } from './src/ColorPickerUiIconButton.js';
 import { ColorPickerUiInput } from './src/ColorPickerUiInput.js';
 import { ColorPickerUiPrompt } from './src/ColorPickerUiPrompt.js';
 import { ColorPickerUiSelector } from './src/ColorPickerUiSelector.js';
+import { ColorPickerUiSeparator } from './src/ColorPickerUiSeparator.js';
 import { ColorPickerUiStepperInput } from './src/ColorPickerUiStepperInput.js';
 import { ColorPickerUiToolTip } from './src/ColorPickerUiToolTip.js';
 
@@ -33,6 +34,7 @@ window.customElements.define('color-picker-ui-icon-button', ColorPickerUiIconBut
 window.customElements.define('color-picker-ui-input', ColorPickerUiInput);
 window.customElements.define('color-picker-ui-prompt', ColorPickerUiPrompt);
 window.customElements.define('color-picker-ui-selector', ColorPickerUiSelector);
+window.customElements.define('color-picker-ui-separator', ColorPickerUiSeparator);
 window.customElements.define('color-picker-ui-stepper-input', ColorPickerUiStepperInput);
 window.customElements.define('color-picker-ui-tool-tip', ColorPickerUiToolTip);
 
