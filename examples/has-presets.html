@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>Has Presets</title>
+    <style>
+      body {
+        background: #fafafa;
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <ryb-color-swatch id="swatch"></ryb-color-swatch>
+    <ryb-color-picker
+      id="picker"
+      initialvalue="hotpink"
+      haspresets
+    ></ryb-color-picker>
+
+    <script type="module">
+      import { cubes } from '../ryb-color-picker.js';
+
+      const swatchEl = document.getElementById('swatch');
+      const pickerEl = document.getElementById('picker');
+
+      swatchEl.addEventListener('click', (event) => {
+        pickerEl.show = !pickerEl.show;
+      });
+
+      pickerEl.addEventListener('update:value', (event) => {
+        swatchEl.value = event.detail.value;
+      });
+
+      const presets = Array.from(cubes, ([id, d]) => [
+        id,
+        d.title,
+        d.cube,
+      ]);
+
+      pickerEl.loadGamutPresets(presets, 'munsell');
+    </script>
+  </body>
+</html>

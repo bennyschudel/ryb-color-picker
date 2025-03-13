@@ -17,9 +17,10 @@ export class ColorPickerUiGamut extends LitElement {
     dialog: { type: Function },
 
     // ---
-    presets: { type: Array },
-    preset: { type: String },
     cube: { type: Array },
+    noModify: { type: Boolean },
+    preset: { type: String },
+    presets: { type: Array },
   };
 
   constructor() {
@@ -33,7 +34,9 @@ export class ColorPickerUiGamut extends LitElement {
   // --- getters ---
 
   get presetsOptions() {
-    return [['', '[ New Gamut ]']].concat(
+    const options = this.noModify ? [] : [['', '[ New Gamut ]']];
+
+    return options.concat(
       this.presets.map((d) => [d[0], d[1]]),
     );
   }
@@ -61,6 +64,8 @@ export class ColorPickerUiGamut extends LitElement {
   }
 
   #handleUpdatePreset() {
+    if (this.noModify) return;
+
     const presets = window.structuredClone(this.presets);
     const cube = window.structuredClone(this.cube);
 
@@ -76,6 +81,8 @@ export class ColorPickerUiGamut extends LitElement {
   }
 
   async #handleSavePreset() {
+    if (this.noModify) return;
+
     let title = '';
 
     try {
@@ -116,12 +123,16 @@ export class ColorPickerUiGamut extends LitElement {
   }
 
   #handleResetPreset() {
+    if (this.noModify) return;
+
     this.#assignPreset();
 
     this.resetPresetEl.value.showFeedBack('Resetted');
   }
 
   async #handleDeletePreset() {
+    if (this.noModify) return;
+
     try {
       await this.dialog('confirm', 'Are you sure to delete this gamut-preset?');
     } catch (error) {
@@ -185,39 +196,45 @@ export class ColorPickerUiGamut extends LitElement {
           .options=${this.presetsOptions}
           @update:value=${this.#handlePresetChange}
         ></color-picker-ui-selector>
-        <div class="separator"></div>
+
+        <color-picker-ui-separator></color-picker-ui-separator>
+
         <color-picker-ui-gamut-cube
           ${ref(this.cubeEl)}
           .cube=${this.cube}
+          ?nomodify=${this.noModify}
           @update:cube=${this.#handleCubeChange}
         >
         </color-picker-ui-gamut-cube>
-        <div class="separator"></div>
-        <div class="actions">
-          <color-picker-ui-button
-            ${ref(this.savePresetEl)}
-            feedback
-            ?disabled=${!this.isModified}
-            @click=${this.preset
-              ? this.#handleUpdatePreset
-              : this.#handleSavePreset}
-            >${this.preset ? 'Update Preset' : 'Save Preset'}
-          </color-picker-ui-button>
-          <color-picker-ui-button
-            ${ref(this.resetPresetEl)}
-            feedback
-            ?disabled=${!this.preset || !this.isModified}
-            @click=${this.#handleResetPreset}
-            >Reset Preset</color-picker-ui-button
-          >
-          <color-picker-ui-button
-            ${ref(this.deletePresetEl)}
-            feedback
-            ?disabled=${!this.preset}
-            @click=${this.#handleDeletePreset}
-            >Delete Preset</color-picker-ui-button
-          >
-        </div>
+
+        ${!this.noModify
+          ? html`<color-picker-ui-separator></color-picker-ui-separator>
+              <div class="actions">
+                <color-picker-ui-button
+                  ${ref(this.savePresetEl)}
+                  feedback
+                  ?disabled=${!this.isModified}
+                  @click=${this.preset
+                    ? this.#handleUpdatePreset
+                    : this.#handleSavePreset}
+                  >${this.preset ? 'Update Preset' : 'Save Preset'}
+                </color-picker-ui-button>
+                <color-picker-ui-button
+                  ${ref(this.resetPresetEl)}
+                  feedback
+                  ?disabled=${!this.preset || !this.isModified}
+                  @click=${this.#handleResetPreset}
+                  >Reset Preset</color-picker-ui-button
+                >
+                <color-picker-ui-button
+                  ${ref(this.deletePresetEl)}
+                  feedback
+                  ?disabled=${!this.preset}
+                  @click=${this.#handleDeletePreset}
+                  >Delete Preset</color-picker-ui-button
+                >
+              </div>`
+          : html``}
       </div>
     `;
   }
@@ -229,23 +246,18 @@ export class ColorPickerUiGamut extends LitElement {
     .body {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.25rem;
     }
 
-    .separator {
-      border-color: #808080 transparent #b0b0b0 transparent;
-      border-style: solid;
-      border-width: 1px 0 1px 0;
-      height: 0;
-      margin: 0.25rem 0.5rem;
-      width: calc(100% - 1rem);
+    color-picker-ui-separator {
+      --margin: 0.25rem;
     }
 
     .actions {
       display: flex;
       gap: 0.25rem;
       justify-content: center;
-      width: 100%;
+      margin-bottom: 0.5rem;
     }
   `;
 }

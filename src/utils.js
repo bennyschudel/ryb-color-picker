@@ -85,3 +85,13 @@ export async function copyToClipboard(value) {
 export function arrayEquals(a, b) {
   return JSON.stringify(a) === JSON.stringify(b);
 }
+
+export function pick(obj, keys) {
+  const result = {};
+
+  for (const key of keys) {
+    result[key] = obj[key];
+  }
+
+  return result;
+}

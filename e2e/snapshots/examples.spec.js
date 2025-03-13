@@ -5,6 +5,7 @@ const examples = [
   'custom-gamut-cube',
   'custom-size',
   'full-size',
+  'has-presets',
   'load-gamuts',
   'load-presets',
   'load-settings',
