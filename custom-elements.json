@@ -31,11 +31,19 @@
       "declarations": [],
       "exports": [
         {
-          "kind": "custom-element-definition",
-          "name": "color-picker-settings",
+          "kind": "js",
+          "name": "cubes",
           "declaration": {
-            "name": "ColorPickerSettings",
-            "module": "/src/ColorPickerSettings.js"
+            "name": "cubes",
+            "package": "rybitten/cubes"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-alert",
+          "declaration": {
+            "name": "ColorPickerUiAlert",
+            "module": "/src/ColorPickerUiAlert.js"
           }
         },
         {
@@ -44,6 +52,14 @@
           "declaration": {
             "name": "ColorPickerUiButton",
             "module": "/src/ColorPickerUiButton.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-confirm",
+          "declaration": {
+            "name": "ColorPickerUiConfirm",
+            "module": "/src/ColorPickerUiConfirm.js"
           }
         },
         {
@@ -96,10 +112,26 @@
         },
         {
           "kind": "custom-element-definition",
+          "name": "color-picker-ui-prompt",
+          "declaration": {
+            "name": "ColorPickerUiPrompt",
+            "module": "/src/ColorPickerUiPrompt.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
           "name": "color-picker-ui-selector",
           "declaration": {
             "name": "ColorPickerUiSelector",
             "module": "/src/ColorPickerUiSelector.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-separator",
+          "declaration": {
+            "name": "ColorPickerUiSeparator",
+            "module": "/src/ColorPickerUiSeparator.js"
           }
         },
         {
@@ -116,6 +148,14 @@
           "declaration": {
             "name": "ColorPickerUiToolTip",
             "module": "/src/ColorPickerUiToolTip.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-settings",
+          "declaration": {
+            "name": "ColorPickerSettings",
+            "module": "/src/ColorPickerSettings.js"
           }
         },
         {
@@ -149,25 +189,57 @@
       "path": "dist/ryb-color-picker.min.js",
       "declarations": [
         {
+          "kind": "variable",
+          "name": "B",
+          "default": "new Map()"
+        },
+        {
           "kind": "class",
           "description": "",
-          "name": "Be",
-          "members": [],
+          "name": "Ye",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "_handleKeyUp"
+            }
+          ],
           "superclass": {
-            "name": "tt",
-            "module": "/dist/vendors.min.js"
+            "name": "q",
+            "package": "lit"
           },
-          "tagName": "color-picker-settings",
+          "tagName": "color-picker-ui-alert",
           "customElement": true
         },
         {
           "kind": "class",
           "description": "",
-          "name": "ze",
-          "members": [],
+          "name": "We",
+          "members": [
+            {
+              "kind": "method",
+              "name": "showFeedBack",
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "name": "i",
+                  "default": "1e3"
+                }
+              ]
+            }
+          ],
           "superclass": {
-            "name": "tt",
-            "module": "/dist/vendors.min.js"
+            "name": "q",
+            "package": "lit"
           },
           "tagName": "color-picker-ui-button",
           "customElement": true
@@ -175,11 +247,36 @@
         {
           "kind": "class",
           "description": "",
-          "name": "Oe",
+          "name": "Ze",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "_handleKeyUp"
+            }
+          ],
+          "superclass": {
+            "name": "q",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-confirm",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "en",
           "members": [],
           "superclass": {
-            "name": "tt",
-            "module": "/dist/vendors.min.js"
+            "name": "q",
+            "package": "lit"
           },
           "tagName": "color-picker-ui-field",
           "customElement": true
@@ -187,11 +284,16 @@
         {
           "kind": "class",
           "description": "",
-          "name": "qe",
+          "name": "rn",
           "members": [
             {
               "kind": "field",
               "name": "presetsOptions",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "isModified",
               "readonly": true
             },
             {
@@ -204,16 +306,12 @@
             },
             {
               "kind": "field",
-              "name": "cube",
-              "type": {
-                "text": "array"
-              },
-              "default": "[ [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1] ]"
+              "name": "cube"
             }
           ],
           "superclass": {
-            "name": "tt",
-            "module": "/dist/vendors.min.js"
+            "name": "q",
+            "package": "lit"
           },
           "tagName": "color-picker-ui-gamut",
           "customElement": true
@@ -221,14 +319,14 @@
         {
           "kind": "class",
           "description": "",
-          "name": "Ye",
+          "name": "bn",
           "members": [
             {
               "kind": "method",
               "name": "getCubeValue",
               "parameters": [
                 {
-                  "name": "n"
+                  "name": "e"
                 }
               ]
             },
@@ -237,22 +335,18 @@
               "name": "handleColorInput",
               "parameters": [
                 {
-                  "name": "n"
+                  "name": "e"
                 }
               ]
             },
             {
               "kind": "field",
-              "name": "cube",
-              "type": {
-                "text": "array"
-              },
-              "default": "[ [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1] ]"
+              "name": "cube"
             }
           ],
           "superclass": {
-            "name": "tt",
-            "module": "/dist/vendors.min.js"
+            "name": "q",
+            "package": "lit"
           },
           "tagName": "color-picker-ui-gamut-cube",
           "customElement": true
@@ -260,11 +354,11 @@
         {
           "kind": "class",
           "description": "",
-          "name": "Xe",
+          "name": "wn",
           "members": [],
           "superclass": {
-            "name": "tt",
-            "module": "/dist/vendors.min.js"
+            "name": "q",
+            "package": "lit"
           },
           "tagName": "color-picker-ui-icon",
           "customElement": true
@@ -272,11 +366,25 @@
         {
           "kind": "class",
           "description": "",
-          "name": "Ke",
-          "members": [],
+          "name": "xn",
+          "members": [
+            {
+              "kind": "method",
+              "name": "showFeedBack",
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "name": "i",
+                  "default": "1e3"
+                }
+              ]
+            }
+          ],
           "superclass": {
-            "name": "tt",
-            "module": "/dist/vendors.min.js"
+            "name": "q",
+            "package": "lit"
           },
           "tagName": "color-picker-ui-icon-button",
           "customElement": true
@@ -284,21 +392,25 @@
         {
           "kind": "class",
           "description": "",
-          "name": "We",
+          "name": "kn",
           "members": [
             {
               "kind": "method",
               "name": "setValue",
               "parameters": [
                 {
-                  "name": "n"
+                  "name": "e"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "clear"
             }
           ],
           "superclass": {
-            "name": "tt",
-            "module": "/dist/vendors.min.js"
+            "name": "q",
+            "package": "lit"
           },
           "tagName": "color-picker-ui-input",
           "customElement": true
@@ -306,16 +418,61 @@
         {
           "kind": "class",
           "description": "",
-          "name": "Ze",
+          "name": "_n",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "_handleKeyUp"
+            }
+          ],
+          "superclass": {
+            "name": "q",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-prompt",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "En",
           "members": [
             {
               "kind": "field",
               "name": "count",
+              "description": "Gets the total number of available options",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "canCycle",
+              "description": "Determines if cycling through values is possible (requires more than 1 option)",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
               "readonly": true
             },
             {
@@ -323,17 +480,27 @@
               "name": "setValue",
               "parameters": [
                 {
-                  "name": "n"
+                  "name": "e"
+                },
+                {
+                  "description": "The new value to set",
+                  "name": "value",
+                  "type": {
+                    "text": "string"
+                  }
                 }
-              ]
+              ],
+              "description": "Sets the current value and emits an update event"
             },
             {
               "kind": "method",
-              "name": "nextValue"
+              "name": "nextValue",
+              "description": "Selects the next value in the options list, cycling to the first if at the end"
             },
             {
               "kind": "method",
-              "name": "previousValue"
+              "name": "previousValue",
+              "description": "Selects the previous value in the options list, cycling to the last if at the beginning"
             },
             {
               "kind": "field",
@@ -345,8 +512,8 @@
             }
           ],
           "superclass": {
-            "name": "tt",
-            "module": "/dist/vendors.min.js"
+            "name": "q",
+            "package": "lit"
           },
           "tagName": "color-picker-ui-selector",
           "customElement": true
@@ -354,16 +521,40 @@
         {
           "kind": "class",
           "description": "",
-          "name": "Je",
+          "name": "Sn",
+          "members": [],
+          "superclass": {
+            "name": "q",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-separator",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Mn",
           "members": [
             {
               "kind": "field",
               "name": "canMinus",
+              "description": "Determines if the current value can be decremented.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "canPlus",
+              "description": "Determines if the current value is less than the maximum allowed value.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
               "readonly": true
             },
             {
@@ -371,17 +562,27 @@
               "name": "setValue",
               "parameters": [
                 {
-                  "name": "n"
+                  "name": "e"
+                },
+                {
+                  "description": "The new value to set.",
+                  "name": "value",
+                  "type": {
+                    "text": "any"
+                  }
                 }
-              ]
+              ],
+              "description": "Sets the value by emitting a value update event."
             },
             {
               "kind": "method",
-              "name": "plus"
+              "name": "plus",
+              "description": "Increases the current value by 1."
             },
             {
               "kind": "method",
-              "name": "minus"
+              "name": "minus",
+              "description": "Decreases the current value by 1."
             },
             {
               "kind": "field",
@@ -393,8 +594,8 @@
             }
           ],
           "superclass": {
-            "name": "tt",
-            "module": "/dist/vendors.min.js"
+            "name": "q",
+            "package": "lit"
           },
           "tagName": "color-picker-ui-stepper-input",
           "customElement": true
@@ -402,11 +603,55 @@
         {
           "kind": "class",
           "description": "",
-          "name": "hn",
+          "name": "Pn",
+          "members": [
+            {
+              "kind": "field",
+              "name": "duration",
+              "type": {
+                "text": "number"
+              },
+              "default": "1e3"
+            }
+          ],
+          "superclass": {
+            "name": "q",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-tool-tip",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Nn",
           "members": [],
           "superclass": {
-            "name": "tt",
-            "module": "/dist/vendors.min.js"
+            "name": "q",
+            "package": "lit"
+          },
+          "tagName": "color-picker-settings",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Tn",
+          "members": [
+            {
+              "kind": "method",
+              "name": "copyToClipboard",
+              "description": "Copies the current color value to the clipboard.",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              }
+            }
+          ],
+          "superclass": {
+            "name": "q",
+            "package": "lit"
           },
           "tagName": "color-picker-value",
           "customElement": true
@@ -414,11 +659,11 @@
         {
           "kind": "class",
           "description": "",
-          "name": "fn",
+          "name": "Rn",
           "members": [],
           "superclass": {
-            "name": "tt",
-            "module": "/dist/vendors.min.js"
+            "name": "q",
+            "package": "lit"
           },
           "tagName": "ryb-color-swatch",
           "customElement": true
@@ -426,61 +671,116 @@
         {
           "kind": "class",
           "description": "",
-          "name": "dn",
+          "name": "In",
           "members": [
             {
               "kind": "field",
               "name": "radius",
+              "description": "Gets the radius of the color picker.",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "innerRadius",
+              "description": "Calculates the inner radius of the color picker.\nThe inner radius is determined by subtracting the thickness of the hue, saturation, and lightness rings,\nas well as the gaps between them, from the overall radius.",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "swatchRadius",
+              "description": "Gets the radius of the color swatch.",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "color",
+              "description": "Gets the current color in RGB format modified by the current gamut.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "colorCss",
+              "description": "Gets the CSS representation of the current color.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "isBusy",
+              "description": "Checks if the color picker is currently busy.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "displayFormatOptions",
+              "description": "Gets the display format options for the color picker.",
+              "return": {
+                "type": {
+                  "text": "Array<Array<string, string>>"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "width",
+              "description": "Gets the width of the color picker wheel including any padding.",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "height",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "viewBox",
+              "description": "Gets the height of the color picker wheel including any padding.",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "presetsOptions",
+              "description": "Gets the preset options for the color picker.",
+              "return": {
+                "type": {
+                  "text": "Array<Array<string, string>>"
+                }
+              },
               "readonly": true
             },
             {
@@ -488,135 +788,342 @@
               "name": "setValue",
               "parameters": [
                 {
-                  "name": "n"
+                  "name": "e"
+                },
+                {
+                  "description": "The color value to be set, in a format recognized by d3.color.",
+                  "name": "value",
+                  "type": {
+                    "text": "string"
+                  }
                 }
-              ]
+              ],
+              "description": "Sets the initial value of the color picker which is then converted to the current gamut."
             },
             {
               "kind": "method",
-              "name": "saveGamutPresetsToLocalStorage",
+              "name": "resetValue",
+              "description": "Resets the saturation to 100% and the lightness to 50%."
+            },
+            {
+              "kind": "method",
+              "name": "setCube",
               "parameters": [
                 {
-                  "name": "n"
+                  "name": "e"
+                },
+                {
+                  "description": "The cube object to be set.",
+                  "name": "cube",
+                  "type": {
+                    "text": "number[][]"
+                  }
                 }
-              ]
+              ],
+              "description": "Sets the gamut cube."
             },
             {
               "kind": "method",
-              "name": "loadGamutPresetsFromLocalStorage"
+              "name": "init",
+              "description": "Initializes the component if the noinit property is used."
+            },
+            {
+              "kind": "method",
+              "name": "copyToClipboard",
+              "description": "Copies the current color value to the clipboard.",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              }
             },
             {
               "kind": "method",
               "name": "loadGamutPresets",
               "parameters": [
                 {
-                  "name": "n"
+                  "name": "e"
+                },
+                {
+                  "name": "i"
+                },
+                {
+                  "description": "An array of gamut presets to load.",
+                  "name": "presets",
+                  "type": {
+                    "text": "Array<Preset>"
+                  }
+                },
+                {
+                  "description": "The ID of the preset to set as the current preset. If not provided, no preset will be set.",
+                  "name": "presetId",
+                  "optional": true,
+                  "type": {
+                    "text": "string"
+                  }
                 }
-              ]
+              ],
+              "description": "Loads the gamut presets and optionally sets the current preset."
             },
             {
               "kind": "method",
               "name": "cycleGamutPreset",
               "parameters": [
                 {
-                  "name": "n",
+                  "name": "e",
                   "default": "!1"
+                },
+                {
+                  "description": "If true, cycles backwards through the gamut presets.",
+                  "name": "backwards",
+                  "optional": true,
+                  "type": {
+                    "text": "boolean"
+                  }
                 }
-              ]
+              ],
+              "description": "Cycles through the gamut presets in the color picker."
             },
             {
               "kind": "method",
-              "name": "loadPresetsFromLocalStorage"
-            },
-            {
-              "kind": "method",
-              "name": "savePresetsToLocalStorage",
+              "name": "loadPresets",
               "parameters": [
                 {
-                  "name": "n"
+                  "name": "e"
+                },
+                {
+                  "name": "i"
+                },
+                {
+                  "description": "An array of preset configurations.",
+                  "name": "presets",
+                  "type": {
+                    "text": "Array<Preset>"
+                  }
+                },
+                {
+                  "description": "The ID of the preset to load.",
+                  "name": "presetId",
+                  "optional": true,
+                  "type": {
+                    "text": "string"
+                  }
                 }
-              ]
+              ],
+              "description": "Loads the presets and applies the settings of the specified preset."
+            },
+            {
+              "kind": "method",
+              "name": "cyclePreset",
+              "parameters": [
+                {
+                  "name": "e",
+                  "default": "!1"
+                },
+                {
+                  "description": "If true, cycles backwards through the presets.",
+                  "name": "backwards",
+                  "optional": true,
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "Cycles through the available presets.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "cycleFormat",
+              "parameters": [
+                {
+                  "name": "e",
+                  "default": "!1"
+                },
+                {
+                  "description": "If true, cycles backwards through the display formats.",
+                  "name": "backwards",
+                  "optional": true,
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "Cycles through the available display formats and updates the current display format."
             },
             {
               "kind": "method",
               "name": "refresh",
               "parameters": [
                 {
-                  "name": "n",
+                  "name": "e",
                   "default": "this.animationDuration"
+                },
+                {
+                  "description": "The duration of the animation in milliseconds.",
+                  "name": "duration",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
                 }
-              ]
+              ],
+              "description": "Refreshes the color wheel with the specified animation duration."
             },
             {
               "kind": "method",
               "name": "focus",
               "parameters": [
                 {
-                  "name": "n"
+                  "name": "e"
                 },
                 {
                   "name": "i",
                   "default": "this.animationDuration"
+                },
+                {
+                  "description": "The angle to focus on.",
+                  "name": "angle",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "description": "The duration of the animation in milliseconds. Defaults to the instance's animation duration.",
+                  "name": "duration",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
                 }
-              ]
+              ],
+              "description": "Focuses on a specific angle with an optional animation duration."
             },
             {
               "kind": "method",
               "name": "blur",
               "parameters": [
                 {
-                  "name": "n",
+                  "name": "e",
                   "default": "this.animationDuration"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "showSettings",
-              "parameters": [
-                {
-                  "name": "n",
-                  "default": "!0"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "saveSettings",
-              "parameters": [
-                {
-                  "name": "n"
                 },
                 {
-                  "name": "i"
+                  "description": "The duration of the blur effect in milliseconds.",
+                  "name": "duration",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
                 }
-              ]
+              ],
+              "description": "Removes a focus effect with the specified duration."
             },
             {
               "kind": "method",
               "name": "loadSettings",
               "parameters": [
                 {
-                  "name": "n"
+                  "name": "e"
+                },
+                {
+                  "description": "The settings to load.",
+                  "name": "settings",
+                  "type": {
+                    "text": "Partial<Settings>"
+                  }
                 }
-              ]
+              ],
+              "description": "Loads and applies the provided settings."
             },
             {
               "kind": "method",
-              "name": "deleteSettings",
-              "parameters": [
-                {
-                  "name": "n"
+              "name": "getSettings",
+              "description": "Retrieves the current settings..",
+              "return": {
+                "type": {
+                  "text": "Settings"
                 }
-              ]
+              }
             },
             {
-              "kind": "field",
-              "name": "_init",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "!1"
+              "kind": "method",
+              "name": "savePreset",
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "name": "i"
+                },
+                {
+                  "description": "The unique identifier for the preset.",
+                  "name": "id",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "description": "The title of the preset.",
+                  "name": "title",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Saves a color preset with the given id and title.\nIf a preset with the same id already exists, it updates the preset.\nOtherwise, it adds a new preset."
+            },
+            {
+              "kind": "method",
+              "name": "loadPreset",
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "description": "The ID of the preset to load.",
+                  "name": "id",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Loads a preset by its ID and applies its settings.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "deletePreset",
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "description": "The ID of the preset to delete.",
+                  "name": "id",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Deletes a preset by ID from the presets list."
+            },
+            {
+              "kind": "method",
+              "name": "clearStore",
+              "description": "Clears the stored configuration, gamut presets, and presets from the local storage."
+            },
+            {
+              "kind": "method",
+              "name": "reset",
+              "description": "Resets the color picker to its default state.\n\nThis method clears the current preset, resets the color cube to its default state,\nand loads the initial settings."
             },
             {
               "kind": "field",
@@ -624,7 +1131,75 @@
               "type": {
                 "text": "array"
               },
-              "default": "[97.5, 1, 0.5]"
+              "default": "[0, 0, 0]"
+            },
+            {
+              "kind": "field",
+              "name": "_dialogs",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "_initialSettings",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "ready",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "hasPresets",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "noInit",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "noSettings",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "noStore",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "noValue",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "cube"
             },
             {
               "kind": "field",
@@ -652,11 +1227,35 @@
             },
             {
               "kind": "field",
+              "name": "showSettings",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "showValue",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!0"
+            },
+            {
+              "kind": "field",
+              "name": "initialValue",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"hotpink\""
+            },
+            {
+              "kind": "field",
               "name": "value",
               "type": {
                 "text": "string"
               },
-              "default": "\"#f8c120\""
+              "default": "\"\""
             },
             {
               "kind": "field",
@@ -676,6 +1275,22 @@
             },
             {
               "kind": "field",
+              "name": "diameter",
+              "type": {
+                "text": "number"
+              },
+              "default": "320"
+            },
+            {
+              "kind": "field",
+              "name": "displayFormat",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"hex\""
+            },
+            {
+              "kind": "field",
               "name": "distortion",
               "type": {
                 "text": "number"
@@ -692,27 +1307,19 @@
             },
             {
               "kind": "field",
-              "name": "swatchGap",
-              "type": {
-                "text": "number"
-              },
-              "default": "8"
-            },
-            {
-              "kind": "field",
-              "name": "diameter",
-              "type": {
-                "text": "number"
-              },
-              "default": "320"
-            },
-            {
-              "kind": "field",
               "name": "padding",
               "type": {
                 "text": "number"
               },
               "default": "30"
+            },
+            {
+              "kind": "field",
+              "name": "swatchGap",
+              "type": {
+                "text": "number"
+              },
+              "default": "8"
             },
             {
               "kind": "field",
@@ -764,14 +1371,6 @@
             },
             {
               "kind": "field",
-              "name": "displayFormat",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"hex\""
-            },
-            {
-              "kind": "field",
               "name": "preset",
               "type": {
                 "text": "string"
@@ -784,28 +1383,36 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"itten\""
+              "default": "\"\""
             },
             {
               "kind": "field",
-              "name": "localStoragePresetsKey",
+              "name": "storeConfigKey",
               "type": {
                 "text": "string"
               },
-              "default": "\"radial-color-picker--presets\""
+              "default": "\"ryb-color-picker/{id}/config\""
             },
             {
               "kind": "field",
-              "name": "localStorageGamutPresetsKey",
+              "name": "storePresetsKey",
               "type": {
                 "text": "string"
               },
-              "default": "\"radial-color-picker--gamut-presets\""
+              "default": "\"ryb-color-picker/{id}/presets\""
+            },
+            {
+              "kind": "field",
+              "name": "storeGamutPresetsKey",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"ryb-color-picker/{id}/gamut-presets\""
             }
           ],
           "superclass": {
-            "name": "tt",
-            "module": "/dist/vendors.min.js"
+            "name": "q",
+            "package": "lit"
           },
           "tagName": "ryb-color-picker",
           "customElement": true
@@ -814,39 +1421,7 @@
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "color-picker-settings",
-          "declaration": {
-            "name": "Be",
-            "module": "dist/ryb-color-picker.min.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-button",
-          "declaration": {
-            "name": "ze",
-            "module": "dist/ryb-color-picker.min.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-field",
-          "declaration": {
-            "name": "Oe",
-            "module": "dist/ryb-color-picker.min.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-gamut",
-          "declaration": {
-            "name": "qe",
-            "module": "dist/ryb-color-picker.min.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-gamut-cube",
+          "name": "color-picker-ui-alert",
           "declaration": {
             "name": "Ye",
             "module": "dist/ryb-color-picker.min.js"
@@ -854,23 +1429,7 @@
         },
         {
           "kind": "custom-element-definition",
-          "name": "color-picker-ui-icon",
-          "declaration": {
-            "name": "Xe",
-            "module": "dist/ryb-color-picker.min.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-icon-button",
-          "declaration": {
-            "name": "Ke",
-            "module": "dist/ryb-color-picker.min.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-input",
+          "name": "color-picker-ui-button",
           "declaration": {
             "name": "We",
             "module": "dist/ryb-color-picker.min.js"
@@ -878,7 +1437,7 @@
         },
         {
           "kind": "custom-element-definition",
-          "name": "color-picker-ui-selector",
+          "name": "color-picker-ui-confirm",
           "declaration": {
             "name": "Ze",
             "module": "dist/ryb-color-picker.min.js"
@@ -886,9 +1445,97 @@
         },
         {
           "kind": "custom-element-definition",
+          "name": "color-picker-ui-field",
+          "declaration": {
+            "name": "en",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-gamut",
+          "declaration": {
+            "name": "rn",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-gamut-cube",
+          "declaration": {
+            "name": "bn",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-icon",
+          "declaration": {
+            "name": "wn",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-icon-button",
+          "declaration": {
+            "name": "xn",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-input",
+          "declaration": {
+            "name": "kn",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-prompt",
+          "declaration": {
+            "name": "_n",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-selector",
+          "declaration": {
+            "name": "En",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-separator",
+          "declaration": {
+            "name": "Sn",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
           "name": "color-picker-ui-stepper-input",
           "declaration": {
-            "name": "Je",
+            "name": "Mn",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-tool-tip",
+          "declaration": {
+            "name": "Pn",
+            "module": "dist/ryb-color-picker.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-settings",
+          "declaration": {
+            "name": "Nn",
             "module": "dist/ryb-color-picker.min.js"
           }
         },
@@ -896,7 +1543,7 @@
           "kind": "custom-element-definition",
           "name": "color-picker-value",
           "declaration": {
-            "name": "hn",
+            "name": "Tn",
             "module": "dist/ryb-color-picker.min.js"
           }
         },
@@ -904,7 +1551,7 @@
           "kind": "custom-element-definition",
           "name": "ryb-color-swatch",
           "declaration": {
-            "name": "fn",
+            "name": "Rn",
             "module": "dist/ryb-color-picker.min.js"
           }
         },
@@ -912,195 +1559,16 @@
           "kind": "custom-element-definition",
           "name": "ryb-color-picker",
           "declaration": {
-            "name": "dn",
+            "name": "In",
             "module": "dist/ryb-color-picker.min.js"
           }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/vendors.min.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "h5"
-        },
-        {
-          "kind": "variable",
-          "name": "r"
-        },
-        {
-          "kind": "variable",
-          "name": "Z",
-          "type": {
-            "text": "object"
-          },
-          "default": "{ attribute: !0, type: String, converter: J, reflect: !1, hasChanged: oe }"
-        },
-        {
-          "kind": "variable",
-          "name": "x"
-        },
-        {
-          "kind": "variable",
-          "name": "B",
-          "default": "`[ \\f\\r]`"
-        },
-        {
-          "kind": "variable",
-          "name": "E",
-          "default": "/<(?:(!--|\\/[^a-zA-Z])|(\\/?[a-zA-Z][^>\\s]*)|(\\/?$))/g"
-        },
-        {
-          "kind": "variable",
-          "name": "c5"
-        },
-        {
-          "kind": "variable",
-          "name": "v"
-        },
-        {
-          "kind": "variable",
-          "name": "d"
-        },
-        {
-          "kind": "class",
-          "description": "",
-          "name": "M",
-          "members": [
-            {
-              "kind": "method",
-              "name": "createElement",
-              "static": true,
-              "parameters": [
-                {
-                  "name": "e"
-                },
-                {
-                  "name": "t"
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "parts",
-              "type": {
-                "text": "array"
-              },
-              "default": "[]"
-            }
-          ]
-        },
-        {
-          "kind": "variable",
-          "name": "T"
-        },
-        {
-          "kind": "variable",
-          "name": "d5",
-          "type": {
-            "text": "object"
-          },
-          "default": "{ I: N }"
-        },
-        {
-          "kind": "function",
-          "name": "He",
-          "parameters": [
-            {
-              "name": "i"
-            },
-            {
-              "name": "e"
-            },
-            {
-              "name": "t"
-            }
-          ]
-        },
-        {
-          "kind": "variable",
-          "name": "U",
-          "default": "class extends b { constructor() { super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0; } createRenderRoot() { var t; const e = super.createRenderRoot(); return (t = this.renderOptions).renderBefore ?? (t.renderBefore = e.firstChild), e; } update(e) { const t = this.render(); this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(e), this._$Do = He(t, this.renderRoot, this.renderOptions); } connectedCallback() { var e; super.connectedCallback(), (e = this._$Do) == null || e.setConnected(!0); } disconnectedCallback() { var e; super.disconnectedCallback(), (e = this._$Do) == null || e.setConnected(!1); } render() { return v; } }"
-        },
-        {
-          "kind": "function",
-          "name": "f5",
-          "parameters": [
-            {
-              "name": "i"
-            },
-            {
-              "name": "{\n  cube: e = F,\n  easingFn: t = pe,\n  invertLightness: s = !0\n}",
-              "default": "{}"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "B",
-          "declaration": {
-            "name": "He",
-            "module": "dist/vendors.min.js"
-          }
         },
         {
           "kind": "js",
-          "name": "E",
+          "name": "cubes",
           "declaration": {
-            "name": "d",
-            "module": "dist/vendors.min.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "M",
-          "declaration": {
-            "name": "f5",
-            "module": "dist/vendors.min.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "T",
-          "declaration": {
-            "name": "v",
-            "module": "dist/vendors.min.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Z",
-          "declaration": {
-            "name": "d5",
-            "module": "dist/vendors.min.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "i",
-          "declaration": {
-            "name": "h5",
-            "module": "dist/vendors.min.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "r",
-          "declaration": {
-            "name": "U",
-            "module": "dist/vendors.min.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "x",
-          "declaration": {
-            "name": "c5",
-            "module": "dist/vendors.min.js"
+            "name": "B",
+            "module": "dist/ryb-color-picker.min.js"
           }
         }
       ]
@@ -1111,7 +1579,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A custom element representing a settings element.",
           "name": "ColorPickerSettings",
           "members": [
             {
@@ -1140,11 +1608,105 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/ColorPickerUiAlert.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A custom element that provides an alert dialog.",
+          "name": "ColorPickerUiAlert",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "field",
+              "name": "inputEl"
+            },
+            {
+              "kind": "method",
+              "name": "#handleKeyUp",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleOkClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#onOk",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The text to display in the dialog.",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "_handleKeyUp"
+            }
+          ],
+          "events": [
+            {
+              "description": "Dispatched when the user clicks the \"Ok\" button or presses the \"Enter\" key.",
+              "name": "ok"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The text to display in the dialog.",
+              "fieldName": "text"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-alert",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiAlert",
+          "declaration": {
+            "name": "ColorPickerUiAlert",
+            "module": "src/ColorPickerUiAlert.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/ColorPickerUiButton.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A custom element representing a button.",
           "name": "ColorPickerUiButton",
           "members": [
             {
@@ -1175,6 +1737,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Reflects the disabled state of the button.",
               "attribute": "disabled",
               "reflects": true
             },
@@ -1185,6 +1748,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Enables or disables feedback functionality.",
               "attribute": "feedback"
             }
           ],
@@ -1194,6 +1758,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Reflects the disabled state of the button.",
               "fieldName": "disabled"
             },
             {
@@ -1201,6 +1766,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Enables or disables feedback functionality.",
               "fieldName": "feedback"
             }
           ],
@@ -1225,11 +1791,120 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/ColorPickerUiConfirm.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A custom element that provides a confirm dialog.",
+          "name": "ColorPickerUiConfirm",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "method",
+              "name": "#handleKeyUp",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleCancelClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleContinueClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#onContinue",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#onCancel",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The text to display in the dialog.",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "_handleKeyUp"
+            }
+          ],
+          "events": [
+            {
+              "description": "Dispatched when the user clicks the \"Continue\" button or presses the \"Enter\" key.",
+              "name": "continue"
+            },
+            {
+              "description": "Dispatched when the user clicks the \"Cancel\" button or presses the \"Escape\" key.",
+              "name": "cancel"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The text to display in the dialog.",
+              "fieldName": "text"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-confirm",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiConfirm",
+          "declaration": {
+            "name": "ColorPickerUiConfirm",
+            "module": "src/ColorPickerUiConfirm.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/ColorPickerUiField.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A custom element that provides a form field.",
           "name": "ColorPickerUiField",
           "members": [
             {
@@ -1280,7 +1955,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A custom element that provides a UI for selecting color gamut.",
           "name": "ColorPickerUiGamut",
           "members": [
             {
@@ -1306,6 +1981,11 @@
             {
               "kind": "field",
               "name": "presetsOptions",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "isModified",
               "readonly": true
             },
             {
@@ -1388,54 +2068,96 @@
               "name": "preset",
               "privacy": "public",
               "type": {
-                "text": "string"
+                "text": "preset"
               },
               "default": "''",
+              "description": "An ID representing the current gamut preset.",
               "attribute": "preset"
             },
             {
               "kind": "field",
+              "name": "presets",
+              "privacy": "public",
+              "type": {
+                "text": "Array<Array<string, string>>"
+              },
+              "default": "[]",
+              "description": "An array containing available presets.",
+              "attribute": "presets"
+            },
+            {
+              "kind": "field",
+              "name": "noModify",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "A flag indicating whether the color inputs are disabled.",
+              "attribute": "noModify"
+            },
+            {
+              "kind": "field",
               "name": "cube",
               "privacy": "public",
               "type": {
-                "text": "array"
+                "text": "Array"
               },
-              "default": "[ [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], ]",
+              "description": "The array representing the color cube.",
               "attribute": "cube"
             },
             {
               "kind": "field",
-              "name": "presets",
+              "name": "dialog",
               "privacy": "public",
               "type": {
-                "text": "array"
+                "text": "function"
               },
-              "attribute": "presets"
+              "attribute": "dialog"
             }
           ],
           "attributes": [
             {
-              "name": "presets",
+              "name": "dialog",
               "type": {
-                "text": "array"
+                "text": "function"
               },
-              "fieldName": "presets"
-            },
-            {
-              "name": "preset",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "preset"
+              "fieldName": "dialog"
             },
             {
               "name": "cube",
               "type": {
-                "text": "array"
+                "text": "Array"
               },
-              "default": "[ [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], ]",
+              "description": "The array representing the color cube.",
               "fieldName": "cube"
+            },
+            {
+              "name": "noModify",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "A flag indicating whether the color inputs are disabled.",
+              "fieldName": "noModify"
+            },
+            {
+              "name": "preset",
+              "type": {
+                "text": "preset"
+              },
+              "default": "''",
+              "description": "An ID representing the current gamut preset.",
+              "fieldName": "preset"
+            },
+            {
+              "name": "presets",
+              "type": {
+                "text": "Array<Array<string, string>>"
+              },
+              "default": "[]",
+              "description": "An array containing available presets.",
+              "fieldName": "presets"
             }
           ],
           "superclass": {
@@ -1463,7 +2185,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A custom element that provides a UI for selecting colors and updating a color cube.",
           "name": "ColorPickerUiGamutCube",
           "members": [
             {
@@ -1489,27 +2211,53 @@
               "name": "getCubeValue",
               "parameters": [
                 {
-                  "name": "index"
+                  "name": "index",
+                  "description": "The index of the color in the cube array.",
+                  "type": {
+                    "text": "number"
+                  }
                 }
-              ]
+              ],
+              "description": "Retrieves the RGB value from the cube at the specified index and converts it to a CSS color string.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
             },
             {
               "kind": "method",
               "name": "handleColorInput",
               "parameters": [
                 {
-                  "name": "event"
+                  "name": "event",
+                  "description": "The input event containing the color value and index.",
+                  "type": {
+                    "text": "Event"
+                  }
                 }
-              ]
+              ],
+              "description": "Handles the color input event, converts the input value to an RGB color,\nnormalizes the RGB values, updates the cube at the specified index, and\nemits a cube update event."
+            },
+            {
+              "kind": "field",
+              "name": "noModify",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "A flag indicating whether the color inputs are disabled.",
+              "attribute": "noModify"
             },
             {
               "kind": "field",
               "name": "cube",
               "privacy": "public",
               "type": {
-                "text": "array"
+                "text": "Array"
               },
-              "default": "[ [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], ]",
+              "description": "The array representing the color cube.",
               "attribute": "cube"
             }
           ],
@@ -1517,10 +2265,19 @@
             {
               "name": "cube",
               "type": {
-                "text": "array"
+                "text": "Array"
               },
-              "default": "[ [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], ]",
+              "description": "The array representing the color cube.",
               "fieldName": "cube"
+            },
+            {
+              "name": "noModify",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "A flag indicating whether the color inputs are disabled.",
+              "fieldName": "noModify"
             }
           ],
           "superclass": {
@@ -1548,7 +2305,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A custom element representing an icon.",
           "name": "ColorPickerUiIcon",
           "members": [
             {
@@ -1581,7 +2338,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A custom element representing an icon button.",
           "name": "ColorPickerUiIconButton",
           "members": [
             {
@@ -1597,13 +2354,23 @@
               "name": "showFeedBack",
               "parameters": [
                 {
-                  "name": "text"
+                  "name": "text",
+                  "description": "The feedback text to display.",
+                  "type": {
+                    "text": "string"
+                  }
                 },
                 {
                   "name": "duration",
-                  "default": "1_000"
+                  "default": "1_000",
+                  "description": "The duration to display the feedback text, in milliseconds.",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
                 }
-              ]
+              ],
+              "description": "Displays feedback text for a specified duration."
             },
             {
               "kind": "field",
@@ -1612,6 +2379,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Reflects the disabled state of the button.",
               "attribute": "disabled",
               "reflects": true
             },
@@ -1622,6 +2390,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Enables or disables feedback functionality.",
               "attribute": "feedback"
             }
           ],
@@ -1631,6 +2400,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Reflects the disabled state of the button.",
               "fieldName": "disabled"
             },
             {
@@ -1638,6 +2408,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Enables or disables feedback functionality.",
               "fieldName": "feedback"
             }
           ],
@@ -1666,7 +2437,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A custom element that provides an input field.",
           "name": "ColorPickerUiInput",
           "members": [
             {
@@ -1707,37 +2478,87 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "clear"
+            },
+            {
+              "kind": "field",
+              "name": "autofocus",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, the input will automatically receive focus when the element is first updated.",
+              "attribute": "autofocus"
+            },
+            {
               "kind": "field",
               "name": "value",
               "privacy": "public",
               "type": {
                 "text": "string"
               },
+              "description": "The current value of the input.",
               "attribute": "value"
             },
             {
               "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, the input will be disabled.",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
               "name": "readonly",
               "privacy": "public",
               "type": {
                 "text": "boolean"
               },
+              "description": "If true, the input will be read-only.",
               "attribute": "readonly"
             }
           ],
+          "events": [
+            {
+              "description": "Dispatched when the input value is updated.",
+              "name": "update:value"
+            }
+          ],
           "attributes": [
+            {
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, the input will automatically receive focus when the element is first updated.",
+              "fieldName": "autofocus"
+            },
             {
               "name": "value",
               "type": {
                 "text": "string"
               },
+              "description": "The current value of the input.",
               "fieldName": "value"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, the input will be disabled.",
+              "fieldName": "disabled"
             },
             {
               "name": "readonly",
               "type": {
                 "text": "boolean"
               },
+              "description": "If true, the input will be read-only.",
               "fieldName": "readonly"
             }
           ],
@@ -1762,11 +2583,154 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/ColorPickerUiPrompt.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A custom element that provides a prompt for input.",
+          "name": "ColorPickerUiPrompt",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            },
+            {
+              "kind": "field",
+              "name": "inputEl"
+            },
+            {
+              "kind": "method",
+              "name": "#handleKeyUp",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleCancelClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleContinueClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleValueUpdate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#onContinue",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#onCancel",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The text to display in the prompt.",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The current value of the color input.",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "_handleKeyUp"
+            }
+          ],
+          "events": [
+            {
+              "description": "Dispatched when the user clicks the \"Continue\" button or presses the \"Enter\" key.",
+              "name": "continue"
+            },
+            {
+              "description": "Dispatched when the user clicks the \"Cancel\" button or presses the \"Escape\" key.",
+              "name": "cancel"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The text to display in the prompt.",
+              "fieldName": "text"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The current value of the color input.",
+              "fieldName": "value"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-prompt",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiPrompt",
+          "declaration": {
+            "name": "ColorPickerUiPrompt",
+            "module": "src/ColorPickerUiPrompt.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/ColorPickerUiSelector.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A custom element that provides a select dropdown with optional\nnext/previous controls. Supports keyboard navigation with arrow keys.",
           "name": "ColorPickerUiSelector",
           "members": [
             {
@@ -1786,11 +2750,23 @@
             {
               "kind": "field",
               "name": "count",
+              "description": "Gets the total number of available options",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "canCycle",
+              "description": "Determines if cycling through values is possible (requires more than 1 option)",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
               "readonly": true
             },
             {
@@ -1815,23 +2791,6 @@
             },
             {
               "kind": "method",
-              "name": "setValue",
-              "parameters": [
-                {
-                  "name": "value"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "nextValue"
-            },
-            {
-              "kind": "method",
-              "name": "previousValue"
-            },
-            {
-              "kind": "method",
               "name": "#handleKeyup",
               "privacy": "private",
               "parameters": [
@@ -1841,6 +2800,30 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "setValue",
+              "parameters": [
+                {
+                  "name": "value",
+                  "description": "The new value to set",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Sets the current value and emits an update event"
+            },
+            {
+              "kind": "method",
+              "name": "nextValue",
+              "description": "Selects the next value in the options list, cycling to the first if at the end"
+            },
+            {
+              "kind": "method",
+              "name": "previousValue",
+              "description": "Selects the previous value in the options list, cycling to the last if at the beginning"
+            },
+            {
               "kind": "field",
               "name": "noControls",
               "privacy": "public",
@@ -1848,6 +2831,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "When true, hides the next/previous buttons",
               "attribute": "noControls",
               "reflects": true
             },
@@ -1858,6 +2842,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "The currently selected value",
               "attribute": "value"
             },
             {
@@ -1865,9 +2850,19 @@
               "name": "options",
               "privacy": "public",
               "type": {
-                "text": "array"
+                "text": "Option[]"
               },
+              "description": "Array of [value, label] pairs for the select options",
               "attribute": "options"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the selected value changes",
+              "name": "update:value"
             }
           ],
           "attributes": [
@@ -1876,13 +2871,15 @@
               "type": {
                 "text": "string"
               },
+              "description": "The currently selected value",
               "fieldName": "value"
             },
             {
               "name": "options",
               "type": {
-                "text": "array"
+                "text": "Option[]"
               },
+              "description": "Array of [value, label] pairs for the select options",
               "fieldName": "options"
             },
             {
@@ -1891,6 +2888,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "When true, hides the next/previous buttons",
               "fieldName": "noControls"
             }
           ],
@@ -1915,11 +2913,44 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/ColorPickerUiSeparator.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A custom element that provides an visual separator.",
+          "name": "ColorPickerUiSeparator",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rootEl"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-separator",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiSeparator",
+          "declaration": {
+            "name": "ColorPickerUiSeparator",
+            "module": "src/ColorPickerUiSeparator.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/ColorPickerUiStepperInput.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A custom element that provides an input for incrementing and decrementing a numeric value within a specified range.",
           "name": "ColorPickerUiStepperInput",
           "members": [
             {
@@ -1933,11 +2964,23 @@
             {
               "kind": "field",
               "name": "canMinus",
+              "description": "Determines if the current value can be decremented.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "canPlus",
+              "description": "Determines if the current value is less than the maximum allowed value.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
               "readonly": true
             },
             {
@@ -1965,17 +3008,24 @@
               "name": "setValue",
               "parameters": [
                 {
-                  "name": "value"
+                  "name": "value",
+                  "description": "The new value to set.",
+                  "type": {
+                    "text": "any"
+                  }
                 }
-              ]
+              ],
+              "description": "Sets the value by emitting a value update event."
             },
             {
               "kind": "method",
-              "name": "plus"
+              "name": "plus",
+              "description": "Increases the current value by 1."
             },
             {
               "kind": "method",
-              "name": "minus"
+              "name": "minus",
+              "description": "Decreases the current value by 1."
             },
             {
               "kind": "field",
@@ -1985,17 +3035,8 @@
                 "text": "number"
               },
               "default": "0",
+              "description": "The current value of the input.",
               "attribute": "value",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "min",
-              "privacy": "public",
-              "type": {
-                "text": "number"
-              },
-              "attribute": "min",
               "reflects": true
             },
             {
@@ -2005,8 +3046,26 @@
               "type": {
                 "text": "number"
               },
+              "description": "The maximum value allowed.",
               "attribute": "max",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "min",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "The minimum value allowed.",
+              "attribute": "min",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "description": "Fired when the value is updated.",
+              "name": "ColorPickerUiStepperInput#value:update"
             }
           ],
           "attributes": [
@@ -2016,6 +3075,7 @@
                 "text": "number"
               },
               "default": "0",
+              "description": "The current value of the input.",
               "fieldName": "value"
             },
             {
@@ -2023,6 +3083,7 @@
               "type": {
                 "text": "number"
               },
+              "description": "The minimum value allowed.",
               "fieldName": "min"
             },
             {
@@ -2030,6 +3091,7 @@
               "type": {
                 "text": "number"
               },
+              "description": "The maximum value allowed.",
               "fieldName": "max"
             }
           ],
@@ -2058,7 +3120,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A custom element that displays a tooltip.",
           "name": "ColorPickerUiToolTip",
           "members": [
             {
@@ -2073,6 +3135,7 @@
                 "text": "number"
               },
               "default": "1_000",
+              "description": "The duration (in milliseconds) for which the tooltip is visible.",
               "attribute": "duration",
               "reflects": true
             },
@@ -2083,25 +3146,28 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Reflects the visibility state of the tooltip.",
               "attribute": "show",
               "reflects": true
             }
           ],
           "attributes": [
             {
-              "name": "show",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "show"
-            },
-            {
               "name": "duration",
               "type": {
                 "text": "number"
               },
-              "default": "1_000",
+              "default": "1000",
+              "description": "The duration (in milliseconds) for which the tooltip is visible.",
               "fieldName": "duration"
+            },
+            {
+              "name": "show",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Reflects the visibility state of the tooltip.",
+              "fieldName": "show"
             }
           ],
           "superclass": {
@@ -2129,7 +3195,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A custom element that represents a value input field.",
           "name": "ColorPickerValue",
           "members": [
             {
@@ -2143,10 +3209,6 @@
             {
               "kind": "field",
               "name": "copyEl"
-            },
-            {
-              "kind": "method",
-              "name": "copyToClipboard"
             },
             {
               "kind": "method",
@@ -2174,22 +3236,80 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "copyToClipboard",
+              "description": "Copies the current color value to the clipboard.",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Indicates if the input is disabled.",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "noSettings",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Indicates if the settings button should be hidden.",
+              "attribute": "noSettings"
+            },
+            {
               "kind": "field",
               "name": "value",
               "privacy": "public",
               "type": {
                 "text": "string"
               },
+              "description": "The current value of the color picker.",
               "attribute": "value",
               "reflects": true
             }
           ],
+          "events": [
+            {
+              "description": "Fired when the value is updated.",
+              "name": "ColorPickerValue#update:value"
+            },
+            {
+              "description": "Fired when the settings button is clicked.",
+              "name": "ColorPickerValue#action:show-settings"
+            }
+          ],
           "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Indicates if the input is disabled.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "noSettings",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Indicates if the settings button should be hidden.",
+              "fieldName": "noSettings"
+            },
             {
               "name": "value",
               "type": {
                 "text": "string"
               },
+              "description": "The current value of the color picker.",
               "fieldName": "value"
             }
           ],
@@ -2218,16 +3338,12 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "RybColorPicker is a custom web component to create a color picker based on the RYB (Red, Yellow, Blue)\ncolor model. It provides a user interface for selecting colors and managing color presets.",
           "name": "RybColorPicker",
           "members": [
             {
               "kind": "field",
-              "name": "rootEl"
-            },
-            {
-              "kind": "field",
-              "name": "svgEl"
+              "name": "deletePresetEl"
             },
             {
               "kind": "field",
@@ -2235,7 +3351,19 @@
             },
             {
               "kind": "field",
-              "name": "valueEl"
+              "name": "rangesEl"
+            },
+            {
+              "kind": "field",
+              "name": "resetStoreEl"
+            },
+            {
+              "kind": "field",
+              "name": "clearStoreEl"
+            },
+            {
+              "kind": "field",
+              "name": "rootEl"
             },
             {
               "kind": "field",
@@ -2243,7 +3371,11 @@
             },
             {
               "kind": "field",
-              "name": "deletePresetEl"
+              "name": "svgEl"
+            },
+            {
+              "kind": "field",
+              "name": "valueEl"
             },
             {
               "kind": "field",
@@ -2279,64 +3411,147 @@
             },
             {
               "kind": "field",
-              "name": "#localStorageConfigKey",
+              "name": "#storeConfigKey",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "#storePresetsKey",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "#storeGamutPresetsKey",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "#viewBox",
               "privacy": "private",
               "readonly": true
             },
             {
               "kind": "field",
               "name": "radius",
+              "description": "Gets the radius of the color picker.",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "innerRadius",
+              "description": "Calculates the inner radius of the color picker.\nThe inner radius is determined by subtracting the thickness of the hue, saturation, and lightness rings,\nas well as the gaps between them, from the overall radius.",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "swatchRadius",
+              "description": "Gets the radius of the color swatch.",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "color",
+              "description": "Gets the current color in RGB format modified by the current gamut.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "colorCss",
+              "description": "Gets the CSS representation of the current color.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "isBusy",
+              "description": "Checks if the color picker is currently busy.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "displayFormatOptions",
+              "description": "Gets the display format options for the color picker.",
+              "return": {
+                "type": {
+                  "text": "Array<Array<string, string>>"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "width",
+              "description": "Gets the width of the color picker wheel including any padding.",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "height",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "viewBox",
+              "description": "Gets the height of the color picker wheel including any padding.",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
               "readonly": true
             },
             {
               "kind": "field",
               "name": "presetsOptions",
+              "description": "Gets the preset options for the color picker.",
+              "return": {
+                "type": {
+                  "text": "Array<Array<string, string>>"
+                }
+              },
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "#makeStoreKey",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "key"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -2373,21 +3588,6 @@
             },
             {
               "kind": "method",
-              "name": "#loadConfigFromLocalStorage",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "#saveConfigToLocalStorage",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "value"
-                }
-              ]
-            },
-            {
-              "kind": "method",
               "name": "#emitEvent",
               "privacy": "private",
               "parameters": [
@@ -2418,6 +3618,11 @@
                   "name": "value"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "#emitReady",
+              "privacy": "private"
             },
             {
               "kind": "method",
@@ -2636,6 +3841,16 @@
             },
             {
               "kind": "method",
+              "name": "#handleClearStore",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#handleResetStore",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
               "name": "#handleCloseSettings",
               "privacy": "private"
             },
@@ -2648,6 +3863,41 @@
                   "name": "event"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "#saveConfigToLocalStorage",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#loadConfigFromLocalStorage",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#loadGamutPresetsFromLocalStorage",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#saveGamutPresetsToLocalStorage",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#loadPresetsFromLocalStorage",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#savePresetsToLocalStorage",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#updateCubeFromGamutPreset",
+              "privacy": "private"
             },
             {
               "kind": "method",
@@ -2668,76 +3918,178 @@
               "privacy": "private"
             },
             {
+              "kind": "field",
+              "name": "dialog",
+              "description": "A method that creates a dialog.",
+              "parameters": [
+                {
+                  "description": "The type of dialog to create. Can be 'alert', 'confirm', or 'prompt'.",
+                  "name": "type",
+                  "type": {
+                    "text": "'alert'|'confirm'|'prompt'"
+                  }
+                },
+                {
+                  "description": "The text to display in the dialog.",
+                  "name": "text",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": "Promise<void|string>"
+                }
+              },
+              "type": {
+                "text": "(type: ('alert'|'confirm'|'prompt'), text: string) => Promise<void|string>"
+              }
+            },
+            {
               "kind": "method",
               "name": "setValue",
               "parameters": [
                 {
-                  "name": "value"
+                  "name": "value",
+                  "description": "The color value to be set, in a format recognized by d3.color.",
+                  "type": {
+                    "text": "string"
+                  }
                 }
-              ]
+              ],
+              "description": "Sets the initial value of the color picker which is then converted to the current gamut."
             },
             {
               "kind": "method",
-              "name": "saveToLocalStorage"
+              "name": "resetValue",
+              "description": "Resets the saturation to 100% and the lightness to 50%."
             },
             {
               "kind": "method",
-              "name": "loadFromLocalStorage"
-            },
-            {
-              "kind": "method",
-              "name": "loadGamutPresetsFromLocalStorage"
-            },
-            {
-              "kind": "method",
-              "name": "saveGamutPresetsToLocalStorage",
+              "name": "setCube",
               "parameters": [
                 {
-                  "name": "presets"
+                  "name": "cube",
+                  "description": "The cube object to be set.",
+                  "type": {
+                    "text": "number[][]"
+                  }
                 }
-              ]
+              ],
+              "description": "Sets the gamut cube."
+            },
+            {
+              "kind": "method",
+              "name": "init",
+              "description": "Initializes the component if the noinit property is used."
+            },
+            {
+              "kind": "method",
+              "name": "copyToClipboard",
+              "description": "Copies the current color value to the clipboard.",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              }
             },
             {
               "kind": "method",
               "name": "loadGamutPresets",
               "parameters": [
                 {
-                  "name": "presets"
+                  "name": "presets",
+                  "description": "An array of gamut presets to load.",
+                  "type": {
+                    "text": "Array<Preset>"
+                  }
+                },
+                {
+                  "name": "presetId",
+                  "description": "The ID of the preset to set as the current preset. If not provided, no preset will be set.",
+                  "optional": true,
+                  "type": {
+                    "text": "string"
+                  }
                 }
-              ]
+              ],
+              "description": "Loads the gamut presets and optionally sets the current preset."
             },
             {
               "kind": "method",
               "name": "cycleGamutPreset",
               "parameters": [
                 {
-                  "name": "previous",
-                  "default": "false"
+                  "name": "backwards",
+                  "default": "false",
+                  "description": "If true, cycles backwards through the gamut presets.",
+                  "optional": true,
+                  "type": {
+                    "text": "boolean"
+                  }
                 }
-              ]
+              ],
+              "description": "Cycles through the gamut presets in the color picker."
             },
             {
               "kind": "method",
-              "name": "loadPresetsFromLocalStorage"
-            },
-            {
-              "kind": "method",
-              "name": "savePresetsToLocalStorage",
+              "name": "loadPresets",
               "parameters": [
                 {
-                  "name": "presets"
+                  "name": "presets",
+                  "description": "An array of preset configurations.",
+                  "type": {
+                    "text": "Array<Preset>"
+                  }
+                },
+                {
+                  "name": "presetId",
+                  "description": "The ID of the preset to load.",
+                  "optional": true,
+                  "type": {
+                    "text": "string"
+                  }
                 }
-              ]
+              ],
+              "description": "Loads the presets and applies the settings of the specified preset."
             },
             {
               "kind": "method",
               "name": "cyclePreset",
               "parameters": [
                 {
-                  "name": "previous",
-                  "default": "false"
+                  "name": "backwards",
+                  "default": "false",
+                  "description": "If true, cycles backwards through the presets.",
+                  "optional": true,
+                  "type": {
+                    "text": "boolean"
+                  }
                 }
-              ]
+              ],
+              "description": "Cycles through the available presets.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "cycleFormat",
+              "parameters": [
+                {
+                  "name": "backwards",
+                  "default": "false",
+                  "description": "If true, cycles backwards through the display formats.",
+                  "optional": true,
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "Cycles through the available display formats and updates the current display format."
             },
             {
               "kind": "method",
@@ -2745,22 +4097,38 @@
               "parameters": [
                 {
                   "name": "duration",
-                  "default": "this.animationDuration"
+                  "default": "this.animationDuration",
+                  "description": "The duration of the animation in milliseconds.",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
                 }
-              ]
+              ],
+              "description": "Refreshes the color wheel with the specified animation duration."
             },
             {
               "kind": "method",
               "name": "focus",
               "parameters": [
                 {
-                  "name": "angle"
+                  "name": "angle",
+                  "description": "The angle to focus on.",
+                  "type": {
+                    "text": "number"
+                  }
                 },
                 {
                   "name": "duration",
-                  "default": "this.animationDuration"
+                  "default": "this.animationDuration",
+                  "description": "The duration of the animation in milliseconds. Defaults to the instance's animation duration.",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
                 }
-              ]
+              ],
+              "description": "Focuses on a specific angle with an optional animation duration."
             },
             {
               "kind": "method",
@@ -2768,47 +4136,108 @@
               "parameters": [
                 {
                   "name": "duration",
-                  "default": "this.animationDuration"
+                  "default": "this.animationDuration",
+                  "description": "The duration of the blur effect in milliseconds.",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
                 }
-              ]
+              ],
+              "description": "Removes a focus effect with the specified duration."
+            },
+            {
+              "kind": "method",
+              "name": "loadSettings",
+              "parameters": [
+                {
+                  "name": "settings",
+                  "description": "The settings to load.",
+                  "type": {
+                    "text": "Partial<Settings>"
+                  }
+                }
+              ],
+              "description": "Loads and applies the provided settings."
+            },
+            {
+              "kind": "method",
+              "name": "getSettings",
+              "description": "Retrieves the current settings..",
+              "return": {
+                "type": {
+                  "text": "Settings"
+                }
+              }
             },
             {
               "kind": "method",
               "name": "savePreset",
               "parameters": [
                 {
-                  "name": "id"
+                  "name": "id",
+                  "description": "The unique identifier for the preset.",
+                  "type": {
+                    "text": "string"
+                  }
                 },
                 {
-                  "name": "title"
+                  "name": "title",
+                  "description": "The title of the preset.",
+                  "type": {
+                    "text": "string"
+                  }
                 }
-              ]
+              ],
+              "description": "Saves a color preset with the given id and title.\nIf a preset with the same id already exists, it updates the preset.\nOtherwise, it adds a new preset."
             },
             {
               "kind": "method",
               "name": "loadPreset",
               "parameters": [
                 {
-                  "name": "id"
+                  "name": "id",
+                  "description": "The ID of the preset to load.",
+                  "type": {
+                    "text": "string"
+                  }
                 }
-              ]
+              ],
+              "description": "Loads a preset by its ID and applies its settings.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
             },
             {
               "kind": "method",
               "name": "deletePreset",
               "parameters": [
                 {
-                  "name": "name"
+                  "name": "id",
+                  "description": "The ID of the preset to delete.",
+                  "type": {
+                    "text": "string"
+                  }
                 }
-              ]
+              ],
+              "description": "Deletes a preset by ID from the presets list."
             },
             {
-              "kind": "field",
-              "name": "_init",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
+              "kind": "method",
+              "name": "clearStore",
+              "description": "Clears the stored configuration, gamut presets, and presets from the local storage."
+            },
+            {
+              "kind": "method",
+              "name": "reset",
+              "description": "Resets the color picker to its default state.\n\nThis method clears the current preset, resets the color cube to its default state,\nand loads the initial settings."
+            },
+            {
+              "kind": "method",
+              "name": "#firstUpdated",
+              "privacy": "private"
             },
             {
               "kind": "field",
@@ -2817,28 +4246,122 @@
               "type": {
                 "text": "array"
               },
-              "default": "[97.5, 1.0, 0.5]",
+              "default": "[0, 0, 0]",
               "attribute": "_hslColor"
+            },
+            {
+              "kind": "field",
+              "name": "_dialogs",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "_dialogs"
+            },
+            {
+              "kind": "field",
+              "name": "_initialSettings",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "_initialSettings"
+            },
+            {
+              "kind": "field",
+              "name": "ready",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if the color picker is ready."
+            },
+            {
+              "kind": "field",
+              "name": "hasPresets",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if the color picker has presets.",
+              "attribute": "hasPresets"
+            },
+            {
+              "kind": "field",
+              "name": "noInit",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "If true, the color picker will not initialize automatically.",
+              "attribute": "noInit"
+            },
+            {
+              "kind": "field",
+              "name": "noSettings",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "If true, the settings panel will not be displayed.",
+              "attribute": "noSettings"
+            },
+            {
+              "kind": "field",
+              "name": "noStore",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "If true, the color picker will not use local storage.",
+              "attribute": "noStore"
+            },
+            {
+              "kind": "field",
+              "name": "noValue",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "If true, the value display will not be shown.",
+              "attribute": "noValue"
+            },
+            {
+              "kind": "field",
+              "name": "cube",
+              "privacy": "public",
+              "type": {
+                "text": "Array"
+              },
+              "description": "The color cube used for gamut mapping."
             },
             {
               "kind": "field",
               "name": "presets",
               "privacy": "public",
               "type": {
-                "text": "array"
+                "text": "Array"
               },
               "default": "[]",
-              "attribute": "presets"
+              "description": "An array of color presets."
             },
             {
               "kind": "field",
               "name": "gamutPresets",
               "privacy": "public",
               "type": {
-                "text": "array"
+                "text": "Array"
               },
               "default": "[]",
-              "attribute": "gamutPresets"
+              "description": "An array of gamut presets."
             },
             {
               "kind": "field",
@@ -2848,7 +4371,44 @@
                 "text": "boolean"
               },
               "default": "true",
+              "description": "Indicates if the color picker is visible.",
               "attribute": "show",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showSettings",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if the settings panel is visible.",
+              "attribute": "showSettings",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showValue",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Indicates if the value display is visible.",
+              "attribute": "showValue",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "initialValue",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "'hotpink'",
+              "description": "The initial color value.",
+              "attribute": "initialValue",
               "reflects": true
             },
             {
@@ -2858,7 +4418,8 @@
               "type": {
                 "text": "string"
               },
-              "default": "'#f8c120'",
+              "default": "''",
+              "description": "The current color value in the specified display format.",
               "attribute": "value",
               "reflects": true
             },
@@ -2870,6 +4431,7 @@
                 "text": "number"
               },
               "default": "150",
+              "description": "The duration of animations in milliseconds.",
               "attribute": "animationDuration",
               "reflects": true
             },
@@ -2881,7 +4443,32 @@
                 "text": "string"
               },
               "default": "'transparent'",
+              "description": "The background color of the color picker.",
               "attribute": "backgroundColor",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "diameter",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "320",
+              "description": "The diameter of the color picker.",
+              "attribute": "diameter",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "displayFormat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "'hex'",
+              "description": "The format in which the color is displayed (e.g., 'hex', 'rgb').",
+              "attribute": "displayFormat",
               "reflects": true
             },
             {
@@ -2892,6 +4479,7 @@
                 "text": "number"
               },
               "default": "3",
+              "description": "The distortion level of the color picker.",
               "attribute": "distortion",
               "reflects": true
             },
@@ -2903,29 +4491,8 @@
                 "text": "number"
               },
               "default": "0",
+              "description": "The gap between different segments of the color picker.",
               "attribute": "gap",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "swatchGap",
-              "privacy": "public",
-              "type": {
-                "text": "number"
-              },
-              "default": "8",
-              "attribute": "swatchGap",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "diameter",
-              "privacy": "public",
-              "type": {
-                "text": "number"
-              },
-              "default": "320",
-              "attribute": "diameter",
               "reflects": true
             },
             {
@@ -2936,7 +4503,20 @@
                 "text": "number"
               },
               "default": "30",
+              "description": "The padding around the color picker.",
               "attribute": "padding",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "swatchGap",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "8",
+              "description": "The gap between the color swatch and the inner radius.",
+              "attribute": "swatchGap",
               "reflects": true
             },
             {
@@ -2947,6 +4527,7 @@
                 "text": "number"
               },
               "default": "20",
+              "description": "The thickness of the lightness ring.",
               "attribute": "thicknessLightness",
               "reflects": true
             },
@@ -2958,6 +4539,7 @@
                 "text": "number"
               },
               "default": "24",
+              "description": "The thickness of the hue ring.",
               "attribute": "thicknessHue",
               "reflects": true
             },
@@ -2969,6 +4551,7 @@
                 "text": "number"
               },
               "default": "20",
+              "description": "The thickness of the saturation ring.",
               "attribute": "thicknessSaturation",
               "reflects": true
             },
@@ -2980,6 +4563,7 @@
                 "text": "number"
               },
               "default": "24",
+              "description": "The number of segments for the lightness ring.",
               "attribute": "segmentsLightness",
               "reflects": true
             },
@@ -2991,6 +4575,7 @@
                 "text": "number"
               },
               "default": "48",
+              "description": "The number of segments for the hue ring.",
               "attribute": "segmentsHue",
               "reflects": true
             },
@@ -3002,18 +4587,8 @@
                 "text": "number"
               },
               "default": "24",
+              "description": "The number of segments for the saturation ring.",
               "attribute": "segmentsSaturation",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "displayFormat",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "'hex'",
-              "attribute": "displayFormat",
               "reflects": true
             },
             {
@@ -3024,6 +4599,7 @@
                 "text": "string"
               },
               "default": "''",
+              "description": "The current color preset.",
               "attribute": "preset",
               "reflects": true
             },
@@ -3035,44 +4611,42 @@
                 "text": "string"
               },
               "default": "''",
+              "description": "The current gamut preset.",
               "attribute": "gamutPreset",
               "reflects": true
             },
             {
               "kind": "field",
-              "name": "localStorageKey",
+              "name": "storeConfigKey",
               "privacy": "public",
               "type": {
                 "text": "string"
               },
-              "default": "'radial-color-picker--{id}'",
-              "attribute": "localStorageKey"
+              "default": "'ryb-color-picker/{id}/config'",
+              "description": "The key used to store the configuration in local storage.",
+              "attribute": "storeConfigKey"
             },
             {
               "kind": "field",
-              "name": "localStoragePresetsKey",
+              "name": "storePresetsKey",
               "privacy": "public",
               "type": {
                 "text": "string"
               },
-              "default": "'radial-color-picker--presets'",
-              "attribute": "localStoragePresetsKey"
+              "default": "'ryb-color-picker/{id}/presets'",
+              "description": "The key used to store the presets in local storage.",
+              "attribute": "storePresetsKey"
             },
             {
               "kind": "field",
-              "name": "localStorageGamutPresetsKey",
+              "name": "storeGamutPresetsKey",
               "privacy": "public",
               "type": {
                 "text": "string"
               },
-              "default": "'radial-color-picker--gamut-presets'",
-              "attribute": "localStorageGamutPresetsKey"
-            },
-            {
-              "kind": "field",
-              "name": "showSettings",
-              "privacy": "public",
-              "attribute": "showSettings"
+              "default": "'ryb-color-picker/{id}/gamut-presets'",
+              "description": "The key used to store the gamut presets in local storage.",
+              "attribute": "storeGamutPresetsKey"
             },
             {
               "kind": "field",
@@ -3081,16 +4655,22 @@
               "type": {
                 "text": "string"
               },
+              "description": "The unique identifier for the color picker.",
               "attribute": "id"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fired when the color value is updated.",
+              "name": "RybColorPicker#update:value"
             },
             {
-              "kind": "field",
-              "name": "cube",
-              "privacy": "public",
-              "type": {
-                "text": "array"
-              },
-              "attribute": "cube"
+              "description": "Fired when the preset is updated.",
+              "name": "RybColorPicker#update:preset"
+            },
+            {
+              "description": "Fired when the color picker is ready.",
+              "name": "RybColorPicker#ready"
             }
           ],
           "attributes": [
@@ -3099,28 +4679,24 @@
               "type": {
                 "text": "array"
               },
-              "default": "[97.5, 1.0, 0.5]",
+              "default": "[0, 0, 0]",
               "fieldName": "_hslColor"
             },
             {
-              "name": "showSettings",
-              "fieldName": "showSettings"
-            },
-            {
-              "name": "gamutPresets",
+              "name": "_dialogs",
               "type": {
                 "text": "array"
               },
               "default": "[]",
-              "fieldName": "gamutPresets"
+              "fieldName": "_dialogs"
             },
             {
-              "name": "presets",
+              "name": "_initialSettings",
               "type": {
-                "text": "array"
+                "text": "null"
               },
-              "default": "[]",
-              "fieldName": "presets"
+              "default": "null",
+              "fieldName": "_initialSettings"
             },
             {
               "name": "animationDuration",
@@ -3128,6 +4704,7 @@
                 "text": "number"
               },
               "default": "150",
+              "description": "The duration of animations in milliseconds.",
               "fieldName": "animationDuration"
             },
             {
@@ -3136,6 +4713,7 @@
                 "text": "string"
               },
               "default": "'transparent'",
+              "description": "The background color of the color picker.",
               "fieldName": "backgroundColor"
             },
             {
@@ -3144,6 +4722,7 @@
                 "text": "number"
               },
               "default": "320",
+              "description": "The diameter of the color picker.",
               "fieldName": "diameter"
             },
             {
@@ -3152,6 +4731,7 @@
                 "text": "string"
               },
               "default": "'hex'",
+              "description": "The format in which the color is displayed (e.g., 'hex', 'rgb').",
               "fieldName": "displayFormat"
             },
             {
@@ -3160,6 +4740,7 @@
                 "text": "number"
               },
               "default": "3",
+              "description": "The distortion level of the color picker.",
               "fieldName": "distortion"
             },
             {
@@ -3168,6 +4749,7 @@
                 "text": "string"
               },
               "default": "''",
+              "description": "The current gamut preset.",
               "fieldName": "gamutPreset"
             },
             {
@@ -3176,14 +4758,70 @@
                 "text": "number"
               },
               "default": "0",
+              "description": "The gap between different segments of the color picker.",
               "fieldName": "gap"
+            },
+            {
+              "name": "hasPresets",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if the color picker has presets.",
+              "fieldName": "hasPresets"
             },
             {
               "name": "id",
               "type": {
                 "text": "string"
               },
+              "description": "The unique identifier for the color picker.",
               "fieldName": "id"
+            },
+            {
+              "name": "initialValue",
+              "type": {
+                "text": "string"
+              },
+              "default": "'hotpink'",
+              "description": "The initial color value.",
+              "fieldName": "initialValue"
+            },
+            {
+              "name": "noInit",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "If true, the color picker will not initialize automatically.",
+              "fieldName": "noInit"
+            },
+            {
+              "name": "noSettings",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "If true, the settings panel will not be displayed.",
+              "fieldName": "noSettings"
+            },
+            {
+              "name": "noStore",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "If true, the color picker will not use local storage.",
+              "fieldName": "noStore"
+            },
+            {
+              "name": "noValue",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "If true, the value display will not be shown.",
+              "fieldName": "noValue"
             },
             {
               "name": "padding",
@@ -3191,6 +4829,7 @@
                 "text": "number"
               },
               "default": "30",
+              "description": "The padding around the color picker.",
               "fieldName": "padding"
             },
             {
@@ -3199,6 +4838,7 @@
                 "text": "string"
               },
               "default": "''",
+              "description": "The current color preset.",
               "fieldName": "preset"
             },
             {
@@ -3207,6 +4847,7 @@
                 "text": "number"
               },
               "default": "48",
+              "description": "The number of segments for the hue ring.",
               "fieldName": "segmentsHue"
             },
             {
@@ -3215,6 +4856,7 @@
                 "text": "number"
               },
               "default": "24",
+              "description": "The number of segments for the lightness ring.",
               "fieldName": "segmentsLightness"
             },
             {
@@ -3223,6 +4865,7 @@
                 "text": "number"
               },
               "default": "24",
+              "description": "The number of segments for the saturation ring.",
               "fieldName": "segmentsSaturation"
             },
             {
@@ -3231,7 +4874,26 @@
                 "text": "boolean"
               },
               "default": "true",
+              "description": "Indicates if the color picker is visible.",
               "fieldName": "show"
+            },
+            {
+              "name": "showSettings",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if the settings panel is visible.",
+              "fieldName": "showSettings"
+            },
+            {
+              "name": "showValue",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Indicates if the value display is visible.",
+              "fieldName": "showValue"
             },
             {
               "name": "swatchGap",
@@ -3239,6 +4901,7 @@
                 "text": "number"
               },
               "default": "8",
+              "description": "The gap between the color swatch and the inner radius.",
               "fieldName": "swatchGap"
             },
             {
@@ -3247,6 +4910,7 @@
                 "text": "number"
               },
               "default": "24",
+              "description": "The thickness of the hue ring.",
               "fieldName": "thicknessHue"
             },
             {
@@ -3255,6 +4919,7 @@
                 "text": "number"
               },
               "default": "20",
+              "description": "The thickness of the lightness ring.",
               "fieldName": "thicknessLightness"
             },
             {
@@ -3263,6 +4928,7 @@
                 "text": "number"
               },
               "default": "20",
+              "description": "The thickness of the saturation ring.",
               "fieldName": "thicknessSaturation"
             },
             {
@@ -3270,39 +4936,36 @@
               "type": {
                 "text": "string"
               },
-              "default": "'#f8c120'",
+              "default": "''",
+              "description": "The current color value in the specified display format.",
               "fieldName": "value"
             },
             {
-              "name": "cube",
-              "type": {
-                "text": "array"
-              },
-              "fieldName": "cube"
-            },
-            {
-              "name": "localStorageKey",
+              "name": "storeConfigKey",
               "type": {
                 "text": "string"
               },
-              "default": "'radial-color-picker--{id}'",
-              "fieldName": "localStorageKey"
+              "default": "'ryb-color-picker/{id}/config'",
+              "description": "The key used to store the configuration in local storage.",
+              "fieldName": "storeConfigKey"
             },
             {
-              "name": "localStoragePresetsKey",
+              "name": "storeGamutPresetsKey",
               "type": {
                 "text": "string"
               },
-              "default": "'radial-color-picker--presets'",
-              "fieldName": "localStoragePresetsKey"
+              "default": "'ryb-color-picker/{id}/gamut-presets'",
+              "description": "The key used to store the gamut presets in local storage.",
+              "fieldName": "storeGamutPresetsKey"
             },
             {
-              "name": "localStorageGamutPresetsKey",
+              "name": "storePresetsKey",
               "type": {
                 "text": "string"
               },
-              "default": "'radial-color-picker--gamut-presets'",
-              "fieldName": "localStorageGamutPresetsKey"
+              "default": "'ryb-color-picker/{id}/presets'",
+              "description": "The key used to store the presets in local storage.",
+              "fieldName": "storePresetsKey"
             }
           ],
           "superclass": {
@@ -3330,7 +4993,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "RybColorSwatch is a custom web component representing a color swatch.",
           "name": "RybColorSwatch",
           "members": [
             {
@@ -3354,6 +5017,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Indicates whether the button is disabled.",
               "attribute": "disabled",
               "reflects": true
             },
@@ -3364,6 +5028,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Indicates whether the button has a pill-shaped border radius.",
               "attribute": "pill",
               "reflects": true
             },
@@ -3374,8 +5039,15 @@
               "type": {
                 "text": "string"
               },
+              "description": "Represents the background color of the button.",
               "attribute": "value",
               "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "description": "Dispatched when the value property is updated.",
+              "name": "RybColorSwatch#update:value"
             }
           ],
           "attributes": [
@@ -3384,6 +5056,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Indicates whether the button is disabled.",
               "fieldName": "disabled"
             },
             {
@@ -3391,6 +5064,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Indicates whether the button has a pill-shaped border radius.",
               "fieldName": "pill"
             },
             {
@@ -3398,6 +5072,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "Represents the background color of the button.",
               "fieldName": "value"
             }
           ],
@@ -3446,6 +5121,14 @@
           "name": "color",
           "declaration": {
             "name": "color",
+            "package": "d3-color"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "hsl",
+          "declaration": {
+            "name": "hsl",
             "package": "d3-color"
           }
         },
@@ -3508,16 +5191,128 @@
           "name": "createCustomEvent",
           "parameters": [
             {
-              "name": "name"
+              "name": "name",
+              "description": "The name of the custom event.",
+              "type": {
+                "text": "string"
+              }
             },
             {
-              "name": "detail"
+              "name": "detail",
+              "description": "The detail data to be included in the event.",
+              "type": {
+                "text": "any"
+              }
             },
             {
               "name": "options",
-              "default": "{\n  bubbles: true,\n  composed: true,\n  cancelable: true,\n}"
+              "default": "{\n    bubbles: true,\n    composed: true,\n    cancelable: true,\n  }",
+              "description": "Optional settings for the event.",
+              "optional": true,
+              "type": {
+                "text": "@param {boolean} [options.bubbles=true] - A boolean indicating whether the event bubbles up through the DOM or not.\n * @param {boolean} [options.composed=true] - A boolean indicating whether the event will trigger listeners outside of a shadow root.\n * @param {boolean} [options.cancelable=true] - A boolean indicating whether the event is cancelable.\n * "
+              }
             }
-          ]
+          ],
+          "description": "Creates a custom event with the specified name, detail, and options.",
+          "return": {
+            "type": {
+              "text": "CustomEvent"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "getDefaultCube",
+          "description": "Returns the default color cube for the RYB color picker.\nThe cube is represented as an array of RGB color arrays.\nEach inner array contains three numbers representing the red, green, and blue components of a color.",
+          "return": {
+            "type": {
+              "text": "number[][]"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "createAlert",
+          "parameters": [
+            {
+              "name": "text",
+              "description": "The text to display in the alert dialog.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Creates an alert dialog and returns a promise that resolves when the alert is acknowledged.",
+          "return": {
+            "type": {
+              "text": "Promise<void>"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "createConfirm",
+          "parameters": [
+            {
+              "name": "text",
+              "description": "The text to display in the confirmation dialog.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Creates a confirmation dialog and returns a promise that resolves or rejects based on user action.",
+          "return": {
+            "type": {
+              "text": "Promise<void>"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "createPrompt",
+          "parameters": [
+            {
+              "name": "text",
+              "description": "The text to display in the prompt dialog.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Creates a prompt dialog and returns a promise that resolves or rejects based on user interaction.",
+          "return": {
+            "type": {
+              "text": "Promise<string>"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "createDialog",
+          "parameters": [
+            {
+              "name": "type",
+              "description": "The type of dialog to create. Can be 'alert', 'confirm', or 'prompt'.",
+              "type": {
+                "text": "'alert'|'confirm'|'prompt'"
+              }
+            },
+            {
+              "name": "text",
+              "description": "The text to display in the dialog.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Creates a dialog of the specified type with the given text.",
+          "return": {
+            "type": {
+              "text": "Promise<void|string>"
+            }
+          }
         }
       ],
       "exports": [
@@ -3526,6 +5321,46 @@
           "name": "createCustomEvent",
           "declaration": {
             "name": "createCustomEvent",
+            "module": "src/helpers.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getDefaultCube",
+          "declaration": {
+            "name": "getDefaultCube",
+            "module": "src/helpers.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "createAlert",
+          "declaration": {
+            "name": "createAlert",
+            "module": "src/helpers.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "createConfirm",
+          "declaration": {
+            "name": "createConfirm",
+            "module": "src/helpers.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "createPrompt",
+          "declaration": {
+            "name": "createPrompt",
+            "module": "src/helpers.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "createDialog",
+          "declaration": {
+            "name": "createDialog",
             "module": "src/helpers.js"
           }
         }
@@ -3548,9 +5383,19 @@
           "name": "normalizeAngle",
           "parameters": [
             {
-              "name": "angle"
+              "name": "angle",
+              "description": "The angle to normalize.",
+              "type": {
+                "text": "number"
+              }
             }
-          ]
+          ],
+          "description": "Normalizes an angle to be within the range of 0 to 359 degrees.",
+          "return": {
+            "type": {
+              "text": "number"
+            }
+          }
         },
         {
           "kind": "function",
@@ -3560,124 +5405,280 @@
               "name": "{ x, y }"
             },
             {
-              "name": "rect"
+              "name": "rect",
+              "description": "The bounding rectangle of the element.",
+              "type": {
+                "text": "DOMRect"
+              }
+            },
+            {
+              "description": "The coordinates object.",
+              "name": "coords",
+              "type": {
+                "text": "@param {number} coords.x - The x-coordinate.\n * @param {number} coords.y - The y-coordinate.\n * "
+              }
             }
-          ]
+          ],
+          "description": "Calculates the rotation angle in degrees from the given coordinates relative to the center of a rectangle.",
+          "return": {
+            "type": {
+              "text": "number"
+            }
+          }
         },
         {
           "kind": "function",
-          "name": "noop"
+          "name": "noop",
+          "description": "A no-operation function that does nothing.\nCan be used as a default placeholder for callbacks or other functions."
         },
         {
           "kind": "function",
           "name": "clamp",
           "parameters": [
             {
-              "name": "value"
+              "name": "value",
+              "description": "The number to clamp.",
+              "type": {
+                "text": "number"
+              }
             },
             {
-              "name": "min"
+              "name": "min",
+              "description": "The minimum value.",
+              "type": {
+                "text": "number"
+              }
             },
             {
-              "name": "max"
+              "name": "max",
+              "description": "The maximum value.",
+              "type": {
+                "text": "number"
+              }
             }
-          ]
+          ],
+          "description": "Clamps a number between a minimum and maximum value.",
+          "return": {
+            "type": {
+              "text": "number"
+            }
+          }
         },
         {
           "kind": "function",
           "name": "deg",
           "parameters": [
             {
-              "name": "rad"
+              "name": "rad",
+              "description": "The angle in radians.",
+              "type": {
+                "text": "number"
+              }
             }
-          ]
+          ],
+          "description": "Converts radians to degrees.",
+          "return": {
+            "type": {
+              "text": "number"
+            }
+          }
         },
         {
           "kind": "function",
           "name": "rad",
           "parameters": [
             {
-              "name": "deg"
+              "name": "deg",
+              "description": "The angle in degrees.",
+              "type": {
+                "text": "number"
+              }
             }
-          ]
-        },
-        {
-          "kind": "function",
-          "name": "pick",
-          "parameters": [
-            {
-              "name": "obj"
-            },
-            {
-              "name": "keys"
+          ],
+          "description": "Converts degrees to radians.",
+          "return": {
+            "type": {
+              "text": "number"
             }
-          ]
+          }
         },
         {
           "kind": "variable",
-          "name": "assign"
+          "name": "assign",
+          "description": "A bound version of `Object.assign` that copies the values of all enumerable own properties\nfrom one or more source objects to a target object. It returns the target object.",
+          "parameters": [
+            {
+              "description": "The target object to which properties will be assigned.",
+              "name": "target",
+              "type": {
+                "text": "Object"
+              }
+            },
+            {
+              "description": "The source object(s) from which properties will be copied.",
+              "name": "sources",
+              "type": {
+                "text": "...Object"
+              }
+            }
+          ],
+          "return": {
+            "type": {
+              "text": "Object"
+            }
+          },
+          "type": {
+            "text": "(target: Record<string, unknown>, ...sources: Record<string, unknown>) => Record<string, unknown>"
+          }
         },
         {
           "kind": "function",
           "name": "rgbToCss",
           "parameters": [
             {
-              "name": "rgb"
+              "name": "rgb",
+              "description": "An array containing the red, green, and blue color values, each ranging from 0 to 1.",
+              "type": {
+                "text": "number[]"
+              }
             },
             {
               "name": "format",
-              "default": "'rgb'"
+              "default": "'rgb'",
+              "description": "The format of the output string. Can be 'rgb' or 'hex'.",
+              "optional": true,
+              "type": {
+                "text": "string"
+              }
             }
-          ]
+          ],
+          "description": "Converts an RGB color array to a CSS color string.",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
         },
         {
           "kind": "function",
           "name": "normalizeRgb",
           "parameters": [
             {
-              "name": "rgb"
+              "name": "rgb",
+              "description": "An array containing the red, green, and blue color values.",
+              "type": {
+                "text": "number[]"
+              }
             }
-          ]
-        },
-        {
-          "kind": "function",
-          "name": "parseHexToRgb",
-          "parameters": [
-            {
-              "name": "hex"
+          ],
+          "description": "Normalizes an RGB color value from the range [0, 255] to the range [0, 1].",
+          "return": {
+            "type": {
+              "text": "number[]"
             }
-          ]
-        },
-        {
-          "kind": "function",
-          "name": "parseCssColor",
-          "parameters": [
-            {
-              "name": "colorString"
-            }
-          ]
-        },
-        {
-          "kind": "function",
-          "name": "rgbToHsl",
-          "parameters": [
-            {
-              "name": "[r, g, b]"
-            }
-          ]
+          }
         },
         {
           "kind": "function",
           "name": "slugify",
           "parameters": [
             {
-              "name": "text"
+              "name": "text",
+              "description": "The text to be slugified.",
+              "type": {
+                "text": "string"
+              }
             },
             {
               "name": "{ separator = '-', trim = true }",
               "default": "{}"
+            },
+            {
+              "description": "Optional settings.",
+              "name": "options",
+              "optional": true,
+              "type": {
+                "text": "@param {string} [options.separator='-'] - The separator to use between words.\n * @param {boolean} [options.trim=true] - Whether to trim leading and trailing separators.\n * "
+              }
             }
-          ]
+          ],
+          "description": "Converts a given text into a URL-friendly slug.",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "copyToClipboard",
+          "parameters": [
+            {
+              "name": "value",
+              "description": "The text value to be copied to the clipboard.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Copies the given text value to the clipboard.",
+          "return": {
+            "type": {
+              "text": "Promise<void>"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "arrayEquals",
+          "parameters": [
+            {
+              "name": "array1",
+              "description": "The first array to compare.",
+              "type": {
+                "text": "Array"
+              }
+            },
+            {
+              "name": "array2",
+              "description": "The second array to compare.",
+              "type": {
+                "text": "Array"
+              }
+            }
+          ],
+          "description": "Compares two arrays for equality by converting them to JSON strings and comparing the strings.",
+          "return": {
+            "type": {
+              "text": "boolean"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "pick",
+          "parameters": [
+            {
+              "name": "obj",
+              "description": "The source object.",
+              "type": {
+                "text": "Object"
+              }
+            },
+            {
+              "name": "keys",
+              "description": "An array of keys to pick from the source object.",
+              "type": {
+                "text": "Array<string>"
+              }
+            }
+          ],
+          "description": "Picks specific properties from an object.",
+          "return": {
+            "type": {
+              "text": "Object"
+            }
+          }
         }
       ],
       "exports": [
@@ -3747,14 +5748,6 @@
         },
         {
           "kind": "js",
-          "name": "pick",
-          "declaration": {
-            "name": "pick",
-            "module": "src/utils.js"
-          }
-        },
-        {
-          "kind": "js",
           "name": "assign",
           "declaration": {
             "name": "assign",
@@ -3779,33 +5772,33 @@
         },
         {
           "kind": "js",
-          "name": "parseHexToRgb",
-          "declaration": {
-            "name": "parseHexToRgb",
-            "module": "src/utils.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "parseCssColor",
-          "declaration": {
-            "name": "parseCssColor",
-            "module": "src/utils.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "rgbToHsl",
-          "declaration": {
-            "name": "rgbToHsl",
-            "module": "src/utils.js"
-          }
-        },
-        {
-          "kind": "js",
           "name": "slugify",
           "declaration": {
             "name": "slugify",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "copyToClipboard",
+          "declaration": {
+            "name": "copyToClipboard",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "arrayEquals",
+          "declaration": {
+            "name": "arrayEquals",
+            "module": "src/utils.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "pick",
+          "declaration": {
+            "name": "pick",
             "module": "src/utils.js"
           }
         }
@@ -3813,11 +5806,18 @@
     },
     {
       "kind": "javascript-module",
+      "path": "e2e/snapshots/examples.spec.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/plugins/FisheyeScale.js",
       "declarations": [
         {
           "kind": "function",
-          "name": "FisheyeScale"
+          "name": "FisheyeScale",
+          "description": "Creates a fisheye scale function that distorts values based on a focus point."
         }
       ],
       "exports": [
@@ -3842,8 +5842,16 @@
             {
               "name": "{\n  angle = 360,\n  animationDuration = 200,\n  colorizeFn = (d, i) => ({ fill: 'transparent' }),\n  context = null,\n  distortion: _distortion = 3,\n  gap: _gap = 0,\n  introDuration = 600,\n  name = 'radial-range',\n  onClick = (i) => undefined,\n  radius: _radius = 100,\n  segments: _segments = 24,\n  startAngle = 0,\n  thickness: _thickness = 20,\n}",
               "default": "{}"
+            },
+            {
+              "description": "Configuration options for the radial range.",
+              "name": "options",
+              "type": {
+                "text": "@param {number} [options.angle=360] - The total angle of the radial range.\n * @param {number} [options.animationDuration=200] - Duration of the animation in milliseconds.\n * @param {Function} [options.colorizeFn=(d, i) => ({ fill: 'transparent' })] - Function to determine the color of each segment.\n * @param {HTMLElement} [options.context=null] - The DOM element to which the radial range will be appended.\n * @param {number} [options.distortion=3] - The distortion factor for the fisheye effect.\n * @param {number} [options.gap=0] - The gap between segments.\n * @param {number} [options.introDuration=600] - Duration of the intro animation in milliseconds.\n * @param {string} [options.name='radial-range'] - The name of the radial range.\n * @param {Function} [options.onClick=(i) => undefined] - Callback function to handle click events on segments.\n * @param {number} [options.radius=100] - The radius of the radial range.\n * @param {number} [options.segments=24] - The number of segments in the radial range.\n * @param {number} [options.startAngle=0] - The starting angle of the radial range.\n * @param {number} [options.thickness=20] - The thickness of the radial range.\n "
+              }
             }
-          ]
+          ],
+          "description": "Creates a radial range input using D3.js."
         }
       ],
       "exports": [

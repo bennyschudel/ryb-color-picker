@@ -1,12 +1,21 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
+/**
+ * A custom element that displays a tooltip.
+ *
+ * @class
+ * @extends {LitElement}
+ *
+ * @property {number} [duration=1000] - The duration (in milliseconds) for which the tooltip is visible.
+ * @property {boolean} show - Reflects the visibility state of the tooltip.
+ */
 export class ColorPickerUiToolTip extends LitElement {
   rootEl = createRef();
 
   static properties = {
-    show: { type: Boolean, reflect: true },
     duration: { type: Number, reflect: true },
+    show: { type: Boolean, reflect: true },
   };
 
   constructor() {
@@ -17,6 +26,8 @@ export class ColorPickerUiToolTip extends LitElement {
     this.duration = 1_000;
   }
 
+  // --- lifecycle ---
+
   willUpdate(props) {
     if (props.has('show')) {
       clearInterval(this._intervalTimer);
@@ -25,6 +36,8 @@ export class ColorPickerUiToolTip extends LitElement {
       }, this.duration);
     }
   }
+
+    // --- render
 
   render() {
     return html`
@@ -36,6 +49,8 @@ export class ColorPickerUiToolTip extends LitElement {
       </div>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
     :host {

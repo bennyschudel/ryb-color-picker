@@ -6,6 +6,15 @@ import * as d3 from './d3';
 import { rgbToCss, normalizeRgb } from './utils';
 import { createCustomEvent, getDefaultCube } from './helpers';
 
+/**
+ * A custom element that provides a UI for selecting colors and updating a color cube.
+ *
+ * @class
+ * @extends {LitElement}
+ *
+ * @property {Array} cube - The array representing the color cube.
+ * @property {boolean} [noModify=false] - A flag indicating whether the color inputs are disabled.
+ */
 export class ColorPickerUiGamutCube extends LitElement {
   rootEl = createRef();
   formEl = createRef();
@@ -18,8 +27,12 @@ export class ColorPickerUiGamutCube extends LitElement {
   constructor() {
     super();
 
+    this.noModify = false;
+
     this.cube = getDefaultCube();
   }
+
+  // --- private methods ---
 
   #emitCubeUpdate(value) {
     const event = createCustomEvent('update:cube', { value });
@@ -27,12 +40,28 @@ export class ColorPickerUiGamutCube extends LitElement {
     this.dispatchEvent(event);
   }
 
+  // --- methods ---
+
+  /**
+   * Retrieves the RGB value from the cube at the specified index and converts it to a CSS color string.
+   *
+   * @param {number} index - The index of the color in the cube array.
+   * @returns {string} The CSS color string in hexadecimal format.
+   */
   getCubeValue(index) {
     const rgb = this.cube[index];
 
     return rgbToCss(rgb, 'hex');
   }
 
+  /**
+   * Handles the color input event, converts the input value to an RGB color,
+   * normalizes the RGB values, updates the cube at the specified index, and
+   * emits a cube update event.
+   *
+   * @param {Event} event - The input event containing the color value and index.
+   * @throws {Error} Throws an error if the input value cannot be converted to an RGB color.
+   */
   handleColorInput(event) {
     const index = Number(event.target.dataset.index);
     const value = event.target.value;
@@ -49,6 +78,10 @@ export class ColorPickerUiGamutCube extends LitElement {
 
     this.#emitCubeUpdate(this.cube);
   }
+
+  // --- lifecycle ---
+
+    // --- render
 
   render() {
     return html`
@@ -133,10 +166,9 @@ export class ColorPickerUiGamutCube extends LitElement {
     `;
   }
 
-  static styles = css`
-    :host {
-    }
+  // --- styles ---
 
+  static styles = css`
     .body {
       flex: 1 1 auto;
     }

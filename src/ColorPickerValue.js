@@ -6,6 +6,19 @@ import { copyToClipboard } from './utils';
 
 // ---
 
+/**
+ * A custom element that represents a value input field.
+ *
+ * @class
+ * @extends {LitElement}
+ *
+ * @property {boolean} disabled - Indicates if the input is disabled.
+ * @property {boolean} noSettings - Indicates if the settings button should be hidden.
+ * @property {string} value - The current value of the color picker.
+ *
+ * @fires ColorPickerValue#update:value - Fired when the value is updated.
+ * @fires ColorPickerValue#action:show-settings - Fired when the settings button is clicked.
+ */
 export class ColorPickerValue extends LitElement {
   rootEl = createRef();
   inputEl = createRef();
@@ -21,11 +34,7 @@ export class ColorPickerValue extends LitElement {
     super();
   }
 
-  async copyToClipboard() {
-    await copyToClipboard(this.value);
-
-    this.copyEl.value.showFeedBack('Copied');
-  }
+  // --- private methods ---
 
   #emitShowSettingsAction() {
     const event = createCustomEvent('action:show-settings');
@@ -51,11 +60,30 @@ export class ColorPickerValue extends LitElement {
     this.dispatchEvent(event);
   }
 
+  // --- methods ---
+
+  /**
+   * Copies the current color value to the clipboard.
+   *
+   * @async
+   * @function copyToClipboard
+   * @returns {Promise<void>} A promise that resolves when the value has been copied to the clipboard.
+   */
+  async copyToClipboard() {
+    await copyToClipboard(this.value);
+
+    this.copyEl.value.showFeedBack('Copied');
+  }
+
+  // -- lifecycle ---
+
   updated(props) {
     if (props.has('value')) {
       this.inputEl.value.value = this.value;
     }
   }
+
+    // --- render
 
   render() {
     return html`
@@ -120,6 +148,8 @@ export class ColorPickerValue extends LitElement {
       </div>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
     .body {

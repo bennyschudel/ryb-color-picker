@@ -4,6 +4,18 @@ import { ref, createRef } from 'lit/directives/ref.js';
 
 import { createCustomEvent } from './helpers';
 
+/**
+ * RybColorSwatch is a custom web component representing a color swatch.
+ *
+ * @class
+ * @extends {LitElement}
+ *
+ * @property {boolean} disabled - Indicates whether the button is disabled.
+ * @property {boolean} pill - Indicates whether the button has a pill-shaped border radius.
+ * @property {string} value - Represents the background color of the button.
+ *
+ * @fires RybColorSwatch#update:value - Dispatched when the value property is updated.
+ */
 export class RybColorSwatch extends LitElement {
   rootEl = createRef();
 
@@ -13,21 +25,27 @@ export class RybColorSwatch extends LitElement {
     value: { type: String, reflect: true },
   };
 
+  constructor() {
+    super();
+  }
+
+  // --- private methods ---
+
   #emitUpdateValue(value) {
     const event = createCustomEvent('update:value', { value }, { bubbles: false });
 
     this.dispatchEvent(event);
   }
 
-  constructor() {
-    super();
-  }
+  // --- lifecycle ---
 
   willUpdate(props) {
     if (props.has('value')) {
       this.#emitUpdateValue(this.value);
     }
   }
+
+    // --- render
 
   render() {
     return html`
@@ -41,6 +59,8 @@ export class RybColorSwatch extends LitElement {
       ></button>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
     :host {

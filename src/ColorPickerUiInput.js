@@ -5,6 +5,19 @@ import { createCustomEvent } from './helpers';
 
 // ---
 
+/**
+ * A custom element that provides an input field.
+ *
+ * @class
+ * @extends {LitElement}
+ *
+ * @property {boolean} autofocus - If true, the input will automatically receive focus when the element is first updated.
+ * @property {string} value - The current value of the input.
+ * @property {boolean} disabled - If true, the input will be disabled.
+ * @property {boolean} readonly - If true, the input will be read-only.
+ *
+ * @fires update:value - Dispatched when the input value is updated.
+ */
 export class ColorPickerUiInput extends LitElement {
   rootEl = createRef();
   inputEl = createRef();
@@ -20,6 +33,8 @@ export class ColorPickerUiInput extends LitElement {
     super();
   }
 
+  // --- private methods ---
+
   #emitValueUpdate(value) {
     const event = createCustomEvent('update:value', { value }, { bubbles: false });
 
@@ -32,6 +47,8 @@ export class ColorPickerUiInput extends LitElement {
     this.setValue(value);
   }
 
+  // --- methods ---
+
   setValue(value) {
     this.#emitValueUpdate(value);
   }
@@ -39,6 +56,8 @@ export class ColorPickerUiInput extends LitElement {
   clear() {
     this.setValue('');
   }
+
+  // --- lifecycle ---
 
   firstUpdated(props) {
     if (props.has('autofocus')) {
@@ -53,6 +72,8 @@ export class ColorPickerUiInput extends LitElement {
       this.inputEl.value.value = this.value;
     }
   }
+
+    // --- render
 
   render() {
     return html`
@@ -71,6 +92,8 @@ export class ColorPickerUiInput extends LitElement {
       </div>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
    .body {

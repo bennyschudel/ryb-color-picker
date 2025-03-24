@@ -1,6 +1,12 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
+/**
+ * A custom element that provides a form field.
+ *
+ * @class
+ * @extends {LitElement}
+ */
 export class ColorPickerUiField extends LitElement {
   rootEl = createRef();
 
@@ -11,6 +17,10 @@ export class ColorPickerUiField extends LitElement {
   constructor() {
     super();
   }
+
+  // --- lifecycle ---
+
+    // --- render
 
   render() {
     return html`
@@ -24,6 +34,8 @@ export class ColorPickerUiField extends LitElement {
       </div>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
     :host {

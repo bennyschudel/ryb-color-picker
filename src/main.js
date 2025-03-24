@@ -1,25 +1,30 @@
 export { cubes } from 'rybitten/cubes';
 
-import { ColorPickerUiAlert } from './src/ColorPickerUiAlert.js';
-import { ColorPickerUiButton } from './src/ColorPickerUiButton.js';
-import { ColorPickerUiConfirm } from './src/ColorPickerUiConfirm.js';
-import { ColorPickerUiField } from './src/ColorPickerUiField.js';
-import { ColorPickerUiGamut } from './src/ColorPickerUiGamut.js';
-import { ColorPickerUiGamutCube } from './src/ColorPickerUiGamutCube.js';
-import { ColorPickerUiIcon } from './src/ColorPickerUiIcon.js';
-import { ColorPickerUiIconButton } from './src/ColorPickerUiIconButton.js';
-import { ColorPickerUiInput } from './src/ColorPickerUiInput.js';
-import { ColorPickerUiPrompt } from './src/ColorPickerUiPrompt.js';
-import { ColorPickerUiSelector } from './src/ColorPickerUiSelector.js';
-import { ColorPickerUiSeparator } from './src/ColorPickerUiSeparator.js';
-import { ColorPickerUiStepperInput } from './src/ColorPickerUiStepperInput.js';
-import { ColorPickerUiToolTip } from './src/ColorPickerUiToolTip.js';
+import { ColorPickerUiAlert } from './ColorPickerUiAlert.js';
+import { ColorPickerUiButton } from './ColorPickerUiButton.js';
+import { ColorPickerUiConfirm } from './ColorPickerUiConfirm.js';
+import { ColorPickerUiField } from './ColorPickerUiField.js';
+import { ColorPickerUiGamut } from './ColorPickerUiGamut.js';
+import { ColorPickerUiGamutCube } from './ColorPickerUiGamutCube.js';
+import { ColorPickerUiIcon } from './ColorPickerUiIcon.js';
+import { ColorPickerUiIconButton } from './ColorPickerUiIconButton.js';
+import { ColorPickerUiInput } from './ColorPickerUiInput.js';
+import { ColorPickerUiPrompt } from './ColorPickerUiPrompt.js';
+import { ColorPickerUiSelector } from './ColorPickerUiSelector.js';
+import { ColorPickerUiSeparator } from './ColorPickerUiSeparator.js';
+import { ColorPickerUiStepperInput } from './ColorPickerUiStepperInput.js';
+import { ColorPickerUiToolTip } from './ColorPickerUiToolTip.js';
 
-import { ColorPickerSettings } from './src/ColorPickerSettings.js';
-import { ColorPickerValue } from './src/ColorPickerValue.js';
+import { ColorPickerSettings } from './ColorPickerSettings.js';
+import { ColorPickerValue } from './ColorPickerValue.js';
 
-import { RybColorSwatch } from './src/RybColorSwatch.js';
-import { RybColorPicker } from './src/RybColorPicker.js';
+import { RybColorSwatch } from './RybColorSwatch.js';
+import { RybColorPicker } from './RybColorPicker.js';
+
+export {
+  RybColorSwatch,
+  RybColorPicker,
+};
 
 // ---
 
