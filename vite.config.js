@@ -27,10 +27,17 @@ export default defineConfig(({ command, mode }) => {
           /^lit-html\/.*/,
         ],
       },
+      chunkSizeWarningLimit: 200,
     },
     plugins: [
       BundleSize({
         stats: 'all',
+        limits: [
+          {
+            name: "**/*",
+            limit: "200 kB"
+          },
+        ],
       }),
     ],
   };

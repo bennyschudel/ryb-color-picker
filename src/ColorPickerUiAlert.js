@@ -5,6 +5,16 @@ import { createCustomEvent } from './helpers';
 
 // ---
 
+/**
+ * A custom element that provides an alert dialog.
+ *
+ * @class
+ * @extends {LitElement}
+ *
+ * @property {string} text - The text to display in the dialog.
+ *
+ * @fires ok - Dispatched when the user clicks the "Ok" button or presses the "Enter" key.
+ */
 export class ColorPickerUiAlert extends LitElement {
   rootEl = createRef();
   inputEl = createRef();
@@ -21,9 +31,10 @@ export class ColorPickerUiAlert extends LitElement {
     this._handleKeyUp = this.#handleKeyUp.bind(this);
   }
 
+  // --- private methods ---
+
   #handleKeyUp(event) {
     switch (event.key) {
-      case 'Escape':
       case 'Enter':
         this.#onOk();
         break;
@@ -52,6 +63,8 @@ export class ColorPickerUiAlert extends LitElement {
     window.removeEventListener('keyup', this._handleKeyUp);
   }
 
+    // --- render
+
   render() {
     return html`
       <div
@@ -65,6 +78,8 @@ export class ColorPickerUiAlert extends LitElement {
       </div>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
     :host {

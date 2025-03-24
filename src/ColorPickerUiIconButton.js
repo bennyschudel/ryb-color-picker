@@ -1,6 +1,15 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
+/**
+ * A custom element representing an icon button.
+ *
+ * @class
+ * @extends {LitElement}
+ *
+ * @property {boolean} disabled - Reflects the disabled state of the button.
+ * @property {boolean} feedback - Enables or disables feedback functionality.
+ */
 export class ColorPickerUiIconButton extends LitElement {
   rootEl = createRef();
   feedBackEl = createRef();
@@ -14,6 +23,14 @@ export class ColorPickerUiIconButton extends LitElement {
     super();
   }
 
+  // --- methods ---
+
+  /**
+   * Displays feedback text for a specified duration.
+   *
+   * @param {string} text - The feedback text to display.
+   * @param {number} [duration=1000] - The duration to display the feedback text, in milliseconds.
+   */
   showFeedBack(text, duration = 1_000) {
     if (!this.feedback) {
       console.warn('Please enable the feedback attribute.');
@@ -27,6 +44,10 @@ export class ColorPickerUiIconButton extends LitElement {
     el.setAttribute('duration', duration);
     el.setAttribute('show', '');
   }
+
+  // --- lifecycle ---
+
+    // --- render
 
   render() {
     return html`
@@ -42,6 +63,8 @@ export class ColorPickerUiIconButton extends LitElement {
       </button>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
     :host {

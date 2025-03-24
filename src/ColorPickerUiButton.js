@@ -1,6 +1,16 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
+
+/**
+ * A custom element representing a button.
+ *
+ * @class
+ * @extends {LitElement}
+ *
+ * @property {boolean} disabled - Reflects the disabled state of the button.
+ * @property {boolean} feedback - Enables or disables feedback functionality.
+ */
 export class ColorPickerUiButton extends LitElement {
   rootEl = createRef();
   feedBackEl = createRef();
@@ -13,6 +23,8 @@ export class ColorPickerUiButton extends LitElement {
   constructor() {
     super();
   }
+
+  // --- methods ---
 
   showFeedBack(text, duration = 1_000) {
     if (!this.feedback) {
@@ -28,6 +40,10 @@ export class ColorPickerUiButton extends LitElement {
     el.setAttribute('show', '');
   }
 
+  // --- lifecycle ---
+
+    // --- render
+
   render() {
     return html`
       <button ${ref(this.rootEl)} class="body" ?disabled=${this.disabled}>
@@ -40,6 +56,8 @@ export class ColorPickerUiButton extends LitElement {
       </button>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
     :host {

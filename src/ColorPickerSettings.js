@@ -1,15 +1,24 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
+/**
+ * A custom element representing a settings element.
+ *
+ * @class
+ * @extends {LitElement}
+ */
 export class ColorPickerSettings extends LitElement {
   rootEl = createRef();
 
-  static properties = {
-  };
+  static properties = {};
 
   constructor() {
     super();
   }
+
+  // --- lifecycle ---
+
+    // --- render
 
   render() {
     return html`
@@ -21,6 +30,8 @@ export class ColorPickerSettings extends LitElement {
       </div>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
     :host {

@@ -5,6 +5,18 @@ import { createCustomEvent } from './helpers';
 
 // ---
 
+/**
+ * A custom element that provides a prompt for input.
+ *
+ * @class
+ * @extends {LitElement}
+ *
+ * @property {string} text - The text to display in the prompt.
+ * @property {string} value - The current value of the color input.
+ *
+ * @fires continue - Dispatched when the user clicks the "Continue" button or presses the "Enter" key.
+ * @fires cancel - Dispatched when the user clicks the "Cancel" button or presses the "Escape" key.
+ */
 export class ColorPickerUiPrompt extends LitElement {
   rootEl = createRef();
   inputEl = createRef();
@@ -22,6 +34,8 @@ export class ColorPickerUiPrompt extends LitElement {
 
     this._handleKeyUp = this.#handleKeyUp.bind(this);
   }
+
+  // --- private methods ---
 
   #handleKeyUp(event) {
     switch (event.key) {
@@ -74,6 +88,8 @@ export class ColorPickerUiPrompt extends LitElement {
     window.removeEventListener('keyup', this._handleKeyUp);
   }
 
+    // --- render
+
   render() {
     return html`
       <div
@@ -96,6 +112,8 @@ export class ColorPickerUiPrompt extends LitElement {
       </div>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
     :host {

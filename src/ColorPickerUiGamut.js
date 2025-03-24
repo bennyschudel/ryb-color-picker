@@ -6,6 +6,17 @@ import { createCustomEvent, getDefaultCube } from './helpers';
 
 // ---
 
+/**
+ * A custom element that provides a UI for selecting color gamut.
+ *
+ * @class
+ * @extends {LitElement}
+ *
+ * @property {Array} cube - The array representing the color cube.
+ * @property {boolean} [noModify=false] - A flag indicating whether the color inputs are disabled.
+ * @property {preset} preset - An ID representing the current gamut preset.
+ * @property {Array<Array<string, string>>} presets - An array containing available presets.
+ */
 export class ColorPickerUiGamut extends LitElement {
   rootEl = createRef();
   cubeEl = createRef();
@@ -27,6 +38,8 @@ export class ColorPickerUiGamut extends LitElement {
     super();
 
     this.preset = '';
+    this.presets = [];
+    this.noModify = false;
 
     this.cube = getDefaultCube();
   }
@@ -188,6 +201,8 @@ export class ColorPickerUiGamut extends LitElement {
     }
   }
 
+    // --- render
+
   render() {
     return html`
       <div ${ref(this.rootEl)} class="body">
@@ -239,10 +254,9 @@ export class ColorPickerUiGamut extends LitElement {
     `;
   }
 
-  static styles = css`
-    :host {
-    }
+  // --- styles ---
 
+  static styles = css`
     .body {
       display: flex;
       flex-direction: column;

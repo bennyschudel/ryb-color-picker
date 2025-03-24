@@ -1,6 +1,12 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
+/**
+ * A custom element representing an icon.
+ *
+ * @class
+ * @extends {LitElement}
+ */
 export class ColorPickerUiIcon extends LitElement {
   rootEl = createRef();
 
@@ -9,6 +15,10 @@ export class ColorPickerUiIcon extends LitElement {
   constructor() {
     super();
   }
+
+  // --- lifecycle ---
+
+    // --- render
 
   render() {
     return html`
@@ -20,6 +30,8 @@ export class ColorPickerUiIcon extends LitElement {
       </div>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
     :host {

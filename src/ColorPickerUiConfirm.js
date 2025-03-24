@@ -5,6 +5,17 @@ import { createCustomEvent } from './helpers';
 
 // ---
 
+/**
+ * A custom element that provides a confirm dialog.
+ *
+ * @class
+ * @extends {LitElement}
+ *
+ * @property {string} text - The text to display in the dialog.
+ *
+ * @fires continue - Dispatched when the user clicks the "Continue" button or presses the "Enter" key.
+ * @fires cancel - Dispatched when the user clicks the "Cancel" button or presses the "Escape" key.
+ */
 export class ColorPickerUiConfirm extends LitElement {
   rootEl = createRef();
 
@@ -19,6 +30,8 @@ export class ColorPickerUiConfirm extends LitElement {
 
     this._handleKeyUp = this.#handleKeyUp.bind(this);
   }
+
+  // --- private methods ---
 
   #handleKeyUp(event) {
     switch (event.key) {
@@ -63,6 +76,8 @@ export class ColorPickerUiConfirm extends LitElement {
     window.removeEventListener('keyup', this._handleKeyUp);
   }
 
+    // --- render
+
   render() {
     return html`
       <div
@@ -78,6 +93,8 @@ export class ColorPickerUiConfirm extends LitElement {
       </div>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
     :host {

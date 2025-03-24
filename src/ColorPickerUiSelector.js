@@ -3,6 +3,23 @@ import { ref, createRef } from 'lit/directives/ref.js';
 
 import { createCustomEvent } from './helpers';
 
+/**
+ * @typedef {[string, string]} Option - A tuple containing a value and label for the selector
+ */
+
+/**
+ * A custom element that provides a select dropdown with optional
+ * next/previous controls. Supports keyboard navigation with arrow keys.
+ *
+ * @class
+ * @extends {LitElement}
+ *
+ * @property {string} value - The currently selected value
+ * @property {Option[]} options - Array of [value, label] pairs for the select options
+ * @property {boolean} [noControls=false] - When true, hides the next/previous buttons
+ *
+ * @fires {CustomEvent} update:value - Fired when the selected value changes
+ */
 export class ColorPickerUiSelector extends LitElement {
   rootEl = createRef();
   selectEl = createRef();
@@ -19,19 +36,35 @@ export class ColorPickerUiSelector extends LitElement {
     this.noControls = false;
   }
 
+  // --- private getters ---
+
   get #currentIndex() {
     const index = this.options.findIndex(([value]) => value === this.value);
 
     return index;
   }
 
+  // --- getters ---
+
+  /**
+   * Gets the total number of available options
+   *
+   * @returns {number} The number of options
+   */
   get count() {
     return this.options.length;
   }
 
+  /**
+   * Determines if cycling through values is possible (requires more than 1 option)
+   *
+   * @returns {boolean} True if cycling is possible
+   */
   get canCycle() {
     return this.count > 1;
   }
+
+  // --- private methods ---
 
   #emitValueUpdate(value) {
     const event = createCustomEvent(
@@ -44,35 +77,8 @@ export class ColorPickerUiSelector extends LitElement {
   }
 
   #handleChange(event) {
-    const value = event.target.value;
-
+    const value = /** @type {HTMLSelectElement} */ (event.target).value;
     this.setValue(value);
-  }
-
-  setValue(value) {
-    this.#emitValueUpdate(value);
-  }
-
-  nextValue() {
-    let index = this.#currentIndex + 1;
-    if (index > this.count - 1) {
-      index = 0;
-    }
-
-    const value = this.options[index][0];
-
-    this.#emitValueUpdate(value);
-  }
-
-  previousValue() {
-    let index = this.#currentIndex - 1;
-    if (index < 0) {
-      index = this.count - 1;
-    }
-
-    const value = this.options[index][0];
-
-    this.#emitValueUpdate(value);
   }
 
   #handleKeyup(event) {
@@ -86,6 +92,47 @@ export class ColorPickerUiSelector extends LitElement {
     }
   }
 
+  // --- methods ---
+
+  /**
+   * Sets the current value and emits an update event
+   *
+   * @param {string} value - The new value to set
+   */
+  setValue(value) {
+    this.#emitValueUpdate(value);
+  }
+
+  /**
+   * Selects the next value in the options list, cycling to the first if at the end
+   */
+  nextValue() {
+    let index = this.#currentIndex + 1;
+    if (index > this.count - 1) {
+      index = 0;
+    }
+
+    const value = this.options[index][0];
+
+    this.#emitValueUpdate(value);
+  }
+
+  /**
+   * Selects the previous value in the options list, cycling to the last if at the beginning
+   */
+  previousValue() {
+    let index = this.#currentIndex - 1;
+    if (index < 0) {
+      index = this.count - 1;
+    }
+
+    const value = this.options[index][0];
+
+    this.#emitValueUpdate(value);
+  }
+
+  // --- lifecycle ---
+
   updated(props) {
     if (props.has('value')) {
       const index = this.#currentIndex;
@@ -96,6 +143,8 @@ export class ColorPickerUiSelector extends LitElement {
       this.selectEl.value.selectedIndex = index;
     }
   }
+
+    // --- render
 
   render() {
     return html`
@@ -156,6 +205,8 @@ export class ColorPickerUiSelector extends LitElement {
       </div>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
     :host {

@@ -4,6 +4,23 @@ import { ref, createRef } from 'lit/directives/ref.js';
 import { clamp } from './utils';
 import { createCustomEvent } from './helpers';
 
+/**
+ * A custom element that provides an input for incrementing and decrementing a numeric value within a specified range.
+ *
+ * @class
+ * @extends {LitElement}
+ *
+ * @property {number} max - The maximum value allowed.
+ * @property {number} min - The minimum value allowed.
+ * @property {number} value - The current value of the input.
+ *
+ * @method minus - Decrements the value by 1.
+ * @method plus - Increments the value by 1.
+ * @method setValue - Sets the value and emits an update event.
+ * @method updated - Lifecycle method called when properties change.
+ *
+ * @fires ColorPickerUiStepperInput#value:update - Fired when the value is updated.
+ */
 export class ColorPickerUiStepperInput extends LitElement {
   rootEl = createRef();
   inputEl = createRef();
@@ -20,13 +37,27 @@ export class ColorPickerUiStepperInput extends LitElement {
     this.value = 0;
   }
 
+  // --- getters ----
+
+  /**
+   * Determines if the current value can be decremented.
+   *
+   * @returns {boolean} True if the current value is greater than the minimum value, otherwise false.
+   */
   get canMinus() {
     return this.value > this.min;
   }
 
+  /**
+   * Determines if the current value is less than the maximum allowed value.
+   *
+   * @returns {boolean} True if the current value is less than the maximum, otherwise false.
+   */
   get canPlus() {
     return this.value < this.max;
   }
+
+  // --- private methods ---
 
   #handleInputChange(event) {
     const { value } = event.target;
@@ -46,23 +77,40 @@ export class ColorPickerUiStepperInput extends LitElement {
     this.dispatchEvent(event);
   }
 
+  // --- methods ---
+
+  /**
+   * Sets the value by emitting a value update event.
+   *
+   * @param {any} value - The new value to set.
+   */
   setValue(value) {
     this.#emitValueUpdate(value);
   }
 
+  /**
+   * Increases the current value by 1.
+   */
   plus() {
     this.setValue(this.value + 1);
   }
 
+  /**
+   * Decreases the current value by 1.
+   */
   minus() {
     this.setValue(this.value - 1);
   }
+
+  // --- lifecycle ---
 
   updated(props) {
     if (props.has('value')) {
       this.inputEl.value.value = this.value;
     }
   }
+
+    // --- render
 
   render() {
     return html`
@@ -109,6 +157,8 @@ export class ColorPickerUiStepperInput extends LitElement {
       </div>
     `;
   }
+
+  // --- styles ---
 
   static styles = css`
     :host {
