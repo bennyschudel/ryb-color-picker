@@ -49,39 +49,39 @@ import { createCustomEvent, createDialog, getDefaultCube } from './helpers';
  * @class
  * @extends {LitElement}
  *
- * @property {number} animationDuration - The duration of animations in milliseconds.
- * @property {string} backgroundColor - The background color of the color picker.
+ * @property {number} [animationDuration=150] - The duration of animations in milliseconds.
+ * @property {string} [backgroundColor='transparent'] - The background color of the color picker.
  * @property {Array} cube - The color cube used for gamut mapping.
- * @property {number} diameter - The diameter of the color picker.
- * @property {string} displayFormat - The format in which the color is displayed (e.g., 'hex', 'rgb').
- * @property {number} distortion - The distortion level of the color picker.
+ * @property {number} [diameter=320] - The diameter of the color picker.
+ * @property {string} [displayFormat='hex'] - The format in which the color is displayed (e.g., 'hex', 'rgb').
+ * @property {number} [distortion=3] - The distortion level of the color picker.
  * @property {string} gamutPreset - The current gamut preset.
  * @property {Array} gamutPresets - An array of gamut presets.
- * @property {number} gap - The gap between different segments of the color picker.
- * @property {boolean} hasPresets - Indicates if the color picker has presets.
+ * @property {number} [gap=0] - The gap between different segments of the color picker.
+ * @property {boolean} [hasPresets=false] - Indicates if the color picker has presets.
  * @property {string} id - The unique identifier for the color picker.
  * @property {string} initialValue - The initial color value.
- * @property {boolean} noInit - If true, the color picker will not initialize automatically.
- * @property {boolean} noSettings - If true, the settings panel will not be displayed.
- * @property {boolean} noStore - If true, the color picker will not use local storage.
- * @property {boolean} noValue - If true, the value display will not be shown.
- * @property {number} padding - The padding around the color picker.
- * @property {string} preset - The current color preset.
+ * @property {boolean} [noInit=false] - If true, the color picker will not initialize automatically.
+ * @property {boolean} [noSettings=false] - If true, the settings panel will not be displayed.
+ * @property {boolean} [noStore=false] - If true, the color picker will not use local storage.
+ * @property {boolean} [noValue=false] - If true, the value display will not be shown.
+ * @property {number} [padding=30] - The padding around the color picker.
+ * @property {string} [preset=''] - The current color preset.
  * @property {Array} presets - An array of color presets.
- * @property {boolean} ready - Indicates if the color picker is ready.
- * @property {number} segmentsHue - The number of segments for the hue ring.
- * @property {number} segmentsLightness - The number of segments for the lightness ring.
- * @property {number} segmentsSaturation - The number of segments for the saturation ring.
+ * @property {boolean} [ready=false] - Indicates if the color picker is ready.
+ * @property {number} [segmentsHue=48] - The number of segments for the hue ring.
+ * @property {number} [segmentsLightness=24] - The number of segments for the lightness ring.
+ * @property {number} [segmentsSaturation=24] - The number of segments for the saturation ring.
  * @property {boolean} show - Indicates if the color picker is visible.
- * @property {boolean} showSettings - Indicates if the settings panel is visible.
- * @property {boolean} showValue - Indicates if the value display is visible.
- * @property {string} storeConfigKey - The key used to store the configuration in local storage.
- * @property {string} storeGamutPresetsKey - The key used to store the gamut presets in local storage.
- * @property {string} storePresetsKey - The key used to store the presets in local storage.
- * @property {number} swatchGap - The gap between the color swatch and the inner radius.
- * @property {number} thicknessHue - The thickness of the hue ring.
- * @property {number} thicknessLightness - The thickness of the lightness ring.
- * @property {number} thicknessSaturation - The thickness of the saturation ring.
+ * @property {boolean} [showSettings=false] - Indicates if the settings panel is visible.
+ * @property {boolean} [showValue=true] - Indicates if the value display is visible.
+ * @property {string} [storeConfigKey='ryb-color-picker/{id}/config'] - The key used to store the configuration in local storage.
+ * @property {string} [storeGamutPresetsKey='ryb-color-picker/{id}/gamut-presets'] - The key used to store the gamut presets in local storage.
+ * @property {string} [storePresetsKey='ryb-color-picker/{id}/presets'] - The key used to store the presets in local storage.
+ * @property {number} [swatchGap=8] - The gap between the color swatch and the inner radius.
+ * @property {number} [thicknessHue=24] - The thickness of the hue ring.
+ * @property {number} [thicknessLightness=20] - The thickness of the lightness ring.
+ * @property {number} [thicknessSaturation=20] - The thickness of the saturation ring.
  * @property {string} value - The current color value in the specified display format.
  *
  * @method blur - Removes a focus effect with the specified duration.
@@ -226,8 +226,8 @@ export class RybColorPicker extends LitElement {
     this.gamutPreset = '';
 
     this.storeConfigKey = 'ryb-color-picker/{id}/config';
-    this.storePresetsKey = 'ryb-color-picker/{id}/presets';
     this.storeGamutPresetsKey = 'ryb-color-picker/{id}/gamut-presets';
+    this.storePresetsKey = 'ryb-color-picker/{id}/presets';
   }
 
   // --- private getters ---

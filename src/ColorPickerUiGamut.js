@@ -13,7 +13,7 @@ import { createCustomEvent, getDefaultCube } from './helpers';
  * @extends {LitElement}
  *
  * @property {Array} cube - The array representing the color cube.
- * @property {boolean} [noModify=false] - A flag indicating whether the color inputs are disabled.
+ * @property {boolean} [noModify=false] - A flag that indicates if the cube can be modified.
  * @property {preset} preset - An ID representing the current gamut preset.
  * @property {Array<Array<string, string>>} presets - An array containing available presets.
  */

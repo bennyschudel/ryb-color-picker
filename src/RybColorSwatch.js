@@ -10,8 +10,8 @@ import { createCustomEvent } from './helpers';
  * @class
  * @extends {LitElement}
  *
- * @property {boolean} disabled - Indicates whether the button is disabled.
- * @property {boolean} pill - Indicates whether the button has a pill-shaped border radius.
+ * @property {boolean} [disabled=false] - Indicates whether the button is disabled.
+ * @property {boolean} [pill=false] - Indicates whether the button has a pill-shaped border radius.
  * @property {string} value - Represents the background color of the button.
  *
  * @fires RybColorSwatch#update:value - Dispatched when the value property is updated.
@@ -27,6 +27,9 @@ export class RybColorSwatch extends LitElement {
 
   constructor() {
     super();
+
+    this.disabled = false;
+    this.pill = false;
   }
 
   // --- private methods ---
