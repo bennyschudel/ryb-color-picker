@@ -11,7 +11,7 @@ export default defineConfig(({ command, mode }) => {
     build: {
       sourcemap: 'hidden',
       lib: {
-        entry: resolve(__dirname, './ryb-color-picker.js'),
+        entry: resolve(__dirname, './src/main.js'),
         name: 'RybColorPicker',
         fileName: 'ryb-color-picker',
         formats: ['es'],

@@ -3,13 +3,15 @@
   "description": "A RYB Color Picker Wheel implemented as a web component",
   "license": "MIT",
   "author": "ryb-color-picker",
-  "version": "0.5.0-alpha12",
+  "version": "0.5.0-alpha13",
   "type": "module",
+  "types": "dist/types/main.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/ryb-color-picker.min.js"
+      "import": "./dist/main.min.js",
+      "types": "./dist/types/main.d.ts"
     },
-    "./dist/ryb-color-picker": "./dist/ryb-color-picker.min.js"
+    "./dist/ryb-color-picker": "./dist/main.min.js"
   },
   "files": [
     "README.md",
