@@ -12,7 +12,7 @@ import { createCustomEvent } from './helpers';
  * @extends {LitElement}
  *
  * @property {string} text - The text to display in the prompt.
- * @property {string} value - The current value of the color input.
+ * @property {string} value - The current value of the prompt input.
  *
  * @fires continue - Dispatched when the user clicks the "Continue" button or presses the "Enter" key.
  * @fires cancel - Dispatched when the user clicks the "Cancel" button or presses the "Escape" key.

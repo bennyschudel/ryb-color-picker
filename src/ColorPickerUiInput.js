@@ -11,10 +11,10 @@ import { createCustomEvent } from './helpers';
  * @class
  * @extends {LitElement}
  *
- * @property {boolean} autofocus - If true, the input will automatically receive focus when the element is first updated.
  * @property {string} value - The current value of the input.
- * @property {boolean} disabled - If true, the input will be disabled.
- * @property {boolean} readonly - If true, the input will be read-only.
+ * @property {boolean} [autofocus=false] - If true, the input will automatically receive focus when the element is first updated.
+ * @property {boolean} [disabled=false] - If true, the input will be disabled.
+ * @property {boolean} [readonly=false] - If true, the input will be read-only.
  *
  * @fires update:value - Dispatched when the input value is updated.
  */
@@ -23,14 +23,18 @@ export class ColorPickerUiInput extends LitElement {
   inputEl = createRef();
 
   static properties = {
-    autofocus: { type: Boolean },
     value: { type: String },
+    autofocus: { type: Boolean },
     disabled: { type: Boolean },
     readonly: { type: Boolean },
   };
 
   constructor() {
     super();
+
+    this.autofocus = false;
+    this.disabled = false;
+    this.readonly = false;
   }
 
   // --- private methods ---

@@ -8,8 +8,8 @@ import { ref, createRef } from 'lit/directives/ref.js';
  * @class
  * @extends {LitElement}
  *
- * @property {boolean} disabled - Reflects the disabled state of the button.
- * @property {boolean} feedback - Enables or disables feedback functionality.
+ * @property {boolean} [disabled=false] - Enables or disables the button functionality.
+ * @property {boolean} [feedback=false] - Enables or disables feedback functionality.
  */
 export class ColorPickerUiButton extends LitElement {
   rootEl = createRef();
@@ -22,6 +22,9 @@ export class ColorPickerUiButton extends LitElement {
 
   constructor() {
     super();
+
+    this.disabled = false;
+    this.feedback = false;
   }
 
   // --- methods ---

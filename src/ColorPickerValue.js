@@ -12,8 +12,8 @@ import { copyToClipboard } from './utils';
  * @class
  * @extends {LitElement}
  *
- * @property {boolean} disabled - Indicates if the input is disabled.
- * @property {boolean} noSettings - Indicates if the settings button should be hidden.
+ * @property {boolean} [disabled=false] - Indicates if the input is disabled.
+ * @property {boolean} [noSettings=false] - Indicates if the settings button should be hidden.
  * @property {string} value - The current value of the color picker.
  *
  * @fires ColorPickerValue#update:value - Fired when the value is updated.
@@ -32,6 +32,9 @@ export class ColorPickerValue extends LitElement {
 
   constructor() {
     super();
+
+    this.disabled = false;
+    this.noSettings = false
   }
 
   // --- private methods ---
