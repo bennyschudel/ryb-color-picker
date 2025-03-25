@@ -155,9 +155,13 @@ export class ColorPickerValue extends LitElement {
   // --- styles ---
 
   static styles = css`
+    :host {
+      --background-color: light-dark(#a0a0a0, #303030);
+    }
+
     .body {
       align-items: stretch;
-      background-color: #909090;
+      background-color: var(--background-color);
       border-radius: 0.5rem;
       display: inline-flex;
       font-family: sans-serif;

@@ -212,8 +212,6 @@ export class ColorPickerUiSelector extends LitElement {
     :host {
       --outline-color: black;
       --border-radius: 4px;
-      --background-color: hsl(0 100 100 / 0.8);
-      --background-color-focus: hsl(0 100 100 / 1);
       --focus-color: blue;
 
       display: inline-flex;
@@ -227,15 +225,13 @@ export class ColorPickerUiSelector extends LitElement {
     }
 
     .select {
-      background-color: var(--background-color);
       border: none;
       border-radius: 0.125rem;
       height: 1.5rem;
       width: 100%;
     }
 
-    /select:focus {
-      background-color: var(--background-color-focus);
+    select:focus {
       outline: 2px solid var(--focus-color);
       z-index: 1;
     }

@@ -11,6 +11,7 @@ const examples = [
   'load-settings',
   'no-store',
   'two-wheels',
+  'two-wheels-dark'
 ];
 
 examples.forEach((name) => {
@@ -19,7 +20,7 @@ examples.forEach((name) => {
 
     await page.waitForTimeout(500);
 
-    await expect(page).toHaveScreenshot(`${name}.png`);
+    await expect(page).toHaveScreenshot(`${name}.png`, { fullPage: true });
   });
 })
 
