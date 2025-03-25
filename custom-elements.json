@@ -27,166 +27,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "ryb-color-picker.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "cubes",
-          "declaration": {
-            "name": "cubes",
-            "package": "rybitten/cubes"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-alert",
-          "declaration": {
-            "name": "ColorPickerUiAlert",
-            "module": "/src/ColorPickerUiAlert.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-button",
-          "declaration": {
-            "name": "ColorPickerUiButton",
-            "module": "/src/ColorPickerUiButton.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-confirm",
-          "declaration": {
-            "name": "ColorPickerUiConfirm",
-            "module": "/src/ColorPickerUiConfirm.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-field",
-          "declaration": {
-            "name": "ColorPickerUiField",
-            "module": "/src/ColorPickerUiField.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-gamut",
-          "declaration": {
-            "name": "ColorPickerUiGamut",
-            "module": "/src/ColorPickerUiGamut.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-gamut-cube",
-          "declaration": {
-            "name": "ColorPickerUiGamutCube",
-            "module": "/src/ColorPickerUiGamutCube.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-icon",
-          "declaration": {
-            "name": "ColorPickerUiIcon",
-            "module": "/src/ColorPickerUiIcon.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-icon-button",
-          "declaration": {
-            "name": "ColorPickerUiIconButton",
-            "module": "/src/ColorPickerUiIconButton.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-input",
-          "declaration": {
-            "name": "ColorPickerUiInput",
-            "module": "/src/ColorPickerUiInput.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-prompt",
-          "declaration": {
-            "name": "ColorPickerUiPrompt",
-            "module": "/src/ColorPickerUiPrompt.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-selector",
-          "declaration": {
-            "name": "ColorPickerUiSelector",
-            "module": "/src/ColorPickerUiSelector.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-separator",
-          "declaration": {
-            "name": "ColorPickerUiSeparator",
-            "module": "/src/ColorPickerUiSeparator.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-stepper-input",
-          "declaration": {
-            "name": "ColorPickerUiStepperInput",
-            "module": "/src/ColorPickerUiStepperInput.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-ui-tool-tip",
-          "declaration": {
-            "name": "ColorPickerUiToolTip",
-            "module": "/src/ColorPickerUiToolTip.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-settings",
-          "declaration": {
-            "name": "ColorPickerSettings",
-            "module": "/src/ColorPickerSettings.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "color-picker-value",
-          "declaration": {
-            "name": "ColorPickerValue",
-            "module": "/src/ColorPickerValue.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ryb-color-swatch",
-          "declaration": {
-            "name": "RybColorSwatch",
-            "module": "/src/RybColorSwatch.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ryb-color-picker",
-          "declaration": {
-            "name": "RybColorPicker",
-            "module": "/src/RybColorPicker.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/ryb-color-picker.min.js",
+      "path": "dist/main.min.js",
       "declarations": [
         {
           "kind": "variable",
@@ -196,7 +37,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "Ye",
+          "name": "_i",
           "members": [
             {
               "kind": "field",
@@ -235,6 +76,22 @@
                   "default": "1e3"
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "feedback",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
             }
           ],
           "superclass": {
@@ -247,7 +104,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "Ze",
+          "name": "Si",
           "members": [
             {
               "kind": "field",
@@ -272,7 +129,19 @@
         {
           "kind": "class",
           "description": "",
-          "name": "en",
+          "name": "Qe",
+          "members": [],
+          "superclass": {
+            "name": "q",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-dialog",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "tn",
           "members": [],
           "superclass": {
             "name": "q",
@@ -284,7 +153,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "rn",
+          "name": "nn",
           "members": [
             {
               "kind": "field",
@@ -306,6 +175,22 @@
             },
             {
               "kind": "field",
+              "name": "presets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "noModify",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
               "name": "cube"
             }
           ],
@@ -319,7 +204,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "bn",
+          "name": "vn",
           "members": [
             {
               "kind": "method",
@@ -327,8 +212,21 @@
               "parameters": [
                 {
                   "name": "e"
+                },
+                {
+                  "description": "The index of the color in the cube array.",
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
                 }
-              ]
+              ],
+              "description": "Retrieves the RGB value from the cube at the specified index and converts it to a CSS color string.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
             },
             {
               "kind": "method",
@@ -336,8 +234,24 @@
               "parameters": [
                 {
                   "name": "e"
+                },
+                {
+                  "description": "The input event containing the color value and index.",
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
                 }
-              ]
+              ],
+              "description": "Handles the color input event, converts the input value to an RGB color,\nnormalizes the RGB values, updates the cube at the specified index, and\nemits a cube update event."
+            },
+            {
+              "kind": "field",
+              "name": "noModify",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
             },
             {
               "kind": "field",
@@ -354,7 +268,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "wn",
+          "name": "bn",
           "members": [],
           "superclass": {
             "name": "q",
@@ -366,7 +280,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "xn",
+          "name": "wn",
           "members": [
             {
               "kind": "method",
@@ -378,8 +292,40 @@
                 {
                   "name": "i",
                   "default": "1e3"
+                },
+                {
+                  "description": "The feedback text to display.",
+                  "name": "text",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "description": "The duration to display the feedback text, in milliseconds.",
+                  "name": "duration",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
                 }
-              ]
+              ],
+              "description": "Displays feedback text for a specified duration."
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "feedback",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
             }
           ],
           "superclass": {
@@ -392,7 +338,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "kn",
+          "name": "xn",
           "members": [
             {
               "kind": "method",
@@ -406,6 +352,30 @@
             {
               "kind": "method",
               "name": "clear"
+            },
+            {
+              "kind": "field",
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
             }
           ],
           "superclass": {
@@ -418,7 +388,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "_n",
+          "name": "kn",
           "members": [
             {
               "kind": "field",
@@ -451,7 +421,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "En",
+          "name": "Cn",
           "members": [
             {
               "kind": "field",
@@ -533,7 +503,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "Mn",
+          "name": "En",
           "members": [
             {
               "kind": "field",
@@ -603,7 +573,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "Pn",
+          "name": "An",
           "members": [
             {
               "kind": "field",
@@ -624,7 +594,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "Nn",
+          "name": "Pn",
           "members": [],
           "superclass": {
             "name": "q",
@@ -636,7 +606,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "Tn",
+          "name": "Nn",
           "members": [
             {
               "kind": "method",
@@ -647,6 +617,22 @@
                   "text": "Promise<void>"
                 }
               }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "noSettings",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
             }
           ],
           "superclass": {
@@ -659,8 +645,25 @@
         {
           "kind": "class",
           "description": "",
-          "name": "Rn",
-          "members": [],
+          "name": "Tn",
+          "members": [
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            },
+            {
+              "kind": "field",
+              "name": "pill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!1"
+            }
+          ],
           "superclass": {
             "name": "q",
             "package": "lit"
@@ -671,7 +674,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "In",
+          "name": "Rn",
           "members": [
             {
               "kind": "field",
@@ -1395,19 +1398,19 @@
             },
             {
               "kind": "field",
-              "name": "storePresetsKey",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"ryb-color-picker/{id}/presets\""
-            },
-            {
-              "kind": "field",
               "name": "storeGamutPresetsKey",
               "type": {
                 "text": "string"
               },
               "default": "\"ryb-color-picker/{id}/gamut-presets\""
+            },
+            {
+              "kind": "field",
+              "name": "storePresetsKey",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"ryb-color-picker/{id}/presets\""
             }
           ],
           "superclass": {
@@ -1423,8 +1426,8 @@
           "kind": "custom-element-definition",
           "name": "color-picker-ui-alert",
           "declaration": {
-            "name": "Ye",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "_i",
+            "module": "dist/main.min.js"
           }
         },
         {
@@ -1432,79 +1435,87 @@
           "name": "color-picker-ui-button",
           "declaration": {
             "name": "We",
-            "module": "dist/ryb-color-picker.min.js"
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "color-picker-ui-confirm",
           "declaration": {
-            "name": "Ze",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "Si",
+            "module": "dist/main.min.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-dialog",
+          "declaration": {
+            "name": "Qe",
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "color-picker-ui-field",
           "declaration": {
-            "name": "en",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "tn",
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "color-picker-ui-gamut",
           "declaration": {
-            "name": "rn",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "nn",
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "color-picker-ui-gamut-cube",
           "declaration": {
-            "name": "bn",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "vn",
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "color-picker-ui-icon",
           "declaration": {
-            "name": "wn",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "bn",
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "color-picker-ui-icon-button",
           "declaration": {
-            "name": "xn",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "wn",
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "color-picker-ui-input",
           "declaration": {
-            "name": "kn",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "xn",
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "color-picker-ui-prompt",
           "declaration": {
-            "name": "_n",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "kn",
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "color-picker-ui-selector",
           "declaration": {
-            "name": "En",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "Cn",
+            "module": "dist/main.min.js"
           }
         },
         {
@@ -1512,55 +1523,71 @@
           "name": "color-picker-ui-separator",
           "declaration": {
             "name": "Sn",
-            "module": "dist/ryb-color-picker.min.js"
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "color-picker-ui-stepper-input",
           "declaration": {
-            "name": "Mn",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "En",
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "color-picker-ui-tool-tip",
           "declaration": {
-            "name": "Pn",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "An",
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "color-picker-settings",
           "declaration": {
-            "name": "Nn",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "Pn",
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "color-picker-value",
           "declaration": {
-            "name": "Tn",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "Nn",
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "ryb-color-swatch",
           "declaration": {
-            "name": "Rn",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "Tn",
+            "module": "dist/main.min.js"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "ryb-color-picker",
           "declaration": {
-            "name": "In",
-            "module": "dist/ryb-color-picker.min.js"
+            "name": "Rn",
+            "module": "dist/main.min.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "RybColorPicker",
+          "declaration": {
+            "name": "Rn",
+            "module": "dist/main.min.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "RybColorSwatch",
+          "declaration": {
+            "name": "Tn",
+            "module": "dist/main.min.js"
           }
         },
         {
@@ -1568,7 +1595,7 @@
           "name": "cubes",
           "declaration": {
             "name": "B",
-            "module": "dist/ryb-color-picker.min.js"
+            "module": "dist/main.min.js"
           }
         }
       ]
@@ -1615,14 +1642,6 @@
           "description": "A custom element that provides an alert dialog.",
           "name": "ColorPickerUiAlert",
           "members": [
-            {
-              "kind": "field",
-              "name": "rootEl"
-            },
-            {
-              "kind": "field",
-              "name": "inputEl"
-            },
             {
               "kind": "method",
               "name": "#handleKeyUp",
@@ -1737,7 +1756,8 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Reflects the disabled state of the button.",
+              "default": "false",
+              "description": "Enables or disables the button functionality.",
               "attribute": "disabled",
               "reflects": true
             },
@@ -1748,6 +1768,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "Enables or disables feedback functionality.",
               "attribute": "feedback"
             }
@@ -1758,7 +1779,8 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Reflects the disabled state of the button.",
+              "default": "false",
+              "description": "Enables or disables the button functionality.",
               "fieldName": "disabled"
             },
             {
@@ -1766,6 +1788,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "Enables or disables feedback functionality.",
               "fieldName": "feedback"
             }
@@ -1798,10 +1821,6 @@
           "description": "A custom element that provides a confirm dialog.",
           "name": "ColorPickerUiConfirm",
           "members": [
-            {
-              "kind": "field",
-              "name": "rootEl"
-            },
             {
               "kind": "method",
               "name": "#handleKeyUp",
@@ -1894,6 +1913,34 @@
           "declaration": {
             "name": "ColorPickerUiConfirm",
             "module": "src/ColorPickerUiConfirm.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/ColorPickerUiDialog.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A custom element that provides a base dialog.",
+          "name": "ColorPickerUiDialog",
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "color-picker-ui-dialog",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ColorPickerUiDialog",
+          "declaration": {
+            "name": "ColorPickerUiDialog",
+            "module": "src/ColorPickerUiDialog.js"
           }
         }
       ]
@@ -2093,7 +2140,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "A flag indicating whether the color inputs are disabled.",
+              "description": "A flag that indicates if the cube can be modified.",
               "attribute": "noModify"
             },
             {
@@ -2138,7 +2185,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "A flag indicating whether the color inputs are disabled.",
+              "description": "A flag that indicates if the cube can be modified.",
               "fieldName": "noModify"
             },
             {
@@ -2379,9 +2426,9 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Reflects the disabled state of the button.",
-              "attribute": "disabled",
-              "reflects": true
+              "default": "false",
+              "description": "Enables or disables the button functionality.",
+              "attribute": "disabled"
             },
             {
               "kind": "field",
@@ -2390,6 +2437,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "Enables or disables feedback functionality.",
               "attribute": "feedback"
             }
@@ -2400,7 +2448,8 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Reflects the disabled state of the button.",
+              "default": "false",
+              "description": "Enables or disables the button functionality.",
               "fieldName": "disabled"
             },
             {
@@ -2408,6 +2457,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "Enables or disables feedback functionality.",
               "fieldName": "feedback"
             }
@@ -2488,18 +2538,9 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "If true, the input will automatically receive focus when the element is first updated.",
               "attribute": "autofocus"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "description": "The current value of the input.",
-              "attribute": "value"
             },
             {
               "kind": "field",
@@ -2508,6 +2549,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "If true, the input will be disabled.",
               "attribute": "disabled"
             },
@@ -2518,8 +2560,19 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "If true, the input will be read-only.",
               "attribute": "readonly"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The current value of the input.",
+              "attribute": "value"
             }
           ],
           "events": [
@@ -2530,14 +2583,6 @@
           ],
           "attributes": [
             {
-              "name": "autofocus",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "If true, the input will automatically receive focus when the element is first updated.",
-              "fieldName": "autofocus"
-            },
-            {
               "name": "value",
               "type": {
                 "text": "string"
@@ -2546,10 +2591,20 @@
               "fieldName": "value"
             },
             {
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "If true, the input will automatically receive focus when the element is first updated.",
+              "fieldName": "autofocus"
+            },
+            {
               "name": "disabled",
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "If true, the input will be disabled.",
               "fieldName": "disabled"
             },
@@ -2558,6 +2613,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "If true, the input will be read-only.",
               "fieldName": "readonly"
             }
@@ -2590,14 +2646,6 @@
           "description": "A custom element that provides a prompt for input.",
           "name": "ColorPickerUiPrompt",
           "members": [
-            {
-              "kind": "field",
-              "name": "rootEl"
-            },
-            {
-              "kind": "field",
-              "name": "inputEl"
-            },
             {
               "kind": "method",
               "name": "#handleKeyUp",
@@ -2667,7 +2715,7 @@
                 "text": "string"
               },
               "default": "''",
-              "description": "The current value of the color input.",
+              "description": "The current value of the prompt input.",
               "attribute": "value"
             },
             {
@@ -2701,7 +2749,7 @@
                 "text": "string"
               },
               "default": "''",
-              "description": "The current value of the color input.",
+              "description": "The current value of the prompt input.",
               "fieldName": "value"
             }
           ],
@@ -3252,6 +3300,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "Indicates if the input is disabled.",
               "attribute": "disabled"
             },
@@ -3262,6 +3311,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "Indicates if the settings button should be hidden.",
               "attribute": "noSettings"
             },
@@ -3293,6 +3343,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "Indicates if the input is disabled.",
               "fieldName": "disabled"
             },
@@ -3301,6 +3352,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "Indicates if the settings button should be hidden.",
               "fieldName": "noSettings"
             },
@@ -4628,17 +4680,6 @@
             },
             {
               "kind": "field",
-              "name": "storePresetsKey",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "'ryb-color-picker/{id}/presets'",
-              "description": "The key used to store the presets in local storage.",
-              "attribute": "storePresetsKey"
-            },
-            {
-              "kind": "field",
               "name": "storeGamutPresetsKey",
               "privacy": "public",
               "type": {
@@ -4647,6 +4688,17 @@
               "default": "'ryb-color-picker/{id}/gamut-presets'",
               "description": "The key used to store the gamut presets in local storage.",
               "attribute": "storeGamutPresetsKey"
+            },
+            {
+              "kind": "field",
+              "name": "storePresetsKey",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "'ryb-color-picker/{id}/presets'",
+              "description": "The key used to store the presets in local storage.",
+              "attribute": "storePresetsKey"
             },
             {
               "kind": "field",
@@ -5017,6 +5069,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "Indicates whether the button is disabled.",
               "attribute": "disabled",
               "reflects": true
@@ -5028,6 +5081,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "Indicates whether the button has a pill-shaped border radius.",
               "attribute": "pill",
               "reflects": true
@@ -5056,6 +5110,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "Indicates whether the button is disabled.",
               "fieldName": "disabled"
             },
@@ -5064,6 +5119,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "description": "Indicates whether the button has a pill-shaped border radius.",
               "fieldName": "pill"
             },
@@ -5362,6 +5418,189 @@
           "declaration": {
             "name": "createDialog",
             "module": "src/helpers.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/main.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "cubes",
+          "declaration": {
+            "name": "cubes",
+            "package": "rybitten/cubes"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "RybColorSwatch",
+          "declaration": {
+            "name": "RybColorSwatch",
+            "module": "src/main.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "RybColorPicker",
+          "declaration": {
+            "name": "RybColorPicker",
+            "module": "src/main.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-alert",
+          "declaration": {
+            "name": "ColorPickerUiAlert",
+            "module": "/src/ColorPickerUiAlert.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-button",
+          "declaration": {
+            "name": "ColorPickerUiButton",
+            "module": "/src/ColorPickerUiButton.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-confirm",
+          "declaration": {
+            "name": "ColorPickerUiConfirm",
+            "module": "/src/ColorPickerUiConfirm.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-dialog",
+          "declaration": {
+            "name": "ColorPickerUiDialog",
+            "module": "/src/ColorPickerUiDialog.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-field",
+          "declaration": {
+            "name": "ColorPickerUiField",
+            "module": "/src/ColorPickerUiField.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-gamut",
+          "declaration": {
+            "name": "ColorPickerUiGamut",
+            "module": "/src/ColorPickerUiGamut.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-gamut-cube",
+          "declaration": {
+            "name": "ColorPickerUiGamutCube",
+            "module": "/src/ColorPickerUiGamutCube.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-icon",
+          "declaration": {
+            "name": "ColorPickerUiIcon",
+            "module": "/src/ColorPickerUiIcon.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-icon-button",
+          "declaration": {
+            "name": "ColorPickerUiIconButton",
+            "module": "/src/ColorPickerUiIconButton.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-input",
+          "declaration": {
+            "name": "ColorPickerUiInput",
+            "module": "/src/ColorPickerUiInput.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-prompt",
+          "declaration": {
+            "name": "ColorPickerUiPrompt",
+            "module": "/src/ColorPickerUiPrompt.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-selector",
+          "declaration": {
+            "name": "ColorPickerUiSelector",
+            "module": "/src/ColorPickerUiSelector.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-separator",
+          "declaration": {
+            "name": "ColorPickerUiSeparator",
+            "module": "/src/ColorPickerUiSeparator.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-stepper-input",
+          "declaration": {
+            "name": "ColorPickerUiStepperInput",
+            "module": "/src/ColorPickerUiStepperInput.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-ui-tool-tip",
+          "declaration": {
+            "name": "ColorPickerUiToolTip",
+            "module": "/src/ColorPickerUiToolTip.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-settings",
+          "declaration": {
+            "name": "ColorPickerSettings",
+            "module": "/src/ColorPickerSettings.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "color-picker-value",
+          "declaration": {
+            "name": "ColorPickerValue",
+            "module": "/src/ColorPickerValue.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ryb-color-swatch",
+          "declaration": {
+            "name": "RybColorSwatch",
+            "module": "/src/RybColorSwatch.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ryb-color-picker",
+          "declaration": {
+            "name": "RybColorPicker",
+            "module": "/src/RybColorPicker.js"
           }
         }
       ]
