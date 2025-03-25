@@ -39,7 +39,8 @@ export class ColorPickerUiField extends LitElement {
 
   static styles = css`
     :host {
-      --label-background-color: hsl(0 100 100 / 0.2);
+      --background-color: light-dark(hsl(0 100 100 / 0.2), hsl(0 100 100 / 0.1));
+      --color: light-dark(#303030, #b0b0b0);
       --size: 1rem;
       --direction: column;
     }
@@ -50,13 +51,14 @@ export class ColorPickerUiField extends LitElement {
       flex-direction: column;
       gap: 0.25rem;
       font-size: 0.625rem;
-      background-color: var(--label-background-color);
+      background-color: var(--background-color);
       padding: 0.25rem;
       border-radius: 0.25rem;
       flex: 1 1 auto;
     }
 
     .label {
+      color: var(--color);
       letter-spacing: 0.25pt;
       text-transform: uppercase;
     }

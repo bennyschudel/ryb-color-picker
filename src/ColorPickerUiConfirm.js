@@ -1,5 +1,4 @@
-import { html, css, LitElement } from 'lit';
-import { ref, createRef } from 'lit/directives/ref.js';
+import { html, LitElement } from 'lit';
 
 import { createCustomEvent } from './helpers';
 
@@ -17,8 +16,6 @@ import { createCustomEvent } from './helpers';
  * @fires cancel - Dispatched when the user clicks the "Cancel" button or presses the "Escape" key.
  */
 export class ColorPickerUiConfirm extends LitElement {
-  rootEl = createRef();
-
   static properties = {
     text: { type: String },
   };
@@ -80,66 +77,13 @@ export class ColorPickerUiConfirm extends LitElement {
 
   render() {
     return html`
-      <div
-        ${ref(this.rootEl)}
-        class="body"
-      >
-        <h2 class="text">${this.text}</h2>
-        </color-picker-ui-field>
-        <div class="actions">
+      <color-picker-ui-dialog>
+        <div slot="text">${this.text}</div>
+        <div slot="actions">
           <color-picker-ui-button @click=${this.#handleCancelClick}>Cancel</color-picker-ui-button>
           <color-picker-ui-button @click=${this.#handleContinueClick}>Continue</color-picker-ui-button>
         </div>
-      </div>
+      </color-picker-ui-dialog>
     `;
   }
-
-  // --- styles ---
-
-  static styles = css`
-    :host {
-      --_font-family--text: var(--font-family--text, Arial, Helvetica, sans-serif);
-      --_max-width: var(--max-width, 320px);
-      --_min-width: var(--min-width, 240px);
-      --_z-index: var(--z-index, 1000);
-
-      align-items: center;
-      background-color: hsla(0, 0%, 0%, 0.2);
-      border-radius: 0.5rem;
-      display: flex;
-      inset: 0;
-      justify-content: center;
-      padding: 2rem;
-      position: absolute;
-      z-index: var(--_z-index);
-    }
-
-    .body {
-      align-items: stretch;
-      background-color: #404040;
-      border-radius: 0.5rem;
-      display: inline-flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      justify-content: stretch;
-      max-width: var(--_max-width);
-      min-width: var(--_min-width);
-      padding: 1rem;
-    }
-
-    .text {
-      color: #ffffff;
-      font-family: var(--_font-family--text);
-      font-size: 0.875rem;
-      font-weight: normal;
-      line-height: 1.5;
-      margin: 0;
-    }
-
-    .actions {
-      display: flex;
-      gap: 0.25rem;
-      justify-content: flex-end;
-    }
-  `;
 }

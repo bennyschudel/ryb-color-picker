@@ -36,6 +36,7 @@ export class ColorPickerUiIcon extends LitElement {
   static styles = css`
     :host {
       --size: 1rem;
+      --color: light-dark(black, white);
 
       display: inline-flex;
     }
@@ -46,7 +47,7 @@ export class ColorPickerUiIcon extends LitElement {
       height: var(--size);
       justify-content: stretch;
       width: var(--size);
-      color: currentcolor;
+      color: var(--color);
     }
   `;
 }

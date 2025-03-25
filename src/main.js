@@ -3,6 +3,7 @@ export { cubes } from 'rybitten/cubes';
 import { ColorPickerUiAlert } from './ColorPickerUiAlert.js';
 import { ColorPickerUiButton } from './ColorPickerUiButton.js';
 import { ColorPickerUiConfirm } from './ColorPickerUiConfirm.js';
+import { ColorPickerUiDialog } from './ColorPickerUiDialog.js';
 import { ColorPickerUiField } from './ColorPickerUiField.js';
 import { ColorPickerUiGamut } from './ColorPickerUiGamut.js';
 import { ColorPickerUiGamutCube } from './ColorPickerUiGamutCube.js';
@@ -31,6 +32,7 @@ export {
 window.customElements.define('color-picker-ui-alert', ColorPickerUiAlert);
 window.customElements.define('color-picker-ui-button', ColorPickerUiButton);
 window.customElements.define('color-picker-ui-confirm', ColorPickerUiConfirm);
+window.customElements.define('color-picker-ui-dialog', ColorPickerUiDialog);
 window.customElements.define('color-picker-ui-field', ColorPickerUiField);
 window.customElements.define('color-picker-ui-gamut', ColorPickerUiGamut);
 window.customElements.define('color-picker-ui-gamut-cube', ColorPickerUiGamutCube);
