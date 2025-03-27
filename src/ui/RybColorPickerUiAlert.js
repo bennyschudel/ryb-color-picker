@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
 
-import { createCustomEvent } from './helpers';
+import { createCustomEvent } from '../helpers';
 
 // ---
 
@@ -14,7 +14,7 @@ import { createCustomEvent } from './helpers';
  *
  * @fires ok - Dispatched when the user clicks the "Ok" button or presses the "Enter" key.
  */
-export class ColorPickerUiAlert extends LitElement {
+export class RybColorPickerUiAlert extends LitElement {
   static properties = {
     text: { type: String },
   };
@@ -63,12 +63,12 @@ export class ColorPickerUiAlert extends LitElement {
 
   render() {
     return html`
-      <color-picker-ui-dialog>
+      <ryb-color-picker-ui-dialog>
         <div slot="text">${this.text}</div>
         <div slot="actions">
-          <color-picker-ui-button @click=${this.#handleOkClick}>Ok</color-picker-ui-button>
+          <ryb-color-picker-ui-button @click=${this.#handleOkClick}>Ok</ryb-color-picker-ui-button>
         </div>
-      </color-picker-ui-dialog>
+      </ryb-color-picker-ui-dialog>
     `;
   }
 }

@@ -1,8 +1,8 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-import { clamp } from './utils';
-import { createCustomEvent } from './helpers';
+import { createCustomEvent } from '../helpers';
+import { clamp } from '../utils';
 
 /**
  * A custom element that provides an input for incrementing and decrementing a numeric value within a specified range.
@@ -19,9 +19,9 @@ import { createCustomEvent } from './helpers';
  * @method setValue - Sets the value and emits an update event.
  * @method updated - Lifecycle method called when properties change.
  *
- * @fires ColorPickerUiStepperInput#value:update - Fired when the value is updated.
+ * @fires RybColorPickerUiStepperInput#value:update - Fired when the value is updated.
  */
-export class ColorPickerUiStepperInput extends LitElement {
+export class RybColorPickerUiStepperInput extends LitElement {
   rootEl = createRef();
   inputEl = createRef();
 
@@ -115,7 +115,7 @@ export class ColorPickerUiStepperInput extends LitElement {
   render() {
     return html`
       <div ${ref(this.rootEl)} class="body">
-        <color-picker-ui-icon-button
+        <ryb-color-picker-ui-icon-button
           ?disabled=${!this.canMinus}
           @click=${this.minus}
         >
@@ -129,7 +129,7 @@ export class ColorPickerUiStepperInput extends LitElement {
           >
             <path d="M5 12l14 0" />
           </svg>
-        </color-picker-ui-icon-button>
+        </ryb-color-picker-ui-icon-button>
         <input
           ${ref(this.inputEl)}
           value="${this.value}"
@@ -138,7 +138,7 @@ export class ColorPickerUiStepperInput extends LitElement {
           max="${this.max}"
           @change=${this.#handleInputChange}
         />
-        <color-picker-ui-icon-button
+        <ryb-color-picker-ui-icon-button
           ?disabled=${!this.canPlus}
           @click=${this.plus}
         >
@@ -153,7 +153,7 @@ export class ColorPickerUiStepperInput extends LitElement {
             <path d="M12 5l0 14" />
             <path d="M5 12l14 0" />
           </svg>
-        </color-picker-ui-icon-button>
+        </ryb-color-picker-ui-icon-button>
       </div>
     `;
   }

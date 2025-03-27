@@ -1,6 +1,6 @@
 import { html, css, LitElement } from 'lit';
 
-import { createCustomEvent } from './helpers';
+import { createCustomEvent } from '../helpers';
 
 // ---
 
@@ -16,7 +16,7 @@ import { createCustomEvent } from './helpers';
  * @fires continue - Dispatched when the user clicks the "Continue" button or presses the "Enter" key.
  * @fires cancel - Dispatched when the user clicks the "Cancel" button or presses the "Escape" key.
  */
-export class ColorPickerUiPrompt extends LitElement {
+export class RybColorPickerUiPrompt extends LitElement {
   static properties = {
     text: { type: String },
     value: { type: String },
@@ -88,22 +88,22 @@ export class ColorPickerUiPrompt extends LitElement {
 
   render() {
     return html`
-      <color-picker-ui-dialog>
+      <ryb-color-picker-ui-dialog>
         <div slot="text" class="text">
           <div>${this.text}</div>
-          <color-picker-ui-field>
-            <color-picker-ui-input
+          <ryb-color-picker-ui-field>
+            <ryb-color-picker-ui-input
               autofocus
               value=${this.value}
               @update:value=${this.#handleValueUpdate}
-            ></color-picker-ui-input>
-          </color-picker-ui-field>
+            ></ryb-color-picker-ui-input>
+          </ryb-color-picker-ui-field>
         </div>
         <div slot="actions">
-          <color-picker-ui-button @click=${this.#handleCancelClick}>Cancel</color-picker-ui-button>
-          <color-picker-ui-button @click=${this.#handleContinueClick}>Continue</color-picker-ui-button>
+          <ryb-color-picker-ui-button @click=${this.#handleCancelClick}>Cancel</ryb-color-picker-ui-button>
+          <ryb-color-picker-ui-button @click=${this.#handleContinueClick}>Continue</ryb-color-picker-ui-button>
         </div>
-      </color-picker-ui-dialog>
+      </ryb-color-picker-ui-dialog>
     `;
   }
 

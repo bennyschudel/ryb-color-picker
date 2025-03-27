@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-import { createCustomEvent } from './helpers';
+import { createCustomEvent } from '../helpers';
 
 // ---
 
@@ -18,7 +18,7 @@ import { createCustomEvent } from './helpers';
  *
  * @fires update:value - Dispatched when the input value is updated.
  */
-export class ColorPickerUiInput extends LitElement {
+export class RybColorPickerUiInput extends LitElement {
   rootEl = createRef();
   inputEl = createRef();
 

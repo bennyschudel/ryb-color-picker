@@ -11,7 +11,7 @@ import { ref, createRef } from 'lit/directives/ref.js';
  * @property {boolean} [disabled=false] - Enables or disables the button functionality.
  * @property {boolean} [feedback=false] - Enables or disables feedback functionality.
  */
-export class ColorPickerUiButton extends LitElement {
+export class RybColorPickerUiButton extends LitElement {
   rootEl = createRef();
   feedBackEl = createRef();
 
@@ -51,9 +51,9 @@ export class ColorPickerUiButton extends LitElement {
     return html`
       <button ${ref(this.rootEl)} class="body" ?disabled=${this.disabled}>
         ${this.feedback
-          ? html` <color-picker-ui-tool-tip
+          ? html` <ryb-color-picker-ui-tool-tip
               ${ref(this.feedBackEl)}
-            ></color-picker-ui-tool-tip>`
+            ></ryb-color-picker-ui-tool-tip>`
           : html``}
         <span><slot></slot></span>
       </button>

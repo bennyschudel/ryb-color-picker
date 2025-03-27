@@ -16,10 +16,10 @@ import { copyToClipboard } from './utils';
  * @property {boolean} [noSettings=false] - Indicates if the settings button should be hidden.
  * @property {string} value - The current value of the color picker.
  *
- * @fires ColorPickerValue#update:value - Fired when the value is updated.
- * @fires ColorPickerValue#action:show-settings - Fired when the settings button is clicked.
+ * @fires RybColorPickerValue#update:value - Fired when the value is updated.
+ * @fires RybColorPickerValue#action:show-settings - Fired when the settings button is clicked.
  */
-export class ColorPickerValue extends LitElement {
+export class RybColorPickerValue extends LitElement {
   rootEl = createRef();
   inputEl = createRef();
   copyEl = createRef();
@@ -91,15 +91,15 @@ export class ColorPickerValue extends LitElement {
   render() {
     return html`
       <div ${ref(this.rootEl)} class="body">
-        <color-picker-ui-field class="value" label="Value">
-          <color-picker-ui-input
+        <ryb-color-picker-ui-field class="value" label="Value">
+          <ryb-color-picker-ui-input
             ${ref(this.inputEl)}
             class="input"
             ?disabled=${this.disabled}
             value=${this.value}
             @update:value=${this.#handleValueUpdate}
-          ></color-picker-ui-input>
-          <color-picker-ui-icon-button
+          ></ryb-color-picker-ui-input>
+          <ryb-color-picker-ui-icon-button
             ${ref(this.copyEl)}
             ?disabled=${this.disabled}
             feedback
@@ -121,9 +121,9 @@ export class ColorPickerValue extends LitElement {
                 d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"
               />
             </svg>
-          </color-picker-ui-icon-button>
+          </ryb-color-picker-ui-icon-button>
           ${!this.noSettings
-            ? html` <color-picker-ui-icon-button
+            ? html` <ryb-color-picker-ui-icon-button
                 ?disabled=${this.disabled}
                 @click=${this.#emitShowSettingsAction}
               >
@@ -145,9 +145,9 @@ export class ColorPickerValue extends LitElement {
                   <path d="M4 18l11 0" />
                   <path d="M19 18l1 0" />
                 </svg>
-              </color-picker-ui-icon-button>`
+              </ryb-color-picker-ui-icon-button>`
             : html``}
-        </color-picker-ui-field>
+        </ryb-color-picker-ui-field>
       </div>
     `;
   }

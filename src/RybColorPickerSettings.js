@@ -7,7 +7,7 @@ import { ref, createRef } from 'lit/directives/ref.js';
  * @class
  * @extends {LitElement}
  */
-export class ColorPickerSettings extends LitElement {
+export class RybColorPickerSettings extends LitElement {
   rootEl = createRef();
 
   static properties = {};

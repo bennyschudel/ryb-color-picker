@@ -1,10 +1,10 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-import * as d3 from './d3';
+import * as d3 from '../d3';
 
-import { rgbToCss, normalizeRgb } from './utils';
-import { createCustomEvent, getDefaultCube } from './helpers';
+import { createCustomEvent, getDefaultCube } from '../helpers';
+import { rgbToCss, normalizeRgb } from '../utils';
 
 /**
  * A custom element that provides a UI for selecting colors and updating a color cube.
@@ -15,7 +15,7 @@ import { createCustomEvent, getDefaultCube } from './helpers';
  * @property {Array} cube - The array representing the color cube.
  * @property {boolean} [noModify=false] - A flag indicating whether the color inputs are disabled.
  */
-export class ColorPickerUiGamutCube extends LitElement {
+export class RybColorPickerUiGamutCube extends LitElement {
   rootEl = createRef();
   formEl = createRef();
 
@@ -88,7 +88,7 @@ export class ColorPickerUiGamutCube extends LitElement {
       <div ${ref(this.rootEl)} class="body">
         <form ${ref(this.formEl)} class="form">
           <div class="front">
-            <color-picker-ui-field label="White">
+            <ryb-color-picker-ui-field label="White">
               <input
                 type="color"
                 .value=${this.getCubeValue(0)}
@@ -97,24 +97,24 @@ export class ColorPickerUiGamutCube extends LitElement {
                 ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
               />
-            </color-picker-ui-field>
-            <color-picker-ui-field label="Red">
+            </ryb-color-picker-ui-field>
+            <ryb-color-picker-ui-field label="Red">
               <input
                 type="color"
                 .value=${this.getCubeValue(1)}
                 data-index="1"
                 ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
-            /></color-picker-ui-field>
-            <color-picker-ui-field label="Yellow">
+            /></ryb-color-picker-ui-field>
+            <ryb-color-picker-ui-field label="Yellow">
               <input
                 type="color"
                 .value=${this.getCubeValue(2)}
                 data-index="2"
                 ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
-            /></color-picker-ui-field>
-            <color-picker-ui-field label="Orange">
+            /></ryb-color-picker-ui-field>
+            <ryb-color-picker-ui-field label="Orange">
               <input
                 type="color"
                 .value=${this.getCubeValue(3)}
@@ -122,10 +122,10 @@ export class ColorPickerUiGamutCube extends LitElement {
                 ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
               />
-            </color-picker-ui-field>
+            </ryb-color-picker-ui-field>
           </div>
           <div class="back">
-            <color-picker-ui-field label="Blue">
+            <ryb-color-picker-ui-field label="Blue">
               <input
                 type="color"
                 .value=${this.getCubeValue(4)}
@@ -133,8 +133,8 @@ export class ColorPickerUiGamutCube extends LitElement {
                 ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
               />
-            </color-picker-ui-field>
-            <color-picker-ui-field label="Purple">
+            </ryb-color-picker-ui-field>
+            <ryb-color-picker-ui-field label="Purple">
               <input
                 type="color"
                 .value=${this.getCubeValue(5)}
@@ -142,16 +142,16 @@ export class ColorPickerUiGamutCube extends LitElement {
                 ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
               />
-            </color-picker-ui-field>
-            <color-picker-ui-field label="Green">
+            </ryb-color-picker-ui-field>
+            <ryb-color-picker-ui-field label="Green">
               <input
                 type="color"
                 .value=${this.getCubeValue(6)}
                 data-index="6"
                 ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
-            /></color-picker-ui-field>
-            <color-picker-ui-field label="Black">
+            /></ryb-color-picker-ui-field>
+            <ryb-color-picker-ui-field label="Black">
               <input
                 type="color"
                 .value=${this.getCubeValue(7)}
@@ -159,7 +159,7 @@ export class ColorPickerUiGamutCube extends LitElement {
                 ?disabled=${this.noModify}
                 @input=${this.handleColorInput}
               />
-            </color-picker-ui-field>
+            </ryb-color-picker-ui-field>
           </div>
         </form>
       </div>
