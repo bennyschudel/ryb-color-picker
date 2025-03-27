@@ -35,7 +35,7 @@ export class ColorPickerSettings extends LitElement {
 
   static styles = css`
     :host {
-      --width: 22rem;
+      --width: 352px;
       --background-color: light-dark(#a0a0a0, #303030);
 
       display: inline-flex;
@@ -45,12 +45,12 @@ export class ColorPickerSettings extends LitElement {
     .body {
       align-items: stretch;
       background-color: var(--background-color);
-      border-radius: 0.5rem;
+      border-radius: 8px;
       display: flex;
       flex-direction: column;
       font-family: sans-serif;
-      gap: 0.25rem;
-      padding: 0.25rem;
+      gap: 4px;
+      padding: 4px;
       width: var(--width);
     }
 `;

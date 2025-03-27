@@ -219,15 +219,15 @@ export class ColorPickerUiSelector extends LitElement {
 
     .body {
       display: inline-flex;
-      gap: 0.25rem;
+      gap: 4px;
       flex: 1 1 auto;
       justify-content: stretch;
     }
 
     .select {
       border: none;
-      border-radius: 0.125rem;
-      height: 1.5rem;
+      border-radius: 2px;
+      height: 24px;
       width: 100%;
     }
 

@@ -162,11 +162,11 @@ export class ColorPickerValue extends LitElement {
     .body {
       align-items: stretch;
       background-color: var(--background-color);
-      border-radius: 0.5rem;
+      border-radius: 8px;
       display: inline-flex;
       font-family: sans-serif;
-      gap: 0.25rem;
-      padding: 0.25rem;
+      gap: 4px;
+      padding: 4px;
     }
 
     .value {
@@ -175,7 +175,7 @@ export class ColorPickerValue extends LitElement {
 
     .input::part(input) {
       font-family: Monaco, monospace;
-      width: 8rem;
+      width: 128px;
       text-align: center;
     }
   `;

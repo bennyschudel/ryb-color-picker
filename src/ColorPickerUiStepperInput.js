@@ -167,7 +167,7 @@ export class ColorPickerUiStepperInput extends LitElement {
 
     .body {
       display: inline-flex;
-      gap: 0.25rem;
+      gap: 4px;
       width: 100%;
     }
 
@@ -175,9 +175,9 @@ export class ColorPickerUiStepperInput extends LitElement {
       width: 100%;
       text-align: center;
       border: none;
-      border-radius: 0.125rem;
-      height: 1rem;
-      padding: 0.25rem;
+      border-radius: 2px;
+      height: 16px;
+      padding: 4px;
     }
 
     input::-webkit-outer-spin-button,

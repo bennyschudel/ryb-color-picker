@@ -54,7 +54,7 @@ export class ColorPickerUiToolTip extends LitElement {
 
   static styles = css`
     :host {
-      --offset: 0.5rem;
+      --offset: 8px;
 
       --_y: calc(-200% - var(--offset));
 
@@ -76,11 +76,11 @@ export class ColorPickerUiToolTip extends LitElement {
     .body {
       align-items: center;
       background-color: black;
-      border-radius: 0.25rem;
+      border-radius: 4px;
       color: white;
       display: inline-flex;
       justify-content: stretch;
-      padding: 0.25rem 0.5rem;
+      padding: 4px 8px;
     }
 
     .body::after {

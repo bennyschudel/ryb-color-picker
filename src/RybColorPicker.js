@@ -1761,7 +1761,7 @@ export class RybColorPicker extends LitElement {
       flex-direction: column;
       justify-content: center;
       outline: none;
-      padding: 1rem;
+      padding: 16px;
       position: relative;
     }
 
@@ -1786,7 +1786,7 @@ export class RybColorPicker extends LitElement {
     .settings-group {
       align-items: center;
       display: flex;
-      gap: 0.25rem;
+      gap: 4px;
       justify-content: stretch;
 
       &.columns-3 {
@@ -1813,12 +1813,12 @@ export class RybColorPicker extends LitElement {
     }
 
     color-picker-settings {
-      margin-top: 1rem;
+      margin-top: 16px;
     }
 
     .actions {
       display: flex;
-      gap: 0.25rem;
+      gap: 4px;
       width: 100%;
     }
 

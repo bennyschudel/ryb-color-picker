@@ -105,10 +105,10 @@ export class ColorPickerUiInput extends LitElement {
     }
 
     input {
-      height: 1rem;
-      padding: 0.25rem;
+      height: 16px;
+      padding: 4px;
       border: none;
-      border-radius: 0.125rem;
+      border-radius: 2px;
       flex: 1 1 auto;
       width: 100%;
     }
