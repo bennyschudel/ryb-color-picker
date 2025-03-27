@@ -10,7 +10,7 @@ import { ref, createRef } from 'lit/directives/ref.js';
  * @property {number} [duration=1000] - The duration (in milliseconds) for which the tooltip is visible.
  * @property {boolean} show - Reflects the visibility state of the tooltip.
  */
-export class ColorPickerUiToolTip extends LitElement {
+export class RybColorPickerUiToolTip extends LitElement {
   rootEl = createRef();
 
   static properties = {

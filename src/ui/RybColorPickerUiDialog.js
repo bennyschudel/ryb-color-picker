@@ -8,7 +8,7 @@ import { html, css, LitElement } from 'lit';
  * @class
  * @extends {LitElement}
  */
-export class ColorPickerUiDialog extends LitElement {
+export class RybColorPickerUiDialog extends LitElement {
   static properties = {};
 
   constructor() {

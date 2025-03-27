@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-import { createCustomEvent } from './helpers';
+import { createCustomEvent } from '../helpers';
 
 /**
  * @typedef {[string, string]} Option - A tuple containing a value and label for the selector
@@ -20,7 +20,7 @@ import { createCustomEvent } from './helpers';
  *
  * @fires {CustomEvent} update:value - Fired when the selected value changes
  */
-export class ColorPickerUiSelector extends LitElement {
+export class RybColorPickerUiSelector extends LitElement {
   rootEl = createRef();
   selectEl = createRef();
 
@@ -150,7 +150,7 @@ export class ColorPickerUiSelector extends LitElement {
     return html`
       <div ${ref(this.rootEl)} class="body">
         ${!this.noControls
-          ? html` <color-picker-ui-icon-button
+          ? html` <ryb-color-picker-ui-icon-button
               ?disabled=${!this.canCycle}
               @click=${this.previousValue}
             >
@@ -168,7 +168,7 @@ export class ColorPickerUiSelector extends LitElement {
                 <path d="M5 12l6 6" />
                 <path d="M5 12l6 -6" />
               </svg>
-            </color-picker-ui-icon-button>`
+            </ryb-color-picker-ui-icon-button>`
           : html``}
         <select
           ${ref(this.selectEl)}
@@ -182,7 +182,7 @@ export class ColorPickerUiSelector extends LitElement {
           )}
         </select>
         ${!this.noControls
-          ? html` <color-picker-ui-icon-button
+          ? html` <ryb-color-picker-ui-icon-button
               ?disabled=${!this.canCycle}
               @click=${this.nextValue}
             >
@@ -200,7 +200,7 @@ export class ColorPickerUiSelector extends LitElement {
                 <path d="M13 18l6 -6" />
                 <path d="M13 6l6 6" />
               </svg>
-            </color-picker-ui-icon-button>`
+            </ryb-color-picker-ui-icon-button>`
           : html``}
       </div>
     `;

@@ -10,7 +10,7 @@ import { ref, createRef } from 'lit/directives/ref.js';
  * @property {boolean} [disabled=false] - Enables or disables the button functionality.
  * @property {boolean} [feedback=false] - Enables or disables feedback functionality.
  */
-export class ColorPickerUiIconButton extends LitElement {
+export class RybColorPickerUiIconButton extends LitElement {
   rootEl = createRef();
   feedBackEl = createRef();
 
@@ -56,13 +56,13 @@ export class ColorPickerUiIconButton extends LitElement {
     return html`
       <button ${ref(this.rootEl)} class="body" ?disabled=${this.disabled}>
         ${this.feedback
-          ? html` <color-picker-ui-tool-tip
+          ? html` <ryb-color-picker-ui-tool-tip
               ${ref(this.feedBackEl)}
-            ></color-picker-ui-tool-tip>`
+            ></ryb-color-picker-ui-tool-tip>`
           : html``}
-        <color-picker-ui-icon>
+        <ryb-color-picker-ui-icon>
           <slot></slot>
-        </color-picker-ui-icon>
+        </ryb-color-picker-ui-icon>
       </button>
     `;
   }
@@ -97,7 +97,7 @@ export class ColorPickerUiIconButton extends LitElement {
       }
 
       &[disabled] {
-        color-picker-ui-icon {
+        ryb-color-picker-ui-icon {
           opacity: 0.5;
         }
       }

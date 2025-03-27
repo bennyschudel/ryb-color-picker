@@ -1,8 +1,8 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-import { arrayEquals, slugify } from './utils';
-import { createCustomEvent, getDefaultCube } from './helpers';
+import { createCustomEvent, getDefaultCube } from '../helpers';
+import { arrayEquals, slugify } from '../utils';
 
 // ---
 
@@ -17,7 +17,7 @@ import { createCustomEvent, getDefaultCube } from './helpers';
  * @property {preset} preset - An ID representing the current gamut preset.
  * @property {Array<Array<string, string>>} presets - An array containing available presets.
  */
-export class ColorPickerUiGamut extends LitElement {
+export class RybColorPickerUiGamut extends LitElement {
   rootEl = createRef();
   cubeEl = createRef();
   savePresetEl = createRef();
@@ -206,26 +206,26 @@ export class ColorPickerUiGamut extends LitElement {
   render() {
     return html`
       <div ${ref(this.rootEl)} class="body">
-        <color-picker-ui-selector
+        <ryb-color-picker-ui-selector
           value=${this.preset}
           .options=${this.presetsOptions}
           @update:value=${this.#handlePresetChange}
-        ></color-picker-ui-selector>
+        ></ryb-color-picker-ui-selector>
 
-        <color-picker-ui-separator></color-picker-ui-separator>
+        <ryb-color-picker-ui-separator></ryb-color-picker-ui-separator>
 
-        <color-picker-ui-gamut-cube
+        <ryb-color-picker-ui-gamut-cube
           ${ref(this.cubeEl)}
           .cube=${this.cube}
           ?nomodify=${this.noModify}
           @update:cube=${this.#handleCubeChange}
         >
-        </color-picker-ui-gamut-cube>
+        </ryb-color-picker-ui-gamut-cube>
 
         ${!this.noModify
-          ? html`<color-picker-ui-separator></color-picker-ui-separator>
+          ? html`<ryb-color-picker-ui-separator></ryb-color-picker-ui-separator>
               <div class="actions">
-                <color-picker-ui-button
+                <ryb-color-picker-ui-button
                   ${ref(this.savePresetEl)}
                   feedback
                   ?disabled=${!this.isModified}
@@ -233,20 +233,20 @@ export class ColorPickerUiGamut extends LitElement {
                     ? this.#handleUpdatePreset
                     : this.#handleSavePreset}
                   >${this.preset ? 'Update Preset' : 'Save Preset'}
-                </color-picker-ui-button>
-                <color-picker-ui-button
+                </ryb-color-picker-ui-button>
+                <ryb-color-picker-ui-button
                   ${ref(this.resetPresetEl)}
                   feedback
                   ?disabled=${!this.preset || !this.isModified}
                   @click=${this.#handleResetPreset}
-                  >Reset Preset</color-picker-ui-button
+                  >Reset Preset</ryb-color-picker-ui-button
                 >
-                <color-picker-ui-button
+                <ryb-color-picker-ui-button
                   ${ref(this.deletePresetEl)}
                   feedback
                   ?disabled=${!this.preset}
                   @click=${this.#handleDeletePreset}
-                  >Delete Preset</color-picker-ui-button
+                  >Delete Preset</ryb-color-picker-ui-button
                 >
               </div>`
           : html``}
@@ -263,7 +263,7 @@ export class ColorPickerUiGamut extends LitElement {
       gap: 4px;
     }
 
-    color-picker-ui-separator {
+    ryb-color-picker-ui-separator {
       --margin: 4px;
     }
 

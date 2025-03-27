@@ -1480,7 +1480,7 @@ export class RybColorPicker extends LitElement {
 
         ${cache(
           !this.noValue && this.showValue
-            ? html`<color-picker-value
+            ? html`<ryb-color-picker-value
                 ${ref(this.valueEl)}
                 value=${this.colorCss}
                 ?disabled=${!this.ready}
@@ -1488,28 +1488,28 @@ export class RybColorPicker extends LitElement {
                 @action:show-settings=${() =>
                   (this.showSettings = !this.showSettings)}
                 @update:value=${this.#handleColorInputChange}
-              ></color-picker-value>`
+              ></ryb-color-picker-value>`
             : html``,
         )}
         ${cache(
           !this.noSettings && this.showSettings
-            ? html`<color-picker-settings
+            ? html`<ryb-color-picker-settings
                 >${this.hasPresets
                   ? html`
-                      <color-picker-ui-field label="Presets">
-                        <color-picker-ui-selector
+                      <ryb-color-picker-ui-field label="Presets">
+                        <ryb-color-picker-ui-selector
                           value=${this.preset}
                           .options=${this.presetsOptions}
                           @update:value=${this.#handlePresetChange}
-                        ></color-picker-ui-selector>
-                      </color-picker-ui-field>
+                        ></ryb-color-picker-ui-selector>
+                      </ryb-color-picker-ui-field>
 
-                      <color-picker-ui-separator></color-picker-ui-separator
-                    ></color-picker-settings>`
+                      <ryb-color-picker-ui-separator></ryb-color-picker-ui-separator
+                    ></ryb-color-picker-settings>`
                   : html``}
 
-                <color-picker-ui-field label="Gamut">
-                  <color-picker-ui-gamut
+                <ryb-color-picker-ui-field label="Gamut">
+                  <ryb-color-picker-ui-gamut
                     .cube=${this.cube}
                     .dialog=${this.dialog}
                     .preset=${this.gamutPreset}
@@ -1517,134 +1517,134 @@ export class RybColorPicker extends LitElement {
                     @update:preset=${this.#handleGamutPresetChange}
                     @update:cube=${this.#handleGamutCubeChange}
                     @update:presets=${this.#handleGamutPresetsChange}
-                  ></color-picker-ui-gamut>
-                </color-picker-ui-field>
+                  ></ryb-color-picker-ui-gamut>
+                </ryb-color-picker-ui-field>
 
                 <div class="settings-group columns-3">
-                  <color-picker-ui-field label="BG color">
-                    <color-picker-ui-input
+                  <ryb-color-picker-ui-field label="BG color">
+                    <ryb-color-picker-ui-input
                       value=${this.backgroundColor}
                       @update:value=${this.#handleBackgroundColorChange}
-                    ></color-picker-ui-input>
-                  </color-picker-ui-field>
+                    ></ryb-color-picker-ui-input>
+                  </ryb-color-picker-ui-field>
 
-                  <color-picker-ui-field label="Distortion">
-                    <color-picker-ui-stepper-input
+                  <ryb-color-picker-ui-field label="Distortion">
+                    <ryb-color-picker-ui-stepper-input
                       value=${this.distortion}
                       label="Distortion"
                       min="0"
                       max="8"
                       @update:value=${this.#handleDistortionChange}
-                    ></color-picker-ui-stepper-input>
-                  </color-picker-ui-field>
+                    ></ryb-color-picker-ui-stepper-input>
+                  </ryb-color-picker-ui-field>
 
-                  <color-picker-ui-field label="Format">
-                    <color-picker-ui-selector
+                  <ryb-color-picker-ui-field label="Format">
+                    <ryb-color-picker-ui-selector
                       value=${this.displayFormat}
                       .options=${this.displayFormatOptions}
                       nocontrols
                       @update:value=${this.#handleDisplayFormatChange}
-                    ></color-picker-ui-selector>
-                  </color-picker-ui-field>
+                    ></ryb-color-picker-ui-selector>
+                  </ryb-color-picker-ui-field>
                 </div>
 
                 <div class="settings-group columns-3">
-                  <color-picker-ui-field label="Diameter">
-                    <color-picker-ui-stepper-input
+                  <ryb-color-picker-ui-field label="Diameter">
+                    <ryb-color-picker-ui-stepper-input
                       value=${this.diameter}
                       label="Diameter"
                       min="128"
                       max="512"
                       @update:value=${this.#handleDiameterChange}
-                    ></color-picker-ui-stepper-input>
-                  </color-picker-ui-field>
+                    ></ryb-color-picker-ui-stepper-input>
+                  </ryb-color-picker-ui-field>
 
-                  <color-picker-ui-field label="Gap">
-                    <color-picker-ui-stepper-input
+                  <ryb-color-picker-ui-field label="Gap">
+                    <ryb-color-picker-ui-stepper-input
                       value=${this.gap}
                       label="Gap"
                       min="0"
                       max="4"
                       @update:value=${this.#handleGapChange}
-                    ></color-picker-ui-stepper-input>
-                  </color-picker-ui-field>
+                    ></ryb-color-picker-ui-stepper-input>
+                  </ryb-color-picker-ui-field>
 
-                  <color-picker-ui-field label="Swatch gap">
-                    <color-picker-ui-stepper-input
+                  <ryb-color-picker-ui-field label="Swatch gap">
+                    <ryb-color-picker-ui-stepper-input
                       value=${this.swatchGap}
                       label="Swatch gap"
                       min="0"
                       max="24"
                       @update:value=${this.#handleSwatchGapChange}
-                    ></color-picker-ui-stepper-input>
-                  </color-picker-ui-field>
+                    ></ryb-color-picker-ui-stepper-input>
+                  </ryb-color-picker-ui-field>
                 </div>
 
-                <color-picker-ui-field class="segments" label="Segments">
-                  <color-picker-ui-field label="Hue">
-                    <color-picker-ui-stepper-input
+                <ryb-color-picker-ui-field class="segments" label="Segments">
+                  <ryb-color-picker-ui-field label="Hue">
+                    <ryb-color-picker-ui-stepper-input
                       value=${this.segmentsHue}
                       label="Hue"
                       min="8"
                       max="128"
                       @update:value=${this.#handleSegmentsHueChange}
-                    ></color-picker-ui-stepper-input>
-                  </color-picker-ui-field>
-                  <color-picker-ui-field label="Saturation">
-                    <color-picker-ui-stepper-input
+                    ></ryb-color-picker-ui-stepper-input>
+                  </ryb-color-picker-ui-field>
+                  <ryb-color-picker-ui-field label="Saturation">
+                    <ryb-color-picker-ui-stepper-input
                       value=${this.segmentsSaturation}
                       label="Saturation"
                       min="1"
                       max="64"
                       @update:value=${this.#handleSegmentsSaturationChange}
-                    ></color-picker-ui-stepper-input>
-                  </color-picker-ui-field>
-                  <color-picker-ui-field label="Lightness">
-                    <color-picker-ui-stepper-input
+                    ></ryb-color-picker-ui-stepper-input>
+                  </ryb-color-picker-ui-field>
+                  <ryb-color-picker-ui-field label="Lightness">
+                    <ryb-color-picker-ui-stepper-input
                       value=${this.segmentsLightness}
                       label="Lightness"
                       min="1"
                       max="64"
                       @update:value=${this.#handleSegmentsLightnessChange}
-                    ></color-picker-ui-stepper-input>
-                  </color-picker-ui-field>
-                </color-picker-ui-field>
+                    ></ryb-color-picker-ui-stepper-input>
+                  </ryb-color-picker-ui-field>
+                </ryb-color-picker-ui-field>
 
-                <color-picker-ui-field class="thickness" label="Thickness">
-                  <color-picker-ui-field label="Hue">
-                    <color-picker-ui-stepper-input
+                <ryb-color-picker-ui-field class="thickness" label="Thickness">
+                  <ryb-color-picker-ui-field label="Hue">
+                    <ryb-color-picker-ui-stepper-input
                       value=${this.thicknessHue}
                       label="Hue"
                       min="8"
                       max="128"
                       @update:value=${this.#handleThicknessHueChange}
-                    ></color-picker-ui-stepper-input>
-                  </color-picker-ui-field>
-                  <color-picker-ui-field label="Saturation">
-                    <color-picker-ui-stepper-input
+                    ></ryb-color-picker-ui-stepper-input>
+                  </ryb-color-picker-ui-field>
+                  <ryb-color-picker-ui-field label="Saturation">
+                    <ryb-color-picker-ui-stepper-input
                       value=${this.thicknessSaturation}
                       label="Saturation"
                       min="1"
                       max="64"
                       @update:value=${this.#handleThicknessSaturationChange}
-                    ></color-picker-ui-stepper-input>
-                  </color-picker-ui-field>
-                  <color-picker-ui-field label="Lightness">
-                    <color-picker-ui-stepper-input
+                    ></ryb-color-picker-ui-stepper-input>
+                  </ryb-color-picker-ui-field>
+                  <ryb-color-picker-ui-field label="Lightness">
+                    <ryb-color-picker-ui-stepper-input
                       value=${this.thicknessLightness}
                       label="Lightness"
                       min="1"
                       max="64"
                       @update:value=${this.#handleThicknessLightnessChange}
-                    ></color-picker-ui-stepper-input>
-                  </color-picker-ui-field>
-                </color-picker-ui-field>
+                    ></ryb-color-picker-ui-stepper-input>
+                  </ryb-color-picker-ui-field>
+                </ryb-color-picker-ui-field>
 
-                <color-picker-ui-separator></color-picker-ui-separator>
+                <ryb-color-picker-ui-separator></ryb-color-picker-ui-separator>
 
                 <div class="actions">
                   ${this.hasPresets
-                    ? html`<color-picker-ui-button
+                    ? html`<ryb-color-picker-ui-button
                           ${ref(this.savePresetEl)}
                           feedback
                           @click=${this.preset
@@ -1652,18 +1652,18 @@ export class RybColorPicker extends LitElement {
                             : this.#handleSavePreset}
                           >${this.preset
                             ? 'Update Preset'
-                            : 'Save Preset'}</color-picker-ui-button
+                            : 'Save Preset'}</ryb-color-picker-ui-button
                         >
-                        <color-picker-ui-button
+                        <ryb-color-picker-ui-button
                           ${ref(this.deletePresetEl)}
                           feedback
                           ?disabled=${!this.preset}
                           @click=${this.#handleDeletePreset}
-                          >Delete Preset</color-picker-ui-button
+                          >Delete Preset</ryb-color-picker-ui-button
                         >`
                     : html``}
                   ${!this.noStore
-                    ? html`<color-picker-ui-icon-button
+                    ? html`<ryb-color-picker-ui-icon-button
                         ${ref(this.clearStoreEl)}
                         feedback
                         @click=${this.#handleClearStore}
@@ -1684,9 +1684,9 @@ export class RybColorPicker extends LitElement {
                           />
                           <path d="M12 12h.01" />
                         </svg>
-                      </color-picker-ui-icon-button>`
+                      </ryb-color-picker-ui-icon-button>`
                     : html``}
-                  <color-picker-ui-icon-button
+                  <ryb-color-picker-ui-icon-button
                     ${ref(this.resetStoreEl)}
                     feedback
                     @click=${this.#handleResetStore}
@@ -1703,36 +1703,36 @@ export class RybColorPicker extends LitElement {
                       <path d="M3 4.001v5h5" />
                       <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
                     </svg>
-                  </color-picker-ui-icon-button>
-                  <color-picker-ui-button
+                  </ryb-color-picker-ui-icon-button>
+                  <ryb-color-picker-ui-button
                     class="close-button"
                     @click=${this.#handleCloseSettings}
-                    >Close</color-picker-ui-button
+                    >Close</ryb-color-picker-ui-button
                   >
                 </div>
-              </color-picker-settings>`
+              </ryb-color-picker-settings>`
             : html``,
         )}
         ${this._dialogs.length > 0
           ? html` <div class="dialogs">
               ${this._dialogs.map((item) =>
                 item.type === 'prompt'
-                  ? html`<color-picker-ui-prompt
+                  ? html`<ryb-color-picker-ui-prompt
                       text=${item.text}
                       @continue=${item.onContinue}
                       @cancel=${item.onCancel}
-                    ></color-picker-ui-prompt>`
+                    ></ryb-color-picker-ui-prompt>`
                   : item.type === 'confirm'
-                  ? html`<color-picker-ui-confirm
+                  ? html`<ryb-color-picker-ui-confirm
                       text=${item.text}
                       @continue=${item.onContinue}
                       @cancel=${item.onCancel}
-                    ></color-picker-ui-confirm>`
+                    ></ryb-color-picker-ui-confirm>`
                   : item.type === 'alert'
-                  ? html`<color-picker-ui-alert
+                  ? html`<ryb-color-picker-ui-alert
                       text=${item.text}
                       @ok=${item.onOk}
-                    ></color-picker-ui-alert>`
+                    ></ryb-color-picker-ui-alert>`
                   : html``,
               )}
             </div>`
@@ -1812,7 +1812,7 @@ export class RybColorPicker extends LitElement {
       }
     }
 
-    color-picker-settings {
+    ryb-color-picker-settings {
       margin-top: 16px;
     }
 
