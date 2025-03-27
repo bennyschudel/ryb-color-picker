@@ -260,18 +260,18 @@ export class ColorPickerUiGamut extends LitElement {
     .body {
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
+      gap: 4px;
     }
 
     color-picker-ui-separator {
-      --margin: 0.25rem;
+      --margin: 4px;
     }
 
     .actions {
       display: flex;
-      gap: 0.25rem;
+      gap: 4px;
       justify-content: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 8px;
     }
   `;
 }

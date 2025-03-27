@@ -69,8 +69,8 @@ export class ColorPickerUiConfirm extends LitElement {
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
     window.removeEventListener('keyup', this._handleKeyUp);
+    super.disconnectedCallback();
   }
 
     // --- render

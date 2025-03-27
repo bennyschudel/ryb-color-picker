@@ -46,11 +46,11 @@ export class ColorPickerUiDialog extends LitElement {
 
       align-items: center;
       background-color: var(--backdrop-color);
-      border-radius: 0.5rem;
+      border-radius: 8px;
       display: flex;
       inset: 0;
       justify-content: center;
-      padding: 2rem;
+      padding: 32px;
       position: absolute;
       z-index: var(--z-index);
     }
@@ -58,27 +58,27 @@ export class ColorPickerUiDialog extends LitElement {
     .body {
       align-items: stretch;
       background-color: var(--background-color);
-      border-radius: 0.5rem;
+      border-radius: 8px;
       display: inline-flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 8px;
       justify-content: stretch;
       max-width: var(--max-width);
       min-width: var(--min-width);
-      padding: 1rem;
+      padding: 16px;
     }
 
     .text {
       color: var(--color);
       font-family: var(--font-family--text);
-      font-size: 0.875rem;
+      font-size: 14px;
       font-weight: normal;
       line-height: 1.5;
     }
 
     .actions {
       display: flex;
-      gap: 0.25rem;
+      gap: 4px;
       justify-content: flex-end;
     }
   `;

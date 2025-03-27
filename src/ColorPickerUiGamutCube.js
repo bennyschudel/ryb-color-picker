@@ -175,19 +175,19 @@ export class ColorPickerUiGamutCube extends LitElement {
 
     .form {
       display: flex;
-      gap: 0.5rem;
+      gap: 8px;
       align-items: center;
       flex-direction: column;
     }
 
     .front {
       display: inline-flex;
-      gap: 0.5rem;
+      gap: 8px;
     }
 
     .back {
       display: inline-flex;
-      gap: 0.5rem;
+      gap: 8px;
     }
   `;
 }

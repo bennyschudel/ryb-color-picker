@@ -71,7 +71,7 @@ export class ColorPickerUiIconButton extends LitElement {
 
   static styles = css`
     :host {
-      --size: 1.5rem;
+      --size: 24px;
       --color: light-dark(#202020, #f0f0f0);
 
       display: inline-flex;
@@ -79,7 +79,7 @@ export class ColorPickerUiIconButton extends LitElement {
 
     .body {
       align-items: center;
-      border-radius: 0.125rem;
+      border-radius: 2px;
       border: none;
       box-shadow: inset 1px 1px 1px 0 hsl(0 100 100 / 0.2),
         inset -1px -1px 1px 0 hsl(0 0 0 / 0.1);

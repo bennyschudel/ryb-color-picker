@@ -67,7 +67,7 @@ export class RybColorSwatch extends LitElement {
 
   static styles = css`
     :host {
-      --size: 3rem;
+      --size: 48px;
 
       align-items: stretch;
       display: inline-flex;

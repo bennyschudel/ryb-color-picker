@@ -35,8 +35,8 @@ export class ColorPickerUiSeparator extends LitElement {
 
   static styles = css`
     :host {
-      --padding: 0.5rem;
-      --margin: 0.5rem;
+      --padding: 8px;
+      --margin: 8px;
 
       --_border-color--top: light-dark(#909090, #303030);
       --_border-color--bottom: light-dark(#c0c0c0, #505050);
