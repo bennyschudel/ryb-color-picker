@@ -14,8 +14,9 @@
     "./dist/ryb-color-picker": "./dist/main.min.js"
   },
   "files": [
-    "README.md",
+    "API.md",
     "LICENSE",
+    "README.md",
     "dist/"
   ],
   "scripts": {
@@ -27,7 +28,7 @@
     "e2e": "npx playwright test",
     "e2e:report": "npx playwright show-report",
     "e2e:update": "npx playwright test --update-snapshots",
-    "docs:api": "./tasks/generate-api-docs.sh"
+    "pages:deploy": "./tasks/build-and-deploy-pages.sh"
   },
   "peerDependencies": {
     "d3-color": "^3.1.0",
