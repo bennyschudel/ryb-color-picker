@@ -141,7 +141,7 @@ const formatOptions = element.displayFormatOptions;
 
 ### `loadGamutPresets` (presets: Preset[], presetId: string): void
 
-> Loads the gamut presets and optionally sets the current preset.
+> Loads the gamut presets and optionally sets the current preset.\
 > [Load Gamuts Example](./examples/load-gamuts.html)
 
 ### `init` (): void
@@ -154,12 +154,12 @@ const formatOptions = element.displayFormatOptions;
 
 ### `loadPresets` (presets: Preset[], presetId: string): void
 
-> Loads the presets and applies the settings of the specified preset.
+> Loads the presets and applies the settings of the specified preset.\
 > [Load Presets Example](./examples/load-presets.html)
 
 ### `loadSettings` (settings: Partial<Settings>): void
 
-> Loads and applies the provided settings.
+> Loads and applies the provided settings.\
 > [Load Settings Example](./examples/load-settings.html)
 
 ### `refresh` (duration: number = this.animationDuration): void
