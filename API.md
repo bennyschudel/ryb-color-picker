@@ -43,7 +43,7 @@
 
 ## Getters
 
-### `color` : [number, number, number]
+### `color` <sub>: [number, number, number]</sub>
 
 > Gets the current color in RGB format modified by the current gamut.
 
@@ -52,7 +52,7 @@ const currentColor = element.color;
 // [r: 0-1, g: 0-1, b: 0-1]
 ```
 
-### `colorCss` : string
+### `colorCss` <sub>: string</sub>
 
 > Gets the CSS representation of the current color.
 
@@ -61,7 +61,7 @@ const currentColor = element.colorCss;
 // rgb(r, g, b)
 ```
 
-### `displayFormatOptions` : [string, string][]
+### `displayFormatOptions` <sub>: [string, string][]</sub>
 
 > Gets the display format options for the color picker.
 
@@ -73,130 +73,130 @@ const formatOptions = element.displayFormatOptions;
 // ]
 ```
 
-### `height` : number
+### `height` <sub>: number</sub>
 
 > Gets the height of the color picker wheel including any padding.
 
-### `innerRadius` : number
+### `innerRadius` <sub>: number</sub>
 
 > Returns the inner radius of the color picker.
 
-### `isBusy` : boolean
+### `isBusy` <sub>: boolean</sub>
 
 > Checks if the color picker is currently busy.
 
-### `presetsOptions` : [string, string][]
+### `presetsOptions` <sub>: [string, string][]</sub>
 
 > Gets the preset options for the color picker.
 
-### `radius` : number
+### `radius` <sub>: number</sub>
 
 > Returns the outer radius of the color picker.
 
-### `ready` : boolean
+### `ready` <sub>: boolean</sub>
 
 > Indicates if the color picker is ready
 
-### `swatchRadius` : number
+### `swatchRadius` <sub>: number</sub>
 
 > Returns the radius of the swatch.
 
-### `width` : number
+### `width` <sub>: number</sub>
 
 > Gets the width of the color picker wheel including any padding.
 
 ## Methods
 
-### `clearFocus` (duration: number = this.animationDuration): void
+### `clearFocus` <sub>(duration: number = this.animationDuration): void</sub>
 
 > Removes the focus with an optional animation duration.
 
-### `clearStore` (): void
+### `clearStore` <sub>(): void</sub>
 
 > Clears the stored configuration, gamut presets, and presets from the local storage.
 
-### `copyToClipboard` (): Promise<void>
+### `copyToClipboard` <sub>(): Promise<void></sub>
 
 > Copies the current color value to the clipboard.
 
-### `cycleFormat` (backwards: boolean): void
+### `cycleFormat` <sub>(backwards: boolean): void</sub>
 
 > Cycles through the available display formats.
 
-### `cycleGamutPreset` (backwards: boolean): void
+### `cycleGamutPreset` <sub>(backwards: boolean): void</sub>
 
 > Cycles through the gamut presets in the color picker.
 
-### `cyclePreset` (backwards: boolean): void
+### `cyclePreset` <sub>(backwards: boolean): void</sub>
 
 > Cycles through the available presets.
 
-### `deletePreset` (id: string): void
+### `deletePreset` <sub>(id: string): void</sub>
 
 > Deletes a preset by ID from the presets list.
 
-### `getSettings` (): Settings
+### `getSettings` <sub>(): Settings</sub>
 
 > Retrieves the current settings.
 
-### `loadGamutPresets` (presets: Preset[], presetId: string): void
+### `loadGamutPresets` <sub>(presets: Preset[], presetId: string): void</sub>
 
 > Loads the gamut presets and optionally sets the current preset.\
 > [Load Gamuts Example](./examples/load-gamuts.html)
 
-### `init` (): void
+### `init` <sub>(): void</sub>
 
 > Initializes the component if the noinit property is used.
 
-### `loadPreset` (id: string): void
+### `loadPreset` <sub>(id: string): void</sub>
 
 > Loads a preset by its ID and applies its settings.
 
-### `loadPresets` (presets: Preset[], presetId: string): void
+### `loadPresets` <sub>(presets: Preset[], presetId: string): void</sub>
 
 > Loads the presets and applies the settings of the specified preset.\
 > [Load Presets Example](./examples/load-presets.html)
 
-### `loadSettings` (settings: Partial<Settings>): void
+### `loadSettings` <sub>(settings: Partial<Settings>): void</sub>
 
 > Loads and applies the provided settings.\
 > [Load Settings Example](./examples/load-settings.html)
 
-### `refresh` (duration: number = this.animationDuration): void
+### `refresh` <sub>(duration: number = this.animationDuration): void</sub>
 
 > Refreshes the color wheel with the specified animation duration.
 
-### `reset` (): void
+### `reset` <sub>(): void</sub>
 
 > Resets the color picker to its default state.
 
-### `resetValue` () : void
+### `resetValue` <sub>() : void</sub>
 
 > Resets the saturation to 100% and the lightness to 50%.
 
-### `savePreset` (id: string, title: string): void
+### `savePreset` <sub>(id: string, title: string): void</sub>
 
 > Saves a color preset with the given id and title. If a preset with the same id already exists, it updates the preset. Otherwise, it adds a new preset.
 
-### `setCube` (cube: ColorCube): void
+### `setCube` <sub>(cube: ColorCube): void</sub>
 
 > Sets the gamut cube.
 
-### `setFocus` (angle: number, duration: number = this.animationDuration): void
+### `setFocus` <sub>(angle: number, duration: number = this.animationDuration): void</sub>
 
 > Focuses on a specific angle with an optional animation duration.
 
-### `setValue` (value: string) : void
+### `setValue` <sub>(value: string) : void</sub>
 
 > Sets the initial value of the color picker which is then converted to the current gamut.
 
 ## Events
 
-### `ready`: (event: CustomEvent)
+### `ready` <sub>(event: CustomEvent) => {}</sub>
 
 > Fired when the color picker is ready.
 
-### `udpate:preset`: (event: CustomEvent)
+### `udpate:preset` <sub>(event: CustomEvent) => {}</sub>
 
 > Fired when the preset is updated.
 
@@ -207,7 +207,7 @@ const formatOptions = element.displayFormatOptions;
 });
 ```
 
-### `udpate:value`: (event: CustomEvent)
+### `udpate:value` <sub>(event: CustomEvent) => {}</sub>
 
 > Fired when the color value is updated.
 
