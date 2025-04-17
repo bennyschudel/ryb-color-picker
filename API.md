@@ -45,7 +45,7 @@
 
 ### `color` : [number, number, number]
 
-Gets the current color in RGB format modified by the current gamut.
+> Gets the current color in RGB format modified by the current gamut.
 
 ```javascript
 const currentColor = element.color;
@@ -54,7 +54,7 @@ const currentColor = element.color;
 
 ### `colorCss` : string
 
-Gets the CSS representation of the current color.
+> Gets the CSS representation of the current color.
 
 ```javascript
 const currentColor = element.colorCss;
@@ -63,7 +63,7 @@ const currentColor = element.colorCss;
 
 ### `displayFormatOptions` : [string, string][]
 
-Gets the display format options for the color picker.
+> Gets the display format options for the color picker.
 
 ```javascript
 const formatOptions = element.displayFormatOptions;
@@ -75,133 +75,133 @@ const formatOptions = element.displayFormatOptions;
 
 ### `height` : number
 
-Gets the height of the color picker wheel including any padding.
+> Gets the height of the color picker wheel including any padding.
 
 ### `innerRadius` : number
 
-Returns the inner radius of the color picker.
+> Returns the inner radius of the color picker.
 
 ### `isBusy` : boolean
 
-Checks if the color picker is currently busy.
+> Checks if the color picker is currently busy.
 
 ### `presetsOptions` : [string, string][]
 
-Gets the preset options for the color picker.
+> Gets the preset options for the color picker.
 
 ### `radius` : number
 
-Returns the outer radius of the color picker.
+> Returns the outer radius of the color picker.
 
 ### `ready` : boolean
 
-Indicates if the color picker is ready
+> Indicates if the color picker is ready
 
 ### `swatchRadius` : number
 
-Returns the radius of the swatch.
+> Returns the radius of the swatch.
 
 ### `width` : number
 
-Gets the width of the color picker wheel including any padding.
+> Gets the width of the color picker wheel including any padding.
 
 ## Methods
 
 ### `clearFocus` (duration: number = this.animationDuration): void
 
-Removes the focus with an optional animation duration.
+> Removes the focus with an optional animation duration.
 
 ### `clearStore` (): void
 
-Clears the stored configuration, gamut presets, and presets from the local storage.
+> Clears the stored configuration, gamut presets, and presets from the local storage.
 
 ### `copyToClipboard` (): Promise<void>
 
-Copies the current color value to the clipboard.
+> Copies the current color value to the clipboard.
 
 ### `cycleFormat` (backwards: boolean): void
 
-Cycles through the available display formats.
+> Cycles through the available display formats.
 
 ### `cycleGamutPreset` (backwards: boolean): void
 
-Cycles through the gamut presets in the color picker.
+> Cycles through the gamut presets in the color picker.
 
 ### `cyclePreset` (backwards: boolean): void
 
-Cycles through the available presets.
+> Cycles through the available presets.
 
 ### `deletePreset` (id: string): void
 
-Deletes a preset by ID from the presets list.
+> Deletes a preset by ID from the presets list.
 
 ### `getSettings` (): Settings
 
-Retrieves the current settings.
+> Retrieves the current settings.
 
 ### `loadGamutPresets` (presets: Preset[], presetId: string): void
 
-Loads the gamut presets and optionally sets the current preset.
+> Loads the gamut presets and optionally sets the current preset.
 
-[Load Gamuts Example](./examples/load-gamuts.html)
+> [Load Gamuts Example](./examples/load-gamuts.html)
 
 ### `init` (): void
 
-Initializes the component if the noinit property is used.
+> Initializes the component if the noinit property is used.
 
 ### `loadPreset` (id: string): void
 
-Loads a preset by its ID and applies its settings.
+> Loads a preset by its ID and applies its settings.
 
 ### `loadPresets` (presets: Preset[], presetId: string): void
 
-Loads the presets and applies the settings of the specified preset.
+> Loads the presets and applies the settings of the specified preset.
 
-[Load Presets Example](./examples/load-presets.html)
+> [Load Presets Example](./examples/load-presets.html)
 
 ### `loadSettings` (settings: Partial<Settings>): void
 
-[Load Settings Example](./examples/load-settings.html)
+> [Load Settings Example](./examples/load-settings.html)
 
-Loads and applies the provided settings.
+> Loads and applies the provided settings.
 
 ### `refresh` (duration: number = this.animationDuration): void
 
-Refreshes the color wheel with the specified animation duration.
+> Refreshes the color wheel with the specified animation duration.
 
 ### `reset` (): void
 
-Resets the color picker to its default state.
+> Resets the color picker to its default state.
 
 ### `resetValue` () : void
 
-Resets the saturation to 100% and the lightness to 50%.
+> Resets the saturation to 100% and the lightness to 50%.
 
 ### `savePreset` (id: string, title: string): void
 
-Saves a color preset with the given id and title. If a preset with the same id already exists, it updates the preset. Otherwise, it adds a new preset.
+> Saves a color preset with the given id and title. If a preset with the same id already exists, it updates the preset. Otherwise, it adds a new preset.
 
 ### `setCube` (cube: ColorCube): void
 
-Sets the gamut cube.
+> Sets the gamut cube.
 
 ### `setFocus` (angle: number, duration: number = this.animationDuration): void
 
-Focuses on a specific angle with an optional animation duration.
+> Focuses on a specific angle with an optional animation duration.
 
 ### `setValue` (value: string) : void
 
-Sets the initial value of the color picker which is then converted to the current gamut.
+> Sets the initial value of the color picker which is then converted to the current gamut.
 
 ## Events
 
 ### `ready`: (event)
 
-Fired when the color picker is ready.
+> Fired when the color picker is ready.
 
 ### `udpate:preset`: (event)
 
-Fired when the preset is updated.
+> Fired when the preset is updated.
 
 ```javascript
 .addEventListener('update:preset', (event) => {
@@ -212,7 +212,7 @@ Fired when the preset is updated.
 
 ### `udpate:value`: (event)
 
-Fired when the color value is updated.
+> Fired when the color value is updated.
 
 ```javascript
 .addEventListener('update:value', (event) => {

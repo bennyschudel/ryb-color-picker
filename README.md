@@ -5,13 +5,7 @@ This is a RYB Color Picker web-component built using lit. It supports multiple g
 
 ## Installation
 
-1. Install lit package
-
-```bash
-npm install lit
-```
-
-2. Install the RYB Color Picker package
+Install the RYB Color Picker package
 
 ```bash
 npm install ryb-color-picker
@@ -65,7 +59,7 @@ Gamut-Presets are persisted in localStorage. Therefore we only load the initial 
 
 ```html
 <script type="module">
-  import { cubes } from '../ryb-color-picker.js';
+  import { cubes } from 'ryb-color-picker';
 
   const pickerEl = document.getElementById('picker');
 
@@ -102,7 +96,7 @@ There are several hotkeys that could be used. To enable them, the wheel must be 
 
 ## API
 
-Read the API documentation here: [API](./API)
+Read the API documentation here: [API](./API.md)
 
 ## Examples
 
