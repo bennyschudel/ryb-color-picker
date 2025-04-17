@@ -1,4 +1,4 @@
-# \<ryb-color-picker> `0.5.0`
+# \<ryb-color-picker> `0.5.0-alpha18`
 
 This is a RYB Color Picker web-component built using lit. It supports multiple gamut presets using the wonderful
 [RYBItten](https://github.com/meodai/RYBitten) library.
@@ -100,7 +100,7 @@ Read the API documentation here: [API](./API.md)
 
 ## Examples
 
-There are examples provided in the [./examples](./examples)` folder.
+There are examples provided in the [./examples](./examples) folder.
 
 ## License
 
