@@ -27,7 +27,6 @@ export default defineConfig(({ _command, _mode }) => {
         external: [
           'lit',
           /^lit-html\/.*/,
-          /rybitten\/.*/,
           'd3-color',
           'd3-ease',
           'd3-interpolate',
