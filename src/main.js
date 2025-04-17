@@ -1,5 +1,3 @@
-export { cubes } from 'rybitten/cubes';
-
 import { RybColorPickerUiAlert } from './ui/RybColorPickerUiAlert.js';
 import { RybColorPickerUiButton } from './ui/RybColorPickerUiButton.js';
 import { RybColorPickerUiConfirm } from './ui/RybColorPickerUiConfirm.js';

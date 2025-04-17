@@ -3,14 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <title>Load Gamuts</title>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
     <ryb-color-swatch id="swatch"></ryb-color-swatch>
     <ryb-color-picker id="picker" initialValue="hotpink"></ryb-color-picker>
 
     <script type="module">
-      import { cubes } from '../src/main.js';
+      import { cubes } from 'rybitten/cubes';
+
+      import '../src/main.js';
 
       const swatchEl = document.getElementById('swatch');
       const pickerEl = document.getElementById('picker');
@@ -26,11 +28,7 @@
       });
 
       if (!pickerEl.gamutPresets.length) {
-        const presets = Array.from(cubes, ([id, d]) => [
-          id,
-          d.title,
-          d.cube,
-        ]);
+        const presets = Array.from(cubes, ([id, d]) => [id, d.title, d.cube]);
 
         pickerEl.loadGamutPresets(presets, 'munsell');
       }

@@ -3,14 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <title>No store</title>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
     <ryb-color-swatch id="swatch"></ryb-color-swatch>
-    <ryb-color-picker id="picker" initialValue="hotpink" noStore></ryb-color-picker>
+    <ryb-color-picker
+      id="picker"
+      initialValue="hotpink"
+      noStore
+    ></ryb-color-picker>
 
     <script type="module">
-      import { cubes } from '../src/main.js';
+      import { cubes } from 'rybitten/cubes';
+
+      import '../src/main.js';
 
       const swatchEl = document.getElementById('swatch');
       const pickerEl = document.getElementById('picker');

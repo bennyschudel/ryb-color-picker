@@ -59,7 +59,9 @@ Gamut-Presets are persisted in localStorage. Therefore we only load the initial 
 
 ```html
 <script type="module">
-  import { cubes } from 'ryb-color-picker';
+  import { cubes } from 'rybitten/cubes';
+
+  import 'ryb-color-picker';
 
   const pickerEl = document.getElementById('picker');
 

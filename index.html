@@ -9,7 +9,9 @@
     <ryb-color-picker id="picker" initialvalue="hotpink"></ryb-color-picker>
 
     <script type="module">
-      import { cubes } from './src/main.js';
+      import { cubes } from 'rybitten/cubes';
+
+      import './src/main.js';
 
       const swatchEl = document.getElementById('swatch');
       const pickerEl = document.getElementById('picker');
