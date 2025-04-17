@@ -35,6 +35,8 @@ export function getRotationFromCoords({ x, y }, rect) {
 /**
  * A no-operation function that does nothing.
  * Can be used as a default placeholder for callbacks or other functions.
+ *
+ * @returns {void}
  */
 export function noop() {}
 

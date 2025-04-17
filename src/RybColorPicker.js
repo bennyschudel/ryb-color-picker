@@ -20,133 +20,8 @@ import {
 } from './utils';
 import { createCustomEvent, createDialog, getDefaultCube } from './helpers';
 
-/**
- * An object of settings
- *
- * @typedef {Object} Settings
- * @property {String} backgroundColor
- * @property {Number} diameter
- * @property {'hex'|'rgb'} displayFormat
- * @property {Number} distortion
- * @property {String} gamutPreset
- * @property {Number} gap
- * @property {Number} padding
- * @property {Number} segmentsHue
- * @property {Number} segmentsLightness
- * @property {Number} segmentsSaturation
- * @property {Number} swatchGap
- * @property {Number} thicknessHue
- * @property {Number} thicknessLightness
- * @property {Number} thicknessSaturation
- */
-
-/**
- * Color coordinates descrbing a color
- *
- * @typedef {[number, number, number]} ColorCoordinates
- */
-
-/**
- * A gamut cube containing exact eight coordinates
- *
- * @typedef {[
- *  ColorCoordinates, ColorCoordinates,
- *  ColorCoordinates, ColorCoordinates,
- *  ColorCoordinates, ColorCoordinates,
- *  ColorCoordinates, ColorCoordinates
- * ]} Cube
- */
-
-/**
- * A preset containing an id, a title and an object of settings
- *
- * @typedef Preset
- * @type {[string, string, Settings]}
- * @property {string} id - id of the preset
- * @property {string} title - title of the preset
- * @property {Settings} settings - settings of the preset
- */
-
-/**
- * A gamut preset containing an id, a title and a cube.
- *
- * @typedef GamutPreset
- * @type {[string, string, Cube]}
- * @property {string} id - id of the gamut preset
- * @property {string} title - title of the gamut preset
- * @property {Cube} cube - cube of the gamut preset
- */
-
 // ---
 
-/**
- * RybColorPicker is a custom web component to create a color picker based on the RYB (Red, Yellow, Blue)
- * color model. It provides a user interface for selecting colors and managing color presets.
- *
- * @class
- * @extends {LitElement}
- *
- * @property {number} [animationDuration=150] - The duration of animations in milliseconds.
- * @property {string} [backgroundColor='transparent'] - The background color of the color picker.
- * @property {number} [diameter=320] - The diameter of the color picker.
- * @property {string} [displayFormat='hex'] - The format in which the color is displayed (e.g., 'hex', 'rgb').
- * @property {number} [distortion=3] - The distortion level of the color picker.
- * @property {string} gamutPreset - The current gamut preset.
- * @property {number} [gap=0] - The gap between different segments of the color picker.
- * @property {boolean} [hasPresets=false] - Indicates if the color picker has presets.
- * @property {string} id - The unique identifier for the color picker.
- * @property {string} initialValue - The initial color value.
- * @property {boolean} [noInit=false] - If true, the color picker will not initialize automatically.
- * @property {boolean} [noSettings=false] - If true, the settings panel will not be displayed.
- * @property {boolean} [noStore=false] - If true, the color picker will not use local storage.
- * @property {boolean} [noValue=false] - If true, the value display will not be shown.
- * @property {number} [padding=30] - The padding around the color picker.
- * @property {string} [preset=''] - The current color preset.
- * @property {number} [segmentsHue=48] - The number of segments for the hue ring.
- * @property {number} [segmentsLightness=24] - The number of segments for the lightness ring.
- * @property {number} [segmentsSaturation=24] - The number of segments for the saturation ring.
- * @property {boolean} show - Indicates if the color picker is visible.
- * @property {boolean} [showSettings=false] - Indicates if the settings panel is visible.
- * @property {boolean} [showValue=true] - Indicates if the value display is visible.
- * @property {string} [storeConfigKey='ryb-color-picker/{id}/config'] - The key used to store the configuration in local storage.
- * @property {string} [storeGamutPresetsKey='ryb-color-picker/{id}/gamut-presets'] - The key used to store the gamut presets in local storage.
- * @property {string} [storePresetsKey='ryb-color-picker/{id}/presets'] - The key used to store the presets in local storage.
- * @property {number} [swatchGap=8] - The gap between the color swatch and the inner radius.
- * @property {number} [thicknessHue=24] - The thickness of the hue ring.
- * @property {number} [thicknessLightness=20] - The thickness of the lightness ring.
- * @property {number} [thicknessSaturation=20] - The thickness of the saturation ring.
- * @property {string} value - The current color value in the specified display format.
- *
- * @property {Cube} cube - The color cube used for gamut mapping.
- * @property {GamutPreset[]} gamutPresets - An array of gamut presets.
- * @property {Preset[]} presets - An array of color presets.
- * @property {boolean} [ready=false] - Indicates if the color picker is ready.
- *
- * @method blurFocus - Removes a focus effect with the specified duration.
- * @method clearStore - Clears the stored configuration, gamut presets, and presets from the local storage.
- * @method copyToClipboard - Copies the current color value to the clipboard.
- * @method cycleFormat - Cycles through the available display formats.
- * @method cycleGamutPreset - Cycles through the gamut presets.
- * @method cyclePreset - Cycles through the available presets.
- * @method deletePreset - Deletes a preset by ID from the presets list.
- * @method getSettings - Retrieves the current settings.
- * @method init - Initializes the component if the noInit property is used.
- * @method loadGamutPresets - Loads the gamut presets and optionally sets the current preset.
- * @method loadPreset - Loads a preset by its ID and applies its settings.
- * @method loadPresets - Loads the presets and applies the settings of the specified preset.
- * @method loadSettings - Loads and applies the provided settings.
- * @method refresh - Refreshes the color wheel with the specified animation duration.
- * @method reset - Resets the color picker to its default state.
- * @method resetValue - Resets the saturation to 100% and the lightness to 50%.
- * @method savePreset - Saves a color preset with the given id and title.
- * @method setCube - Sets the gamut cube.
- * @method setFocus - Focuses on a specific angle with an optional animation duration.
- * @method setValue - Sets the initial value of the color picker.
- *
- * @fires RybColorPicker#update:value - Fired when the color value is updated.
- * @fires RybColorPicker#update:preset - Fired when the preset is updated.
- * @fires RybColorPicker#ready - Fired when the color picker is ready.
- */
 export class RybColorPicker extends LitElement {
   deletePresetEl = createRef();
   rangesBodyEl = createRef();
@@ -288,29 +163,14 @@ export class RybColorPicker extends LitElement {
 
   // --- getters ---
 
-  /**
-   * Indicates whether the component is ready.
-   *
-   * @returns {boolean} The readiness state of the component.
-   */
   get ready() {
     return this._ready;
   }
 
-  /**
-   * Gets the radius of the color picker.
-   *
-   * @returns {number} The radius, which is half of the diameter.
-   */
   get radius() {
     return this.diameter / 2;
   }
 
-  /**
-   * Calculates the inner radius of the color picker.
-   *
-   * @returns {number} The inner radius of the color picker.
-   */
   get innerRadius() {
     const { gap } = this;
 
@@ -325,50 +185,24 @@ export class RybColorPicker extends LitElement {
     );
   }
 
-  /**
-   * Gets the radius of the color swatch.
-   *
-   * @returns {number} The radius of the color swatch, calculated as the difference between the inner radius and the swatch gap.
-   */
   get swatchRadius() {
     return this.innerRadius - this.swatchGap;
   }
 
-  /**
-   * Gets the current color in RGB format modified by the current gamut.
-   *
-   * @returns {string} The RGB color value.
-   */
   get color() {
     const { cube } = this;
 
     return rybHsl2rgb(this._hslColor, { cube });
   }
 
-  /**
-   * Gets the CSS representation of the current color.
-   *
-   * @returns {string} The CSS color string in the specified display format.
-   */
   get colorCss() {
     return rgbToCss(this.color, this.displayFormat);
   }
 
-  /**
-   * Checks if the color picker is currently busy.
-   *
-   * @returns {boolean} True if the color picker is busy, otherwise false.
-   */
   get isBusy() {
     return this._busyTimerId != null;
   }
 
-  /**
-   * Gets the display format options for the color picker.
-   *
-   * @returns {[string, string][]} An array of format options,
-   * where each option is an array containing the format key and its display name.
-   */
   get displayFormatOptions() {
     return [
       ['hex', 'Hex'],
@@ -376,30 +210,14 @@ export class RybColorPicker extends LitElement {
     ];
   }
 
-  /**
-   * Gets the width of the color picker wheel including any padding.
-   *
-   * @returns {number} The width of the color picker.
-   */
   get width() {
     return this.diameter + 2 * this.padding;
   }
 
-  /**
-   * Gets the height of the color picker wheel including any padding.
-   *
-   * @returns {number} The height of the color picker.
-   */
   get height() {
     return this.diameter + 2 * this.padding;
   }
 
-  /**
-   * Gets the preset options for the color picker.
-   *
-   * @returns {[string, string][]} An array of preset options, where each option is an array containing
-   * the preset value and its corresponding label.
-   */
   get presetsOptions() {
     const options = [['', '[ New Preset ]']];
 
@@ -758,26 +576,10 @@ export class RybColorPicker extends LitElement {
     d3.select(this.rangesBodyEl.value).attr('d', d);
   }
 
-  /**
-   * A method that creates a dialog.
-   *
-   * @callback CreateDialogType
-   * @param {'alert'|'confirm'|'prompt'} type - The type of dialog to create. Can be 'alert', 'confirm', or 'prompt'.
-   * @param {string} text - The text to display in the dialog.
-   * @returns {Promise<void|string>} A promise that resolves with void for 'alert' and 'confirm', or with a string for 'prompt'.
-   *
-   * @type {CreateDialogType}
-   */
   #dialog = createDialog.bind(this);
 
   // --- methods ---
 
-  /**
-   * Sets the initial value of the color picker which is then converted to the current gamut.
-   *
-   * @param {string} value - The color value to be set, in a format recognized by d3.color.
-   * @throws {Error} Throws an error if the input value cannot be converted to a color.
-   */
   setValue(value) {
     const rgb = d3.color(value);
 
@@ -791,50 +593,26 @@ export class RybColorPicker extends LitElement {
     this._hslColor = [h, s, l];
   }
 
-  /**
-   * Resets the saturation to 100% and the lightness to 50%.
-   */
   resetValue() {
     const [h] = this._hslColor;
 
     this._hslColor = [h, 1.0, 0.5];
   }
 
-  /**
-   * Sets the gamut cube.
-   *
-   * @param {Cube} cube - The cube object to be set.
-   */
   setCube(cube) {
     this.cube = structuredClone(cube);
   }
 
-  /**
-   * Initializes the component if the noinit property is used.
-   */
   init() {
     setTimeout(() => {
       this.#firstUpdated();
     }, 0);
   }
 
-  /**
-   * Copies the current color value to the clipboard.
-   *
-   * @async
-   * @function copyToClipboard
-   * @returns {Promise<void>} A promise that resolves when the value has been copied to the clipboard.
-   */
   async copyToClipboard() {
     await copyToClipboard(this.value);
   }
 
-  /**
-   * Loads the gamut presets and optionally sets the current preset.
-   *
-   * @param {Preset[]} presets - An array of gamut presets to load.
-   * @param {string} [presetId] - The ID of the preset to set as the current preset. If not provided, no preset will be set.
-   */
   loadGamutPresets(presets, presetId) {
     this.gamutPresets = presets;
 
@@ -843,11 +621,6 @@ export class RybColorPicker extends LitElement {
     this.gamutPreset = presetId;
   }
 
-  /**
-   * Cycles through the gamut presets in the color picker.
-   *
-   * @param {boolean} [backwards=false] - If true, cycles backwards through the gamut presets.
-   */
   cycleGamutPreset(backwards = false) {
     const { gamutPresets } = this;
     const { length: count } = gamutPresets;
@@ -869,13 +642,6 @@ export class RybColorPicker extends LitElement {
     this.gamutPreset = id;
   }
 
-  /**
-   * Loads the presets and applies the settings of the specified preset.
-   *
-   * @param {Preset[]} presets - An array of preset configurations.
-   * @param {string} [presetId] - The ID of the preset to load.
-   * @throws {Error} Throws an error if the "hasPresets" attribute is not set.
-   */
   loadPresets(presets, presetId) {
     if (!this.hasPresets) {
       throw new Error(
@@ -902,12 +668,6 @@ export class RybColorPicker extends LitElement {
     this.loadSettings(settings);
   }
 
-  /**
-   * Cycles through the available presets.
-   *
-   * @param {boolean} [backwards=false] - If true, cycles backwards through the presets.
-   * @returns {void}
-   */
   cyclePreset(backwards = false) {
     if (!this.hasPresets) return;
 
@@ -931,11 +691,6 @@ export class RybColorPicker extends LitElement {
     this.preset = id;
   }
 
-  /**
-   * Cycles through the available display formats.
-   *
-   * @param {boolean} [backwards=false] - If true, cycles backwards through the display formats.
-   */
   cycleFormat(backwards = false) {
     const formats = this.displayFormatOptions;
     const { length: count } = formats;
@@ -951,39 +706,18 @@ export class RybColorPicker extends LitElement {
 
   // --- ranges methods
 
-  /**
-   * Refreshes the color wheel with the specified animation duration.
-   *
-   * @param {number} [duration=this.animationDuration] - The duration of the animation in milliseconds.
-   */
   refresh(duration = this.animationDuration) {
     this.#withRanges('update', duration);
   }
 
-  /**
-   * Focuses on a specific angle with an optional animation duration.
-   *
-   * @param {number} angle - The angle to focus on.
-   * @param {number} [duration=this.animationDuration] - The duration of the animation in milliseconds. Defaults to the instance's animation duration.
-   */
   setFocus(angle, duration = this.animationDuration) {
     this.#withRanges('focus', angle, duration);
   }
 
-  /**
-   * Removes the focus with an optional animation duration.
-   *
-   * @param {number} [duration=this.animationDuration] - The duration of the blur effect in milliseconds.
-   */
   clearFocus(duration = this.animationDuration) {
     this.#withRanges('blur', duration);
   }
 
-  /**
-   * Loads and applies the provided settings.
-   *
-   * @param {Partial<Settings>} settings - The settings to load.
-   */
   loadSettings(settings) {
     if ('gamutPreset' in settings) {
       const keys = this.gamutPresets.map((d) => d[0]);
@@ -995,11 +729,6 @@ export class RybColorPicker extends LitElement {
     Object.assign(this, settings);
   }
 
-  /**
-   * Retrieves the current settings.
-   *
-   * @returns {Settings} The settings object containing all the properties to be relevant.
-   */
   getSettings() {
     const settings = pick(this, [
       'backgroundColor',
@@ -1021,14 +750,6 @@ export class RybColorPicker extends LitElement {
     return structuredClone(settings);
   }
 
-  /**
-   * Saves a color preset with the given id and title.
-   * If a preset with the same id already exists, it updates the preset.
-   * Otherwise, it adds a new preset.
-   *
-   * @param {string} id - The unique identifier for the preset.
-   * @param {string} title - The title of the preset.
-   */
   savePreset(id, title) {
     const { presets } = this;
 
@@ -1047,12 +768,6 @@ export class RybColorPicker extends LitElement {
     this.preset = id;
   }
 
-  /**
-   * Loads a preset by its ID and applies its settings.
-   *
-   * @param {string} id - The ID of the preset to load.
-   * @returns {void}
-   */
   loadPreset(id) {
     if (!id) return;
 
@@ -1071,11 +786,6 @@ export class RybColorPicker extends LitElement {
     this.preset = id;
   }
 
-  /**
-   * Deletes a preset by ID from the presets list.
-   *
-   * @param {string} id - The ID of the preset to delete.
-   */
   deletePreset(id) {
     const presetsWithout = this.presets.filter((d) => d[0] !== id);
 
@@ -1086,18 +796,12 @@ export class RybColorPicker extends LitElement {
     this.preset = '';
   }
 
-  /**
-   * Clears the stored configuration, gamut presets, and presets from the local storage.
-   */
   clearStore() {
     window.localStorage.removeItem(this.#storeConfigKey);
     window.localStorage.removeItem(this.#storeGamutPresetsKey);
     window.localStorage.removeItem(this.#storePresetsKey);
   }
 
-  /**
-   * Resets the color picker to its default state.
-   */
   reset() {
     this.preset = '';
 

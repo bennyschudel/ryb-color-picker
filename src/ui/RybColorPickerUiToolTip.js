@@ -1,15 +1,8 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-/**
- * A custom element that displays a tooltip.
- *
- * @class
- * @extends {LitElement}
- *
- * @property {number} [duration=1000] - The duration (in milliseconds) for which the tooltip is visible.
- * @property {boolean} show - Reflects the visibility state of the tooltip.
- */
+// ---
+
 export class RybColorPickerUiToolTip extends LitElement {
   rootEl = createRef();
 

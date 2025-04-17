@@ -4,16 +4,6 @@ import { createCustomEvent } from '../helpers';
 
 // ---
 
-/**
- * A custom element that provides an alert dialog.
- *
- * @class
- * @extends {LitElement}
- *
- * @property {string} text - The text to display in the dialog.
- *
- * @fires ok - Dispatched when the user clicks the "Ok" button or presses the "Enter" key.
- */
 export class RybColorPickerUiAlert extends LitElement {
   static properties = {
     text: { type: String },

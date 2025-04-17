@@ -6,17 +6,6 @@ import { arrayEquals, slugify } from '../utils';
 
 // ---
 
-/**
- * A custom element that provides a UI for selecting color gamut.
- *
- * @class
- * @extends {LitElement}
- *
- * @property {Array} cube - The array representing the color cube.
- * @property {boolean} [noModify=false] - A flag that indicates if the cube can be modified.
- * @property {preset} preset - An ID representing the current gamut preset.
- * @property {Array<Array<string, string>>} presets - An array containing available presets.
- */
 export class RybColorPickerUiGamut extends LitElement {
   rootEl = createRef();
   cubeEl = createRef();

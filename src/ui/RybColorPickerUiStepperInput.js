@@ -4,23 +4,8 @@ import { ref, createRef } from 'lit/directives/ref.js';
 import { createCustomEvent } from '../helpers';
 import { clamp } from '../utils';
 
-/**
- * A custom element that provides an input for incrementing and decrementing a numeric value within a specified range.
- *
- * @class
- * @extends {LitElement}
- *
- * @property {number} max - The maximum value allowed.
- * @property {number} min - The minimum value allowed.
- * @property {number} value - The current value of the input.
- *
- * @method minus - Decrements the value by 1.
- * @method plus - Increments the value by 1.
- * @method setValue - Sets the value and emits an update event.
- * @method updated - Lifecycle method called when properties change.
- *
- * @fires RybColorPickerUiStepperInput#value:update - Fired when the value is updated.
- */
+// ---
+
 export class RybColorPickerUiStepperInput extends LitElement {
   rootEl = createRef();
   inputEl = createRef();
@@ -39,20 +24,10 @@ export class RybColorPickerUiStepperInput extends LitElement {
 
   // --- getters ----
 
-  /**
-   * Determines if the current value can be decremented.
-   *
-   * @returns {boolean} True if the current value is greater than the minimum value, otherwise false.
-   */
   get canMinus() {
     return this.value > this.min;
   }
 
-  /**
-   * Determines if the current value is less than the maximum allowed value.
-   *
-   * @returns {boolean} True if the current value is less than the maximum, otherwise false.
-   */
   get canPlus() {
     return this.value < this.max;
   }
@@ -79,25 +54,14 @@ export class RybColorPickerUiStepperInput extends LitElement {
 
   // --- methods ---
 
-  /**
-   * Sets the value by emitting a value update event.
-   *
-   * @param {any} value - The new value to set.
-   */
   setValue(value) {
     this.#emitValueUpdate(value);
   }
 
-  /**
-   * Increases the current value by 1.
-   */
   plus() {
     this.setValue(this.value + 1);
   }
 
-  /**
-   * Decreases the current value by 1.
-   */
   minus() {
     this.setValue(this.value - 1);
   }

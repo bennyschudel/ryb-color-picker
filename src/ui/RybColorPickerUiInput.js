@@ -5,19 +5,6 @@ import { createCustomEvent } from '../helpers';
 
 // ---
 
-/**
- * A custom element that provides an input field.
- *
- * @class
- * @extends {LitElement}
- *
- * @property {string} value - The current value of the input.
- * @property {boolean} [autofocus=false] - If true, the input will automatically receive focus when the element is first updated.
- * @property {boolean} [disabled=false] - If true, the input will be disabled.
- * @property {boolean} [readonly=false] - If true, the input will be read-only.
- *
- * @fires update:value - Dispatched when the input value is updated.
- */
 export class RybColorPickerUiInput extends LitElement {
   rootEl = createRef();
   inputEl = createRef();

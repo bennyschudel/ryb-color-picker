@@ -1,12 +1,8 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-/**
- * A custom element representing a settings element.
- *
- * @class
- * @extends {LitElement}
- */
+// ---
+
 export class RybColorPickerSettings extends LitElement {
   rootEl = createRef();
 

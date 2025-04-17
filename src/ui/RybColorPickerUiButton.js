@@ -1,15 +1,8 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-/**
- * A custom element representing a button.
- *
- * @class
- * @extends {LitElement}
- *
- * @property {boolean} [disabled=false] - Enables or disables the button functionality.
- * @property {boolean} [feedback=false] - Enables or disables feedback functionality.
- */
+// ---
+
 export class RybColorPickerUiButton extends LitElement {
   rootEl = createRef();
   feedBackEl = createRef();

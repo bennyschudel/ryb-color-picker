@@ -1,12 +1,8 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-/**
- * A custom element that provides a form field.
- *
- * @class
- * @extends {LitElement}
- */
+// ---
+
 export class RybColorPickerUiField extends LitElement {
   rootEl = createRef();
 

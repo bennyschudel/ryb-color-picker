@@ -4,18 +4,8 @@ import { ref, createRef } from 'lit/directives/ref.js';
 
 import { createCustomEvent } from './helpers';
 
-/**
- * RybColorSwatch is a custom web component representing a color swatch.
- *
- * @class
- * @extends {LitElement}
- *
- * @property {boolean} [disabled=false] - Indicates whether the button is disabled.
- * @property {boolean} [pill=false] - Indicates whether the button has a pill-shaped border radius.
- * @property {string} value - Represents the background color of the button.
- *
- * @fires RybColorSwatch#update:value - Dispatched when the value property is updated.
- */
+// ---
+
 export class RybColorSwatch extends LitElement {
   rootEl = createRef();
 

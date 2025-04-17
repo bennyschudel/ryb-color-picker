@@ -4,18 +4,6 @@ import { createCustomEvent } from '../helpers';
 
 // ---
 
-/**
- * A custom element that provides a prompt for input.
- *
- * @class
- * @extends {LitElement}
- *
- * @property {string} text - The text to display in the prompt.
- * @property {string} value - The current value of the prompt input.
- *
- * @fires continue - Dispatched when the user clicks the "Continue" button or presses the "Enter" key.
- * @fires cancel - Dispatched when the user clicks the "Cancel" button or presses the "Escape" key.
- */
 export class RybColorPickerUiPrompt extends LitElement {
   static properties = {
     text: { type: String },

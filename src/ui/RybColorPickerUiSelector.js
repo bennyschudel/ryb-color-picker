@@ -3,23 +3,8 @@ import { ref, createRef } from 'lit/directives/ref.js';
 
 import { createCustomEvent } from '../helpers';
 
-/**
- * @typedef {[string, string]} Option - A tuple containing a value and label for the selector
- */
+// ---
 
-/**
- * A custom element that provides a select dropdown with optional
- * next/previous controls. Supports keyboard navigation with arrow keys.
- *
- * @class
- * @extends {LitElement}
- *
- * @property {string} value - The currently selected value
- * @property {Option[]} options - Array of [value, label] pairs for the select options
- * @property {boolean} [noControls=false] - When true, hides the next/previous buttons
- *
- * @fires {CustomEvent} update:value - Fired when the selected value changes
- */
 export class RybColorPickerUiSelector extends LitElement {
   rootEl = createRef();
   selectEl = createRef();
@@ -46,20 +31,10 @@ export class RybColorPickerUiSelector extends LitElement {
 
   // --- getters ---
 
-  /**
-   * Gets the total number of available options
-   *
-   * @returns {number} The number of options
-   */
   get count() {
     return this.options.length;
   }
 
-  /**
-   * Determines if cycling through values is possible (requires more than 1 option)
-   *
-   * @returns {boolean} True if cycling is possible
-   */
   get canCycle() {
     return this.count > 1;
   }
@@ -94,18 +69,10 @@ export class RybColorPickerUiSelector extends LitElement {
 
   // --- methods ---
 
-  /**
-   * Sets the current value and emits an update event
-   *
-   * @param {string} value - The new value to set
-   */
   setValue(value) {
     this.#emitValueUpdate(value);
   }
 
-  /**
-   * Selects the next value in the options list, cycling to the first if at the end
-   */
   nextValue() {
     let index = this.#currentIndex + 1;
     if (index > this.count - 1) {
@@ -117,9 +84,6 @@ export class RybColorPickerUiSelector extends LitElement {
     this.#emitValueUpdate(value);
   }
 
-  /**
-   * Selects the previous value in the options list, cycling to the last if at the beginning
-   */
   previousValue() {
     let index = this.#currentIndex - 1;
     if (index < 0) {

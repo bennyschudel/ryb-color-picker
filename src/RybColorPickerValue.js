@@ -6,19 +6,6 @@ import { copyToClipboard } from './utils';
 
 // ---
 
-/**
- * A custom element that represents a value input field.
- *
- * @class
- * @extends {LitElement}
- *
- * @property {boolean} [disabled=false] - Indicates if the input is disabled.
- * @property {boolean} [noSettings=false] - Indicates if the settings button should be hidden.
- * @property {string} value - The current value of the color picker.
- *
- * @fires RybColorPickerValue#update:value - Fired when the value is updated.
- * @fires RybColorPickerValue#action:show-settings - Fired when the settings button is clicked.
- */
 export class RybColorPickerValue extends LitElement {
   rootEl = createRef();
   inputEl = createRef();

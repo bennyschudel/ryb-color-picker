@@ -1,12 +1,8 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-/**
- * A custom element that provides an visual separator.
- *
- * @class
- * @extends {LitElement}
- */
+// ---
+
 export class RybColorPickerUiSeparator extends LitElement {
   rootEl = createRef();
 

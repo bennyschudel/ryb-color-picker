@@ -1,12 +1,8 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-/**
- * A custom element representing an icon.
- *
- * @class
- * @extends {LitElement}
- */
+// ---
+
 export class RybColorPickerUiIcon extends LitElement {
   rootEl = createRef();
 

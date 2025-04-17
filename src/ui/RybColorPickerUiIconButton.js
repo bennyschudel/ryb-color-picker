@@ -1,15 +1,8 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-/**
- * A custom element representing an icon button.
- *
- * @class
- * @extends {LitElement}
- *
- * @property {boolean} [disabled=false] - Enables or disables the button functionality.
- * @property {boolean} [feedback=false] - Enables or disables feedback functionality.
- */
+// ---
+
 export class RybColorPickerUiIconButton extends LitElement {
   rootEl = createRef();
   feedBackEl = createRef();
@@ -28,12 +21,6 @@ export class RybColorPickerUiIconButton extends LitElement {
 
   // --- methods ---
 
-  /**
-   * Displays feedback text for a specified duration.
-   *
-   * @param {string} text - The feedback text to display.
-   * @param {number} [duration=1000] - The duration to display the feedback text, in milliseconds.
-   */
   showFeedBack(text, duration = 1_000) {
     if (!this.feedback) {
       console.warn('Please enable the feedback attribute.');

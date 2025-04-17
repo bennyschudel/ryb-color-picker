@@ -2,12 +2,6 @@ import { html, css, LitElement } from 'lit';
 
 // ---
 
-/**
- * A custom element that provides a base dialog.
- *
- * @class
- * @extends {LitElement}
- */
 export class RybColorPickerUiDialog extends LitElement {
   static properties = {};
 

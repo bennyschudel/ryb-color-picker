@@ -4,17 +4,6 @@ import { createCustomEvent } from '../helpers';
 
 // ---
 
-/**
- * A custom element that provides a confirm dialog.
- *
- * @class
- * @extends {LitElement}
- *
- * @property {string} text - The text to display in the dialog.
- *
- * @fires continue - Dispatched when the user clicks the "Continue" button or presses the "Enter" key.
- * @fires cancel - Dispatched when the user clicks the "Cancel" button or presses the "Escape" key.
- */
 export class RybColorPickerUiConfirm extends LitElement {
   static properties = {
     text: { type: String },
