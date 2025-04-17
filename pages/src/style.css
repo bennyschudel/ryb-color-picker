@@ -1,0 +1,57 @@
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+
+  font-family: Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &.dark {
+    color-scheme: dark;
+  }
+}
+
+body {
+  align-items: stretch;
+  display: flex;
+  justify-content: stretch;
+  margin: 0;
+  min-height: 100vh;
+  min-width: 320px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+a {
+  &,
+  &:link,
+  &:visited {
+    color: hotpink;
+  }
+
+  &:active,
+  &:hover {
+    color: deeppink;
+  }
+}
+
+#app {
+  align-items: stretch;
+  display: flex;
+  justify-content: stretch;
+  min-height: 100%;
+  width: 100%;
+}
+
+.app {
+  align-items: center;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+}
