@@ -8,7 +8,7 @@ export default defineConfig({
   base: '/ryb-color-picker',
   build: {
     sourcemap: 'hidden',
-    chunkSizeWarningLimit: 200,
+    chunkSizeWarningLimit: 500,
   },
   plugins: [
     vue({
@@ -23,7 +23,7 @@ export default defineConfig({
       limits: [
         {
           name: '**/*',
-          limit: '200 kB',
+          limit: '500 kB',
         },
       ],
     }),

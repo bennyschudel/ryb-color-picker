@@ -16,7 +16,7 @@ npm install ryb-color-picker
 ### Minimal example
 
 ```html
-<ryb-color-picker id="picker" initialvalue="hotpink"></ryb-color-picker>
+<ryb-color-picker id="picker" initialValue="hotpink"></ryb-color-picker>
 
 <script type="module">
   import 'ryb-color-picker';
@@ -33,7 +33,7 @@ npm install ryb-color-picker
 
 ```html
 <ryb-color-swatch id="swatch"></ryb-color-swatch>
-<ryb-color-picker id="picker" initialvalue="hotpink"></ryb-color-picker>
+<ryb-color-picker id="picker" initialValue="hotpink"></ryb-color-picker>
 
 <script type="module">
   import 'ryb-color-picker';
@@ -66,14 +66,7 @@ Gamut-Presets are persisted in localStorage. Therefore we only load the initial 
   const pickerEl = document.getElementById('picker');
 
   if (!pickerEl.gamutPresets.length) {
-    const presets = Array.from(cubes, ([id, d]) => [
-      id,
-      d.title,
-      d.cube,
-    ]).filter(([id]) => {
-      // filter out unused presets
-      return !['rgb'].includes(id);
-    });
+    const presets = Array.from(cubes, ([id, d]) => [id, d.title, d.cube]);
 
     pickerEl.loadGamutPresets(presets);
   }

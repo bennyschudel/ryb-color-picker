@@ -109,6 +109,53 @@ onMounted(() => {
         hasPresets
       ></ryb-color-picker>
 
+      <div class="shortcuts">
+        <h3>Shortcuts</h3>
+        <table>
+          <tbody>
+            <tr>
+              <td>c</td>
+              <td>copy value to clipboard</td>
+            </tr>
+            <tr>
+              <td>f</td>
+              <td>cycle format</td>
+            </tr>
+            <tr>
+              <td>g</td>
+              <td>cygle gamut-preset</td>
+            </tr>
+            <tr>
+              <td>shift + g</td>
+              <td>cycle gamut-preset backwards</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>cycle preset</td>
+            </tr>
+            <tr>
+              <td>shift + p</td>
+              <td>cycle preset backwards</td>
+            </tr>
+            <tr>
+              <td>r</td>
+              <td>
+                reset value (good if the color is to dark, to bright or to
+                desaturated)
+              </td>
+            </tr>
+            <tr>
+              <td>s</td>
+              <td>toggle settings</td>
+            </tr>
+            <tr>
+              <td>v</td>
+              <td>toggle value-bar</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <p class="note">
         2025, by
         <a href="https://twitter.com/bennyschudel" target="_blank"
@@ -153,6 +200,11 @@ h2 {
   margin-top: 64px;
 }
 
+h3 {
+  font-size: 16px;
+  margin-top: 16px;
+}
+
 code {
   background-color: light-dark(#f0f0f0, #202020);
   padding: 12px 16px;
@@ -176,5 +228,28 @@ code {
 
 .note {
   margin-top: 64px;
+}
+
+.shortcuts {
+  max-width: 320px;
+  font-size: 13px;
+  margin-top: 16px;
+
+  tr td {
+    border-bottom: 1px solid light-dark(#d0d0d0, #303030);
+    color: light-dark(#303030, #e0e0e0);
+  }
+
+  tr:first-child td {
+    border-top: 1px solid light-dark(#d0d0d0, #303030);
+  }
+
+  td:first-child {
+    font-weight: bold;
+    white-space: nowrap;
+    padding-right: 16px;
+    color: light-dark(#303030, #b0b0b0);
+    padding-left: 8px;
+  }
 }
 </style>
