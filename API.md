@@ -142,7 +142,6 @@ const formatOptions = element.displayFormatOptions;
 ### `loadGamutPresets` (presets: Preset[], presetId: string): void
 
 > Loads the gamut presets and optionally sets the current preset.
-
 > [Load Gamuts Example](./examples/load-gamuts.html)
 
 ### `init` (): void
@@ -223,9 +222,9 @@ const formatOptions = element.displayFormatOptions;
 
 ### `ColorCoords`
 
-> ```ts
-> type ColorCoords = [number, number, number];
-> ```
+```ts
+type ColorCoords = [number, number, number];
+```
 
 ### `ColorCube`
 
