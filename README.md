@@ -1,4 +1,4 @@
-# \<ryb-color-picker> `0.5.0-alpha20`
+# \<ryb-color-picker> `0.5.0`
 
 This is a RYB Color Picker web-component built using lit.\
 It supports multiple gamut presets using the wonderful [RYBItten](https://github.com/meodai/RYBitten) library.
