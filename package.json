@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "run-p analyze build:src",
+    "build": "run-s build:src analyze",
     "build:src": "vite build",
     "preview": "vite preview",
     "analyze": "cem analyze --litelement --outdir dist --exclude pages",
