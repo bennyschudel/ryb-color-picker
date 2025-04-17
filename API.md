@@ -11,8 +11,9 @@
 | `distortion`           | number  | 3                                   | The distortion factor. 0 > no distortion                                                                 |
 | `gamutPreset`          | string  |                                     | The current gamut preset                                                                                 |
 | `gap`                  | number  | 0                                   | Gap between the segments                                                                                 |
+| `hasPresets`           | boolean | false                               | Save and restore settings as presets.                                                                    |
 | `id`                   | string  |                                     | ID of the color picker. Setting an ID, will restore a given preset on reload.                            |
-| `initialValue`         | string  |                                     | Initial value RGB color value                                                                            |
+| `initialValue`         | string  | hotpink                             | Initial value RGB color value                                                                            |
 | `noSettings`           | boolean | false                               | Hide settings                                                                                            |
 | `noStore`              | boolean | false                               | Do not persist to local storage                                                                          |
 | `noValue`              | boolean | false                               | Hide value bar                                                                                           |
@@ -23,7 +24,7 @@
 | `segmentsSaturation`   | number  | 24                                  | Number of saturation segments                                                                            |
 | `show`                 | boolean | true                                | Show or hide the color picker                                                                            |
 | `showSettings`         | boolean | false                               | Show or hide the settings                                                                                |
-| `showValue`            | boolean | false                               | Show or hide the value bar                                                                               |
+| `showValue`            | boolean | true                                | Show or hide the value bar                                                                               |
 | `storeConfigKey`       | string  | ryb-color-picker/{id}/config        | Local storage key for the config. `{id}` will be replaced with the color picker ID if one is set.        |
 | `storeGamutPresetsKey` | string  | ryb-color-picker/{id}/gamut-presets | Local storage key for the gamut presets. `{id}` will be replaced with the color picker ID if one is set. |
 | `storePresetsKey`      | string  | ryb-color-picker/{id}/presets       | Local storage key for the presets. `{id}` will be replaced with the color picker ID if one is set.       |
