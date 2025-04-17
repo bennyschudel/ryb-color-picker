@@ -100,7 +100,7 @@ Read the API documentation here: [API](./API.md)
 
 ## Examples
 
-There are examples provided in the `examples/` folder.
+There are examples provided in the [./examples](./examples)` folder.
 
 ## License
 
