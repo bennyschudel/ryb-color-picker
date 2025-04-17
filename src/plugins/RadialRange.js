@@ -27,13 +27,13 @@ import { FisheyeScale } from './FisheyeScale.js';
 export default function RadialRange({
   angle = 360,
   animationDuration = 200,
-  colorizeFn = (d, i) => ({ fill: 'transparent' }),
+  colorizeFn = (_d, _i) => ({ fill: 'transparent' }),
   context = null,
   distortion: _distortion = 3,
   gap: _gap = 0,
   introDuration = 600,
   name = 'radial-range',
-  onClick = (i) => undefined,
+  onClick = (_i) => undefined,
   radius: _radius = 100,
   segments: _segments = 24,
   startAngle = 0,
@@ -46,8 +46,7 @@ export default function RadialRange({
     .value((d) => d.value)
     .sortValues(null);
 
-  const arc = d3
-    .arc();
+  const arc = d3.arc();
 
   function calcRelativeAngle(angle) {
     return (angle - (startAngle - 360)) % 360;
@@ -101,11 +100,9 @@ export default function RadialRange({
   function render(duration = animationDuration) {
     const data = getPieSegments();
 
-    const $newSegments = $segments
-      .selectAll('.segment')
-      .data(data, (d) => {
-        return d.index;
-      });
+    const $newSegments = $segments.selectAll('.segment').data(data, (d) => {
+      return d.index;
+    });
 
     const segments = $newSegments.nodes();
 
@@ -133,8 +130,7 @@ export default function RadialRange({
       return function (t) {
         const _d = (this._current = assign({}, d, ip(t)));
 
-        d3
-          .select(this)
+        d3.select(this)
           .select('.shape')
           .attr('d', arc(_d))
           .attr('transform-origin', arc.centroid(_d).join(' '));
@@ -149,11 +145,14 @@ export default function RadialRange({
       let _endAngle = _startAngle;
 
       if (previousSegment) {
-        _startAngle = previousSegment._current.endAngle + (previousSegment._current.padAngle / 2);
+        _startAngle =
+          previousSegment._current.endAngle +
+          previousSegment._current.padAngle / 2;
         _endAngle = _startAngle;
       }
       if (nextSegment) {
-        _endAngle = nextSegment._current.startAngle - (nextSegment._current.padAngle / 2);
+        _endAngle =
+          nextSegment._current.startAngle - nextSegment._current.padAngle / 2;
       }
 
       const ip = d3.interpolate(
@@ -199,78 +198,72 @@ export default function RadialRange({
       return applyArcTween(ip, d);
     }
 
-    $newSegments
-      .join(
-        function enter($p) {
-          const $s = $p
-            .append('g')
-            .classed('segment', true)
-            .attr('data-index', (_, i) => i);
+    $newSegments.join(
+      function enter($p) {
+        const $s = $p
+          .append('g')
+          .classed('segment', true)
+          .attr('data-index', (_, i) => i);
 
-          $s
-            .append('path')
-            .classed('shape', true)
-            .attr('stroke-width', _gap ? 0 : 1)
-            .attr('stroke', (d, i) => colorizeFn(d, i).stroke)
-            .attr('fill', (d, i) => colorizeFn(d, i).fill)
-            // ---
-            .on('click', (event, d) => {
-              onClick(d.index);
-            });
-            // .on('pointerenter', (event) => {
-            //   d3.select(event.target)
-            //     .attr('transform', 'scale(2)');
-            // })
-            // .on('pointerleave', (event) => {
-            //   d3.select(event.target)
-            //     .attr('transform', '');
-            // });
+        $s.append('path')
+          .classed('shape', true)
+          .attr('stroke-width', _gap ? 0 : 1)
+          .attr('stroke', (d, i) => colorizeFn(d, i).stroke)
+          .attr('fill', (d, i) => colorizeFn(d, i).fill)
+          // ---
+          .on('click', (event, d) => {
+            onClick(d.index);
+          });
+        // .on('pointerenter', (event) => {
+        //   d3.select(event.target)
+        //     .attr('transform', 'scale(2)');
+        // })
+        // .on('pointerleave', (event) => {
+        //   d3.select(event.target)
+        //     .attr('transform', '');
+        // });
 
-          $s
-            .interrupt()
-            .transition()
-            .duration(duration)
-            .ease(d3.easeCubicOut)
-            .tween('enter.arc', enterArcTween);
+        $s.interrupt()
+          .transition()
+          .duration(duration)
+          .ease(d3.easeCubicOut)
+          .tween('enter.arc', enterArcTween);
 
-          // $s
-          //   .on('pointerenter', (event) => {
-          //     d3.select(event.target).raise();
-          //   });
+        // $s
+        //   .on('pointerenter', (event) => {
+        //     d3.select(event.target).raise();
+        //   });
 
-          return $s;
-        },
-        function update($s) {
-          $s
-            .interrupt()
-            .transition()
-            .duration(duration)
-            .ease(d3.easeCubicOut)
-            .tween('update.arc', updateArcTween);
+        return $s;
+      },
+      function update($s) {
+        $s.interrupt()
+          .transition()
+          .duration(duration)
+          .ease(d3.easeCubicOut)
+          .tween('update.arc', updateArcTween);
 
-          $s
-            .select('.shape')
-            .attr('stroke-width', _gap ? 0 : 1)
-            .attr('stroke', (d, i) => colorizeFn(d, i).stroke)
-            .attr('fill', (d, i) => colorizeFn(d, i).fill);
+        $s.select('.shape')
+          .attr('stroke-width', _gap ? 0 : 1)
+          .attr('stroke', (d, i) => colorizeFn(d, i).stroke)
+          .attr('fill', (d, i) => colorizeFn(d, i).fill);
 
-          return $s;
-        },
-        function exit($s) {
-          $s
-            .classed('exit', true)
-            .interrupt()
-            .transition()
-            .duration(duration)
-            .ease(d3.easeCubicOut)
-            .tween('exit.arc', exitArcTween)
-            .on('end', function () {
-              d3.select(this).remove();
-            });
+        return $s;
+      },
+      function exit($s) {
+        $s.classed('exit', true)
+          .interrupt()
+          .transition()
+          .duration(duration)
+          .ease(d3.easeCubicOut)
+          .tween('exit.arc', exitArcTween)
+          .on('end', function () {
+            d3.select(this).remove();
+          });
 
-          return $s;
-        },
-      );
+        return $s;
+      },
+    );
 
     $track.attr(
       'd',
@@ -307,9 +300,7 @@ export default function RadialRange({
       .innerRadius(_radius - _thickness)
       .outerRadius(_radius);
 
-    scale
-      .extent([0, angle])
-      .focus(_focusAngle);
+    scale.extent([0, angle]).focus(_focusAngle);
 
     return render(duration);
   }

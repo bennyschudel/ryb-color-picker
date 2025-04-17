@@ -44,11 +44,11 @@ export class RybColorPickerUiPrompt extends LitElement {
     }
   }
 
-  #handleCancelClick(event) {
+  #handleCancelClick() {
     this.#onCancel();
   }
 
-  #handleContinueClick(event) {
+  #handleContinueClick() {
     this.#onContinue();
   }
 
@@ -84,7 +84,7 @@ export class RybColorPickerUiPrompt extends LitElement {
     window.removeEventListener('keyup', this._handleKeyUp);
   }
 
-    // --- render
+  // --- render
 
   render() {
     return html`
@@ -100,14 +100,18 @@ export class RybColorPickerUiPrompt extends LitElement {
           </ryb-color-picker-ui-field>
         </div>
         <div slot="actions">
-          <ryb-color-picker-ui-button @click=${this.#handleCancelClick}>Cancel</ryb-color-picker-ui-button>
-          <ryb-color-picker-ui-button @click=${this.#handleContinueClick}>Continue</ryb-color-picker-ui-button>
+          <ryb-color-picker-ui-button @click=${this.#handleCancelClick}
+            >Cancel</ryb-color-picker-ui-button
+          >
+          <ryb-color-picker-ui-button @click=${this.#handleContinueClick}
+            >Continue</ryb-color-picker-ui-button
+          >
         </div>
       </ryb-color-picker-ui-dialog>
     `;
   }
 
-    // --- styles ---
+  // --- styles ---
 
   static styles = css`
     .text {

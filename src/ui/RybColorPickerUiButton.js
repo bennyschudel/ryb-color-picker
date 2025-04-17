@@ -1,7 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
 
-
 /**
  * A custom element representing a button.
  *
@@ -45,7 +44,7 @@ export class RybColorPickerUiButton extends LitElement {
 
   // --- lifecycle ---
 
-    // --- render
+  // --- render
 
   render() {
     return html`

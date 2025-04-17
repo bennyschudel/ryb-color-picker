@@ -37,14 +37,11 @@ export class RybColorPickerUiToolTip extends LitElement {
     }
   }
 
-    // --- render
+  // --- render
 
   render() {
     return html`
-      <div
-        ${ref(this.rootEl)}
-        class="body"
-      >
+      <div ${ref(this.rootEl)} class="body">
         <slot></slot>
       </div>
     `;
@@ -88,7 +85,7 @@ export class RybColorPickerUiToolTip extends LitElement {
       border-style: solid;
       border-width: 4px;
       bottom: -8px;
-      content: "";
+      content: '';
       display: block;
       left: calc(50% - 4px);
       position: absolute;

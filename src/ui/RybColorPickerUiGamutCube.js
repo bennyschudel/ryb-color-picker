@@ -81,7 +81,7 @@ export class RybColorPickerUiGamutCube extends LitElement {
 
   // --- lifecycle ---
 
-    // --- render
+  // --- render
 
   render() {
     return html`

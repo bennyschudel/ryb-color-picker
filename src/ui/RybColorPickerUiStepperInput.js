@@ -110,7 +110,7 @@ export class RybColorPickerUiStepperInput extends LitElement {
     }
   }
 
-    // --- render
+  // --- render
 
   render() {
     return html`

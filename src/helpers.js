@@ -19,7 +19,7 @@ export function createCustomEvent(
   },
 ) {
   return new CustomEvent(name, {
-    detail: window.structuredClone(detail),
+    detail: structuredClone(detail),
     ...options,
   });
 }
@@ -29,7 +29,15 @@ export function createCustomEvent(
  * The cube is represented as an array of RGB color arrays.
  * Each inner array contains three numbers representing the red, green, and blue components of a color.
  *
- * @returns {number[][]} An array of RGB color arrays.
+ * @typedef {[number, number, number]} ColorCoords
+ * @typedef {[
+ *   ColorCoords, ColorCoords,
+ *   ColorCoords, ColorCoords,
+ *   ColorCoords, ColorCoords,
+ *   ColorCoords, ColorCoords
+ *  ]} ColorCube
+ *
+ * @returns {ColorCube} An array of RGB color arrays.
  */
 export function getDefaultCube() {
   return [
@@ -51,7 +59,7 @@ export function getDefaultCube() {
  * @returns {Promise<void>} A promise that resolves when the alert is acknowledged.
  */
 export function createAlert(text) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const { _dialogs } = this;
     const nextIndex = _dialogs.length;
 

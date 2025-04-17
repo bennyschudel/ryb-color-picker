@@ -20,7 +20,7 @@ export class RybColorPickerUiField extends LitElement {
 
   // --- lifecycle ---
 
-    // --- render
+  // --- render
 
   render() {
     return html`
@@ -39,7 +39,10 @@ export class RybColorPickerUiField extends LitElement {
 
   static styles = css`
     :host {
-      --background-color: light-dark(hsl(0 100 100 / 0.2), hsl(0 100 100 / 0.1));
+      --background-color: light-dark(
+        hsl(0 100 100 / 0.2),
+        hsl(0 100 100 / 0.1)
+      );
       --color: light-dark(#303030, #b0b0b0);
       --size: 16px;
       --direction: column;

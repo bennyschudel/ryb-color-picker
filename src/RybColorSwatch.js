@@ -35,7 +35,11 @@ export class RybColorSwatch extends LitElement {
   // --- private methods ---
 
   #emitUpdateValue(value) {
-    const event = createCustomEvent('update:value', { value }, { bubbles: false });
+    const event = createCustomEvent(
+      'update:value',
+      { value },
+      { bubbles: false },
+    );
 
     this.dispatchEvent(event);
   }
@@ -48,7 +52,7 @@ export class RybColorSwatch extends LitElement {
     }
   }
 
-    // --- render
+  // --- render
 
   render() {
     return html`

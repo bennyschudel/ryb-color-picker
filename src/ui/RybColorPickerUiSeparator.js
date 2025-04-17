@@ -10,8 +10,7 @@ import { ref, createRef } from 'lit/directives/ref.js';
 export class RybColorPickerUiSeparator extends LitElement {
   rootEl = createRef();
 
-  static properties = {
-  };
+  static properties = {};
 
   constructor() {
     super();
@@ -19,16 +18,10 @@ export class RybColorPickerUiSeparator extends LitElement {
 
   // --- lifecycle ---
 
-    // --- render
+  // --- render
 
   render() {
-    return html`
-      <div
-        ${ref(this.rootEl)}
-        class="body"
-      >
-      </div>
-    `;
+    return html` <div ${ref(this.rootEl)} class="body"></div> `;
   }
 
   // --- styles ---

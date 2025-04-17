@@ -37,7 +37,7 @@ export class RybColorPickerUiAlert extends LitElement {
     }
   }
 
-  #handleOkClick(event) {
+  #handleOkClick() {
     this.#onOk();
   }
 
@@ -59,14 +59,16 @@ export class RybColorPickerUiAlert extends LitElement {
     window.removeEventListener('keyup', this._handleKeyUp);
   }
 
-    // --- render
+  // --- render
 
   render() {
     return html`
       <ryb-color-picker-ui-dialog>
         <div slot="text">${this.text}</div>
         <div slot="actions">
-          <ryb-color-picker-ui-button @click=${this.#handleOkClick}>Ok</ryb-color-picker-ui-button>
+          <ryb-color-picker-ui-button @click=${this.#handleOkClick}
+            >Ok</ryb-color-picker-ui-button
+          >
         </div>
       </ryb-color-picker-ui-dialog>
     `;

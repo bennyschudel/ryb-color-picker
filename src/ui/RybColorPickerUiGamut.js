@@ -49,9 +49,7 @@ export class RybColorPickerUiGamut extends LitElement {
   get presetsOptions() {
     const options = this.noModify ? [] : [['', '[ New Gamut ]']];
 
-    return options.concat(
-      this.presets.map((d) => [d[0], d[1]]),
-    );
+    return options.concat(this.presets.map((d) => [d[0], d[1]]));
   }
 
   get isModified() {
@@ -107,7 +105,7 @@ export class RybColorPickerUiGamut extends LitElement {
       if (!title) {
         throw Error('Missing title');
       }
-    } catch (error) {
+    } catch (_error) {
       return;
     }
 
@@ -148,7 +146,7 @@ export class RybColorPickerUiGamut extends LitElement {
 
     try {
       await this.dialog('confirm', 'Are you sure to delete this gamut-preset?');
-    } catch (error) {
+    } catch (_error) {
       return;
     }
 
@@ -201,7 +199,7 @@ export class RybColorPickerUiGamut extends LitElement {
     }
   }
 
-    // --- render
+  // --- render
 
   render() {
     return html`

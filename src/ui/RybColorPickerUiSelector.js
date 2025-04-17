@@ -144,7 +144,7 @@ export class RybColorPickerUiSelector extends LitElement {
     }
   }
 
-    // --- render
+  // --- render
 
   render() {
     return html`
