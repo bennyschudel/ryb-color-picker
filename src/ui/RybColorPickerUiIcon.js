@@ -18,14 +18,11 @@ export class RybColorPickerUiIcon extends LitElement {
 
   // --- lifecycle ---
 
-    // --- render
+  // --- render
 
   render() {
     return html`
-      <div
-        ${ref(this.rootEl)}
-        class="body"
-      >
+      <div ${ref(this.rootEl)} class="body">
         <slot></slot>
       </div>
     `;

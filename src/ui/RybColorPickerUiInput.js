@@ -40,7 +40,11 @@ export class RybColorPickerUiInput extends LitElement {
   // --- private methods ---
 
   #emitValueUpdate(value) {
-    const event = createCustomEvent('update:value', { value }, { bubbles: false });
+    const event = createCustomEvent(
+      'update:value',
+      { value },
+      { bubbles: false },
+    );
 
     this.dispatchEvent(event);
   }
@@ -77,14 +81,11 @@ export class RybColorPickerUiInput extends LitElement {
     }
   }
 
-    // --- render
+  // --- render
 
   render() {
     return html`
-      <div
-        ${ref(this.rootEl)}
-        class="body"
-      >
+      <div ${ref(this.rootEl)} class="body">
         <input
           ${ref(this.inputEl)}
           part="input"
@@ -100,7 +101,7 @@ export class RybColorPickerUiInput extends LitElement {
   // --- styles ---
 
   static styles = css`
-   .body {
+    .body {
       display: flex;
     }
 

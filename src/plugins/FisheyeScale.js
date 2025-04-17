@@ -38,7 +38,7 @@ export function FisheyeScale() {
    *
    * @param {Array<number, number>} [value] - An array containing the min and max values.
    * @returns {Array<number, number>|FisheyeScale} - Returns the current min and max values if no argument is provided,
-   *                                         otherwise returns the main function.
+   *                                                 otherwise returns the main function.
    */
   main.extent = function (value) {
     return arguments.length
@@ -64,7 +64,7 @@ export function FisheyeScale() {
    * @param {number} [value] - The value to set the focus to. If no value is provided, the current focus value is returned.
    * @returns {number|FisheyeScale} - Returns the current focus value if no argument is provided, otherwise returns the main function.
    */
-  main.focus = function(value) {
+  main.focus = function (value) {
     return arguments.length ? ((focus = value), main) : focus;
   };
 

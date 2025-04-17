@@ -1,4 +1,3 @@
-
 import { html, css, LitElement } from 'lit';
 import { styleMap } from 'lit/directives/style-map.js';
 import { ref, createRef } from 'lit/directives/ref.js';
@@ -10,9 +9,16 @@ import * as d3 from './d3';
 
 import RadialRange from './plugins/RadialRange';
 
-import { PI, TAU, copyToClipboard, deg, rgbToCss, pick, slugify } from './utils';
+import {
+  PI,
+  TAU,
+  copyToClipboard,
+  deg,
+  rgbToCss,
+  pick,
+  slugify,
+} from './utils';
 import { createCustomEvent, createDialog, getDefaultCube } from './helpers';
-
 
 /**
  * An object of settings
@@ -35,9 +41,40 @@ import { createCustomEvent, createDialog, getDefaultCube } from './helpers';
  */
 
 /**
+ * Color coordinates descrbing a color
+ *
+ * @typedef {[number, number, number]} ColorCoordinates
+ */
+
+/**
+ * A gamut cube containing exact eight coordinates
+ *
+ * @typedef {[
+ *  ColorCoordinates, ColorCoordinates,
+ *  ColorCoordinates, ColorCoordinates,
+ *  ColorCoordinates, ColorCoordinates,
+ *  ColorCoordinates, ColorCoordinates
+ * ]} Cube
+ */
+
+/**
  * A preset containing an id, a title and an object of settings
  *
- * @typedef {Array<Array<string, string, Settings>} Preset
+ * @typedef Preset
+ * @type {[string, string, Settings]}
+ * @property {string} id - id of the preset
+ * @property {string} title - title of the preset
+ * @property {Settings} settings - settings of the preset
+ */
+
+/**
+ * A gamut preset containing an id, a title and a cube.
+ *
+ * @typedef GamutPreset
+ * @type {[string, string, Cube]}
+ * @property {string} id - id of the gamut preset
+ * @property {string} title - title of the gamut preset
+ * @property {Cube} cube - cube of the gamut preset
  */
 
 // ---
@@ -51,12 +88,10 @@ import { createCustomEvent, createDialog, getDefaultCube } from './helpers';
  *
  * @property {number} [animationDuration=150] - The duration of animations in milliseconds.
  * @property {string} [backgroundColor='transparent'] - The background color of the color picker.
- * @property {Array} cube - The color cube used for gamut mapping.
  * @property {number} [diameter=320] - The diameter of the color picker.
  * @property {string} [displayFormat='hex'] - The format in which the color is displayed (e.g., 'hex', 'rgb').
  * @property {number} [distortion=3] - The distortion level of the color picker.
  * @property {string} gamutPreset - The current gamut preset.
- * @property {Array} gamutPresets - An array of gamut presets.
  * @property {number} [gap=0] - The gap between different segments of the color picker.
  * @property {boolean} [hasPresets=false] - Indicates if the color picker has presets.
  * @property {string} id - The unique identifier for the color picker.
@@ -67,8 +102,6 @@ import { createCustomEvent, createDialog, getDefaultCube } from './helpers';
  * @property {boolean} [noValue=false] - If true, the value display will not be shown.
  * @property {number} [padding=30] - The padding around the color picker.
  * @property {string} [preset=''] - The current color preset.
- * @property {Array} presets - An array of color presets.
- * @property {boolean} [ready=false] - Indicates if the color picker is ready.
  * @property {number} [segmentsHue=48] - The number of segments for the hue ring.
  * @property {number} [segmentsLightness=24] - The number of segments for the lightness ring.
  * @property {number} [segmentsSaturation=24] - The number of segments for the saturation ring.
@@ -84,15 +117,18 @@ import { createCustomEvent, createDialog, getDefaultCube } from './helpers';
  * @property {number} [thicknessSaturation=20] - The thickness of the saturation ring.
  * @property {string} value - The current color value in the specified display format.
  *
- * @method blur - Removes a focus effect with the specified duration.
+ * @property {Cube} cube - The color cube used for gamut mapping.
+ * @property {GamutPreset[]} gamutPresets - An array of gamut presets.
+ * @property {Preset[]} presets - An array of color presets.
+ * @property {boolean} [ready=false] - Indicates if the color picker is ready.
+ *
+ * @method blurFocus - Removes a focus effect with the specified duration.
  * @method clearStore - Clears the stored configuration, gamut presets, and presets from the local storage.
  * @method copyToClipboard - Copies the current color value to the clipboard.
  * @method cycleFormat - Cycles through the available display formats.
  * @method cycleGamutPreset - Cycles through the gamut presets.
  * @method cyclePreset - Cycles through the available presets.
  * @method deletePreset - Deletes a preset by ID from the presets list.
- * @method dialog - Creates a dialog of the specified type with the given text.
- * @method focus - Focuses on a specific angle with an optional animation duration.
  * @method getSettings - Retrieves the current settings.
  * @method init - Initializes the component if the noInit property is used.
  * @method loadGamutPresets - Loads the gamut presets and optionally sets the current preset.
@@ -104,6 +140,7 @@ import { createCustomEvent, createDialog, getDefaultCube } from './helpers';
  * @method resetValue - Resets the saturation to 100% and the lightness to 50%.
  * @method savePreset - Saves a color preset with the given id and title.
  * @method setCube - Sets the gamut cube.
+ * @method setFocus - Focuses on a specific angle with an optional animation duration.
  * @method setValue - Sets the initial value of the color picker.
  *
  * @fires RybColorPicker#update:value - Fired when the color value is updated.
@@ -125,12 +162,12 @@ export class RybColorPicker extends LitElement {
     _hslColor: { state: true },
     _dialogs: { state: true },
     _initialSettings: { state: true },
+    _ready: { type: Boolean, attribute: false },
 
     // ---
     cube: { type: Array, attribute: false },
     gamutPresets: { type: Array, attribute: false },
     presets: { type: Array, attribute: false },
-    ready: { type: Boolean, attribute: false },
 
     // ---
     animationDuration: { type: Number, reflect: true },
@@ -167,13 +204,13 @@ export class RybColorPicker extends LitElement {
     storePresetsKey: { type: String },
   };
 
-  scaleHue;
-  scaleLightness;
-  scaleSaturation;
+  _scaleHue;
+  _scaleLightness;
+  _scaleSaturation;
 
-  rangeHue;
-  rangeLightness;
-  rangeSaturation;
+  _rangeHue;
+  _rangeLightness;
+  _rangeSaturation;
 
   _busyTimerId = null;
 
@@ -183,8 +220,7 @@ export class RybColorPicker extends LitElement {
     this._hslColor = [0, 0, 0];
     this._dialogs = [];
     this._initialSettings = null;
-
-    this.ready = false;
+    this._ready = false;
 
     this.hasPresets = false;
 
@@ -253,6 +289,15 @@ export class RybColorPicker extends LitElement {
   // --- getters ---
 
   /**
+   * Indicates whether the component is ready.
+   *
+   * @returns {boolean} The readiness state of the component.
+   */
+  get ready() {
+    return this._ready;
+  }
+
+  /**
    * Gets the radius of the color picker.
    *
    * @returns {number} The radius, which is half of the diameter.
@@ -263,8 +308,6 @@ export class RybColorPicker extends LitElement {
 
   /**
    * Calculates the inner radius of the color picker.
-   * The inner radius is determined by subtracting the thickness of the hue, saturation, and lightness rings,
-   * as well as the gaps between them, from the overall radius.
    *
    * @returns {number} The inner radius of the color picker.
    */
@@ -323,7 +366,7 @@ export class RybColorPicker extends LitElement {
   /**
    * Gets the display format options for the color picker.
    *
-   * @returns {Array<Array<string, string>>} An array of format options,
+   * @returns {[string, string][]} An array of format options,
    * where each option is an array containing the format key and its display name.
    */
   get displayFormatOptions() {
@@ -354,9 +397,8 @@ export class RybColorPicker extends LitElement {
   /**
    * Gets the preset options for the color picker.
    *
-   * @returns {Array<Array<string, string>>} An array of preset options, where each option is an array containing
-   * the preset value and its corresponding label. The first option is a
-   * default option for creating a new preset.
+   * @returns {[string, string][]} An array of preset options, where each option is an array containing
+   * the preset value and its corresponding label.
    */
   get presetsOptions() {
     const options = [['', '[ New Preset ]']];
@@ -396,7 +438,7 @@ export class RybColorPicker extends LitElement {
     return angle;
   }
 
-    // --- emitters
+  // --- emitters
 
   #emitEvent(name, value) {
     const event = createCustomEvent(name, { value });
@@ -416,14 +458,14 @@ export class RybColorPicker extends LitElement {
     this.#emitEvent('ready', true);
   }
 
-    // --- handlers
+  // --- handlers
 
   #handlePointerMove(event) {
     if (!this.ready || this.isBusy) return;
 
     const angle = this.#getAngleFromEvent(event);
 
-    this.focus(angle, 0);
+    this.setFocus(angle, 0);
   }
 
   #handlePointerEnter(event) {
@@ -433,17 +475,17 @@ export class RybColorPicker extends LitElement {
 
     const angle = this.#getAngleFromEvent(event);
 
-    this.focus(angle, animationDuration);
+    this.setFocus(angle, animationDuration);
 
     this.#markBusy(animationDuration);
   }
 
-  #handlePointerLeave(event) {
+  #handlePointerLeave() {
     if (!this.ready) return;
 
     const { animationDuration } = this;
 
-    this.blur(animationDuration);
+    this.clearFocus(animationDuration);
 
     this.#markBusy(animationDuration);
   }
@@ -514,7 +556,7 @@ export class RybColorPicker extends LitElement {
     this.distortion = event.detail.value;
   }
 
-  #handleUpdatePreset(event) {
+  #handleUpdatePreset() {
     if (!this.hasPresets) return;
 
     const id = this.preset;
@@ -528,24 +570,24 @@ export class RybColorPicker extends LitElement {
     this.savePresetEl.value.showFeedBack('Updated');
   }
 
-  async #handleSavePreset(event) {
+  async #handleSavePreset() {
     if (!this.hasPresets) return;
 
     let title = '';
 
     try {
-      title = await this.dialog(
+      title = await this.#dialog(
         'prompt',
         'Please enter a title for the new preset:',
       );
-    } catch (error) {
+    } catch (_error) {
       return;
     }
 
     const id = slugify(title);
 
     if (this.presets.find((d) => d[0] === id)) {
-      await this.dialog(
+      await this.#dialog(
         'alert',
         'A preset with this title does exist. Please choose another name.',
       );
@@ -564,8 +606,8 @@ export class RybColorPicker extends LitElement {
     if (!this.hasPresets) return;
 
     try {
-      await this.dialog('confirm', 'Are you sure to delete this preset?');
-    } catch (error) {
+      await this.#dialog('confirm', 'Are you sure to delete this preset?');
+    } catch (_error) {
       return;
     }
 
@@ -576,8 +618,8 @@ export class RybColorPicker extends LitElement {
 
   async #handleClearStore() {
     try {
-      await this.dialog('confirm', 'Are you sure to clear the local store?');
-    } catch (error) {
+      await this.#dialog('confirm', 'Are you sure to clear the local store?');
+    } catch (_error) {
       return;
     }
 
@@ -588,8 +630,8 @@ export class RybColorPicker extends LitElement {
 
   async #handleResetStore() {
     try {
-      await this.dialog('confirm', 'Are you sure to reset all settings?');
-    } catch (error) {
+      await this.#dialog('confirm', 'Are you sure to reset all settings?');
+    } catch (_error) {
       return;
     }
 
@@ -612,7 +654,7 @@ export class RybColorPicker extends LitElement {
     this.loadPreset(id);
   }
 
-    // --- local storage
+  // --- local storage
 
   #saveConfigToLocalStorage() {
     if (this.noStore) return;
@@ -670,7 +712,7 @@ export class RybColorPicker extends LitElement {
     );
   }
 
-    // --- others
+  // --- others
 
   #updateCubeFromGamutPreset() {
     const { gamutPreset, gamutPresets } = this;
@@ -687,9 +729,9 @@ export class RybColorPicker extends LitElement {
   }
 
   #withRanges(fn, ...args) {
-    this.rangeLightness[fn](...args);
-    this.rangeHue[fn](...args);
-    this.rangeSaturation[fn](...args);
+    this._rangeLightness[fn](...args);
+    this._rangeHue[fn](...args);
+    this._rangeSaturation[fn](...args);
   }
 
   #drawRangesBody() {
@@ -716,18 +758,19 @@ export class RybColorPicker extends LitElement {
     d3.select(this.rangesBodyEl.value).attr('d', d);
   }
 
-  // --- methods ---
-
   /**
    * A method that creates a dialog.
    *
+   * @callback CreateDialogType
    * @param {'alert'|'confirm'|'prompt'} type - The type of dialog to create. Can be 'alert', 'confirm', or 'prompt'.
    * @param {string} text - The text to display in the dialog.
    * @returns {Promise<void|string>} A promise that resolves with void for 'alert' and 'confirm', or with a string for 'prompt'.
    *
-   * @type {(type: ('alert'|'confirm'|'prompt'), text: string) => Promise<void|string>}
+   * @type {CreateDialogType}
    */
-  dialog = createDialog.bind(this);
+  #dialog = createDialog.bind(this);
+
+  // --- methods ---
 
   /**
    * Sets the initial value of the color picker which is then converted to the current gamut.
@@ -760,10 +803,10 @@ export class RybColorPicker extends LitElement {
   /**
    * Sets the gamut cube.
    *
-   * @param {number[][]} cube - The cube object to be set.
+   * @param {Cube} cube - The cube object to be set.
    */
   setCube(cube) {
-    this.cube = window.structuredClone(cube);
+    this.cube = structuredClone(cube);
   }
 
   /**
@@ -789,7 +832,7 @@ export class RybColorPicker extends LitElement {
   /**
    * Loads the gamut presets and optionally sets the current preset.
    *
-   * @param {Array<Preset>} presets - An array of gamut presets to load.
+   * @param {Preset[]} presets - An array of gamut presets to load.
    * @param {string} [presetId] - The ID of the preset to set as the current preset. If not provided, no preset will be set.
    */
   loadGamutPresets(presets, presetId) {
@@ -829,7 +872,7 @@ export class RybColorPicker extends LitElement {
   /**
    * Loads the presets and applies the settings of the specified preset.
    *
-   * @param {Array<Preset>} presets - An array of preset configurations.
+   * @param {Preset[]} presets - An array of preset configurations.
    * @param {string} [presetId] - The ID of the preset to load.
    * @throws {Error} Throws an error if the "hasPresets" attribute is not set.
    */
@@ -840,7 +883,7 @@ export class RybColorPicker extends LitElement {
       );
     }
 
-    this.presets = window.structuredClone(presets);
+    this.presets = structuredClone(presets);
 
     if (!presetId) return;
 
@@ -889,7 +932,7 @@ export class RybColorPicker extends LitElement {
   }
 
   /**
-   * Cycles through the available display formats and updates the current display format.
+   * Cycles through the available display formats.
    *
    * @param {boolean} [backwards=false] - If true, cycles backwards through the display formats.
    */
@@ -923,16 +966,16 @@ export class RybColorPicker extends LitElement {
    * @param {number} angle - The angle to focus on.
    * @param {number} [duration=this.animationDuration] - The duration of the animation in milliseconds. Defaults to the instance's animation duration.
    */
-  focus(angle, duration = this.animationDuration) {
+  setFocus(angle, duration = this.animationDuration) {
     this.#withRanges('focus', angle, duration);
   }
 
   /**
-   * Removes a focus effect with the specified duration.
+   * Removes the focus with an optional animation duration.
    *
    * @param {number} [duration=this.animationDuration] - The duration of the blur effect in milliseconds.
    */
-  blur(duration = this.animationDuration) {
+  clearFocus(duration = this.animationDuration) {
     this.#withRanges('blur', duration);
   }
 
@@ -953,7 +996,7 @@ export class RybColorPicker extends LitElement {
   }
 
   /**
-   * Retrieves the current settings..
+   * Retrieves the current settings.
    *
    * @returns {Settings} The settings object containing all the properties to be relevant.
    */
@@ -975,7 +1018,7 @@ export class RybColorPicker extends LitElement {
       'thicknessSaturation',
     ]);
 
-    return window.structuredClone(settings);
+    return structuredClone(settings);
   }
 
   /**
@@ -1054,9 +1097,6 @@ export class RybColorPicker extends LitElement {
 
   /**
    * Resets the color picker to its default state.
-   *
-   * This method clears the current preset, resets the color cube to its default state,
-   * and loads the initial settings.
    */
   reset() {
     this.preset = '';
@@ -1150,7 +1190,7 @@ export class RybColorPicker extends LitElement {
       this.#emitPresetUpdate(this.preset);
     }
 
-    if (props.has('ready')) {
+    if (props.has('_ready')) {
       this.ready && this.#emitReady();
     }
   }
@@ -1168,7 +1208,6 @@ export class RybColorPicker extends LitElement {
       thicknessSaturation,
     } = this;
 
-    const svg = this.svgEl.value;
     const context = this.rangesEl.value;
 
     // ---
@@ -1177,7 +1216,7 @@ export class RybColorPicker extends LitElement {
     const radiusSaturation = radiusHue - thicknessHue - gap;
     const radiusLightness = radiusSaturation - thicknessSaturation - gap;
 
-    this.scaleLightness = d3
+    this._scaleLightness = d3
       .scaleLinear([0, segmentsLightness])
       .interpolate(() => {
         return (i) => {
@@ -1197,7 +1236,7 @@ export class RybColorPicker extends LitElement {
         };
       });
 
-    this.scaleSaturation = d3
+    this._scaleSaturation = d3
       .scaleLinear([0, segmentsSaturation])
       .interpolate(() => {
         return (i) => {
@@ -1217,7 +1256,7 @@ export class RybColorPicker extends LitElement {
         };
       });
 
-    this.scaleHue = d3.scaleLinear([0, segmentsHue]).interpolate(() => {
+    this._scaleHue = d3.scaleLinear([0, segmentsHue]).interpolate(() => {
       return (i) => {
         const { cube } = this;
         const h = (360 / this.segmentsHue) * i;
@@ -1241,8 +1280,8 @@ export class RybColorPicker extends LitElement {
 
       this._hslColor = [h, s, l];
 
-      this.rangeSaturation.update();
-      this.rangeHue.update();
+      this._rangeSaturation.update();
+      this._rangeHue.update();
     };
 
     const setSaturation = (index) => {
@@ -1251,8 +1290,8 @@ export class RybColorPicker extends LitElement {
 
       this._hslColor = [h, s, l];
 
-      this.rangeLightness.update();
-      this.rangeHue.update();
+      this._rangeLightness.update();
+      this._rangeHue.update();
     };
 
     const setHue = (index) => {
@@ -1261,13 +1300,13 @@ export class RybColorPicker extends LitElement {
 
       this._hslColor = [h, s, l];
 
-      this.rangeLightness.update();
-      this.rangeSaturation.update();
+      this._rangeLightness.update();
+      this._rangeSaturation.update();
     };
 
-    this.rangeLightness = RadialRange({
+    this._rangeLightness = RadialRange({
       animationDuration,
-      colorizeFn: (_, i) => this.scaleLightness(i),
+      colorizeFn: (_, i) => this._scaleLightness(i),
       context,
       gap,
       name: 'lightness',
@@ -1277,9 +1316,9 @@ export class RybColorPicker extends LitElement {
       thickness: thicknessLightness,
     });
 
-    this.rangeSaturation = RadialRange({
+    this._rangeSaturation = RadialRange({
       animationDuration,
-      colorizeFn: (_, i) => this.scaleSaturation(i),
+      colorizeFn: (_, i) => this._scaleSaturation(i),
       context,
       gap,
       name: 'saturation',
@@ -1289,9 +1328,9 @@ export class RybColorPicker extends LitElement {
       thickness: thicknessSaturation,
     });
 
-    this.rangeHue = RadialRange({
+    this._rangeHue = RadialRange({
       animationDuration,
-      colorizeFn: (_, i) => this.scaleHue(i),
+      colorizeFn: (_, i) => this._scaleHue(i),
       context,
       gap,
       name: 'hue',
@@ -1346,7 +1385,7 @@ export class RybColorPicker extends LitElement {
     this.#drawRangesBody();
 
     setTimeout(() => {
-      this.ready = true;
+      this._ready = true;
     }, animationDuration);
   }
 
@@ -1357,7 +1396,7 @@ export class RybColorPicker extends LitElement {
   }
 
   updated(props) {
-    if (!this.ready) return;
+    if (!this._ready) return;
 
     const {
       distortion,
@@ -1372,32 +1411,32 @@ export class RybColorPicker extends LitElement {
     } = this;
 
     if (props.has('segmentsLightness')) {
-      this.scaleLightness.range([0, segmentsLightness]);
-      this.rangeLightness.segments(segmentsLightness);
+      this._scaleLightness.range([0, segmentsLightness]);
+      this._rangeLightness.segments(segmentsLightness);
     }
     if (props.has('segmentsSaturation')) {
-      this.scaleSaturation.range([0, segmentsSaturation]);
-      this.rangeSaturation.segments(segmentsSaturation);
+      this._scaleSaturation.range([0, segmentsSaturation]);
+      this._rangeSaturation.segments(segmentsSaturation);
     }
     if (props.has('segmentsHue')) {
-      this.scaleHue.range([0, segmentsHue]);
-      this.rangeHue.segments(segmentsHue);
+      this._scaleHue.range([0, segmentsHue]);
+      this._rangeHue.segments(segmentsHue);
     }
 
     const saturationRadius = radius - thicknessHue - gap;
     const lightnessRadius = saturationRadius - thicknessSaturation - gap;
 
     if (props.has('thicknessLightness')) {
-      this.rangeLightness.thickness(thicknessLightness);
+      this._rangeLightness.thickness(thicknessLightness);
     }
     if (props.has('thicknessSaturation')) {
-      this.rangeSaturation.thickness(thicknessSaturation);
-      this.rangeLightness.radius(lightnessRadius);
+      this._rangeSaturation.thickness(thicknessSaturation);
+      this._rangeLightness.radius(lightnessRadius);
     }
     if (props.has('thicknessHue')) {
-      this.rangeHue.thickness(thicknessHue);
-      this.rangeSaturation.radius(saturationRadius);
-      this.rangeLightness.radius(lightnessRadius);
+      this._rangeHue.thickness(thicknessHue);
+      this._rangeSaturation.radius(saturationRadius);
+      this._rangeLightness.radius(lightnessRadius);
     }
 
     if (
@@ -1406,9 +1445,9 @@ export class RybColorPicker extends LitElement {
       props.has('thicknessSaturation') ||
       props.has('thicknessHue')
     ) {
-      this.rangeHue.radius(radius);
-      this.rangeSaturation.radius(saturationRadius);
-      this.rangeLightness.radius(lightnessRadius);
+      this._rangeHue.radius(radius);
+      this._rangeSaturation.radius(saturationRadius);
+      this._rangeLightness.radius(lightnessRadius);
     }
 
     if (props.has('gap')) {
@@ -1419,7 +1458,7 @@ export class RybColorPicker extends LitElement {
       this.#withRanges('distortion', distortion);
     }
 
-    if (props.has('ready') || props.has('value') || props.has('cube')) {
+    if (props.has('_ready') || props.has('value') || props.has('cube')) {
       this.refresh();
     }
 
@@ -1428,7 +1467,7 @@ export class RybColorPicker extends LitElement {
     this.#drawRangesBody();
   }
 
-    // --- render
+  // --- render
 
   render() {
     return html`
@@ -1511,7 +1550,7 @@ export class RybColorPicker extends LitElement {
                 <ryb-color-picker-ui-field label="Gamut">
                   <ryb-color-picker-ui-gamut
                     .cube=${this.cube}
-                    .dialog=${this.dialog}
+                    .dialog=${this.#dialog}
                     .preset=${this.gamutPreset}
                     .presets=${this.gamutPresets}
                     @update:preset=${this.#handleGamutPresetChange}

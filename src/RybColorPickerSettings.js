@@ -18,14 +18,11 @@ export class RybColorPickerSettings extends LitElement {
 
   // --- lifecycle ---
 
-    // --- render
+  // --- render
 
   render() {
     return html`
-      <div
-        ${ref(this.rootEl)}
-        class="body"
-      >
+      <div ${ref(this.rootEl)} class="body">
         <slot></slot>
       </div>
     `;
@@ -53,5 +50,5 @@ export class RybColorPickerSettings extends LitElement {
       padding: 4px;
       width: var(--width);
     }
-`;
+  `;
 }

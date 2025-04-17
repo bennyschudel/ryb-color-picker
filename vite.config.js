@@ -2,11 +2,13 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+import eslint from 'vite-plugin-eslint';
 import BundleSize from 'vite-plugin-bundlesize';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ _command, _mode }) => {
   return {
     build: {
       sourcemap: 'hidden',
@@ -18,24 +20,30 @@ export default defineConfig(({ command, mode }) => {
       },
       rollupOptions: {
         output: {
-          entryFileNames(chunkInfo) {
+          entryFileNames(_chunkInfo) {
             return '[name].min.js';
           },
         },
-        external: [
-          'lit',
-          /^lit-html\/.*/,
-        ],
+        external: ['lit', /^lit-html\/.*/],
       },
       chunkSizeWarningLimit: 200,
     },
     plugins: [
+      eslint(),
+      viteStaticCopy({
+        targets: [
+          {
+            src: 'src/**/*.d.ts',
+            dest: 'types',
+          },
+        ],
+      }),
       BundleSize({
         stats: 'all',
         limits: [
           {
-            name: "**/*",
-            limit: "200 kB"
+            name: '**/*',
+            limit: '200 kB',
           },
         ],
       }),

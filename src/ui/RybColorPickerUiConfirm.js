@@ -41,11 +41,11 @@ export class RybColorPickerUiConfirm extends LitElement {
     }
   }
 
-  #handleCancelClick(event) {
+  #handleCancelClick() {
     this.#onCancel();
   }
 
-  #handleContinueClick(event) {
+  #handleContinueClick() {
     this.#onContinue();
   }
 
@@ -73,15 +73,19 @@ export class RybColorPickerUiConfirm extends LitElement {
     super.disconnectedCallback();
   }
 
-    // --- render
+  // --- render
 
   render() {
     return html`
       <ryb-color-picker-ui-dialog>
         <div slot="text">${this.text}</div>
         <div slot="actions">
-          <ryb-color-picker-ui-button @click=${this.#handleCancelClick}>Cancel</ryb-color-picker-ui-button>
-          <ryb-color-picker-ui-button @click=${this.#handleContinueClick}>Continue</ryb-color-picker-ui-button>
+          <ryb-color-picker-ui-button @click=${this.#handleCancelClick}
+            >Cancel</ryb-color-picker-ui-button
+          >
+          <ryb-color-picker-ui-button @click=${this.#handleContinueClick}
+            >Continue</ryb-color-picker-ui-button
+          >
         </div>
       </ryb-color-picker-ui-dialog>
     `;

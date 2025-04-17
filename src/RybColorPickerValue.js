@@ -34,7 +34,7 @@ export class RybColorPickerValue extends LitElement {
     super();
 
     this.disabled = false;
-    this.noSettings = false
+    this.noSettings = false;
   }
 
   // --- private methods ---
@@ -86,7 +86,7 @@ export class RybColorPickerValue extends LitElement {
     }
   }
 
-    // --- render
+  // --- render
 
   render() {
     return html`
