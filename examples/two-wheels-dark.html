@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Two Weels</title>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./index.css" />
     <style>
       body {
         flex-direction: row;
@@ -13,11 +13,21 @@
     </style>
   </head>
   <body>
-    <ryb-color-picker id="picker1" initialValue="hotpink" showSettings></ryb-color-picker>
-    <ryb-color-picker id="picker2" initialValue="hotpink" showSettings></ryb-color-picker>
+    <ryb-color-picker
+      id="picker1"
+      initialValue="hotpink"
+      showSettings
+    ></ryb-color-picker>
+    <ryb-color-picker
+      id="picker2"
+      initialValue="hotpink"
+      showSettings
+    ></ryb-color-picker>
 
     <script type="module">
-      import { cubes } from '../src/main.js';
+      import { cubes } from 'rybitten/cubes';
+
+      import '../src/main.js';
 
       const picker1El = document.getElementById('picker1');
       const picker2El = document.getElementById('picker2');
