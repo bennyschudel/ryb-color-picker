@@ -156,14 +156,12 @@ const formatOptions = element.displayFormatOptions;
 ### `loadPresets` (presets: Preset[], presetId: string): void
 
 > Loads the presets and applies the settings of the specified preset.
-
 > [Load Presets Example](./examples/load-presets.html)
 
 ### `loadSettings` (settings: Partial<Settings>): void
 
-> [Load Settings Example](./examples/load-settings.html)
-
 > Loads and applies the provided settings.
+> [Load Settings Example](./examples/load-settings.html)
 
 ### `refresh` (duration: number = this.animationDuration): void
 
@@ -195,11 +193,11 @@ const formatOptions = element.displayFormatOptions;
 
 ## Events
 
-### `ready`: (event)
+### `ready`: (event: CustomEvent)
 
 > Fired when the color picker is ready.
 
-### `udpate:preset`: (event)
+### `udpate:preset`: (event: CustomEvent)
 
 > Fired when the preset is updated.
 
@@ -210,7 +208,7 @@ const formatOptions = element.displayFormatOptions;
 });
 ```
 
-### `udpate:value`: (event)
+### `udpate:value`: (event: CustomEvent)
 
 > Fired when the color value is updated.
 
@@ -225,9 +223,9 @@ const formatOptions = element.displayFormatOptions;
 
 ### `ColorCoords`
 
-```ts
-type ColorCoords = [number, number, number];
-```
+> ```ts
+> type ColorCoords = [number, number, number];
+> ```
 
 ### `ColorCube`
 
