@@ -1,4 +1,6 @@
-# API
+# API \<ryb-color-picker\>
+
+[←Back](./API.md)
 
 ## Attributes
 

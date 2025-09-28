@@ -91,7 +91,7 @@ There are several hotkeys that could be used. To enable them, the wheel must be 
 
 ## API
 
-Read the API documentation here: [API](./API.md)
+Read the API documentation here: [API](./docs/API.md)
 
 ## Examples
 

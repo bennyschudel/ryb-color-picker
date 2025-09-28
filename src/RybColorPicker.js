@@ -458,6 +458,10 @@ export class RybColorPicker extends LitElement {
     this.resetStoreEl.value.showFeedBack('Resetted');
   }
 
+  #handleResetValue() {
+    this.resetValue();
+  }
+
   #handleCloseSettings() {
     this.showSettings = false;
   }
@@ -1228,6 +1232,7 @@ export class RybColorPicker extends LitElement {
                 value=${this.colorCss}
                 ?disabled=${!this.ready}
                 ?nosettings=${this.noSettings}
+                @action:reset=${this.#handleResetValue}
                 @action:show-settings=${() =>
                   (this.showSettings = !this.showSettings)}
                 @update:value=${this.#handleColorInputChange}

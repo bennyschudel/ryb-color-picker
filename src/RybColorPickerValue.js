@@ -32,6 +32,12 @@ export class RybColorPickerValue extends LitElement {
     this.dispatchEvent(event);
   }
 
+  #emitResetAction() {
+    const event = createCustomEvent('action:reset');
+
+    this.dispatchEvent(event);
+  }
+
   #handleValueUpdate(event) {
     event.stopPropagation();
 
@@ -107,6 +113,23 @@ export class RybColorPickerValue extends LitElement {
               <path
                 d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"
               />
+            </svg>
+          </ryb-color-picker-ui-icon-button>
+          <ryb-color-picker-ui-icon-button
+            ?disabled=${this.disabled}
+            @click=${this.#emitResetAction}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3.06 13a9 9 0 1 0 .49 -4.087" />
+              <path d="M3 4.001v5h5" />
+              <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
             </svg>
           </ryb-color-picker-ui-icon-button>
           ${!this.noSettings

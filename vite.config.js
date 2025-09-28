@@ -2,8 +2,8 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 
-import { viteStaticCopy } from 'vite-plugin-static-copy';
 import eslint from 'vite-plugin-eslint';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import BundleSize from 'vite-plugin-bundlesize';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
