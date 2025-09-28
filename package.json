@@ -37,8 +37,8 @@
     "d3-selection": "^3.0.0",
     "d3-shape": "^3.2.0",
     "d3-transition": "^3.0.1",
-    "lit": "^3.2.1",
-    "rybitten": "^0.22.0"
+    "lit": "^3.3.1",
+    "rybitten": "^0.23.1"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.8",
