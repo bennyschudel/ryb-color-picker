@@ -3,7 +3,7 @@
   "description": "A RYB Color Picker Wheel implemented as a web component",
   "license": "MIT",
   "author": "Benny Schudel",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "type": "module",
   "types": "dist/types/main.d.ts",
   "exports": {
