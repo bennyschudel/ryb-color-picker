@@ -12,7 +12,7 @@
   "dependencies": {
     "@vueuse/core": "^13.9.0",
     "ryb-color-picker": "^0.5.1",
-    "rybitten": "^0.22.0",
+    "rybitten": "^0.23.1",
     "vue": "^3.5.22"
   },
   "devDependencies": {
